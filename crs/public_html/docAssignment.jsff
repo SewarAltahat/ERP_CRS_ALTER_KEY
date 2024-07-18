@@ -1,0 +1,1383 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:sdHijri="sdHijri" xmlns:erplib="/erplib"
+          xmlns:h="http://java.sun.com/jsf/html" version="2.1">
+  <af:panelGroupLayout id="pg1" layout="vertical">
+    <af:panelBox styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['menu.docAssignment']}">
+      <af:panelTabbed id="pgl56" partialTriggers="pc2:b_Archive" dimensionsFrom="disclosedChild"
+                      styleClass="AFStretchWidth">
+        <af:showDetailItem id="sdi_CrsIncomingDocuments46_1" immediate="true" styleClass="AFStretchWidth"
+                           text="#{menu.resourceLabelMap['menu.docAssignment']}">
+          <af:panelGroupLayout id="pgl17" layout="vertical">
+            <af:panelStretchLayout dimensionsFrom="children" id="psl57" styleClass="AFStretchWidth"
+                                   visible="#{pageFlowScope.cardsView == '0' or  pageFlowScope.cardsView == &quot;&quot;  or   pageFlowScope.cardsView eq null  }">
+              <f:facet name="center">
+                <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem" id="pc2"
+                                    styleClass="AFStretchWidth">
+                  <f:facet name="secondaryToolbar">
+                    <af:toolbar id="tb1">
+                      <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print1"
+                                        immediate="true" partialSubmit="true"
+                                        text="#{menu.resourceLabelMap['label.print']}" styleClass="steper-btn"
+                                        visible="#{menu.printVisible}">
+                        <af:showPrintablePageBehavior/>
+                      </af:commandButton>
+                      <af:spacer width="5" id="s16"/>
+                      <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel1"
+                                        immediate="true" partialSubmit="true"
+                                        text="#{menu.resourceLabelMap['label.excel']}"
+                                        styleClass="excelButton steper-btn" visible="#{menu.excelVisible}">
+                        <af:setPropertyListener from="CrsIncomingDocuments1" to="#{sessionScope.tableId}"
+                                                type="action"/>
+                        <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                      </af:commandButton>
+                      <af:spacer width="5" id="s17"/>
+                      <af:spacer width="5" id="s18"/>
+                      <af:commandButton text="#{menu.resourceLabelMap['label.edit']}" id="cb1" partialSubmit="false"
+                                        partialTriggers="CrsIncomingDocuments1" styleClass="steper-btn"
+                                        icon="/images/edit.png" action="#{pageFlowScope.docAssignment.editRecord}">
+                        <af:setActionListener from="#{bindings.IncomingDocumentsPk.inputValue}"
+                                              to="#{requestScope.DocumentsPk}"/>
+                      </af:commandButton>
+                      <af:spacer width="5" id="s19"/>
+                      <af:commandButton disabled="#{bindings.IncomingDocumentsPk.inputValue == null}"
+                                        icon="#{menu.createInsertIcon}" id="copy" immediate="true" partialSubmit="true"
+                                        text="#{menu.resourceLabelMap['label.CopyDocCCPopup']}"
+                                        shortDesc="#{menu.resourceLabelMap['label.CopyDocCCPopup']}"
+                                        styleClass="steper-btn" action="#{pageFlowScope.docAssignment.refreshView}"/>
+                      <af:spacer width="5" id="s20"/>
+                      <af:commandButton disabled="#{bindings.IncomingDocumentsPk.inputValue == null}"
+                                        icon="#{menu.createInsertIcon}" id="b_Archive" immediate="true"
+                                        partialSubmit="true"
+                                        text="#{menu.resourceLabelMap['CrsIncomingArchive.sdi_CrsIncomingDocuments46']}"
+                                        shortDesc="#{menu.resourceLabelMap['CrsIncomingArchive.sdi_CrsIncomingDocuments46']}"
+                                        styleClass="steper-btn" action="#{pageFlowScope.docAssignment.openArchive}"
+                                        rendered="false"/>
+                      <af:spacer id="sa2" width="5"/>
+                      <af:commandButton actionListener="#{pageFlowScope.docAssignment.selectAll}" id="sa11"
+                                        partialSubmit="true" icon="/images/SelectAll-list-40.png"
+                                        text="#{menu.resourceLabelMap['label.selectAll']}" styleClass="steper-btn">
+                        <f:attribute name="iteratorName" value="CrsIncomingDocumentsDocAssignmentViewIterator"/>
+                      </af:commandButton>
+                      <af:spacer id="dsa2" width="5"/>
+                      <af:commandButton actionListener="#{pageFlowScope.docAssignment.deSelectAll}" id="dsa11"
+                                        partialSubmit="true" icon="/images/DSelectlist-40.png"
+                                        text="#{menu.resourceLabelMap['label.deSelectAll']}" styleClass="steper-btn">
+                        <f:attribute name="iteratorName" value="CrsIncomingDocumentsDocAssignmentViewIterator"/>
+                      </af:commandButton>
+                      <af:spacer width="10" height="10" id="s12"/>
+                      <af:panelGroupLayout id="pgl14"
+                                           inlineStyle="width: 130px; height: 40px;  background-color: #c6cfd4;border-top-left-radius:10px 10px; border-top-right-radius:10px 10px; border-bottom-left-radius:10px 10px;   border-bottom-right-radius:10px 10px;"
+                                           layout="horizontal" halign="center"
+                                           visible="#{pageFlowScope.cardsView == '0' or  pageFlowScope.cardsView == &quot;&quot;  or   pageFlowScope.cardsView eq null  }">
+                        <af:spacer width="10" height="10" id="s15"/>
+                        <af:panelGroupLayout id="pgl16">
+                          <af:commandImageLink icon="#{resource['images:app-drawer-25.png']}" id="cil3" disabled="false"
+                                               shortDesc="#{menu.resourceLabelMap['CrsDeptGroupDepts.ViewCards']}">
+                            <af:setPropertyListener from="1" to="#{pageFlowScope.cardsView}" type="action"/>
+                          </af:commandImageLink>
+                        </af:panelGroupLayout>
+                        <af:spacer width="5" height="10" id="s14"/>
+                        <af:panelGroupLayout id="pgl15"
+                                             inlineStyle="border-top-left-radius:10px 10px; border-top-right-radius:10px 10px; border-bottom-left-radius:10px 10px;   border-bottom-right-radius:10px 10px; background-color: White; height: 32px; width: 50px; "
+                                             layout="horizontal" halign="center">
+                          <af:spacer width="7" height="10" id="s13"/>
+                          <af:commandImageLink icon="#{resource['images:menu-25.png']}" id="cil4" disabled="true"
+                                               shortDesc="#{menu.resourceLabelMap['CrsDeptGroupDepts.ViewTable']}"/>
+                        </af:panelGroupLayout>
+                      </af:panelGroupLayout>
+                      <af:panelGroupLayout id="pgl8"
+                                           inlineStyle="width: 130px; height: 40px;  background-color: #c6cfd4;border-top-left-radius:10px 10px; border-top-right-radius:10px 10px; border-bottom-left-radius:10px 10px;   border-bottom-right-radius:10px 10px;"
+                                           layout="horizontal" halign="center"
+                                           visible="#{pageFlowScope.cardsView == '1'}">
+                        <af:panelGroupLayout id="pgl12"
+                                             inlineStyle="border-top-left-radius:10px 10px; border-top-right-radius:10px 10px; border-bottom-left-radius:10px 10px;   border-bottom-right-radius:10px 10px; background-color: White; height: 32px; width: 50px; "
+                                             layout="horizontal" halign="center">
+                          <af:spacer width="7" height="10" id="s5"/>
+                          <af:commandImageLink icon="#{resource['images:app-drawer-25.png']}" id="cil1" disabled="true"
+                                               shortDesc="#{menu.resourceLabelMap['CrsDeptGroupDepts.ViewCards']}"/>
+                        </af:panelGroupLayout>
+                        <af:spacer width="5" height="10" id="s7"/>
+                        <af:panelGroupLayout id="pgl13">
+                          <af:commandImageLink icon="#{resource['images:menu-25.png']}" id="cil2" disabled="false"
+                                               shortDesc="#{menu.resourceLabelMap['CrsDeptGroupDepts.ViewTable']}">
+                            <af:setPropertyListener from="0" to="#{pageFlowScope.cardsView}" type="action"/>
+                          </af:commandImageLink>
+                        </af:panelGroupLayout>
+                        <af:spacer width="3" height="10" id="s11"/>
+                      </af:panelGroupLayout>
+                    </af:toolbar>
+                  </f:facet>
+                  <af:table autoHeightRows="8" blockRowNavigationOnError="always" columnSelection="multiple"
+                            columnStretching="column:DisplayInSubjectC43" displayRow="selected" editingMode="editAll"
+                            emptyText="#{bindings.CrsIncomingDocumentsDocAssignmentView.viewable ? menu.emptyText : menu.accessDeniedText}"
+                            fetchSize="#{bindings.CrsIncomingDocumentsDocAssignmentView.rangeSize}"
+                            filterModel="#{bindings.CrsIncomingDocumentsDocAssignmentViewQuery.queryDescriptor}"
+                            filterVisible="false" id="CrsIncomingDocuments1"
+                            partialTriggers="::sa11 ::dsa11 :::UpdateConfirmAssignmentFlPopup :::UpdateConfirmAssignmentFlDialog"
+                            queryListener="#{bindings.CrsIncomingDocumentsDocAssignmentViewQuery.processQuery}"
+                            rowSelection="single" rows="#{bindings.CrsIncomingDocumentsDocAssignmentView.rangeSize}"
+                            scrollPolicy="page"
+                            selectedRowKeys="#{bindings.CrsIncomingDocumentsDocAssignmentView.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.CrsIncomingDocumentsDocAssignmentView.collectionModel.makeCurrent}"
+                            styleClass="AFStretchWidth t50"
+                            value="#{bindings.CrsIncomingDocumentsDocAssignmentView.collectionModel}" var="row"
+                            varStatus="vs" verticalGridVisible="false">
+                    <af:column filterFeatures="caseInsensitive" filterable="false" id="c4" sortProperty="SelectedFl"
+                               sortable="false" align="center" width="60">
+                      <af:commandImageLink actionListener="#{pageFlowScope.docAssignment.untick}"
+                                           icon="/images/checked-checkbox.png" id="check1" partialSubmit="true"
+                                           partialTriggers="check1 uncheck1"
+                                           visible="#{row.bindings.SelectedFl.inputValue == '1'}">
+                        <f:attribute name="iteratorName" value="CrsIncomingDocumentsDocAssignmentViewIterator"/>
+                        <f:attribute name="attributeName" value="SelectedFl"/>
+                      </af:commandImageLink>
+                      <af:commandImageLink actionListener="#{pageFlowScope.docAssignment.tick}"
+                                           icon="/images/unchecked-checkbox.png" id="uncheck1" partialSubmit="true"
+                                           partialTriggers="check1 uncheck1"
+                                           visible="#{row.bindings.SelectedFl.inputValue == null or row.bindings.SelectedFl.inputValue == '0'}">
+                        <f:attribute name="iteratorName" value="CrsIncomingDocumentsDocAssignmentViewIterator"/>
+                        <f:attribute name="attributeName" value="SelectedFl"/>
+                      </af:commandImageLink>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.IncomingDocumentsNo']}"
+                               id="IncomingDocumentsNoC49" sortProperty="IncomingDocumentsNo" sortable="true"
+                               width="100">
+                      <af:inputText columns="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.IncomingDocumentsNo.displayWidth}"
+                                    id="crsIncomingDocumentsIncomingdocumentsno"
+                                    label="#{menu.resourceLabelMap['CrsIncomingDocuments.IncomingDocumentsNo']}"
+                                    maximumLength="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.IncomingDocumentsNo.precision}"
+                                    readOnly="true"
+                                    required="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.IncomingDocumentsNo.mandatory}"
+                                    value="#{row.bindings.IncomingDocumentsNo.inputValue}">
+                        <af:convertNumber groupingUsed="false" pattern="#{row.bindings.IncomingDocumentsNo.format}"/>
+                        <f:validator binding="#{row.bindings.IncomingDocumentsNo.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocDateH']}"
+                               id="InDocDateHC7" sortProperty="InDocDateH" sortable="true" width="130"
+                               filterable="false">
+                      <af:inputText columns="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.InDocDateH.displayWidth}"
+                                    id="crsIncomingDocumentsIndocdateh" secret="#{row.SecurityLevelFk == '396'}"
+                                    label="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocDateH']}"
+                                    maximumLength="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.InDocDateH.precision}"
+                                    readOnly="true"
+                                    required="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.InDocDateH.mandatory}"
+                                    value="#{row.bindings.InDocDateH.inputValue}">
+                        <f:converter converterId="hijriDateConverter"/>
+                        <f:validator binding="#{row.bindings.InDocDateH.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocDateG']}"
+                               id="InDocDateGC6" sortProperty="InDocDateG" sortable="true" width="140"
+                               filterable="false" rendered="false">
+                      <af:inputDate id="crsIncomingDocumentsIndocdateg"
+                                    label="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocDateG']}" readOnly="true"
+                                    required="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.InDocDateG.mandatory}"
+                                    value="#{row.bindings.InDocDateG.inputValue}">
+                        <af:convertDateTime pattern="#{menu.dateTimeWithSecondsFormat}"/>
+                        <f:validator binding="#{row.bindings.InDocDateG.validator}"/>
+                      </af:inputDate>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFkDesc']}"
+                               id="DisplayFromDepartmentFkC17" sortProperty="DisplayFromDepartmentFkSearch"
+                               sortable="true" width="300">
+                      <af:inputText autoSubmit="true"
+                                    columns="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.DisplayFromDepartmentFk.displayWidth}"
+                                    id="crsIncomingDocumentsDisplayfromdepartmentfk"
+                                    secret="#{row.SecurityLevelFk == '396'}"
+                                    label="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFkDesc']}"
+                                    maximumLength="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.DisplayFromDepartmentFk.precision}"
+                                    partialTriggers="crsIncomingDocumentsFromdepartmentfk" readOnly="true"
+                                    required="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.DisplayFromDepartmentFk.mandatory}"
+                                    value="#{row.bindings.DisplayFromDepartmentFk.inputValue}">
+                        <f:validator binding="#{row.bindings.DisplayFromDepartmentFk.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.IncomingDocumentsPk']}"
+                               id="IncomingDocumentsPkC4" sortProperty="IncomingDocumentsPk" sortable="true" width="70"
+                               rendered="false">
+                      <af:inputText columns="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.IncomingDocumentsPk.displayWidth}"
+                                    id="crsIncomingDocumentsIncomingdocumentspk"
+                                    label="#{menu.resourceLabelMap['CrsIncomingDocuments.IncomingDocumentsPk']}"
+                                    maximumLength="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.IncomingDocumentsPk.precision}"
+                                    readOnly="true"
+                                    required="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.IncomingDocumentsPk.mandatory}"
+                                    value="#{row.bindings.IncomingDocumentsPk.inputValue}">
+                        <af:convertNumber groupingUsed="false" pattern="#{row.bindings.IncomingDocumentsPk.format}"/>
+                        <f:validator binding="#{row.bindings.IncomingDocumentsPk.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.DisplayInSubject']}"
+                               id="DisplayInSubjectC43" sortProperty="DisplayInSubjectSearch" sortable="true"
+                               width="150">
+                      <af:inputText autoSubmit="true"
+                                    columns="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.DisplayInSubject.displayWidth}"
+                                    id="crsIncomingDocumentsDisplayinsubject"
+                                    label="#{menu.resourceLabelMap['CrsIncomingDocuments.DisplayInSubject']}"
+                                    maximumLength="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.DisplayInSubject.precision}"
+                                    readOnly="true" secret="#{row.SecurityLevelFk == '396'}"
+                                    required="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.DisplayInSubject.mandatory}"
+                                    value="#{row.bindings.DisplayInSubject.inputValue}">
+                        <f:validator binding="#{row.bindings.DisplayInSubject.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.ClassificationFk']}"
+                               id="ClassificationFkC46" sortProperty="ClassificationFkSearch" sortable="true"
+                               width="110" rendered="false">
+                      <af:panelGroupLayout id="pgl45ClassificationFk" layout="horizontal">
+                        <af:inputListOfValues autoSubmit="true"
+                                              columns="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.ClassificationFk.displayWidth}"
+                                              id="crsIncomingDocumentsClassificationfk"
+                                              label="#{menu.resourceLabelMap['CrsIncomingDocuments.ClassificationFk']}"
+                                              model="#{row.bindings.ClassificationFk.listOfValuesModel}"
+                                              popupTitle="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.ClassificationFk.label}"
+                                              readOnly="true"
+                                              required="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.ClassificationFk.mandatory}"
+                                              searchDesc="#{menu.resourceLabelMap['CrsIncomingDocuments.ClassificationFk']}"
+                                              simple="true" value="#{row.bindings.ClassificationFk.inputValue}">
+                          <af:convertNumber groupingUsed="false" pattern="#{row.bindings.ClassificationFk.format}"/>
+                          <f:validator binding="#{row.bindings.ClassificationFk.validator}"/>
+                        </af:inputListOfValues>
+                      </af:panelGroupLayout>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.DisplayClassificationFk']}"
+                               id="DisplayClassificationFkC47" sortProperty="DisplayClassificationFkSearch"
+                               sortable="true" width="150" rendered="false">
+                      <af:inputText autoSubmit="true"
+                                    columns="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.DisplayClassificationFk.displayWidth}"
+                                    id="crsIncomingDocumentsDisplayclassificationfk"
+                                    label="#{menu.resourceLabelMap['CrsIncomingDocuments.DisplayClassificationFk']}"
+                                    maximumLength="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.DisplayClassificationFk.precision}"
+                                    partialTriggers="crsIncomingDocumentsClassificationfk" readOnly="true"
+                                    required="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.DisplayClassificationFk.mandatory}"
+                                    value="#{row.bindings.DisplayClassificationFk.inputValue}">
+                        <f:validator binding="#{row.bindings.DisplayClassificationFk.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingArchive.SecurityLevelFkDesc']}"
+                               id="DisplaySecurityLevelFkC37" sortProperty="DisplaySecurityLevelFkSearch"
+                               sortable="true" width="300">
+                      <af:inputText columns="#{bindings.CrsIncomingArchiveDocAssignmentView.hints.DisplaySecurityLevelFk.displayWidth}"
+                                    id="DisplaySecurityLevelFkit1" secret="#{row.SecurityLevelFk == '396'}"
+                                    label="#{menu.resourceLabelMap['CrsIncomingArchive.SecurityLevelFkDesc']}"
+                                    maximumLength="#{bindings.CrsIncomingArchiveDocAssignmentView.hints.DisplaySecurityLevelFk.precision}"
+                                    readOnly="true"
+                                    required="#{bindings.CrsIncomingArchiveDocAssignmentView.hints.DisplaySecurityLevelFk.mandatory}"
+                                    value="#{row.bindings.DisplaySecurityLevelFk.inputValue}">
+                        <f:validator binding="#{row.bindings.DisplaySecurityLevelFk.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocYear']}" id="InDocYearC5"
+                               sortProperty="InDocYear" sortable="true" width="70" rendered="false">
+                      <af:inputText columns="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.InDocYear.displayWidth}"
+                                    id="crsIncomingDocumentsIndocyear"
+                                    label="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocYear']}"
+                                    maximumLength="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.InDocYear.precision}"
+                                    readOnly="true"
+                                    required="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.InDocYear.mandatory}"
+                                    value="#{row.bindings.InDocYear.inputValue}">
+                        <af:convertNumber groupingUsed="false" pattern="#{row.bindings.InDocYear.format}"/>
+                        <f:validator binding="#{row.bindings.InDocYear.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true" rendered="false"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocNo']}" id="InDocNoC14"
+                               sortProperty="InDocNo" sortable="true" width="100">
+                      <af:inputText columns="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.InDocNo.displayWidth}"
+                                    id="crsIncomingDocumentsIndocno"
+                                    label="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocNo']}"
+                                    maximumLength="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.InDocNo.precision}"
+                                    readOnly="true"
+                                    required="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.InDocNo.mandatory}"
+                                    value="#{row.bindings.InDocNo.inputValue}">
+                        <f:validator binding="#{row.bindings.InDocNo.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFk']}"
+                               id="FromDepartmentFkC16" sortProperty="FromDepartmentFkSearch" sortable="true"
+                               width="110" rendered="false">
+                      <af:panelGroupLayout id="pgl15FromDepartmentFk" layout="horizontal">
+                        <af:inputListOfValues autoSubmit="true"
+                                              columns="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.FromDepartmentFk.displayWidth}"
+                                              id="crsIncomingDocumentsFromdepartmentfk"
+                                              label="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFk']}"
+                                              model="#{row.bindings.FromDepartmentFk.listOfValuesModel}"
+                                              popupTitle="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.FromDepartmentFk.label}"
+                                              readOnly="true"
+                                              required="#{bindings.CrsIncomingDocumentsDocAssignmentView.hints.FromDepartmentFk.mandatory}"
+                                              searchDesc="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFk']}"
+                                              simple="true" value="#{row.bindings.FromDepartmentFk.inputValue}">
+                          <af:convertNumber groupingUsed="false" pattern="#{row.bindings.FromDepartmentFk.format}"/>
+                          <f:validator binding="#{row.bindings.FromDepartmentFk.validator}"/>
+                        </af:inputListOfValues>
+                      </af:panelGroupLayout>
+                    </af:column>
+                    <af:column headerText="#{menu.resourceLabelMap['label.confirm']}" id="SelectFlcol" align="center"
+                               width="150" rendered="false">
+                      <af:commandImageLink actionListener="#{pageFlowScope.docAssignment.untick}"
+                                           icon="/images/checked-checkbox.png" disabled="true" id="check4"
+                                           partialSubmit="true" partialTriggers="check4 uncheck4"
+                                           visible="#{row.bindings.ConfirmAssignmentFl.inputValue == '1'}">
+                        <f:attribute name="iteratorName" value="CrsIncomingDocumentsDocAssignmentViewIterator"/>
+                        <f:attribute name="attributeName" value="ConfirmAssignmentFl"/>
+                      </af:commandImageLink>
+                      <af:commandImageLink actionListener="#{pageFlowScope.docAssignment.tick}"
+                                           icon="/images/unchecked-checkbox.png" disabled="true" id="uncheck4"
+                                           partialSubmit="true" partialTriggers="check4 uncheck4"
+                                           visible="#{row.bindings.ConfirmAssignmentFl.inputValue == null or row.bindings.ConfirmAssignmentFl.inputValue == '0'}">
+                        <f:attribute name="iteratorName" value="CrsIncomingDocumentsDocAssignmentViewIterator"/>
+                        <f:attribute name="attributeName" value="ConfirmAssignmentFl"/>
+                      </af:commandImageLink>
+                    </af:column>
+                    <af:column id="c2" width="150" align="center">
+                      <af:commandButton text="#{menu.resourceLabelMap['DocumentVwView.View']}" id="cb2"
+                                        styleClass="steper-btn" partialSubmit="true" icon="/images/view.png"
+                                        action="#{pageFlowScope.docAssignment.viewAction}">
+                        <af:setPropertyListener to="#{sessionScope.IncomingDocumentsPk}"
+                                                from="#{bindings.IncomingDocumentsPk.inputValue}" type="action"/>
+                      </af:commandButton>
+                    </af:column>
+                    <af:column width="5" minimumWidth="5" id="c16">
+                      <af:panelGridLayout id="pgl1"
+                                          inlineStyle="#{row.SecurityLevelFk == '396' ? 'background-color: #e52d45;' : row.SecurityLevelFk == '397' ? 'background-color: #ff6f82;' : row.SecurityLevelFk == '398' ? 'background-color: #008e18;' : row.SecurityLevelFk == '399' ? 'background-color: #fed453;' : row.SecurityLevelFk == '400' ? 'background-color: #000000;' : ''}">
+                        <af:gridRow marginTop="0px" height="auto" marginBottom="0px" id="gr1">
+                          <af:gridCell marginStart="0px" width="100%" marginEnd="0px" id="gc1">
+                            <af:spacer width="10" height="33" id="s6"
+                                       inlineStyle="width: 3ox; height: 33px;#{row.SecurityLevelFk == '396' ? 'background-color: #e52d45;' : row.SecurityLevelFk == '397' ? 'background-color: #ff6f82;' : row.SecurityLevelFk == '398' ? 'background-color: #008e18;' : row.SecurityLevelFk == '399' ? 'background-color: #fed453;' : row.SecurityLevelFk == '400' ? 'background-color: #000000;' : ''}"/>
+                          </af:gridCell>
+                        </af:gridRow>
+                      </af:panelGridLayout>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </f:facet>
+            </af:panelStretchLayout>
+            <af:panelGroupLayout id="Iter_pgl2" styleClass="AFStretchWidth" visible="#{pageFlowScope.cardsView == '1'}">
+              <af:toolbar id="t2">
+                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="cb6" immediate="true"
+                                  partialSubmit="true" text="#{menu.resourceLabelMap['label.print']}"
+                                  styleClass="steper-btn" visible="#{menu.printVisible}">
+                  <af:showPrintablePageBehavior/>
+                </af:commandButton>
+                <af:spacer width="5" id="s32"/>
+                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="cb7" immediate="true"
+                                  partialSubmit="true" text="#{menu.resourceLabelMap['label.excel']}"
+                                  styleClass="steper-btn" visible="#{menu.excelVisible}">
+                  <af:setPropertyListener from="CrsIncomingDocuments1" to="#{sessionScope.tableId}" type="action"/>
+                  <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                </af:commandButton>
+                <af:spacer width="10" height="30" id="s30"/>
+                <af:panelGroupLayout id="pgl22"
+                                     inlineStyle="width: 40px; height: 40px;  background-color: #c6cfd4;border-top-left-radius:10px 10px; border-top-right-radius:10px 10px; border-bottom-left-radius:10px 10px;   border-bottom-right-radius:10px 10px;"
+                                     layout="horizontal" halign="center">
+                  <af:spacer width="8" height="12" id="s34"/>
+                  <af:panelGroupLayout id="pgl23"
+                                       visible="#{pageFlowScope.filter == '0' or  pageFlowScope.filter == &quot;&quot;  or   pageFlowScope.filter eq null  }">
+                    <af:commandImageLink icon="#{resource['images:filter-25.png']}" id="cil5" disabled="false"
+                                         shortDesc="#{menu.resourceLabelMap['label.find']}">
+                      <af:setPropertyListener from="1" to="#{pageFlowScope.filter}" type="action"/>
+                    </af:commandImageLink>
+                  </af:panelGroupLayout>
+                  <af:panelGroupLayout id="pgl24" visible="#{pageFlowScope.filter == '1'}"
+                                       inlineStyle="border-top-left-radius:10px 10px; border-top-right-radius:10px 10px; border-bottom-left-radius:10px 10px;   border-bottom-right-radius:10px 10px; background-color: White; height: 32px; width: 40px; "
+                                       layout="horizontal" halign="center">
+                    <af:spacer width="5" height="10" id="s36"/>
+                    <af:commandImageLink icon="#{resource['images:filter-25.png']}" id="cil6" disabled="false"
+                                         shortDesc="#{menu.resourceLabelMap['label.find']}">
+                      <af:setPropertyListener from="0" to="#{pageFlowScope.filter}" type="action"/>
+                    </af:commandImageLink>
+                  </af:panelGroupLayout>
+                  <af:spacer width="6" height="10" id="s35"/>
+                </af:panelGroupLayout>
+                <af:spacer width="5" id="s33"/>
+                <af:panelGroupLayout id="pgl31" layout="horizontal">
+                  <af:panelGroupLayout id="pgl25"
+                                       inlineStyle="width: 140px; height: 40px;  background-color: #c6cfd4;border-top-left-radius:10px 10px; border-top-right-radius:10px 10px; border-bottom-left-radius:10px 10px;   border-bottom-right-radius:10px 10px;"
+                                       layout="horizontal" halign="center"
+                                       visible="#{pageFlowScope.cardsView == '0' or  pageFlowScope.cardsView == &quot;&quot;  or   pageFlowScope.cardsView eq null  }">
+                    <af:spacer width="5" height="10" id="s42"/>
+                    <af:panelGroupLayout id="pgl26">
+                      <af:commandImageLink icon="#{resource['images:app-drawer-25.png']}" id="cil9" disabled="false"
+                                           shortDesc="#{menu.resourceLabelMap['CrsDeptGroupDepts.ViewCards']}">
+                        <af:setPropertyListener from="1" to="#{pageFlowScope.cardsView}" type="action"/>
+                      </af:commandImageLink>
+                    </af:panelGroupLayout>
+                    <af:spacer width="10" height="10" id="s43"/>
+                    <af:panelGroupLayout id="pgl27"
+                                         inlineStyle="border-top-left-radius:10px 10px; border-top-right-radius:10px 10px; border-bottom-left-radius:10px 10px;   border-bottom-right-radius:10px 10px; background-color: White; height: 32px; width: 50px; "
+                                         layout="horizontal" halign="center">
+                      <af:spacer width="7" height="10" id="s45"/>
+                      <af:commandImageLink icon="#{resource['images:menu-25.png']}" id="cil10" disabled="true"
+                                           shortDesc="#{menu.resourceLabelMap['CrsDeptGroupDepts.ViewTable']}"/>
+                    </af:panelGroupLayout>
+                  </af:panelGroupLayout>
+                  <af:panelGroupLayout id="pgl28"
+                                       inlineStyle="width: 140px; height: 40px;  background-color: #c6cfd4;border-top-left-radius:10px 10px; border-top-right-radius:10px 10px; border-bottom-left-radius:10px 10px;   border-bottom-right-radius:10px 10px;"
+                                       layout="horizontal" halign="center" visible="#{pageFlowScope.cardsView == '1'}">
+                    <af:panelGroupLayout id="pgl29"
+                                         inlineStyle="border-top-left-radius:10px 10px; border-top-right-radius:10px 10px; border-bottom-left-radius:10px 10px;   border-bottom-right-radius:10px 10px; background-color: White; height: 32px; width: 50px; "
+                                         layout="horizontal" halign="center">
+                      <af:spacer width="7" height="10" id="s46"/>
+                      <af:commandImageLink icon="#{resource['images:app-drawer-25.png']}" id="cil11" disabled="true"
+                                           shortDesc="#{menu.resourceLabelMap['CrsDeptGroupDepts.ViewCards']}"/>
+                    </af:panelGroupLayout>
+                    <af:spacer width="5" height="10" id="s47"/>
+                    <af:panelGroupLayout id="pgl30">
+                      <af:commandImageLink icon="#{resource['images:menu-25.png']}" id="cil12" disabled="false"
+                                           shortDesc="#{menu.resourceLabelMap['CrsDeptGroupDepts.ViewTable']}">
+                        <af:setPropertyListener from="0" to="#{pageFlowScope.cardsView}" type="action"/>
+                      </af:commandImageLink>
+                    </af:panelGroupLayout>
+                    <af:spacer width="3" height="10" id="s48"/>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </af:toolbar>
+              <af:spacer width="10" height="20" id="s23"/>
+              <af:panelGroupLayout layout="vertical" id="pgl32" visible="#{pageFlowScope.filter == '1'}">
+                <af:spacer width="10" height="15" id="s39"/>
+                <af:panelBox showDisclosure="false" id="pb2">
+                  <f:facet name="toolbar"/>
+                  <af:query id="qryId1" disclosed="true" headerText=" "
+                            value="#{bindings.CrsIncomingDocumentsViewCriteriaSearchCardsQuery.queryDescriptor}"
+                            model="#{bindings.CrsIncomingDocumentsViewCriteriaSearchCardsQuery.queryModel}"
+                            queryListener="#{pageFlowScope.docAssignment.cardsQueryListener}"
+                            queryOperationListener="#{bindings.CrsIncomingDocumentsViewCriteriaSearchCardsQuery.processQueryOperation}"
+                            displayMode="default" saveQueryMode="hidden" resultComponentId="::pgl33"
+                            contentDelivery="immediate" rows="1" maxColumns="3"/>
+                </af:panelBox>
+              </af:panelGroupLayout>
+              <af:spacer width="20" height="10" id="s38"/>
+              <af:panelGroupLayout id="pgl33">
+                <div class="card-body">
+                  <div class="form-group row">
+                    <af:iterator value="#{bindings.CrsIncomingDocumentsDocAssignmentView.collectionModel}" var="row"
+                                 rows="#{bindings.CrsIncomingDocumentsDocAssignmentView.rangeSize}" id="labrTb"
+                                 binding="#{pageFlowScope.docAssignment.laborJobsROView1Iterator}">
+                      <div class="col-md-3">
+                        <af:panelGroupLayout id="pgl4" layout="horizontal">
+                          <af:panelGroupLayout id="pgl7" layout="horizontal">
+                            <af:panelGroupLayout id="pgl3" layout="vertical" halign="end" valign="middle"
+                                                 inlineStyle="#{row.SecurityLevelFk == '396' ? 'background-color: #e52d45;' : row.SecurityLevelFk == '397' ? 'background-color: #ff6f82;' : row.SecurityLevelFk == '398' ? 'background-color: #008e18;' : row.SecurityLevelFk == '399' ? 'background-color: #fed453;' : row.SecurityLevelFk == '400' ? 'background-color: #000000;' : ''} ; width:4.5px; border-top-left-radius:10px 10px; border-top-right-radius:10px 10px; border-bottom-left-radius:10px 10px;   border-bottom-right-radius:10px 10px;">
+                              <af:spacer width="10" height="150" id="s1"/>
+                            </af:panelGroupLayout>
+                            <af:panelBox text="#{row.SecurityLevelFk == '396'?'*****':row.bindings.DisplayInSubject.inputValue}"
+                                         inlineStyle="width: 350px;" id="pb1" showDisclosure="false">
+                              <f:facet name="toolbar">
+                                <af:panelGroupLayout id="pgl10" layout="horizontal">
+                                  <af:outputText value="#{row.bindings.DisplaySecurityLevelFk.inputValue}" id="ot1"
+                                                 inlineStyle="font-size:x-small;#{row.SecurityLevelFk == '396' ? 'color: #e52d45;' : row.SecurityLevelFk == '397' ? 'color: #ff6f82;' : row.SecurityLevelFk == '398' ? 'color: #008e18;' : row.SecurityLevelFk == '399' ? 'color: #fed453;' : row.SecurityLevelFk == '400' ? 'color: #000000;' : ''}"/>
+                                  <af:spacer width="10" height="10" id="s2"/>
+                                  <af:panelGroupLayout id="pgl9" layout="horizontal">
+                                    <af:panelGroupLayout id="pgl11" layout="horizontal"
+                                                         inlineStyle=" border-top-left-radius:10px 10px; border-top-right-radius:10px 10px; border-bottom-left-radius:10px 10px;   border-bottom-right-radius:10px 10px; width:13px; height:13px; #{row.SecurityLevelFk == '396' ? 'background-color: #e52d45;' : row.SecurityLevelFk == '397' ? 'background-color: #ff6f82;' : row.SecurityLevelFk == '398' ? 'background-color: #008e18;' : row.SecurityLevelFk == '399' ? 'background-color: #fed453;' : row.SecurityLevelFk == '400' ? 'background-color: #000000;' : ''}"/>
+                                  </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                              </f:facet>
+                              <af:panelFormLayout id="pfl1" styleClass="AFStretchWidth">
+                                <af:inputText value="#{row.bindings.IncomingDocumentsNo.inputValue}"
+                                              label="#{menu.resourceLabelMap['CrsIncomingDocuments.IncomingDocumentsNo']}"
+                                              shortDesc="#{bindings.IncomingDocumentsPk.hints.tooltip}" readOnly="true"
+                                              id="it1">
+                                  <af:convertNumber groupingUsed="false"
+                                                    pattern="#{bindings.IncomingDocumentsPk.format}"/>
+                                </af:inputText>
+                                <af:inputText value="#{row.bindings.DisplayFromDepartmentFk.inputValue}"
+                                              secret="#{row.SecurityLevelFk == '396'}"
+                                              label="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFkDesc']}"
+                                              readOnly="true" rows="1" id="it3"/>
+                                <af:inputText value="#{row.bindings.InDocDateH.inputValue}"
+                                              secret="#{row.SecurityLevelFk == '396'}"
+                                              label="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocDateH']}"
+                                              shortDesc="#{bindings.InDocNo.hints.tooltip}" readOnly="true" id="it2"/>
+                                <f:facet name="footer"/>
+                              </af:panelFormLayout>
+                              <af:panelGroupLayout layout="horizontal" styleClass="AFStretchWidth" id="pgl18">
+                                <af:panelGroupLayout layout="horizontal" halign="left" id="pgl20">
+                                  <af:commandButton icon="images/view.png"
+                                                    text="#{menu.resourceLabelMap['DocumentVwView.View']}"
+                                                    actionListener="#{pageFlowScope.docAssignment.setCurrentRowIndex}"
+                                                    id="cb4">
+                                    <af:setPropertyListener to="#{sessionScope.IncomingDocumentsPk}"
+                                                            from="#{row.bindings.IncomingDocumentsPk.inputValue}"
+                                                            type="action"/>
+                                    <f:attribute name="rowKeyStr" value="#{row.rowKeyStr}"/>
+                                  </af:commandButton>
+                                </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                            </af:panelBox>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </div>
+                    </af:iterator>
+                  </div>
+                </div>
+                <af:panelGroupLayout id="Iter_pgl22" layout="horizontal" halign="center" styleClass="AFStretchWidth"
+                                     visible="#{bindings.CrsIncomingDocumentsDocAssignmentView.estimatedRowCount>0}"
+                                     partialTriggers="qryId1">
+                  <af:panelGroupLayout id="pgl21" layout="horizontal" halign="start" inlineStyle="width:100px;">
+                    <af:outputLabel value="#{menu.resourceLabelMap['label.page']}" id="Iter_ol7" styleClass=""/>
+                    <af:spacer width="10" height="10" id="s21"/>
+                    <af:outputLabel value="#{pageFlowScope.docAssignment.val}" id="ol2" styleClass=""/>
+                    <af:spacer width="10" height="10" id="s22"/>
+                    <af:outputLabel value="#{menu.resourceLabelMap['lable.from']}" id="ol3" styleClass=""/>
+                    <af:spacer width="10" height="10" id="s31"/>
+                    <af:outputLabel value="#{pageFlowScope.docAssignment.pageNum}" id="ol4" styleClass=""/>
+                  </af:panelGroupLayout>
+                  <af:panelGroupLayout id="Iter_panelGroupLayout4" layout="horizontal" styleClass="paginationButtonPG"
+                                       halign="end">
+                    <af:commandButton id="Iter_commandButton1" text="#{menu.resourceLabelMap['label.first']}"
+                                      actionListener="#{pageFlowScope.docAssignment.firstActionListener}"
+                                      disabled="#{pageFlowScope.docAssignment.bindFirstButton}"
+                                      styleClass='steper-btn'/>
+                    <af:commandButton text="#{menu.resourceLabelMap['label.previous']}" id="Iter_commandButton2"
+                                      actionListener="#{pageFlowScope.docAssignment.previousActionListener}"
+                                      disabled="#{pageFlowScope.docAssignment.bindPreviousButton}"
+                                      styleClass='steper-btn'/>
+                    <af:panelGroupLayout id="Iter_panelGroupLayout5" layout="horizontal" styleClass="paginationLabelPg">
+                      <af:iterator id="i2" var="row" rows="#{paginationManaged.rows}" value="#{paginationManaged.li}"
+                                   binding="#{pageFlowScope.docAssignment.pageNoIterator}">
+                        <af:spacer width="5" height="5" id="Iter_s3"/>
+                        <af:commandLink text="#{row}" id="Iter_commandLink1"
+                                        actionListener="#{pageFlowScope.docAssignment.callPage}"
+                                        binding="#{pageFlowScope.docAssignment.pagiCommand}"
+                                        styleClass="paginationLabel"/>
+                      </af:iterator>
+                      <af:spacer width="5" height="10" id="Iter_s10"/>
+                    </af:panelGroupLayout>
+                    <af:commandButton text="#{menu.resourceLabelMap['label.next']}" id="Iter_commandButton3"
+                                      actionListener="#{pageFlowScope.docAssignment.nextActionListener}"
+                                      disabled="#{pageFlowScope.docAssignment.bindNextButton}" styleClass='steper-btn'/>
+                    <af:commandButton text="#{menu.resourceLabelMap['label.last']}" id="Iter_cb4"
+                                      actionListener="#{pageFlowScope.docAssignment.lastActionListener}"
+                                      disabled="#{pageFlowScope.docAssignment.bindLastButton}" styleClass='steper-btn'/>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:spacer width="5" height="1" id="s4"/>
+            <af:panelGroupLayout id="pgl19" layout="horizontal"
+                                 visible="#{bindings.CrsIncomingDocumentsDocAssignmentView.estimatedRowCount>0}">
+              <af:spacer width="25" height="10" id="s8"/>
+              <af:iterator id="i1" value="#{bindings.SsoActiveLookupValuesVwView1.collectionModel}" var="row">
+                <af:panelGroupLayout id="pgl5" layout="horizontal">
+                  <af:panelGroupLayout id="pgl6" layout="horizontal"
+                                       inlineStyle=" border-top-left-radius:10px 10px; border-top-right-radius:10px 10px; border-bottom-left-radius:10px 10px;   border-bottom-right-radius:10px 10px; width:13px; height:13px; #{row.SystemLookupValuesPk == '396' ? 'background-color: #b22335;' : row.SystemLookupValuesPk == '397' ? 'background-color: #ff6f82;' : row.SystemLookupValuesPk == '398' ? 'background-color: #008e18;' : row.SystemLookupValuesPk == '399' ? 'background-color: #fed453;' : row.SystemLookupValuesPk == '400' ? 'background-color: #000000;' : ''}"/>
+                  <af:spacer width="5" height="10" id="s9"/>
+                  <af:outputText value="#{row.DisplaySystemLookupsFk}"
+                                 shortDesc="#{bindings.SsoActiveLookupValuesVwView1.hints.DisplaySystemLookupsFk.tooltip}"
+                                 id="ot5"/>
+                  <af:spacer width="20" height="10" id="s10"/>
+                </af:panelGroupLayout>
+              </af:iterator>
+            </af:panelGroupLayout>
+          </af:panelGroupLayout>
+        </af:showDetailItem>
+        <af:showDetailItem id="sdi_CrsIncomingDocuments46" immediate="true" styleClass="AFStretchWidth"
+                           text="#{menu.resourceLabelMap['CrsIncomingArchive.sdi_CrsIncomingDocuments46']}"
+                           binding="#{pageFlowScope.docAssignment.archiveSDI}">
+          <af:panelSplitter styleClass="AFStretchWidth" splitterPosition="300">
+            <f:facet name="first">
+              <af:listView value="#{bindings.CrsIncomingArchiveDocAssignmentView1.collectionModel}" var="item"
+                           emptyText="#{bindings.CrsIncomingArchiveDocAssignmentView1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                           fetchSize="#{bindings.CrsIncomingArchiveDocAssignmentView1.rangeSize}" id="lv1"
+                           selection="single">
+                <af:listItem id="li1">
+                  <af:panelBox showDisclosure="false">
+                    <af:panelFormLayout rows="10" maxColumns="1" labelAlignment="top">
+                      <af:inputText value="#{item.IncomingArchivePk}" id="ot1654"
+                                    label="#{menu.resourceLabelMap['CrsIncomingArchive.IncomingArchivePk']}"
+                                    readOnly="true">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.CrsIncomingArchiveDocAssignmentView1.hints.IncomingArchivePk.format}"/>
+                      </af:inputText>
+                      <af:inputText value="#{item.DisplayArcDocName}" id="ot2"
+                                    label="#{menu.resourceLabelMap['CrsIncomingArchive.DisplayArcDocName']}"
+                                    readOnly="true"/>
+                      <af:inputText value="#{item.DisplayArcDocDesc}" id="ot3"
+                                    label="#{menu.resourceLabelMap['CrsIncomingArchive.DisplayArcDocDesc']}"
+                                    readOnly="true"/>
+                      <af:inputText value="#{item.DisplaySecurityLevelFk}" id="ot4"
+                                    label="#{menu.resourceLabelMap['CrsIncomingArchive.SecurityLevelFk']}"
+                                    readOnly="true"/>
+                    </af:panelFormLayout>
+                  </af:panelBox>
+                </af:listItem>
+              </af:listView>
+            </f:facet>
+            <f:facet name="second">
+              <af:panelGroupLayout id="pgl3354" partialTriggers="lv1 lv1:li1" styleClass="AFStretchWidth"
+                                   visible="#{bindings.ArcFilePath.inputValue != null}">
+                <erplib:viewer filePath="${bindings.ArcFilePath.inputValue}"/>
+              </af:panelGroupLayout>
+            </f:facet>
+          </af:panelSplitter>
+        </af:showDetailItem>
+        <af:showDetailItem id="sdi_CrsIncomingDocuments166" immediate="true" styleClass="AFStretchWidth"
+                           text="#{menu.resourceLabelMap['CrsIncomingDocCc.sdi_CrsIncomingDocuments166']}">
+          <af:panelGroupLayout halign="center" id="pglCrsIncomingDocCc167" layout="vertical">
+            <af:panelGroupLayout id="pgl164">
+              <af:panelStretchLayout dimensionsFrom="children" id="psl165" styleClass="AFStretchWidth">
+                <f:facet name="center">
+                  <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem" id="pc145"
+                                      styleClass="AFStretchWidth">
+                    <f:facet name="secondaryToolbar">
+                      <af:toolbar id="tb9">
+                        <af:commandButton action="#{menu.genericDeleteAction}"
+                                          disabled="#{!menu.deleteAllowed or !bindings.DeleteCrsIncomingDocCc.enabled}"
+                                          icon="#{menu.deleteIcon}" id="Del9" immediate="true" partialSubmit="true"
+                                          text="#{menu.resourceLabelMap['label.delete']}" styleClass="steper-btn">
+                          <af:setPropertyListener from="DeleteCrsIncomingDocCc" to="#{sessionScope.deleteParam}"
+                                                  type="action"/>
+                          <af:setPropertyListener from="CrsIncomingDocCc1" to="#{sessionScope.refreshParam}"
+                                                  type="action"/>
+                          <af:setPropertyListener from="CrsIncomingDocCcDocAssignmentView"
+                                                  to="#{sessionScope.viewParam}" type="action"/>
+                        </af:commandButton>
+                        <af:spacer id="s24" width="5"/>
+                        <af:commandButton actionListener="#{bindings.CreateInsertCrsIncomingDocCc.execute}"
+                                          rendered="false" disabled="#{!menu.insertAllowed}"
+                                          icon="#{menu.createInsertIcon}" id="ci9" partialSubmit="true"
+                                          text="#{menu.resourceLabelMap['label.createInsert']}"
+                                          styleClass="steper-btn"/>
+                        <af:spacer id="s25" width="5"/>
+                        <af:commandButton actionListener="#{bindings.Commit.execute}" disabled="#{!menu.updateAllowed}"
+                                          icon="#{menu.commitIcon}" id="Commit9" partialSubmit="true"
+                                          text="#{menu.resourceLabelMap['label.commit']}" styleClass="steper-btn"/>
+                        <af:spacer id="s26" width="5"/>
+                        <af:commandButton actionListener="#{bindings.Rollback.execute}" icon="#{menu.rollbackIcon}"
+                                          id="rb9" immediate="true" partialSubmit="true"
+                                          text="#{menu.resourceLabelMap['label.rollback']}" styleClass="steper-btn"
+                                          visible="#{menu.rollbackVisible}">
+                          <af:resetActionListener/>
+                        </af:commandButton>
+                        <af:spacer id="s27" width="5"/>
+                        <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print9"
+                                          immediate="true" partialSubmit="true"
+                                          text="#{menu.resourceLabelMap['label.print']}" styleClass="steper-btn"
+                                          visible="#{menu.printVisible}">
+                          <af:showPrintablePageBehavior/>
+                        </af:commandButton>
+                        <af:spacer id="s28" width="5"/>
+                        <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel9"
+                                          immediate="true" partialSubmit="true"
+                                          text="#{menu.resourceLabelMap['label.excel']}" styleClass="steper-btn"
+                                          visible="#{menu.excelVisible}">
+                          <af:setPropertyListener from="CrsIncomingDocCc1" to="#{sessionScope.tableId}" type="action"/>
+                          <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                        </af:commandButton>
+                        <af:spacer id="s29" width="5"/>
+                        <af:commandButton action="#{pageFlowScope.docAssignment.insertDocReferral}"
+                                          disabled="#{!menu.insertAllowed }" icon="/images/edit.png" id="cb20"
+                                          partialSubmit="true" shortDesc="#{menu.resourceLabelMap['label.Referral']}"
+                                          styleClass="steper-btn" text="#{menu.resourceLabelMap['label.Referral']}">
+                                          <af:setPropertyListener from="" to="#{pageFlowScope.ReferralType}" type="action"/>
+                                          </af:commandButton>
+                        <af:spacer id="s499" width="5"/>
+                        <af:commandButton disabled="#{!menu.insertAllowed or bindings.IncomingDocCcPk.inputValue == null}"
+                                          icon="#{menu.commitIcon}" id="cb10" partialSubmit="true"
+                                          partialTriggers="it28947" styleClass="steper-btn"
+                                          text="#{menu.resourceLabelMap['label.confirm']}">
+                          <af:showPopupBehavior popupId="::UpdateConfirmAssignmentFlPopup" triggerType="action"/>
+                        </af:commandButton>
+                        <af:spacer id="sa1" width="5"/>
+                        <af:commandButton actionListener="#{pageFlowScope.docAssignment.selectAll}" id="sa10"
+                                          partialSubmit="true" icon="/images/SelectAll-list-40.png"
+                                          text="#{menu.resourceLabelMap['label.selectAll']}" styleClass="steper-btn"
+                                          rendered="false">
+                          <f:attribute name="iteratorName" value="CrsIncomingDocCcDocAssignmentViewIterator"/>
+                        </af:commandButton>
+                        <af:spacer id="dsa1" width="5" rendered="false"/>
+                        <af:commandButton actionListener="#{pageFlowScope.docAssignment.deSelectAll}" id="dsa10"
+                                          partialSubmit="true" icon="/images/DSelectlist-40.png"
+                                          text="#{menu.resourceLabelMap['label.deSelectAll']}" styleClass="steper-btn"
+                                          rendered="false">
+                          <f:attribute name="iteratorName" value="CrsIncomingDocCcDocAssignmentViewIterator"/>
+                        </af:commandButton>
+                        <af:spacer width="5"/>
+                        <af:commandButton disabled="#{!bindings.DeleteCrsIncomingDocCc.enabled or bindings.IncomingDocCcPk.inputValue == null}"
+                                          icon="#{menu.translationIcon}" id="translation1" immediate="true"
+                                          partialSubmit="true" partialTriggers="Commit9 rb9"
+                                          text="#{menu.resourceLabelMap['label.translation']}" styleClass="steper-btn">
+                          <af:showPopupBehavior popupId="::CrsIncomingDocCcTlPopup" triggerType="action"/>
+                        </af:commandButton>
+                        <af:inputText columns="#{bindings.IncomingDocCcPk.hints.displayWidth}" id="it28947"
+                                      maximumLength="#{bindings.IncomingDocCcPk.hints.precision}"
+                                      partialTriggers="CrsIncomingDocCc1" rendered="false"
+                                      required="#{bindings.IncomingDocCcPk.hints.mandatory}"
+                                      value="#{bindings.IncomingDocCcPk.inputValue}">
+                          <f:validator binding="#{bindings.IncomingDocCcPk.validator}"/>
+                          <af:convertNumber groupingUsed="false" pattern="#{bindings.IncomingDocCcPk.format}"/>
+                        </af:inputText>
+                        <af:inputText columns="#{bindings.IncomingDocumentsFk.hints.displayWidth}" id="it16545"
+                                      maximumLength="#{bindings.IncomingDocumentsFk.hints.precision}"
+                                      partialTriggers="CrsIncomingDocCc1" rendered="false"
+                                      required="#{bindings.IncomingDocumentsFk.hints.mandatory}"
+                                      value="#{bindings.IncomingDocumentsFk.inputValue}">
+                          <f:validator binding="#{bindings.IncomingDocumentsFk.validator}"/>
+                          <af:convertNumber groupingUsed="false" pattern="#{bindings.IncomingDocumentsFk.format}"/>
+                        </af:inputText>
+                      </af:toolbar>
+                    </f:facet>
+                    <af:table autoHeightRows="5" binding="#{pageFlowScope.docAssignment.crsIncomingDocCcTable}"
+                              blockRowNavigationOnError="always" columnSelection="multiple" columnStretching="column:c5"
+                              displayRow="selected" editingMode="editAll"
+                              emptyText="#{bindings.CrsIncomingDocCcDocAssignmentView.viewable ? menu.emptyText : menu.accessDeniedText}"
+                              fetchSize="#{bindings.CrsIncomingDocCcDocAssignmentView.rangeSize}"
+                              filterModel="#{bindings.CrsIncomingDocCcDocAssignmentViewQuery.queryDescriptor}"
+                              filterVisible="false" id="CrsIncomingDocCc1"
+                              partialTriggers=":::pc2:copy :::pc2:CrsIncomingDocuments1 ::Del9 ::ci9 ::Commit9 ::rb9 ::print9 ::excel9 ::sa10 ::dsa10 :::CopyDocCCPopup :::CopyDocCCDialog :::CrsIncomingDocCcTlDialog"
+                              queryListener="#{bindings.CrsIncomingDocCcDocAssignmentViewQuery.processQuery}"
+                              rowBandingInterval="1" rowSelection="single"
+                              rows="#{bindings.CrsIncomingDocCcDocAssignmentView.rangeSize}" scrollPolicy="page"
+                              selectedRowKeys="#{bindings.CrsIncomingDocCcDocAssignmentView.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.CrsIncomingDocCcDocAssignmentView.collectionModel.makeCurrent}"
+                              styleClass="AFStretchWidth t50"
+                              value="#{bindings.CrsIncomingDocCcDocAssignmentView.collectionModel}" var="row"
+                              varStatus="vs" verticalGridVisible="false">
+                      <af:column filterFeatures="caseInsensitive" filterable="false" id="c44" sortProperty="SelectedFl"
+                                 sortable="false" align="center" width="60" rendered="false">
+                        <af:commandImageLink actionListener="#{pageFlowScope.docAssignment.untick}"
+                                             icon="/images/checked-checkbox.png" id="check11" partialSubmit="true"
+                                             partialTriggers="check11 uncheck11"
+                                             visible="#{row.bindings.SelectedFl.inputValue == '1'}">
+                          <f:attribute name="iteratorName" value="CrsIncomingDocCcDocAssignmentViewIterator"/>
+                          <f:attribute name="attributeName" value="SelectedFl"/>
+                        </af:commandImageLink>
+                        <af:commandImageLink actionListener="#{pageFlowScope.docAssignment.tick}"
+                                             icon="/images/unchecked-checkbox.png" id="uncheck11" partialSubmit="true"
+                                             partialTriggers="check11 uncheck11"
+                                             visible="#{row.bindings.SelectedFl.inputValue == null or row.bindings.SelectedFl.inputValue == '0'}">
+                          <f:attribute name="iteratorName" value="CrsIncomingDocCcDocAssignmentViewIterator"/>
+                          <f:attribute name="attributeName" value="SelectedFl"/>
+                        </af:commandImageLink>
+                      </af:column>
+                      <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                 headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.IncomingDocCcPk']}"
+                                 id="IncomingDocCcPkC147"
+                                 sortProperty="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.IncomingDocCcPk.name}"
+                                 sortable="true" width="50" rendered="false">
+                        <af:inputText columns="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.IncomingDocCcPk.displayWidth}"
+                                      id="crsIncomingDocCcIncomingdocccpk"
+                                      label="#{menu.resourceLabelMap['CrsIncomingDocCc.IncomingDocCcPk']}"
+                                      maximumLength="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.IncomingDocCcPk.precision}"
+                                      readOnly="true"
+                                      required="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.IncomingDocCcPk.mandatory}"
+                                      value="#{row.bindings.IncomingDocCcPk.inputValue}">
+                          <af:convertNumber groupingUsed="false" pattern="#{row.bindings.IncomingDocCcPk.format}"/>
+                          <f:validator binding="#{row.bindings.IncomingDocCcPk.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                 headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.DepartmentsFk']}"
+                                 id="DepartmentsFkC152" showRequired="true" sortProperty="DepartmentsFkSearch"
+                                 sortable="true" width="100">
+                        <af:panelGroupLayout id="pgl151DepartmentsFk" layout="horizontal">
+                          <af:inputListOfValues autoSubmit="true"
+                                                columns="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DepartmentsFk.displayWidth}"
+                                                id="crsIncomingDocCcDepartmentsfk"
+                                                label="#{menu.resourceLabelMap['CrsIncomingDocCc.DepartmentsFk']}"
+                                                model="#{row.bindings.DepartmentsFk.listOfValuesModel}"
+                                                popupTitle="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DepartmentsFk.label}"
+                                                required="true" simple="true"
+                                                value="#{row.bindings.DepartmentsFk.inputValue}">
+                            <af:convertNumber groupingUsed="false" pattern="#{row.bindings.DepartmentsFk.format}"/>
+                            <f:validator binding="#{row.bindings.DepartmentsFk.validator}"/>
+                          </af:inputListOfValues>
+                        </af:panelGroupLayout>
+                      </af:column>
+                      <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                 headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.DepartmentsFkDesc']}" id="c5"
+                                 sortProperty="DisplayDepartmentsFkSearch" sortable="true" width="150">
+                        <af:inputText columns="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DisplayDepartmentsFk.displayWidth}"
+                                      id="DisplayDepartmentsFkit1"
+                                      label="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DisplayDepartmentsFk.label}"
+                                      maximumLength="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DisplayDepartmentsFk.precision}"
+                                      partialTriggers="crsIncomingDocCcDepartmentsfk" readOnly="true"
+                                      required="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DisplayDepartmentsFk.mandatory}"
+                                      value="#{row.bindings.DisplayDepartmentsFk.inputValue}">
+                          <f:validator binding="#{row.bindings.DisplayDepartmentsFk.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFk']}"
+                                 sortProperty="DisplayActionFkSearch" id="c18" filterable="true" width="200"
+                                 minimumWidth="12" align="center">
+                        <af:panelGroupLayout id="pgl34" layout="horizontal" inlineStyle="width:90%;">
+                          <af:inputComboboxListOfValues id="displayActionFk2Id"
+                                                        popupTitle="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DisplayActionFk2.label}"
+                                                        value="#{row.bindings.DisplayActionFk2.inputValue}"
+                                                        model="#{row.bindings.DisplayActionFk2.listOfValuesModel}"
+                                                        required="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DisplayActionFk2.mandatory}"
+                                                        columns="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DisplayActionFk2.displayWidth}"
+                                                        shortDesc="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DisplayActionFk2.tooltip}"
+                                                        autoSubmit="true" changed="false" editable="onAccess"
+                                                        editMode="select">
+                            <f:validator binding="#{row.bindings.DisplayActionFk2.validator}"/>
+                          </af:inputComboboxListOfValues>
+                        </af:panelGroupLayout>
+                      </af:column>
+                      <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                 headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFk']}" id="ActionFkC160"
+                                 showRequired="true" sortProperty="ActionFkSearch" sortable="true" width="100"
+                                 rendered="false">
+                        <af:panelGroupLayout id="pgl159ActionFk" layout="horizontal">
+                          <af:inputListOfValues autoSubmit="true"
+                                                columns="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.ActionFk.displayWidth}"
+                                                id="crsIncomingDocCcActionfk"
+                                                label="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFk']}"
+                                                model="#{row.bindings.ActionFk.listOfValuesModel}"
+                                                popupTitle="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.ActionFk.label}"
+                                                required="true" simple="true"
+                                                value="#{row.bindings.ActionFk.inputValue}"
+                                                partialTriggers="displayActionFk2Id">
+                            <af:convertNumber groupingUsed="false" pattern="#{row.bindings.ActionFk.format}"/>
+                            <f:validator binding="#{row.bindings.ActionFk.validator}"/>
+                          </af:inputListOfValues>
+                        </af:panelGroupLayout>
+                      </af:column>
+                      <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                 headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFkDesc']}" id="c6"
+                                 sortProperty="DisplayActionFkSearch" sortable="true" width="150" rendered="false">
+                        <af:inputText columns="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DisplayActionFk.displayWidth}"
+                                      id="DisplayActionFkit1"
+                                      label="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DisplayActionFk.label}"
+                                      maximumLength="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DisplayActionFk.precision}"
+                                      partialTriggers="crsIncomingDocCcActionfk" readOnly="true"
+                                      required="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DisplayActionFk.mandatory}"
+                                      value="#{row.bindings.DisplayActionFk.inputValue}">
+                          <f:validator binding="#{row.bindings.DisplayActionFk.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                 headerText="#{menu.resourceLabelMap['CrsDeptGroupDepts.UsersFk']}" id="EmployeeFk"
+                                 sortProperty="EmployeeFkSearch" sortable="true" width="100">
+                        <af:panelGroupLayout id="pgl151EmployeeFk" layout="horizontal">
+                          <af:inputListOfValues autoSubmit="true"
+                                                columns="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.EmployeeFk.displayWidth}"
+                                                id="employeeFkId" model="#{row.bindings.EmployeeFk.listOfValuesModel}"
+                                                partialTriggers="crsIncomingDocCcDepartmentsfk"
+                                                popupTitle="#{menu.resourceLabelMap['CrsDeptGroupDepts.UsersFk']}"
+                                                required="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.EmployeeFk.mandatory}"
+                                                value="#{row.bindings.EmployeeFk.inputValue}">
+                            <f:validator binding="#{row.bindings.EmployeeFk.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.EmployeeFk.format}"/>
+                          </af:inputListOfValues>
+                        </af:panelGroupLayout>
+                      </af:column>
+                      <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                 headerText="#{menu.resourceLabelMap['CrsDeptGroupDepts.DisplayUsersFk']}" id="c8"
+                                 sortProperty="DisplayEmployeeFkSearch" sortable="true" width="150">
+                        <af:inputText autoSubmit="true"
+                                      columns="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DisplayEmployeeFk.displayWidth}"
+                                      id="it7" label="#{menu.resourceLabelMap['CrsDeptGroupDepts.DisplayUsersFk']}"
+                                      maximumLength="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DisplayEmployeeFk.precision}"
+                                      partialTriggers="employeeFkId crsIncomingDocCcDepartmentsfk" readOnly="true"
+                                      required="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DisplayEmployeeFk.mandatory}"
+                                      value="#{row.bindings.DisplayEmployeeFk.inputValue}">
+                          <f:validator binding="#{row.bindings.DisplayEmployeeFk.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                 headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.ExecutionDateG']}"
+                                 id="ExecutionDateGC162" sortProperty="ExecutionDateG" sortable="true" width="120"
+                                 minimumWidth="12">
+                        <af:inputDate autoSubmit="true" columns="10" id="crsIncomingDocCcExecutiondateg"
+                                      partialTriggers="crsIncomingDocCcExecutiondateh"
+                                      required="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.ExecutionDateG.mandatory}"
+                                      value="#{row.bindings.ExecutionDateG.inputValue}"
+                                      valueChangeListener="#{pageFlowScope.docAssignment.executionDateGChanged}"
+                                      inlineStyle="width:95%;" contentStyle="width:95%;">
+                          <f:validator binding="#{row.bindings.ExecutionDateG.validator}"/>
+                          <af:convertDateTime pattern="#{menu.dateFormat}"/>
+                        </af:inputDate>
+                      </af:column>
+                      <af:column align="center" headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.ExecutionDateH']}"
+                                 id="ExecutionDateHC163" partialTriggers="ExecutionDateGC162"
+                                 sortProperty="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.ExecutionDateH.name}"
+                                 sortable="true" width="120" filterable="true" minimumWidth="12">
+                        <af:panelGroupLayout layout="horizontal" id="tb90">
+                          <af:inputText autoSubmit="true"
+                                        columns="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.ExecutionDateH.displayWidth}"
+                                        id="crsIncomingDocCcExecutiondateh"
+                                        label="#{menu.resourceLabelMap['CrsIncomingDocCc.ExecutionDateH']}"
+                                        maximumLength="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.ExecutionDateH.precision}"
+                                        partialTriggers="crsIncomingDocCcExecutiondateg"
+                                        required="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.ExecutionDateH.mandatory}"
+                                        simple="true" value="#{row.bindings.ExecutionDateH.inputValue}"
+                                        valueChangeListener="#{pageFlowScope.docAssignment.executionDateHChanged}"
+                                        inlineStyle="width:95%;" contentStyle="width:95%;">
+                            <f:converter converterId="hijriDateConverter"/>
+                          </af:inputText>
+                          <sdHijri:hijriCalendar direction="1" id="hc144"
+                                                 inputId="page1:pc145:CrsIncomingDocCc1:#{pageFlowScope.docAssignment.crsIncomingDocCcTable.clientRowKey}:crsIncomingDocCcExecutiondateh"
+                                                 type="1"/>
+                        </af:panelGroupLayout>
+                      </af:column>
+                      <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                 headerText="#{menu.resourceLabelMap['CrsGuidance.Guidance']}" id="c867"
+                                 sortProperty="DisplayIncomingDocGuidanceSearch" sortable="true" width="350">
+                        <af:inputText autoSubmit="true"
+                                      columns="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DisplayIncomingDocGuidance.displayWidth}"
+                                      id="it799" label="#{menu.resourceLabelMap['CrsGuidance.Guidance']}"
+                                      maximumLength="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DisplayIncomingDocGuidance.precision}"
+                                      required="#{bindings.CrsIncomingDocCcDocAssignmentView.hints.DisplayIncomingDocGuidance.mandatory}"
+                                      value="#{row.bindings.DisplayIncomingDocGuidance.inputValue}" rows="2">
+                          <f:validator binding="#{row.bindings.DisplayIncomingDocGuidance.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                </f:facet>
+              </af:panelStretchLayout>
+            </af:panelGroupLayout>
+          </af:panelGroupLayout>
+        </af:showDetailItem>
+      </af:panelTabbed>
+    </af:panelBox>
+    <af:popup contentDelivery="lazyUncached" id="CrsIncomingDocCcTlPopup"
+              popupCanceledListener="#{pageFlowScope.docAssignment.cancelCrsIncomingDocCcTlTranslation}"
+              binding="#{pageFlowScope.docAssignment.crsIncomingDocCcTlPopup}">
+      <af:dialog dialogListener="#{pageFlowScope.docAssignment.commitCrsIncomingDocCcTlTranslation}"
+                 id="CrsIncomingDocCcTlDialog" type="okCancel">
+        <af:panelTabbed dimensionsFrom="disclosedChild" id="pt1" styleClass="AFStretchWidth">
+          <af:showDetailItem id="sdi81" styleClass="AFStretchWidth"
+                             text="#{menu.resourceLabelMap['label.translation']}">
+            <af:panelStretchLayout dimensionsFrom="children" id="psl43" styleClass="AFStretchWidth">
+              <f:facet name="center">
+                <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem" id="pc31"
+                                    styleClass="AFStretchWidth">
+                  <f:facet name="secondaryToolbar">
+                    <af:toolbar id="tb3">
+                      <af:commandButton actionListener="#{bindings.Commit.execute}" disabled="#{!menu.updateAllowed}"
+                                        icon="#{menu.commitIcon}" id="Commit3" partialSubmit="true" rendered="false"
+                                        text="#{menu.resourceLabelMap['label.commit']}" styleClass="commitButton"/>
+                      <af:spacer id="s3" width="5"/>
+                      <af:commandButton actionListener="#{bindings.Rollback.execute}" icon="#{menu.rollbackIcon}"
+                                        id="rb3" immediate="true" partialSubmit="true" rendered="false"
+                                        text="#{menu.resourceLabelMap['label.rollback']}" styleClass="rollbackButton"
+                                        visible="#{menu.rollbackVisible}">
+                        <af:resetActionListener/>
+                      </af:commandButton>
+                      <af:spacer id="s84" width="5"/>
+                      <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print3"
+                                        immediate="true" partialSubmit="true"
+                                        text="#{menu.resourceLabelMap['label.print']}" styleClass="printButton"
+                                        visible="#{menu.printVisible}">
+                        <af:showPrintablePageBehavior/>
+                      </af:commandButton>
+                      <af:spacer id="s95" width="5"/>
+                      <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel3"
+                                        immediate="true" partialSubmit="true"
+                                        text="#{menu.resourceLabelMap['label.excel']}" styleClass="excelButton"
+                                        visible="#{menu.excelVisible}">
+                        <af:setPropertyListener from="CrsIncomingDocCcTl" to="#{sessionScope.tableId}" type="action"/>
+                        <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                      </af:commandButton>
+                      <af:spacer id="s66" width="5"/>
+                    </af:toolbar>
+                  </f:facet>
+                  <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple"
+                            columnStretching="last" displayRow="selected" editingMode="editAll"
+                            emptyText="#{bindings.CrsIncomingDocCcTlView1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                            fetchSize="#{bindings.CrsIncomingDocCcTlView1.rangeSize}"
+                            filterModel="#{bindings.CrsIncomingDocCcTlView1Query.queryDescriptor}" filterVisible="false"
+                            id="CrsIncomingDocCcTl"
+                            queryListener="#{bindings.CrsIncomingDocCcTlView1Query.processQuery}" rowBandingInterval="1"
+                            rowSelection="single" rows="#{bindings.CrsIncomingDocCcTlView1.rangeSize}"
+                            scrollPolicy="page"
+                            selectedRowKeys="#{bindings.CrsIncomingDocCcTlView1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.CrsIncomingDocCcTlView1.collectionModel.makeCurrent}"
+                            styleClass="AFStretchWidth" value="#{bindings.CrsIncomingDocCcTlView1.collectionModel}"
+                            var="row" varStatus="vs" verticalGridVisible="false"
+                            partialTriggers=":::pc145:CrsIncomingDocCc1">
+                    <af:column sortProperty="#{bindings.CrsIncomingDocCcTlView1.hints.LanguagesFk.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.CrsIncomingDocCcTlView1.hints.LanguagesFk.label}" id="c92"
+                               align="center">
+                      <af:selectOneChoice value="#{row.bindings.LanguagesFk.inputValue}"
+                                          label="#{row.bindings.LanguagesFk.label}"
+                                          required="#{bindings.CrsIncomingDocCcTlView1.hints.LanguagesFk.mandatory}"
+                                          shortDesc="#{bindings.CrsIncomingDocCcTlView1.hints.LanguagesFk.tooltip}"
+                                          id="soc1" readOnly="true">
+                        <f:selectItems value="#{row.bindings.LanguagesFk.items}" id="si1"/>
+                        <f:validator binding="#{row.bindings.LanguagesFk.validator}"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.CrsIncomingDocCcTlView1.hints.IncomingDocGuidance.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{menu.resourceLabelMap['CrsGuidance.Guidance']}" id="c12" align="center">
+                      <af:inputText value="#{row.bindings.IncomingDocGuidance.inputValue}"
+                                    label="#{menu.resourceLabelMap['CrsGuidance.Guidance']}"
+                                    required="#{bindings.CrsIncomingDocCcTlView1.hints.IncomingDocGuidance.mandatory}"
+                                    columns="#{bindings.CrsIncomingDocCcTlView1.hints.IncomingDocGuidance.displayWidth}"
+                                    maximumLength="#{bindings.CrsIncomingDocCcTlView1.hints.IncomingDocGuidance.precision}"
+                                    shortDesc="#{bindings.CrsIncomingDocCcTlView1.hints.IncomingDocGuidance.tooltip}"
+                                    id="it5">
+                        <f:validator binding="#{row.bindings.IncomingDocGuidance.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </f:facet>
+            </af:panelStretchLayout>
+          </af:showDetailItem>
+        </af:panelTabbed>
+      </af:dialog>
+    </af:popup>
+    <af:popup contentDelivery="lazyUncached" id="CrsIncomingArchivePopup"
+              binding="#{pageFlowScope.docAssignment.crsIncomingArchivePopup}">
+      <af:dialog id="CrsIncomingArchiveDialog" title="" type="okCancel" rendered="false">
+        <af:panelTabbed id="pt2" styleClass="AFStretchWidth">
+          <af:showDetailItem id="sdi2" styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['label.translation']}">
+            <af:panelStretchLayout dimensionsFrom="children" id="psl908" styleClass="AFStretchWidth">
+              <f:facet name="center">
+                <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem" id="pc803"
+                                    styleClass="AFStretchWidth">
+                  <f:facet name="secondaryToolbar">
+                    <af:toolbar id="tb17">
+                      <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print17"
+                                        immediate="true" partialSubmit="true"
+                                        text="#{menu.resourceLabelMap['label.print']}" styleClass="printButton"
+                                        visible="#{menu.printVisible}">
+                        <af:showPrintablePageBehavior/>
+                      </af:commandButton>
+                      <af:spacer id="s37" width="5"/>
+                      <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel72"
+                                        immediate="true" partialSubmit="true"
+                                        text="#{menu.resourceLabelMap['label.excel']}" styleClass="excelButton"
+                                        visible="#{menu.excelVisible}">
+                        <af:setPropertyListener from="CrsIncomingArchiveTlView2t" to="#{sessionScope.tableId}"
+                                                type="action"/>
+                        <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                      </af:commandButton>
+                    </af:toolbar>
+                  </f:facet>
+                  <af:table autoHeightRows="10" blockRowNavigationOnError="always" columnSelection="multiple"
+                            columnStretching="last" displayRow="selected" editingMode="editAll"
+                            emptyText="#{bindings.CrsIncomingArchiveTlDocAssignmentView.viewable ? menu.emptyText : menu.accessDeniedText}"
+                            fetchSize="#{bindings.CrsIncomingArchiveTlDocAssignmentView.rangeSize}"
+                            filterModel="#{bindings.CrsIncomingArchiveTlDocAssignmentViewQuery.queryDescriptor}"
+                            filterVisible="false" id="CrsIncomingArchiveTlView2t"
+                            queryListener="#{bindings.CrsIncomingArchiveTlDocAssignmentViewQuery.processQuery}"
+                            rowBandingInterval="1" rowSelection="single"
+                            rows="#{bindings.CrsIncomingArchiveTlDocAssignmentView.rangeSize}" scrollPolicy="page"
+                            selectedRowKeys="#{bindings.CrsIncomingArchiveTlDocAssignmentView.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.CrsIncomingArchiveTlDocAssignmentView.collectionModel.makeCurrent}"
+                            styleClass="AFStretchWidth"
+                            value="#{bindings.CrsIncomingArchiveTlDocAssignmentView.collectionModel}" var="row"
+                            varStatus="vs" verticalGridVisible="false">
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                               headerText="#{bindings.CrsIncomingArchiveTlDocAssignmentView.hints.LanguagesFk.label}"
+                               id="LanguagesFkc4" sortProperty="LanguagesFk" sortable="true" width="150">
+                      <af:selectOneChoice id="LanguagesFksoc12" label="#{row.bindings.LanguagesFk.label}"
+                                          readOnly="true"
+                                          required="#{bindings.CrsIncomingArchiveTlDocAssignmentView.hints.LanguagesFk.mandatory}"
+                                          value="#{row.bindings.LanguagesFk.inputValue}">
+                        <f:selectItems id="si4" value="#{row.bindings.LanguagesFk.items}"/>
+                        <f:validator binding="#{row.bindings.LanguagesFk.validator}"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                               headerText="#{bindings.CrsIncomingArchiveTlDocAssignmentView.hints.ArcDocName.label}"
+                               id="ArcDocNamec2" sortProperty="ArcDocName" sortable="true" width="300">
+                      <af:inputText autoSubmit="true"
+                                    columns="#{bindings.CrsIncomingArchiveTlDocAssignmentView.hints.ArcDocName.displayWidth}"
+                                    id="ArcDocNameit2"
+                                    label="#{bindings.CrsIncomingArchiveTlDocAssignmentView.hints.ArcDocName.label}"
+                                    maximumLength="#{bindings.CrsIncomingArchiveTlDocAssignmentView.hints.ArcDocName.precision}"
+                                    readOnly="true" required="true" value="#{row.bindings.ArcDocName.inputValue}">
+                        <f:validator binding="#{row.bindings.ArcDocName.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                               headerText="#{bindings.CrsIncomingArchiveTlDocAssignmentView.hints.ArcDocDesc.label}"
+                               id="ArcDocDescc3" sortProperty="ArcDocDesc" sortable="true">
+                      <af:inputText autoSubmit="true"
+                                    columns="#{bindings.CrsIncomingArchiveTlDocAssignmentView.hints.ArcDocDesc.displayWidth}"
+                                    id="ArcDocDescit3"
+                                    label="#{bindings.CrsIncomingArchiveTlDocAssignmentView.hints.ArcDocDesc.label}"
+                                    maximumLength="#{bindings.CrsIncomingArchiveTlDocAssignmentView.hints.ArcDocDesc.precision}"
+                                    readOnly="true"
+                                    required="#{bindings.CrsIncomingArchiveTlDocAssignmentView.hints.ArcDocDesc.mandatory}"
+                                    value="#{row.bindings.ArcDocDesc.inputValue}">
+                        <f:validator binding="#{row.bindings.ArcDocDesc.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </f:facet>
+            </af:panelStretchLayout>
+          </af:showDetailItem>
+        </af:panelTabbed>
+      </af:dialog>
+    </af:popup>
+    <af:popup autoCancel="disabled" childCreation="deferred" contentDelivery="lazyUncached" id="docReferralPopup"
+              popupCanceledListener="#{pageFlowScope.docAssignment.cancelAddDocCc}"
+              binding="#{pageFlowScope.docAssignment.docReferralPopup}">
+      <af:dialog dialogListener="#{pageFlowScope.docAssignment.commitDocCc}" id="docReferralDialog" type="okCancel">
+
+        <af:panelGroupLayout id="pgl36" styleClass="AFStretchWidth"
+                             partialTriggers="b2 b1" visible="#{pageFlowScope.ReferralType != ''}">
+          <af:panelTabbed id="pt7" styleClass="AFStretchWidth" partialTriggers="b2 b1"
+                          visible="#{pageFlowScope.ReferralType != ''}">
+            <af:showDetailItem id="sdi17" styleClass="AFStretchWidth"
+                               text="#{menu.resourceLabelMap['label.IndividualReferral']}"
+                               rendered="#{pageFlowScope.ReferralType== '0'}">
+              <af:region id="r24" value="#{bindings.DocCcTF1.regionModel}"/>
+            </af:showDetailItem>
+            <af:showDetailItem id="sdi91" styleClass="AFStretchWidth"
+                               text="#{menu.resourceLabelMap['label.MultipleReferral']}"
+                               rendered="#{pageFlowScope.ReferralType== '1'}">
+              <af:region id="r37" value="#{bindings.docCcDeptTF1.regionModel}"/>
+            </af:showDetailItem>
+          </af:panelTabbed>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl37" visible='#{pageFlowScope.ReferralType == ""}' partialTriggers="b2 b1">
+          <af:spacer width="10" height="30" id="s51"/>
+          <af:panelGroupLayout id="pgl35" layout="horizontal" visible='#{pageFlowScope.ReferralType == ""}'
+                               partialTriggers="b2 b1">
+            <af:spacer width="50" height="10" id="s41"/>
+            <af:commandButton text="#{menu.resourceLabelMap['label.IndividualReferral']}" styleClass="steper-btn"
+                       icon="#{resource['images:user.png']}" id="b2">
+              <af:setPropertyListener from="0" to="#{pageFlowScope.ReferralType}" type="action"/>
+            </af:commandButton>
+            <af:spacer width="10" height="10" id="s40"/>
+            <af:spacer width="10" height="10" id="s44"/>
+            <af:commandButton text="#{menu.resourceLabelMap['label.MultipleReferral']}" styleClass="steper-btn"
+                       icon="#{resource['images:gruops.png']}" id="b1">
+              <af:setPropertyListener from="1" to="#{pageFlowScope.ReferralType}" type="action"/>
+            </af:commandButton>
+            <af:spacer width="50" height="10" id="s49"/>
+          </af:panelGroupLayout>
+          <af:spacer width="50" height="30" id="s50"/>
+        </af:panelGroupLayout>
+      </af:dialog>
+    </af:popup>
+    <af:popup contentDelivery="lazyUncached" id="UpdateConfirmAssignmentFlPopup"
+              popupCanceledListener="#{pageFlowScope.docAssignment.cancelTranslation}"
+              binding="#{pageFlowScope.docAssignment.updateConfirmAssignmentFlPopup}">
+      <af:dialog dialogListener="#{pageFlowScope.docAssignment.updateConfirmAssignmentFl}"
+                 id="UpdateConfirmAssignmentFlDialog" title="" type="okCancel">
+        <af:panelGroupLayout id="pgl2" layout="scroll">
+          <af:toolbar id="t3">
+            <af:outputLabel id="ol1" value="#{menu.resourceLabelMap['label.sure']}"/>
+          </af:toolbar>
+        </af:panelGroupLayout>
+      </af:dialog>
+    </af:popup>
+    <af:popup autoCancel="disabled" childCreation="deferred" contentDelivery="lazyUncached" id="inDocViewPopup"
+              binding="#{pageFlowScope.docAssignment.inDocViewPopup}">
+      <af:dialog id="inDocViewDialog" type="ok">
+        <af:region value="#{bindings.InDocView1.regionModel}" id="r1"/>
+      </af:dialog>
+    </af:popup>
+    <af:popup autoCancel="disabled" childCreation="deferred" contentDelivery="lazyUncached" id="CopyDocCCPopup"
+              popupCanceledListener="#{pageFlowScope.docAssignment.cancelCopyDocCC}"
+              binding="#{pageFlowScope.docAssignment.copyDocCCPopup}">
+      <af:dialog dialogListener="#{pageFlowScope.docAssignment.commitCopyDocCC}" id="CopyDocCCDialog" type="okCancel">
+        <af:panelTabbed id="pt3" styleClass="AFStretchWidth">
+          <af:showDetailItem id="sdi1" styleClass="AFStretchWidth"
+                             text="#{menu.resourceLabelMap['menu.docAssignment']}">
+            <af:panelStretchLayout dimensionsFrom="children" id="psl1" styleClass="AFStretchWidth">
+              <f:facet name="center">
+                <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem" id="pc1"
+                                    styleClass="AFStretchWidth">
+                  <f:facet name="secondaryToolbar">
+                    <af:toolbar id="t1">
+                      <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="cb3"
+                                        immediate="true" partialSubmit="true"
+                                        text="#{menu.resourceLabelMap['label.print']}" styleClass="printButton"
+                                        visible="#{menu.printVisible}">
+                        <af:showPrintablePageBehavior/>
+                      </af:commandButton>
+                      <af:spacer id="s1354" width="5"/>
+                      <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="cb5"
+                                        immediate="true" partialSubmit="true"
+                                        text="#{menu.resourceLabelMap['label.excel']}" styleClass="excelButton"
+                                        visible="#{menu.excelVisible}">
+                        <af:setPropertyListener from="CrsIncomingDocumentsCopyDocCcView" to="#{sessionScope.tableId}"
+                                                type="action"/>
+                        <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                      </af:commandButton>
+                    </af:toolbar>
+                  </f:facet>
+                  <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple"
+                            columnStretching="last" displayRow="selected" editingMode="editAll"
+                            emptyText="#{bindings.CrsIncomingDocumentsCopyDocCcView.viewable ? menu.emptyText : menu.accessDeniedText}"
+                            fetchSize="#{bindings.CrsIncomingDocumentsCopyDocCcView.rangeSize}"
+                            filterModel="#{bindings.CrsIncomingDocumentsCopyDocCcViewQuery.queryDescriptor}"
+                            filterVisible="false" id="CrsIncomingDocumentsCopyDocCcView"
+                            partialTriggers=":::UpdateConfirmAssignmentFlPopup :::UpdateConfirmAssignmentFlDialog :::pc2:copy"
+                            queryListener="#{bindings.CrsIncomingDocumentsCopyDocCcViewQuery.processQuery}"
+                            rowSelection="single" rows="#{bindings.CrsIncomingDocumentsCopyDocCcView.rangeSize}"
+                            scrollPolicy="page"
+                            selectedRowKeys="#{bindings.CrsIncomingDocumentsCopyDocCcView.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.CrsIncomingDocumentsCopyDocCcView.collectionModel.makeCurrent}"
+                            styleClass="AFStretchWidth"
+                            value="#{bindings.CrsIncomingDocumentsCopyDocCcView.collectionModel}" var="row"
+                            varStatus="vs" verticalGridVisible="false">
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.IncomingDocumentsPk']}" id="c1"
+                               sortProperty="IncomingDocumentsPk" sortable="true" width="70">
+                      <af:inputText columns="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.IncomingDocumentsPk.displayWidth}"
+                                    id="it68543"
+                                    label="#{menu.resourceLabelMap['CrsIncomingDocuments.IncomingDocumentsPk']}"
+                                    maximumLength="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.IncomingDocumentsPk.precision}"
+                                    readOnly="true"
+                                    required="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.IncomingDocumentsPk.mandatory}"
+                                    value="#{row.bindings.IncomingDocumentsPk.inputValue}">
+                        <af:convertNumber groupingUsed="false" pattern="#{row.bindings.IncomingDocumentsPk.format}"/>
+                        <f:validator binding="#{row.bindings.IncomingDocumentsPk.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.DisplayInSubject']}" id="c3"
+                               sortProperty="DisplayInSubjectSearch" sortable="true" width="250">
+                      <af:inputText autoSubmit="true"
+                                    columns="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.DisplayInSubject.displayWidth}"
+                                    id="it4" label="#{menu.resourceLabelMap['CrsIncomingDocuments.DisplayInSubject']}"
+                                    maximumLength="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.DisplayInSubject.precision}"
+                                    readOnly="true"
+                                    required="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.DisplayInSubject.mandatory}"
+                                    value="#{row.bindings.DisplayInSubject.inputValue}">
+                        <f:validator binding="#{row.bindings.DisplayInSubject.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocYear']}" id="c7"
+                               sortProperty="InDocYear" sortable="true" width="100">
+                      <af:inputText columns="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.InDocYear.displayWidth}"
+                                    id="it6" label="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocYear']}"
+                                    maximumLength="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.InDocYear.precision}"
+                                    readOnly="true"
+                                    required="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.InDocYear.mandatory}"
+                                    value="#{row.bindings.InDocYear.inputValue}">
+                        <af:convertNumber groupingUsed="false" pattern="#{row.bindings.InDocYear.format}"/>
+                        <f:validator binding="#{row.bindings.InDocYear.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocDateG']}" id="c9"
+                               sortProperty="InDocDateG" sortable="true" width="220">
+                      <af:inputDate id="id1" label="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocDateG']}"
+                                    readOnly="true"
+                                    required="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.InDocDateG.mandatory}"
+                                    value="#{row.bindings.InDocDateG.inputValue}">
+                        <af:convertDateTime pattern="#{menu.dateTimeWithSecondsFormat}"/>
+                        <f:validator binding="#{row.bindings.InDocDateG.validator}"/>
+                      </af:inputDate>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocDateH']}" id="c10"
+                               sortProperty="InDocDateH" sortable="true" width="160">
+                      <af:inputText columns="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.InDocDateH.displayWidth}"
+                                    id="it8" label="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocDateH']}"
+                                    maximumLength="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.InDocDateH.precision}"
+                                    readOnly="true"
+                                    required="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.InDocDateH.mandatory}"
+                                    value="#{row.bindings.InDocDateH.inputValue}">
+                        <f:converter converterId="hijriDateConverter"/>
+                        <f:validator binding="#{row.bindings.InDocDateH.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocNo']}" id="c11"
+                               sortProperty="InDocNo" sortable="true" width="200">
+                      <af:inputText columns="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.InDocNo.displayWidth}"
+                                    id="it9" label="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocNo']}"
+                                    maximumLength="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.InDocNo.precision}"
+                                    readOnly="true"
+                                    required="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.InDocNo.mandatory}"
+                                    value="#{row.bindings.InDocNo.inputValue}">
+                        <f:validator binding="#{row.bindings.InDocNo.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFk']}" id="c14"
+                               sortProperty="FromDepartmentFkSearch" sortable="true" width="110">
+                      <af:panelGroupLayout id="pgl4654" layout="horizontal">
+                        <af:inputListOfValues autoSubmit="true"
+                                              columns="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.FromDepartmentFk.displayWidth}"
+                                              id="ilov2"
+                                              label="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFk']}"
+                                              model="#{row.bindings.FromDepartmentFk.listOfValuesModel}"
+                                              popupTitle="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.FromDepartmentFk.label}"
+                                              readOnly="true"
+                                              required="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.FromDepartmentFk.mandatory}"
+                                              searchDesc="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFk']}"
+                                              simple="true" value="#{row.bindings.FromDepartmentFk.inputValue}">
+                          <af:convertNumber groupingUsed="false" pattern="#{row.bindings.FromDepartmentFk.format}"/>
+                          <f:validator binding="#{row.bindings.FromDepartmentFk.validator}"/>
+                        </af:inputListOfValues>
+                      </af:panelGroupLayout>
+                    </af:column>
+                    <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                               headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFkDesc']}"
+                               id="c13" sortProperty="DisplayFromDepartmentFkSearch" sortable="true" width="200">
+                      <af:inputText autoSubmit="true"
+                                    columns="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.DisplayFromDepartmentFk.displayWidth}"
+                                    id="it12"
+                                    label="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFkDesc']}"
+                                    maximumLength="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.DisplayFromDepartmentFk.precision}"
+                                    partialTriggers="ilov2" readOnly="true"
+                                    required="#{bindings.CrsIncomingDocumentsCopyDocCcView.hints.DisplayFromDepartmentFk.mandatory}"
+                                    value="#{row.bindings.DisplayFromDepartmentFk.inputValue}">
+                        <f:validator binding="#{row.bindings.DisplayFromDepartmentFk.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{menu.resourceLabelMap['DeparmentsRVO.SelectFl']}" id="c15" align="center"
+                               width="150">
+                      <af:commandImageLink actionListener="#{pageFlowScope.docAssignment.untick}"
+                                           icon="/images/checked-checkbox.png" id="check" partialSubmit="true"
+                                           partialTriggers="check uncheck"
+                                           visible="#{row.bindings.SelectFl.inputValue == '1'}">
+                        <f:attribute name="iteratorName" value="CrsIncomingDocumentsCopyDocCcViewIterator"/>
+                        <f:attribute name="attributeName" value="SelectFl"/>
+                      </af:commandImageLink>
+                      <af:commandImageLink actionListener="#{pageFlowScope.docAssignment.tick}"
+                                           icon="/images/unchecked-checkbox.png" id="uncheck" partialSubmit="true"
+                                           partialTriggers="check uncheck"
+                                           visible="#{row.bindings.SelectFl.inputValue == null or row.bindings.SelectFl.inputValue == '0'}">
+                        <f:attribute name="iteratorName" value="CrsIncomingDocumentsCopyDocCcViewIterator"/>
+                        <f:attribute name="attributeName" value="SelectFl"/>
+                      </af:commandImageLink>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </f:facet>
+            </af:panelStretchLayout>
+          </af:showDetailItem>
+        </af:panelTabbed>
+      </af:dialog>
+    </af:popup>
+    <!--<af:popup contentDelivery="lazyUncached" id="UpdateMasterConfirmAssignmentsFlPopup"
+                        >
+                <af:dialog dialogListener="#{pageFlowScope.docAssignment.updateMasterConfirmAssignmentFl}"
+                           id="UpdateMasterConfirmAssignmentsFlDialog" title="" type="okCancel">
+                  <af:panelGroupLayout id="pgl1" layout="scroll">
+                    <af:toolbar id="t2">
+                      <af:outputLabel id="ol2" value="#{menu.resourceLabelMap['label.sure']}"/>
+                    </af:toolbar>
+                  </af:panelGroupLayout>
+                </af:dialog>
+              </af:popup>-->
+    <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+      <af:dialog id="d1">
+        <f:facet name="buttonBar"/>
+        <af:button text="button 3" id="b3"/>
+      </af:dialog>
+    </af:popup>
+  </af:panelGroupLayout>
+</jsp:root>

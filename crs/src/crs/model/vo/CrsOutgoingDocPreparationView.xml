@@ -1,0 +1,915 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject ComponentClass="gen.common.BaseViewObjectImpl" BindingStyle="JDBC"
+     CustomQuery="false"
+    FetchMode="FETCH_AS_NEEDED"
+    InheritPersonalization="merge" Name="CrsOutgoingDocPreparationView"
+    PageIterMode="Full"
+    RowClass="crs.model.vo.CrsOutgoingDocPreparationViewRowImpl"
+    Version="12.2.1.12.24" xmlns="http://xmlns.oracle.com/bc4j"
+    SelectListFlags="1"
+    FromListFlags="1"
+    WhereFlags="1"
+    SelectAllAttributes="false">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Variable Kind="where" Name="p_lang" Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+            <Item Value="1"/>
+            <Item Value="2"/>
+            <Item Value="3"/>
+            <Item Value="4"/>
+            <Item Value="5"/>
+            <Item Value="6"/>
+            <Item Value="7"/>
+            <Item Value="8"/>
+            <Item Value="9"/>
+            <Item Value="10"/>
+            <Item Value="11"/>
+        </AttrArray>
+        <TransientExpression
+            Name="expression"><![CDATA[gen.common.GenLib.getLanguageNo()]]></TransientExpression>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+    <ViewAccessor Name="CrsFilesLocationFilesLocationFk"
+        RowLevelBinds="true" ViewObjectName="crs.model.vo.CrsFilesLocationView">
+        <ViewCriteriaUsage
+            FullName="crs.model.vo.CrsFilesLocationView.CrsFilesLocationViewFilterByDepartmentsFk" Name="CrsFilesLocationViewFilterByDepartmentsFk"/>
+        <ParameterMap>
+            <PIMap Variable="p_departments">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[UserDepartmentFk]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor Name="CrsIncomingDocumentsIncomingDocumentsFk"
+        RowLevelBinds="true" ViewObjectName="crs.model.vo.CrsIncomingDocumentsView"/>
+    <ViewAccessor Name="CrsOutgoingDocumentsOutgoingDocumentsFk"
+        RowLevelBinds="true" ViewObjectName="crs.model.vo.CrsOutgoingDocumentsView"/>
+    <ViewAccessor Name="HcmDepartmentsFromDepartmentFk"
+        RowLevelBinds="true" ViewObjectName="crs.model.ro.HcmDepartmentsVwView"/>
+    <ViewAccessor Name="SsoSystemLookupValuesOutDocReasonFk"
+        RowLevelBinds="true" ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView"/>
+    <ViewAccessor Name="SsoSystemLookupValuesTopicClassficationFk"
+        RowLevelBinds="true" ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView">
+        <ViewCriteriaUsage
+            FullName="crs.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter" Name="SsoSystemLookupValuesFilter"/>
+        <ParameterMap>
+            <PIMap Variable="p_system_lookups_fk">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[16]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor Name="SsoSystemLookupValuesPriorityFk"
+        RowLevelBinds="true" ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView">
+        <ViewCriteriaUsage
+            FullName="crs.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter" Name="SsoSystemLookupValuesFilter"/>
+        <ParameterMap>
+            <PIMap Variable="p_system_lookups_fk">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[12]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor Name="SsoSystemLookupValuesSecurityLevelFk"
+        RowLevelBinds="true" ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView">
+        <ViewCriteriaUsage
+            FullName="crs.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter" Name="SsoSystemLookupValuesFilter"/>
+        <ParameterMap>
+            <PIMap Variable="p_system_lookups_fk">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[112]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor Name="SsoSystemLookupValuesOutgoingTypeFk"
+        RowLevelBinds="true" ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView">
+        <ViewCriteriaUsage
+            FullName="crs.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter" Name="SsoSystemLookupValuesFilter"/>
+        <ParameterMap>
+            <PIMap Variable="p_system_lookups_fk">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[31]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor Name="SsoSystemLookupValuesOutDocTypeFk"
+        RowLevelBinds="true" ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView">
+        <ViewCriteriaUsage
+            FullName="crs.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter" Name="SsoSystemLookupValuesFilter"/>
+        <ParameterMap>
+            <PIMap Variable="p_system_lookups_fk">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[3]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor Name="HcmDepartmentsVwView1" RowLevelBinds="true" ViewObjectName="crs.model.ro.HcmDepartmentsVwView">
+        <ViewCriteriaUsage
+            FullName="crs.model.ro.HcmDepartmentsVwView.HcmInternalDepartmentsViewCriteria" Name="HcmInternalDepartmentsViewCriteria"/>
+    </ViewAccessor>
+    <ViewAccessor Name="HcmDepartmentsVwView2" RowLevelBinds="true" ViewObjectName="crs.model.ro.HcmDepartmentsVwView"/>
+    <ViewAccessor
+        Name="SsoActiveLookupValuesVwViewDistributionTypeFk"
+        ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView"
+        RowLevelBinds="true"/>
+    <ViewAccessor
+        Name="CrsDocClassView"
+        ViewObjectName="crs.model.vo.CrsDocClassView"
+        RowLevelBinds="true"/>
+    <ListBinding ListRangeSize="10"
+        ListVOName="CrsFilesLocationFilesLocationFk" MRUCount="0"
+        Name="LOV_FilesLocationFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="FilesLocationFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayFilesLocationFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="FilesLocationPk"/>
+            <Item Value="DisplayFileLocationPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="FilesLocationPk"/>
+            <Item Value="DisplayFileLocationPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="CrsFilesLocationLOVSearch"/>
+    </ListBinding>
+    <ListBinding ListRangeSize="10"
+        ListVOName="CrsIncomingDocumentsIncomingDocumentsFk"
+        MRUCount="0" Name="LOV_IncomingDocumentsFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="IncomingDocumentsFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="IncomingDocumentsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="IncomingDocumentsPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding ListRangeSize="10"
+        ListVOName="CrsOutgoingDocumentsOutgoingDocumentsFk"
+        MRUCount="0" Name="LOV_OutgoingDocumentsFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="OutgoingDocumentsFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="OutgoingDocumentsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="OutgoingDocumentsPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding ListRangeSize="10"
+        ListVOName="HcmDepartmentsFromDepartmentFk" MRUCount="0"
+        Name="LOV_FromDepartmentFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="FromDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayFromDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DisplayDepartmentsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="DepartmentsPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding ListRangeSize="10"
+        ListVOName="SsoSystemLookupValuesOutDocReasonFk" MRUCount="0"
+        Name="LOV_OutDocReasonFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="OutDocReasonFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding ListRangeSize="10"
+        ListVOName="SsoSystemLookupValuesPriorityFk" MRUCount="0"
+        Name="LOV_PriorityFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="PriorityFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayPriorityFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="SsoSystemLookupValuesLOVSearch"/>
+    </ListBinding>
+    <ListBinding ListRangeSize="10"
+        ListVOName="SsoSystemLookupValuesSecurityLevelFk" MRUCount="0"
+        Name="LOV_SecurityLevelFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="SecurityLevelFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplaySecurityLevelFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="SsoSystemLookupValuesLOVSearch"/>
+    </ListBinding>
+    <ListBinding ListRangeSize="10"
+        ListVOName="SsoSystemLookupValuesOutgoingTypeFk" MRUCount="0"
+        Name="LOV_OutgoingTypeFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="OutgoingTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayOutgoingTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="SsoSystemLookupValuesLOVSearch"/>
+    </ListBinding>
+    <ListBinding ListRangeSize="10"
+        ListVOName="SsoSystemLookupValuesOutDocTypeFk" MRUCount="0"
+        Name="LOV_OutDocTypeFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="OutDocTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayOutDocTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="SsoSystemLookupValuesLOVSearch"/>
+    </ListBinding>
+    <ListBinding ComboRowCountHint="10"
+        ListVOName="HcmDepartmentsVwView1" MRUCount="0"
+        Name="LOV_ToInternalDepartmentFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="ToDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayToDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DisplayDepartmentsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DisplayDepartmentsPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="HcmInternalDepartmentsLOVSearch"/>
+    </ListBinding>
+    <ListBinding ListVOName="HcmDepartmentsVwView2" MRUCount="0"
+        Name="LOV_ToExternalDepartmentFk" NullValueFlag="start" NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
+        <AttrArray Name="AttrNames">
+            <Item Value="ToDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayToDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DisplayDepartmentsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DisplayDepartmentsPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="HcmExternalDepartmentsLOVSearch"/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_DistributionTypeFk"
+        ListVOName="SsoActiveLookupValuesVwViewDistributionTypeFk"
+        ComboRowCountHint="10"
+        NullValueFlag="none"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="DistributionTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayDistributionTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="SsoSystemLookupValuesLOVSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_TopicClassficationFk"
+        ListVOName="CrsDocClassView"
+        ComboRowCountHint="10"
+        NullValueFlag="none"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="TopicClassficationFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayTopicClassficationFk"/>
+            <Item Value="DistributionTypeFk"/>
+            <Item Value="DisplayDistributionTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="DocClassPk"/>
+            <Item Value="DisplayDocClass"/>
+            <Item Value="DistributionTypeFk"/>
+            <Item Value="DisplayDistributionTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="DocClassPk"/>
+            <Item Value="DisplayDocClass"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="CrsDocClassViewLovSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <EntityUsage Entity="crs.model.eo.CrsOutgoingDocPreparation" Name="CrsOutgoingDocPreparation"/>
+    <ViewAttribute AliasName="OUTGOING_DOC_PREPARATION_PK"
+        EntityAttrName="OutgoingDocPreparationPk"
+        EntityUsage="CrsOutgoingDocPreparation" IsNotNull="true"
+        Name="OutgoingDocPreparationPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.OutgoingDocPreparationPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OUT_DOC_YEAR" EntityAttrName="OutDocYear"
+        EntityUsage="CrsOutgoingDocPreparation" Name="OutDocYear" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.OutDocYear']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OUT_DOC_DATE_G"
+        EntityAttrName="OutDocDateG"
+        EntityUsage="CrsOutgoingDocPreparation" Name="OutDocDateG" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.OutDocDateG']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OUT_DOC_DATE_H"
+        EntityAttrName="OutDocDateH"
+        EntityUsage="CrsOutgoingDocPreparation" Name="OutDocDateH" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.OutDocDateH']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OUT_DOC_TYPE_FK"
+        EntityAttrName="OutDocTypeFk"
+        EntityUsage="CrsOutgoingDocPreparation"
+        LOVName="LOV_OutDocTypeFk" Name="OutDocTypeFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.OutDocTypeFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OUTGOING_TYPE_FK"
+        EntityAttrName="OutgoingTypeFk"
+        EntityUsage="CrsOutgoingDocPreparation"
+        LOVName="LOV_OutgoingTypeFk" Name="OutgoingTypeFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.OutgoingTypeFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="FROM_DEPARTMENT_FK"
+        EntityAttrName="FromDepartmentFk"
+        EntityUsage="CrsOutgoingDocPreparation"
+        LOVName="LOV_FromDepartmentFk" Name="FromDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.FromDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="TO_DEPARTMENT_FK"
+        EntityAttrName="ToDepartmentFk"
+        EntityUsage="CrsOutgoingDocPreparation"
+        LOVFinder="ToDepartmentFkSwitcher"
+        LOVName="LOV_ToInternalDepartmentFk" Name="ToDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.ToDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+        <Dependencies>
+            <Item Value="OutgoingTypeFk"/>
+        </Dependencies>
+    </ViewAttribute>
+    <ViewAttribute AliasName="FILES_LOCATION_FK"
+        EntityAttrName="FilesLocationFk"
+        EntityUsage="CrsOutgoingDocPreparation"
+        LOVName="LOV_FilesLocationFk" Name="FilesLocationFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.FilesLocationFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+        <Dependencies>
+            <Item Value="ToDepartmentFk"/>
+        </Dependencies>
+    </ViewAttribute>
+    <ViewAttribute AliasName="BARCODE" EntityAttrName="Barcode"
+        EntityUsage="CrsOutgoingDocPreparation" Name="Barcode" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.Barcode']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="SECURITY_LEVEL_FK"
+        EntityAttrName="SecurityLevelFk"
+        EntityUsage="CrsOutgoingDocPreparation"
+        LOVName="LOV_SecurityLevelFk" Name="SecurityLevelFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.SecurityLevelFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="PRIORITY_FK" EntityAttrName="PriorityFk"
+        EntityUsage="CrsOutgoingDocPreparation" LOVName="LOV_PriorityFk"
+        Name="PriorityFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.PriorityFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="RESPOND_PERIOD"
+        EntityAttrName="RespondPeriod"
+        EntityUsage="CrsOutgoingDocPreparation" Name="RespondPeriod" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.RespondPeriod']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="RECEIVED_DATE_G"
+        EntityAttrName="ReceivedDateG"
+        EntityUsage="CrsOutgoingDocPreparation" Name="ReceivedDateG" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.ReceivedDateG']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="RECEIVED_DATE_H"
+        EntityAttrName="ReceivedDateH"
+        EntityUsage="CrsOutgoingDocPreparation" Name="ReceivedDateH" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.ReceivedDateH']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="INCOMING_DOCUMENTS_FK"
+        EntityAttrName="IncomingDocumentsFk"
+        EntityUsage="CrsOutgoingDocPreparation"
+        LOVName="LOV_IncomingDocumentsFk" Name="IncomingDocumentsFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.IncomingDocumentsFk']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="REPLY_NUMBER" EntityAttrName="ReplyNumber"
+        EntityUsage="CrsOutgoingDocPreparation" Name="ReplyNumber" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.ReplyNumber']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OUTGOING_DOCUMENTS_FK"
+        EntityAttrName="OutgoingDocumentsFk"
+        EntityUsage="CrsOutgoingDocPreparation"
+        LOVName="LOV_OutgoingDocumentsFk" Name="OutgoingDocumentsFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.OutgoingDocumentsFk']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="TOPIC_CLASSFICATION_FK"
+        EntityAttrName="TopicClassficationFk"
+        EntityUsage="CrsOutgoingDocPreparation" Name="TopicClassficationFk" PrecisionRule="true"
+        LOVName="LOV_TopicClassficationFk">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.TopicClassficationFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OUT_DOC_REASON_FK"
+        EntityAttrName="OutDocReasonFk"
+        EntityUsage="CrsOutgoingDocPreparation"
+        LOVName="LOV_OutDocReasonFk" Name="OutDocReasonFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.OutDocReasonFk']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="CrsOutgoingDocPreparation" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate"
+        EntityUsage="CrsOutgoingDocPreparation" Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="CrsOutgoingDocPreparation" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate"
+        EntityUsage="CrsOutgoingDocPreparation" Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk"
+        EntityUsage="CrsOutgoingDocPreparation" Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="ATTACHMENTS_NO"
+        EntityAttrName="AttachmentsNo"
+        EntityUsage="CrsOutgoingDocPreparation" Name="AttachmentsNo" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.AttachmentsNo']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayFilesLocationFk"
+        ColumnType="VARCHAR2"
+        Expression="GET_FILE_LOCATION_DESC (FILES_LOCATION_FK,?)"
+        IsPersistent="false" Name="DisplayFilesLocationFk"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsFilesLocation.FilesLocationPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+        <Dependencies>
+            <Item Value="ToDepartmentFk"/>
+        </Dependencies>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayToDepartmentFk"
+        ColumnType="VARCHAR2"
+        Expression="GET_DEPARTMENT_NAME(TO_DEPARTMENT_FK, ?)"
+        IsPersistent="false" IsQueriable="false"
+        Name="DisplayToDepartmentFk" SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['HcmDepartments.DepartmentsPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+        <Dependencies>
+            <Item Value="OutgoingTypeFk"/>
+        </Dependencies>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayFromDepartmentFk"
+        ColumnType="VARCHAR2"
+        Expression="GET_DEPARTMENT_NAME(FROM_DEPARTMENT_FK, ?)"
+        IsPersistent="false" Name="DisplayFromDepartmentFk"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['HcmDepartments.DepartmentsPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayTopicClassficationFk"
+        ColumnType="VARCHAR2"
+        Expression="GET_LOOKUP_DESC(TOPIC_CLASSFICATION_FK, ?)"
+        IsPersistent="false" IsQueriable="false"
+        Name="DisplayTopicClassficationFk" SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['SsoSystemLookupValues.SystemLookupValuesPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayPriorityFk" ColumnType="VARCHAR2"
+        Expression="GET_LOOKUP_DESC(PRIORITY_FK, ?)"
+        IsPersistent="false" Name="DisplayPriorityFk" SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['SsoSystemLookupValues.SystemLookupValuesPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplaySecurityLevelFk"
+        ColumnType="VARCHAR2"
+        Expression="GET_LOOKUP_DESC(SECURITY_LEVEL_FK, ?)"
+        IsPersistent="false" Name="DisplaySecurityLevelFk"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['SsoSystemLookupValues.SystemLookupValuesPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayOutgoingTypeFk"
+        ColumnType="VARCHAR2"
+        Expression="GET_LOOKUP_DESC(OUTGOING_TYPE_FK, ?)"
+        IsPersistent="false" Name="DisplayOutgoingTypeFk"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['SsoSystemLookupValues.SystemLookupValuesPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayOutDocTypeFk" ColumnType="VARCHAR2"
+        Expression="GET_LOOKUP_DESC(OUT_DOC_TYPE_FK, ?)"
+        IsPersistent="false" IsQueriable="false"
+        Name="DisplayOutDocTypeFk" SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['SsoSystemLookupValues.SystemLookupValuesPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayOutSubject"
+        EntityAttrName="DisplayOutSubject"
+        EntityUsage="CrsOutgoingDocPreparation"
+        Expression="GET_OUT_SUBJECT_PRE(OUTGOING_DOC_PREPARATION_PK, ?)"
+        Name="DisplayOutSubject" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocuments.DisplayOutSubject']}"/>
+                <DISPLAYWIDTH Value="50"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute ColumnType="$none$" IsPersistent="false"
+        IsSelected="false"
+        Name="ToDepartmentFkSwitcher" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="DisplayKeyword"
+        EntityAttrName="DisplayKeyword"
+        EntityUsage="CrsOutgoingDocPreparation"
+        Expression="GET_OUT_KEYWORD_PRE(OUTGOING_DOC_PREPARATION_PK, ?)"
+        IsQueriable="false" Name="DisplayKeyword" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocumentsTl.Keyword']}"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayNotes"
+        EntityAttrName="DisplayNotes"
+        EntityUsage="CrsOutgoingDocPreparation"
+        Expression="GET_OUT_NOTES_PRE(OUTGOING_DOC_PREPARATION_PK, ?)"
+        Name="DisplayNotes" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsIncomingDocuments.DisplayNotes']}"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OUT_TEXT" EntityAttrName="OutText"
+        EntityUsage="CrsOutgoingDocPreparation" IsQueriable="false"
+        Name="OutText" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocuments.OutText']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OUTGOING_DOCUMENTS_NO"
+        EntityAttrName="OutgoingDocumentsNo"
+        EntityUsage="CrsOutgoingDocPreparation"
+        Name="OutgoingDocumentsNo" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocPreparation.OutgoingDocumentsNo']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+      <ViewAttribute
+      Name="DistributionTypeFk"
+      PrecisionRule="true"
+      EntityAttrName="DistributionTypeFk"
+          EntityUsage="CrsOutgoingDocPreparation"
+      AliasName="DISTRIBUTION_TYPE_FK"
+      LOVName="LOV_DistributionTypeFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+            ResId="#{menu.resourceLabelMap['CrsDocClass.DistributionTypeFk']}"/>
+        <DISPLAYWIDTH
+            Value="20"/>
+        <CONTROLTYPE
+            Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  
+    <ViewAttribute
+        Name="DistributionTypeFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="BIGINT"
+        AliasName="VIEW_ATTR"
+        SQLType="NUMERIC"/>
+   <ViewAttribute
+      AliasName="DisplayDistributionTypeFk"
+      ColumnType="CHAR"
+      Expression="get_lookup_desc(DISTRIBUTION_TYPE_FK, ?)"
+      Name="DisplayDistributionTypeFk"
+      PrecisionRule="true"
+      SQLType="VARCHAR"
+      Type="java.lang.String"
+      IsPersistent="false"
+      IsQueriable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+            ResId="#{menu.resourceLabelMap['CrsDocClass.DisplayDistributionTypeFk']}"/>
+        <DISPLAYWIDTH
+            Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayDistributionTypeFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.lang.String"
+        ColumnType="CHAR"
+        AliasName="VIEW_ATTR"
+        SQLType="VARCHAR"/>
+    <ViewLinkAccessor
+        IsUpdateable="false"
+        Name="CrsOutgoingBeneficiariesView"
+        Type="oracle.jbo.RowIterator" ViewLink="crs.model.vl.CrsOutgoingBeneficiarieFk3Link"/>
+    <ViewLinkAccessor
+        IsUpdateable="false" Name="CrsOutgoingArchiveView"
+        Type="oracle.jbo.RowIterator" ViewLink="crs.model.vl.CrsOutgoingArchiveFk3Link"/>
+    <ViewLinkAccessor
+        IsUpdateable="false" Name="CrsOutgoingDocCcView"
+        Type="oracle.jbo.RowIterator" ViewLink="crs.model.vl.CrsOutgoingDocCcFk3Link"/>
+    <ViewLinkAccessor
+        IsUpdateable="false"
+        Name="CrsOutgoingDocAttachmentsView"
+        Type="oracle.jbo.RowIterator" ViewLink="crs.model.vl.CrsOutgoingDocAttachmeFk2Link"/>
+    <ViewLinkAccessor
+        IsUpdateable="false"
+        Name="CrsOutgoingDocPreTlView" Type="oracle.jbo.RowIterator" ViewLink="crs.model.vl.CrsOutgoingDocPreTlFk1Link"/>
+    <ViewLinkAccessor
+        IsUpdateable="false"
+        Name="CrsOutgoingRelatedLettersView"
+        Type="oracle.jbo.RowIterator" ViewLink="crs.model.vl.CrsOutgoingRelatedLettFk3Link"/>
+    <ViewLinkAccessor
+        Name="CrsOutgoingCommentsView"
+        ViewLink="crs.model.vl.CrsOutgoingCommentsFk2Link"
+        Type="oracle.jbo.RowIterator"
+        IsUpdateable="false"/>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

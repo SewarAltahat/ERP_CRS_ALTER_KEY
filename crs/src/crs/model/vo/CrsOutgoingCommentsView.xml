@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject ComponentClass="gen.common.BaseViewObjectImpl" BindingStyle="JDBC"
+     CustomQuery="false"
+    FetchMode="FETCH_AS_NEEDED" FromListFlags="1"
+    InheritPersonalization="merge" Name="CrsOutgoingCommentsView"
+    PageIterMode="Full"
+    RowClass="crs.model.vo.CrsOutgoingCommentsViewRowImpl"
+    SelectAllAttributes="false" SelectListFlags="1"
+    Version="12.2.1.12.24" WhereFlags="1" xmlns="http://xmlns.oracle.com/bc4j">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Variable Kind="where" Name="p_lang" Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+        </AttrArray>
+        <TransientExpression
+            Name="expression"><![CDATA[gen.common.GenLib.getLanguageNo()]]></TransientExpression>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+    <ViewAccessor Name="CrsOutgoingDocumentsOutgoingDocumentsFk"
+        RowLevelBinds="false" ViewObjectName="crs.model.vo.CrsOutgoingDocumentsView"/>
+    <ListBinding ListRangeSize="10"
+        ListVOName="CrsOutgoingDocumentsOutgoingDocumentsFk"
+        MRUCount="0" Name="LOV_OutgoingDocumentsFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="OutgoingDocumentsFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="OutgoingDocumentsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="OutgoingDocumentsPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute"/>
+    </ListBinding>
+    <EntityUsage Entity="crs.model.eo.CrsOutgoingComments" Name="CrsOutgoingComments"/>
+    <ViewAttribute AliasName="OUTGOING_COMMENTS_PK"
+        EntityAttrName="OutgoingCommentsPk"
+        EntityUsage="CrsOutgoingComments" IsNotNull="true"
+        Name="OutgoingCommentsPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingComments.OutgoingCommentsPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OUTGOING_DOCUMENTS_FK"
+        EntityAttrName="OutgoingDocumentsFk"
+        EntityUsage="CrsOutgoingComments"
+        LOVName="LOV_OutgoingDocumentsFk" Name="OutgoingDocumentsFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingComments.OutgoingDocumentsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="CrsOutgoingComments" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate" EntityUsage="CrsOutgoingComments"
+        Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="CrsOutgoingComments" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate" EntityUsage="CrsOutgoingComments"
+        Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk"
+        EntityUsage="CrsOutgoingComments" Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayCommentValue"
+        EntityAttrName="DisplayCommentValue"
+        EntityUsage="CrsOutgoingComments"
+        Expression="GET_OUT_COMMENT_VALUE(OUTGOING_COMMENTS_PK, ?)"
+        Name="DisplayCommentValue" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingComments.DisplayCommentValue']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplayCommentValueSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingCommentsTl.CommentValue']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="OutgoingDocPreparationFk"
+        PrecisionRule="true"
+        EntityAttrName="OutgoingDocPreparationFk"
+        EntityUsage="CrsOutgoingComments"
+        AliasName="OUTGOING_DOC_PREPARATION_FK">
+                <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingComments.OutgoingDocPreparationFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+        </ViewAttribute>
+    <ViewLinkAccessor
+        IsUpdateable="false"
+        Name="CrsOutgoingCommentsTlView" Type="oracle.jbo.RowIterator" ViewLink="crs.model.vl.CrsOutgoingCommentsTlFk1Link"/>
+    <ResourceBundle>
+   <PropertiesBundle PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  ComponentClass="gen.common.BaseViewObjectImpl"
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="IncomingDocumentCCVwView"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  BindingStyle="JDBC"
+  CustomQuery="true"
+  PageIterMode="Full"
+  RowClass="crs.model.ro.IncomingDocumentCCVwViewRowImpl">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="crs.model.ro.IncomingDocumentCCVwView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="p_lang"
+    Kind="where"
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="0"/>
+      <Item Value="1"/>
+      <Item Value="2"/>
+      <Item Value="3"/>
+      <Item Value="4"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenLib.getLanguageNo()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+            Value="Hide"/>
+      </SchemaBasedProperties>
+      </Properties>
+  </Variable>
+  <SQLQuery><![CDATA[select          
+       INCOMING_CC.INCOMING_DOC_CC_PK ,         
+       INCOMING_CC.DEPARTMENTS_FK CC_DEPARTMENTS_FK,         
+       GET_DEPARTMENT_NAME(INCOMING_CC.DEPARTMENTS_FK, ?) CC_DEPARTMENTS_NAME ,         
+       INCOMING_CC.ACTION_FK ,         
+       GET_LOOKUP_DESC(ACTION_FK, ?) DISPLAY_ACTION_FK ,         
+       INCOMING_CC.EMPLOYEE_FK ,         
+       GET_EMPLOYEES_EMPLOYEE_NAME(EMPLOYEE_FK, ?) DISPLAY_EMPLOYEE_FK,         
+       INCOMING_CC.EXECUTION_DATE_G ,         
+       INCOMING_CC.EXECUTION_DATE_H ,         
+       INCOMING_DOCUMENTS.INCOMING_DOCUMENTS_PK ,         
+       GET_IN_SUBJECT(INCOMING_DOCUMENTS_PK, ?)DISPLAY_IN_SUBJECT ,         
+       INCOMING_DOCUMENTS.IN_DOC_DATE_G ,     
+       INCOMING_DOCUMENTS.IN_DOC_DATE_H ,    
+       INCOMING_DOCUMENTS.CONFIRM_ASSIGNMENT_FL  ,      
+       INCOMING_CC.incoming_DOC_STS_FK ,    
+       INCOMING_DOCUMENTS.FROM_DEPARTMENT_FK ,         
+       GET_DEPARTMENT_NAME(INCOMING_DOCUMENTS.FROM_DEPARTMENT_FK, ?) FROM_DEPARTMENTS_NAME  ,  
+       INCOMING_DOCUMENTS.SECURITY_LEVEL_FK   
+from CRS_INCOMING_DOC_CC INCOMING_CC ,CRS_INCOMING_DOCUMENTS INCOMING_DOCUMENTS         
+where INCOMING_CC.INCOMING_DOCUMENTS_FK = INCOMING_DOCUMENTS.INCOMING_DOCUMENTS_PK]]></SQLQuery>
+  <ViewAttribute
+    Name="IncomingDocCcPk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="INCOMING_DOC_CC_PK"
+    Expression="INCOMING_DOC_CC_PK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="CcDepartmentsFk"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="CC_DEPARTMENTS_FK"
+    Expression="CC_DEPARTMENTS_FK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="CcDepartmentsName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CC_DEPARTMENTS_NAME"
+    Expression="CC_DEPARTMENTS_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ActionFk"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="ACTION_FK"
+    Expression="ACTION_FK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DisplayActionFk"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DISPLAY_ACTION_FK"
+    Expression="DISPLAY_ACTION_FK"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EmployeeFk"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="EMPLOYEE_FK"
+    Expression="EMPLOYEE_FK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DisplayEmployeeFk"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DISPLAY_EMPLOYEE_FK"
+    Expression="DISPLAY_EMPLOYEE_FK"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ExecutionDateG"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="TIMESTAMP"
+    AliasName="EXECUTION_DATE_G"
+    Expression="EXECUTION_DATE_G"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="ExecutionDateH"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="EXECUTION_DATE_H"
+    Expression="EXECUTION_DATE_H"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="IncomingDocumentsPk"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="INCOMING_DOCUMENTS_PK"
+    Expression="INCOMING_DOCUMENTS_PK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DisplayInSubject"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DISPLAY_IN_SUBJECT"
+    Expression="DISPLAY_IN_SUBJECT"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="InDocDateG"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="TIMESTAMP"
+    AliasName="IN_DOC_DATE_G"
+    Expression="IN_DOC_DATE_G"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="InDocDateH"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="IN_DOC_DATE_H"
+    Expression="IN_DOC_DATE_H"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ConfirmAssignmentFl"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="CONFIRM_ASSIGNMENT_FL"
+    Expression="CONFIRM_ASSIGNMENT_FL"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="IncomingDocStsFk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="INCOMING_DOC_STS_FK"
+    Expression="INCOMING_DOC_STS_FK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="FromDepartmentFk"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="FROM_DEPARTMENT_FK"
+    Expression="FROM_DEPARTMENT_FK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="FromDepartmentsName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FROM_DEPARTMENTS_NAME"
+    Expression="FROM_DEPARTMENTS_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SecurityLevelFk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="SECURITY_LEVEL_FK"
+    SQLType="NUMERIC"
+    Expression="SECURITY_LEVEL_FK"/>
+  <ViewAttribute
+    Name="CcDepartmentsNameSearch"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="DisplayActionFkSearch"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="DisplayEmployeeFkSearch"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="DisplayInSubjectSearch"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="CcDepartmentsFkSearch"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="FromDepartmentsNameSearch"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewCriteria
+    Name="IncomingDocumentCCVwViewConfirmAssignmentFlCriteria"
+    ViewObjectName="crs.model.ro.IncomingDocumentCCVwView"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="IncomingDocumentCCVwViewCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ConfirmAssignmentFl"
+        ViewAttribute="ConfirmAssignmentFl"
+        Operator="="
+        Conjunction="AND"
+        Value="1"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="IncomingDocCcPk"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="CrsIncomingDocCcView"
+    ViewLink="crs.model.vl.IncomingDocumentCCVwLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="crs.view.scrlabels"/>
+  </ResourceBundle>
+</ViewObject>

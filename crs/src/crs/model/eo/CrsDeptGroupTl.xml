@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity AliasName="CrsDeptGroupTl" BindingStyle="JDBC"
+    DBObjectName="CRS_DEPT_GROUP_TL" DBObjectType="table"
+    InheritPersonalization="merge" Name="CrsDeptGroupTl"
+    RowClass="crs.model.eo.CrsDeptGroupTlImpl"
+    Version="12.2.1.12.24" xmlns="http://xmlns.oracle.com/bc4j"
+    xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Attribute ColumnName="DEPT_GROUP_TL_PK" ColumnType="NUMBER" Name="DeptGroupTlPk" PrimaryKey="true"
+        SQLType="NUMERIC" TableName="CRS_DEPT_GROUP_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="DEPT_GROUP_FK" ColumnType="NUMBER"
+        Name="DeptGroupFk" SQLType="NUMERIC"
+        TableName="CRS_DEPT_GROUP_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="LANGUAGES_FK" ColumnType="NUMBER"
+        Name="LanguagesFk" SQLType="NUMERIC"
+        TableName="CRS_DEPT_GROUP_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="GROUP_NAME" ColumnType="VARCHAR2"
+        Name="GroupName" Precision="200" SQLType="VARCHAR"
+        TableName="CRS_DEPT_GROUP_TL" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="200"/>
+        </DesignTime>
+    </Attribute>
+    <Attribute ColumnName="CREATED_BY" ColumnType="NUMBER"
+        Name="CreatedBy" SQLType="NUMERIC" TableName="CRS_DEPT_GROUP_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATION_DATE" ColumnType="TIMESTAMP"
+        Name="CreationDate" SQLType="TIMESTAMP"
+        TableName="CRS_DEPT_GROUP_TL" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="MODIFIED_BY" ColumnType="NUMBER"
+        Name="ModifiedBy" SQLType="NUMERIC"
+        TableName="CRS_DEPT_GROUP_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="MODIFIED_DATE" ColumnType="TIMESTAMP"
+        Name="ModifiedDate" SQLType="TIMESTAMP"
+        TableName="CRS_DEPT_GROUP_TL" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="USER_DEPARTMENT_FK" ColumnType="NUMBER"
+        Name="UserDepartmentFk" SQLType="NUMERIC"
+        TableName="CRS_DEPT_GROUP_TL" Type="java.math.BigDecimal"/>
+    <AccessorAttribute
+        Association="crs.model.assoc.CrsDeptGroupTlFk1Assoc"
+        AssociationEnd="crs.model.assoc.CrsDeptGroupTlFk1Assoc.CrsDeptGroup"
+        AssociationOtherEnd="crs.model.assoc.CrsDeptGroupTlFk1Assoc.CrsDeptGroupTl"
+        IsUpdateable="true" Name="CrsDeptGroup" Type="crs.model.eo.CrsDeptGroupImpl"/>
+    <Key
+        Name="AltKey"
+        AltKey="true">
+        <DesignTime>
+            <Attr Name="_isUnique" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_DEPT_GROUP_TL"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsDeptGroupTl.GroupName"/>
+            <Item Value="crs.model.eo.CrsDeptGroupTl.LanguagesFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsDeptGroupTlPk" PrimaryKey="true">
+        <DesignTime>
+            <Attr Name="_DBObjectName" Value="CRS_DEPT_GROUP_TL_PK"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsDeptGroupTl.DeptGroupTlPk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsDeptGroupTlFk1">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="CRS_DEPT_GROUP_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_DEPT_GROUP_TL_FK1"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsDeptGroupTl.DeptGroupFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsDeptGroupTlFk2">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="SSO_LANGUAGES_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_DEPT_GROUP_TL_FK2"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsDeptGroupTl.LanguagesFk"/>
+        </AttrArray>
+    </Key>
+    <validation:UniqueKeyValidationBean
+        Name="CrsDeptGroupTlRule0"
+        KeyName="AltKey" ResId="#{menu.resourceLabelMap['error.DuplicateCode']}">
+        <validation:OnAttributes>
+            <validation:Item
+                Value="GroupName"/>
+            <validation:Item
+                Value="LanguagesFk"/>
+        </validation:OnAttributes>
+    </validation:UniqueKeyValidationBean>
+     <ResourceBundle>
+        <PropertiesBundle
+            PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</Entity>
+<!---->

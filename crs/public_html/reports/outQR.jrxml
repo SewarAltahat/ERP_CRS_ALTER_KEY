@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="outQR" pageWidth="200" pageHeight="200" columnWidth="200" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" scriptletClass="gen.common.JasperScriptlet" uuid="d110b21d-3d62-47f5-9894-dbdbb1140437">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="p_lang" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_out_number_label" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_out_doc_date_g_label" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_date_format" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_out_type_label" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_dept_ref_label" class="java.lang.String"/>
+	<parameter name="p_attachment_no_label" class="java.lang.String"/>
+	<parameter name="p_without_label" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_outgoing_label" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_outgoing_documents_pk" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+  GET_DEPARTMENT_NAME(CRS_OUTGOING_DOCUMENTS."TO_DEPARTMENT_FK", $P{p_lang})AS DEP_REF,
+  GET_LOOKUP_DESC(CRS_OUTGOING_DOCUMENTS."OUTGOING_TYPE_FK", $P{p_lang}) OUTGOING_DESC,
+  CRS_OUTGOING_DOCUMENTS."BARCODE"  AS CRS_OUT_DOCUMENTS_BAR_CODE,
+  CRS_OUTGOING_DOCUMENTS."OUTGOING_DOCUMENTS_NO" AS CRS_OUT_DOCUMENTS_OUT_NUMBER,
+  CRS_OUTGOING_DOCUMENTS."OUT_DOC_DATE_G" OUT_DOC_DATE_G,
+  CRS_OUTGOING_DOCUMENTS."OUT_DOC_DATE_H",
+  DECODE(CRS_OUTGOING_DOCUMENTS."OUTGOING_TYPE_FK",117,1,0) EXTERNAL_FLAG ,
+  CRS_OUTGOING_DOCUMENTS."ATTACHMENTS_NO",
+  GET_DEPARTMENT_NAME(FROM_DEPARTMENT_FK , $P{p_lang}) AS PARTITION
+FROM "CRS_OUTGOING_DOCUMENTS" CRS_OUTGOING_DOCUMENTS
+WHERE CRS_OUTGOING_DOCUMENTS.OUTGOING_DOCUMENTS_PK= $P{p_outgoing_documents_pk}]]>
+	</queryString>
+	<field name="DEP_REF" class="java.lang.String"/>
+	<field name="OUTGOING_DESC" class="java.lang.String"/>
+	<field name="CRS_OUT_DOCUMENTS_BAR_CODE" class="java.math.BigDecimal"/>
+	<field name="CRS_OUT_DOCUMENTS_OUT_NUMBER" class="java.math.BigDecimal"/>
+	<field name="OUT_DOC_DATE_G" class="java.sql.Timestamp"/>
+	<field name="OUT_DOC_DATE_H" class="java.math.BigDecimal"/>
+	<field name="EXTERNAL_FLAG" class="java.math.BigDecimal"/>
+	<field name="ATTACHMENTS_NO" class="java.math.BigDecimal"/>
+	<field name="PARTITION" class="java.lang.String"/>
+	<variable name="v_att_no" class="java.lang.String">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[($F{ATTACHMENTS_NO}== null || $F{ATTACHMENTS_NO}.intValue() == 0) ? $P{p_without_label} : $F{ATTACHMENTS_NO}.toString()]]></initialValueExpression>
+	</variable>
+	<pageHeader>
+		<band height="200">
+			<image>
+				<reportElement x="0" y="0" width="200" height="200" uuid="1d416e55-63f9-4a3e-81e2-838b69860a2f"/>
+				<imageExpression><![CDATA[$P{REPORT_SCRIPTLET}.getQRCodeBufferedImage(
+$P{p_out_number_label}  + $F{CRS_OUT_DOCUMENTS_OUT_NUMBER}+ " \n" +
+$P{p_out_type_label} + $P{p_outgoing_label} + " "+$F{OUTGOING_DESC} + " \n" +
+$P{p_out_doc_date_g_label} + $P{REPORT_SCRIPTLET}.formatDate($F{OUT_DOC_DATE_G},$P{p_date_format}) + "-" +$P{REPORT_SCRIPTLET}.convertHijriBigDecimalToString($F{OUT_DOC_DATE_H}) + " \n" +
+$P{p_attachment_no_label} + $V{v_att_no}+ " \n" +
+$P{p_dept_ref_label} + $F{DEP_REF} + " \n"
+, 200 , 200)]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+</jasperReport>

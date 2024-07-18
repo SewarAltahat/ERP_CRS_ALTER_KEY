@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity AliasName="CrsOutgoingDocCc" BindingStyle="JDBC"
+    DBObjectName="CRS_OUTGOING_DOC_CC" DBObjectType="table"
+    InheritPersonalization="merge" Name="CrsOutgoingDocCc"
+    RowClass="crs.model.eo.CrsOutgoingDocCcImpl"
+    Version="12.2.1.12.24"
+    xmlns="http://xmlns.oracle.com/bc4j" xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Attribute ColumnName="OUTGOING_DOC_CC_PK" ColumnType="NUMBER"
+        Name="OutgoingDocCcPk" PrimaryKey="true" SQLType="NUMERIC"
+        TableName="CRS_OUTGOING_DOC_CC" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="OUTGOING_DOCUMENTS_FK" ColumnType="NUMBER"
+        Name="OutgoingDocumentsFk" SQLType="NUMERIC"
+        TableName="CRS_OUTGOING_DOC_CC" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="OUTGOING_DOC_PREPARATION_FK"
+        ColumnType="NUMBER" Name="OutgoingDocPreparationFk"
+        SQLType="NUMERIC" TableName="CRS_OUTGOING_DOC_CC" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="DEPARTMENTS_FK" ColumnType="NUMBER"
+        Name="DepartmentsFk" SQLType="NUMERIC"
+        TableName="CRS_OUTGOING_DOC_CC" Type="java.math.BigDecimal">
+        <validation:MethodValidationBean
+            Name="DepartmentsFkRule0"
+            MethodName="validateDepartmentsFk"/>
+    </Attribute>
+    <Attribute ColumnName="CREATED_BY" ColumnType="NUMBER"
+        Name="CreatedBy" SQLType="NUMERIC"
+        TableName="CRS_OUTGOING_DOC_CC" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATION_DATE" ColumnType="TIMESTAMP"
+        Name="CreationDate" SQLType="TIMESTAMP"
+        TableName="CRS_OUTGOING_DOC_CC" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="MODIFIED_BY" ColumnType="NUMBER"
+        Name="ModifiedBy" SQLType="NUMERIC"
+        TableName="CRS_OUTGOING_DOC_CC" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="MODIFIED_DATE" ColumnType="TIMESTAMP"
+        Name="ModifiedDate" SQLType="TIMESTAMP"
+        TableName="CRS_OUTGOING_DOC_CC" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="USER_DEPARTMENT_FK" ColumnType="NUMBER"
+        Name="UserDepartmentFk" SQLType="NUMERIC"
+        TableName="CRS_OUTGOING_DOC_CC" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="ACTION_FK" ColumnType="NUMBER"
+        Name="ActionFk" SQLType="NUMERIC"
+        TableName="CRS_OUTGOING_DOC_CC" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="EXECUTION_DATE_G" ColumnType="TIMESTAMP"
+        Name="ExecutionDateG" SQLType="TIMESTAMP"
+        TableName="CRS_OUTGOING_DOC_CC" Type="java.sql.Date"/>
+    <Attribute ColumnName="EXECUTION_DATE_H" ColumnType="NUMBER"
+        Name="ExecutionDateH" SQLType="NUMERIC"
+        TableName="CRS_OUTGOING_DOC_CC" Type="java.math.BigDecimal"/>
+    <Attribute
+        ColumnType="CHAR"
+        IsPersistent="false"
+        Name="DisplayNotes"
+        Precision="4000"
+        SQLType="VARCHAR"
+        Type="java.lang.String"
+        ColumnName="$none$"/>
+    <Attribute
+        Name="EmployeeFk"
+        ColumnName="EMPLOYEE_FK"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        TableName="CRS_OUTGOING_DOC_CC">
+        <validation:MethodValidationBean
+            Name="EmployeeFkRule0"
+            MethodName="validateEmployeeFk"/>
+    </Attribute>
+    <Attribute
+        Name="DisplayOutgoingDocGuidance"
+        Precision="400"
+        ColumnName="$none$"
+        SQLType="VARCHAR"
+        Type="java.lang.String"
+        ColumnType="CHAR"
+        IsPersistent="false"
+        IsQueriable="false"/>
+    <AccessorAttribute
+        Association="crs.model.assoc.CrsOutgoingDocCcFk1Assoc"
+        AssociationEnd="crs.model.assoc.CrsOutgoingDocCcFk1Assoc.CrsOutgoingDocuments"
+        AssociationOtherEnd="crs.model.assoc.CrsOutgoingDocCcFk1Assoc.CrsOutgoingDocCc"
+        IsUpdateable="true" Name="CrsOutgoingDocuments" Type="crs.model.eo.CrsOutgoingDocumentsImpl"/>
+    <AccessorAttribute
+        Association="crs.model.assoc.CrsOutgoingDocCcFk3Assoc"
+        AssociationEnd="crs.model.assoc.CrsOutgoingDocCcFk3Assoc.CrsOutgoingDocPreparation"
+        AssociationOtherEnd="crs.model.assoc.CrsOutgoingDocCcFk3Assoc.CrsOutgoingDocCc"
+        IsUpdateable="true" Name="CrsOutgoingDocPreparation" Type="crs.model.eo.CrsOutgoingDocPreparationImpl"/>
+    <AccessorAttribute
+        Name="CrsOutgoingDocCcTl"
+        Association="crs.model.assoc.OutgoingDocCcTlAssoc"
+        AssociationEnd="crs.model.assoc.OutgoingDocCcTlAssoc.CrsOutgoingDocCcTl"
+        AssociationOtherEnd="crs.model.assoc.OutgoingDocCcTlAssoc.CrsOutgoingDocCc"
+        Type="oracle.jbo.RowIterator"
+        IsUpdateable="false"/>
+    <AccessorAttribute
+        Name="HcmDepartments"
+        Association="crs.model.eo.CrsOutgoingDocCcFk2Assoc"
+        AssociationEnd="crs.model.eo.CrsOutgoingDocCcFk2Assoc.HcmDepartments"
+        AssociationOtherEnd="crs.model.eo.CrsOutgoingDocCcFk2Assoc.CrsOutgoingDocCc"
+        Type="crs.model.eo.HcmDepartmentsImpl"
+        IsUpdateable="true"/>
+    <Key Name="CrsOutgoingDocCcPk" PrimaryKey="true">
+        <DesignTime>
+            <Attr Name="_DBObjectName" Value="CRS_OUTGOING_DOC_CC_PK"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsOutgoingDocCc.OutgoingDocCcPk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsOutgoingDocCcFk1">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="CRS_OUTGOING_DOCUMENT_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_OUTGOING_DOC_CC_FK1"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsOutgoingDocCc.OutgoingDocumentsFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsOutgoingDocCcFk2">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="HCM_DEPARTMENTS_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_OUTGOING_DOC_CC_FK2"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsOutgoingDocCc.DepartmentsFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsOutgoingDocCcFk3">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="CRS_OUTGOING_DOC_PREPARATI_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_OUTGOING_DOC_CC_FK3"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsOutgoingDocCc.OutgoingDocPreparationFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsOutgoingDocCcFk4">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="SYSTEM_LOOKUP_VALUES_REF_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_OUTGOING_DOC_CC_FK4"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsOutgoingDocCc.ActionFk"/>
+        </AttrArray>
+    </Key>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</Entity>
+<!---->

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CrsOutgoingArchiveTlFk1Assoc"
+  Version="12.2.1.16.48"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="CrsOutgoingArchive"
+    Cardinality="1"
+    Source="true"
+    Owner="crs.model.eo.CrsOutgoingArchive">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CrsOutgoingArchive"/>
+      <Attr Name="_foreignKey" Value="crs.model.eo.CrsOutgoingArchive.CrsOutgoingArchivePk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingArchive.OutgoingArchivePk"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="CrsOutgoingArchiveTl"
+    Cardinality="-1"
+    Owner="crs.model.eo.CrsOutgoingArchiveTl">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CrsOutgoingArchiveTl"/>
+      <Attr Name="_foreignKey" Value="crs.model.eo.CrsOutgoingArchiveTl.CrsOutgoingArchiveTlFk1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingArchiveTl.OutgoingArchiveFk"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

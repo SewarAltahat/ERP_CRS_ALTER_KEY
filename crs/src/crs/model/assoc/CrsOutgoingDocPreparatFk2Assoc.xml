@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CrsOutgoingDocPreparatFk2Assoc"
+  Version="12.2.1.16.48"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="CrsFilesLocation"
+    Cardinality="1"
+    Source="true"
+    Owner="crs.model.eo.CrsFilesLocation">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CrsFilesLocation"/>
+      <Attr Name="_foreignKey" Value="crs.model.eo.CrsFilesLocation.CrsFileLocationPk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsFilesLocation.FilesLocationPk"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="CrsOutgoingDocPreparation"
+    Cardinality="-1"
+    Owner="crs.model.eo.CrsOutgoingDocPreparation">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CrsOutgoingDocPreparation"/>
+      <Attr Name="_foreignKey" Value="crs.model.eo.CrsOutgoingDocPreparation.CrsOutgoingDocPreparatFk2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingDocPreparation.FilesLocationFk"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

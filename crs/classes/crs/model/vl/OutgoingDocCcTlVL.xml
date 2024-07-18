@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OutgoingDocCcTlVL"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  EntityAssociation="crs.model.assoc.OutgoingDocCcTlAssoc">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="crs.model.vl.OutgoingDocCcTlVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="CrsOutgoingDocCcView"
+    Cardinality="1"
+    Source="true"
+    Owner="crs.model.vo.CrsOutgoingDocCcView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CrsOutgoingDocCcView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.vo.CrsOutgoingDocCcView.OutgoingDocCcPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="CrsOutgoingDocCcTlView"
+    Cardinality="-1"
+    Owner="crs.model.vo.CrsOutgoingDocCcTlView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CrsOutgoingDocCcTlView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.vo.CrsOutgoingDocCcTlView.OutgoingDocCcFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="crs.view.scrlabels"/>
+  </ResourceBundle>
+</ViewLink>

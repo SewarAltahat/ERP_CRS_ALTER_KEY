@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CrsOutgoingDocAttachTFk2Link"
+  Version="12.2.1.16.48"
+  InheritPersonalization="merge"
+  EntityAssociation="crs.model.assoc.CrsOutgoingDocAttachTFk2Assoc">
+  <ViewLinkDefEnd
+    Name="CrsOutgoingDocAttachmentsView"
+    Cardinality="1"
+    Source="true"
+    Owner="crs.model.vo.CrsOutgoingDocAttachmentsView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CrsOutgoingDocAttachmentsView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.vo.CrsOutgoingDocAttachmentsView.OutgoingDocAttachmentsPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="CrsOutgoingDocAttachTlView"
+    Cardinality="-1"
+    Owner="crs.model.vo.CrsOutgoingDocAttachTlView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CrsOutgoingDocAttachTlView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.vo.CrsOutgoingDocAttachTlView.OutgoingDocAttachmentsFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

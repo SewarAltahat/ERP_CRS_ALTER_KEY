@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" version="2.1">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="Doc1" title="#{menu.resourceLabelMap['menu.beneficiaries']}" uncommittedDataWarning="on">
+      <af:messages id="m1"/>
+      <af:form id="form1">
+        <af:pageTemplate id="page1" viewId="/templateDef.jspx">
+          <f:attribute name="pageTitle" value="#{menu.resourceLabelMap['menu.beneficiaries']}"/>
+          <f:facet name="main">
+            <af:panelGroupLayout id="pg1" layout="scroll">
+              <af:panelBox styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['menu.beneficiaries']}">
+                <af:panelStretchLayout dimensionsFrom="children" id="psl14" styleClass="AFStretchWidth">
+                  <f:facet name="center">
+                    <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem" id="pc2"
+                                        styleClass="AFStretchWidth">
+                      <f:facet name="secondaryToolbar">
+                        <af:toolbar id="tb1">
+                          <af:commandButton action="#{menu.genericDeleteAction}"
+                                            disabled="#{!menu.deleteAllowed or !bindings.DeleteCrsBeneficiariesView1.enabled}"
+                                            icon="#{menu.deleteIcon}" id="Del1" immediate="true" partialSubmit="true"
+                                            text="#{menu.resourceLabelMap['label.delete']}" styleClass="deleteButton">
+                            <af:setPropertyListener from="DeleteCrsBeneficiariesView1" to="#{sessionScope.deleteParam}"
+                                                    type="action"/>
+                            <af:setPropertyListener from="CrsBeneficiaries1"
+                                                    to="#{sessionScope.refreshParam}" type="action"/>
+                            <af:setPropertyListener from="CrsBeneficiariesView1" to="#{sessionScope.viewParam}"
+                                                    type="action"/>
+                          </af:commandButton>
+                          <af:spacer width="5"/>
+                          <af:commandButton actionListener="#{bindings.CreateInsertCrsBeneficiariesView1.execute}"
+                                            disabled="#{!menu.insertAllowed}" icon="#{menu.createInsertIcon}" id="ci1"
+                                            partialSubmit="true" text="#{menu.resourceLabelMap['label.createInsert']}"
+                                            styleClass="insertButton"/>
+                          <af:spacer width="5"/>
+                          <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                            disabled="#{!menu.updateAllowed}" icon="#{menu.commitIcon}" id="Commit1"
+                                            partialSubmit="true" text="#{menu.resourceLabelMap['label.commit']}"
+                                            styleClass="commitButton"/>
+                          <af:spacer width="5"/>
+                          <af:commandButton actionListener="#{bindings.Rollback.execute}" icon="#{menu.rollbackIcon}"
+                                            id="rb1" immediate="true" partialSubmit="true"
+                                            text="#{menu.resourceLabelMap['label.rollback']}"
+                                            styleClass="rollbackButton" visible="#{menu.rollbackVisible}">
+                            <af:resetActionListener/>
+                          </af:commandButton>
+                          <af:spacer width="5"/>
+                          <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print1"
+                                            immediate="true" partialSubmit="true"
+                                            text="#{menu.resourceLabelMap['label.print']}" styleClass="printButton"
+                                            visible="#{menu.printVisible}">
+                            <af:showPrintablePageBehavior/>
+                          </af:commandButton>
+                          <af:spacer width="5"/>
+                          <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel1"
+                                            immediate="true" partialSubmit="true"
+                                            text="#{menu.resourceLabelMap['label.excel']}" styleClass="excelButton"
+                                            visible="#{menu.excelVisible}">
+                            <af:setPropertyListener from="CrsBeneficiaries1" to="#{sessionScope.tableId}"
+                                                    type="action"/>
+                            <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                          </af:commandButton>
+                          <af:spacer width="5"/>
+                          <af:commandButton disabled="#{!bindings.DeleteCrsBeneficiariesView1.enabled or bindings.BeneficiariesPk.inputValue == null}"
+                                            icon="#{menu.translationIcon}" id="translation" partialSubmit="true"
+                                            partialTriggers="Commit1 rb1"
+                                            text="#{menu.resourceLabelMap['label.translation']}"
+                                            styleClass="excelButton">
+                            <af:showPopupBehavior popupId="::crsBeneficiariesTlPopUp" triggerType="action"/>
+                          </af:commandButton>
+                          <af:spacer width="5"/>
+                        </af:toolbar>
+                      </f:facet>
+                      <af:table autoHeightRows="10" blockRowNavigationOnError="always" columnSelection="multiple"
+                                columnStretching="column:DisplayBeneficiaryNameC3" displayRow="selected"
+                                editingMode="editAll"
+                                emptyText="#{bindings.CrsBeneficiariesView1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                fetchSize="#{bindings.CrsBeneficiariesView1.rangeSize}"
+                                filterModel="#{bindings.CrsBeneficiariesView1CriteriaQuery.queryDescriptor}"
+                                filterVisible="false" id="CrsBeneficiaries1"
+                                partialTriggers="::ci1 ::Commit1 :::crsBeneficiariesTlDialog ::rb1"
+                                queryListener="#{bindings.CrsBeneficiariesView1CriteriaQuery.processQuery}"
+                                rowBandingInterval="1" rowSelection="single"
+                                rows="#{bindings.CrsBeneficiariesView1.rangeSize}" scrollPolicy="page"
+                                selectedRowKeys="#{bindings.CrsBeneficiariesView1.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.CrsBeneficiariesView1.collectionModel.makeCurrent}"
+                                styleClass="AFStretchWidth t50" value="#{bindings.CrsBeneficiariesView1.collectionModel}"
+                                var="row" varStatus="vs" verticalGridVisible="false">
+                        <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                   headerText="#{menu.resourceLabelMap['CrsBeneficiaries.BeneficiariesPk']}"
+                                   id="BeneficiariesPkC4" sortProperty="BeneficiariesPk" sortable="true" width="140">
+                          <af:inputText columns="#{bindings.CrsBeneficiariesView1.hints.BeneficiariesPk.displayWidth}"
+                                        id="crsBeneficiariesBeneficiariespk"
+                                        label="#{menu.resourceLabelMap['CrsBeneficiaries.BeneficiariesPk']}"
+                                        maximumLength="#{bindings.CrsBeneficiariesView1.hints.BeneficiariesPk.precision}"
+                                        readOnly="true" value="#{row.bindings.BeneficiariesPk.inputValue}">
+                            <af:convertNumber groupingUsed="false" pattern="#{row.bindings.BeneficiariesPk.format}"/>
+                            <f:validator binding="#{row.bindings.BeneficiariesPk.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                   headerText="#{bindings.CrsBeneficiariesView1.hints.DisplayBeneficiaryName.label}"
+                                   id="DisplayBeneficiaryNameC3" showRequired="true"
+                                   sortProperty="DisplayBeneficiaryNameSearch" sortable="true" width="200">
+                          <af:inputText autoSubmit="true"
+                                        columns="#{bindings.CrsBeneficiariesView1.hints.DisplayBeneficiaryName.displayWidth}"
+                                        id="crsDisplayBeneficiaryName"
+                                        label="#{bindings.CrsBeneficiariesView1.hints.DisplayBeneficiaryName.label}"
+                                        maximumLength="#{bindings.CrsBeneficiariesView1.hints.DisplayBeneficiaryName.precision}"
+                                        required="true" value="#{row.bindings.DisplayBeneficiaryName.inputValue}"
+                                        valueChangeListener="#{beneficiaries.displayBeneficiaryNameChanged}">
+                            <f:validator binding="#{row.bindings.DisplayBeneficiaryName.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                   headerText="#{menu.resourceLabelMap['CrsBeneficiaries.BeneficiaryId']}"
+                                   id="BeneficiaryIdC5" showRequired="true"
+                                   sortProperty="#{bindings.CrsBeneficiariesView1.hints.BeneficiaryId.name}"
+                                   sortable="true" width="150">
+                          <af:inputText autoSubmit="true"
+                                        columns="#{bindings.CrsBeneficiariesView1.hints.BeneficiaryId.displayWidth}"
+                                        id="crsBeneficiariesBeneficiaryid"
+                                        label="#{menu.resourceLabelMap['CrsBeneficiaries.BeneficiaryId']}"
+                                        maximumLength="#{bindings.CrsBeneficiariesView1.hints.BeneficiaryId.precision}"
+                                        required="true" value="#{row.bindings.BeneficiaryId.inputValue}">
+                            <f:validator binding="#{row.bindings.BeneficiaryId.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                   headerText="#{menu.resourceLabelMap['CrsBeneficiaries.MobileNo']}" id="MobileNoC6"
+                                   sortProperty="MobileNo" sortable="true" width="150">
+                          <af:inputText autoSubmit="true"
+                                        columns="#{bindings.CrsBeneficiariesView1.hints.MobileNo.displayWidth}"
+                                        id="crsBeneficiariesMobileno"
+                                        label="#{menu.resourceLabelMap['CrsBeneficiaries.MobileNo']}"
+                                        maximumLength="#{bindings.CrsBeneficiariesView1.hints.MobileNo.precision}"
+                                        required="false" value="#{row.bindings.MobileNo.inputValue}">
+                            <f:validator validatorId="MobileNumberValidator"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                   headerText="#{menu.resourceLabelMap['CrsBeneficiaries.Email']}" id="EmailC7"
+                                   sortProperty="#{bindings.CrsBeneficiariesView1.hints.Email.name}" sortable="true"
+                                   width="200">
+                          <af:inputText autoSubmit="true"
+                                        columns="#{bindings.CrsBeneficiariesView1.hints.Email.displayWidth}"
+                                        id="crsBeneficiariesEmail"
+                                        label="#{menu.resourceLabelMap['CrsBeneficiaries.Email']}"
+                                        maximumLength="#{bindings.CrsBeneficiariesView1.hints.Email.precision}"
+                                        required="#{bindings.CrsBeneficiariesView1.hints.Email.mandatory}"
+                                        value="#{row.bindings.Email.inputValue}">
+                            <f:validator validatorId="EmailValidator"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                   headerText="#{bindings.CrsBeneficiariesView1.hints.DisplayNotes.label}"
+                                   id="DisplayNotesC8" sortProperty="DisplayNotesSearch" sortable="true" width="200">
+                          <af:inputText autoSubmit="true"
+                                        columns="#{bindings.CrsBeneficiariesView1.hints.DisplayNotes.displayWidth}"
+                                        id="crsBeneficiariesDisplayNotes"
+                                        label="#{bindings.CrsBeneficiariesView1.hints.DisplayNotes.label}"
+                                        maximumLength="#{bindings.CrsBeneficiariesView1.hints.DisplayNotes.precision}"
+                                        required="#{bindings.CrsBeneficiariesView1.hints.DisplayNotes.mandatory}"
+                                        value="#{row.bindings.DisplayNotes.inputValue}"
+                                        valueChangeListener="#{beneficiaries.displayNotesChanged}">
+                            <f:validator binding="#{row.bindings.DisplayNotes.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                  </f:facet>
+                </af:panelStretchLayout>
+              </af:panelBox>
+              <af:popup contentDelivery="lazyUncached" id="crsBeneficiariesTlPopUp" partialTriggers="pc2:Del1 pc2:rb1"
+                        popupCanceledListener="#{beneficiaries.cancelTranslation}">
+                <af:dialog dialogListener="#{beneficiaries.commitTranslation}" id="crsBeneficiariesTlDialog" title=""
+                           type="okCancel">
+                  <af:panelTabbed styleClass="AFStretchWidth">
+                    <af:showDetailItem styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['label.translation']}">
+                      <af:panelStretchLayout dimensionsFrom="children" id="psl98" styleClass="AFStretchWidth">
+                        <f:facet name="center">
+                          <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem"
+                                              id="pc83" styleClass="AFStretchWidth">
+                            <f:facet name="secondaryToolbar">
+                              <af:toolbar id="tb5" partialTriggers="::pc2:Del1">
+                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print5"
+                                                  immediate="true" partialSubmit="true"
+                                                  text="#{menu.resourceLabelMap['label.print']}"
+                                                  styleClass="printButton" visible="#{menu.printVisible}">
+                                  <af:showPrintablePageBehavior/>
+                                </af:commandButton>
+                                <af:spacer width="5"/>
+                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel5"
+                                                  immediate="true" partialSubmit="true"
+                                                  text="#{menu.resourceLabelMap['label.excel']}"
+                                                  styleClass="excelButton" visible="#{menu.excelVisible}">
+                                  <af:setPropertyListener from="CrsBeneficiariesTl" to="#{sessionScope.tableId}"
+                                                          type="action"/>
+                                  <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                                </af:commandButton>
+                                <af:spacer width="5"/>
+                              </af:toolbar>
+                            </f:facet>
+                            <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnStretching="column:c1"
+                                      emptyText="#{bindings.CrsBeneficiariesTlView21.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                      fetchSize="#{bindings.CrsBeneficiariesTlView21.rangeSize}"
+                                      filterModel="#{bindings.CrsBeneficiariesTlView1CriteriaQuery.queryDescriptor}"
+                                      filterVisible="false" id="CrsBeneficiariesTl"
+                                      queryListener="#{bindings.CrsBeneficiariesTlView1CriteriaQuery.processQuery}"
+                                      rowBandingInterval="1" rowSelection="single"
+                                      rows="#{bindings.CrsBeneficiariesTlView21.rangeSize}" scrollPolicy="page"
+                                      selectedRowKeys="#{bindings.CrsBeneficiariesTlView21.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.CrsBeneficiariesTlView21.collectionModel.makeCurrent}"
+                                      styleClass="AFStretchWidth"
+                                      value="#{bindings.CrsBeneficiariesTlView21.collectionModel}" var="row"
+                                      varStatus="vs">
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                         headerText="#{bindings.CrsBeneficiariesTlView21.hints.LanguagesFk.label}"
+                                         id="c2" sortProperty="LanguagesFk" sortable="true" width="150">
+                                <af:selectOneChoice id="soc1" label="#{row.bindings.LanguagesFk.label}" readOnly="true"
+                                                    required="#{bindings.CrsBeneficiariesTlView21.hints.LanguagesFk.mandatory}"
+                                                    value="#{row.bindings.LanguagesFk.inputValue}">
+                                  <f:selectItems id="si1" value="#{row.bindings.LanguagesFk.items}"/>
+                                  <f:validator binding="#{row.bindings.LanguagesFk.validator}"/>
+                                </af:selectOneChoice>
+                              </af:column>
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                         headerText="#{bindings.CrsBeneficiariesTlView21.hints.BeneficiaryName.label}"
+                                         id="c1" showRequired="true" sortProperty="BeneficiaryName" sortable="true"
+                                         width="200">
+                                <af:inputText columns="#{bindings.CrsBeneficiariesTlView21.hints.BeneficiaryName.displayWidth}"
+                                              id="it1"
+                                              label="#{bindings.CrsBeneficiariesTlView21.hints.BeneficiaryName.label}"
+                                              maximumLength="#{bindings.CrsBeneficiariesTlView21.hints.BeneficiaryName.precision}"
+                                              required="true" value="#{row.bindings.BeneficiaryName.inputValue}">
+                                  <f:validator binding="#{row.bindings.BeneficiaryName.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                         headerText="#{bindings.CrsBeneficiariesTlView21.hints.Notes.label}" id="c4"
+                                         sortProperty="Notes" sortable="true" width="500">
+                                <af:inputText columns="#{bindings.CrsBeneficiariesTlView21.hints.Notes.displayWidth}"
+                                              id="it3" label="#{bindings.CrsBeneficiariesTlView21.hints.Notes.label}"
+                                              maximumLength="#{bindings.CrsBeneficiariesTlView21.hints.Notes.precision}"
+                                              required="false" value="#{row.bindings.Notes.inputValue}">
+                                  <f:validator binding="#{row.bindings.Notes.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:showDetailItem>
+                  </af:panelTabbed>
+                </af:dialog>
+              </af:popup>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

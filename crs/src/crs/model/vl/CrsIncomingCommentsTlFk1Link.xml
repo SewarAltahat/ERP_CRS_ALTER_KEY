@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CrsIncomingCommentsTlFk1Link"
+  Version="12.2.1.16.48"
+  InheritPersonalization="merge"
+  EntityAssociation="crs.model.assoc.CrsIncomingCommentsTlFk1Assoc">
+  <ViewLinkDefEnd
+    Name="CrsIncomingCommentsView"
+    Cardinality="1"
+    Source="true"
+    Owner="crs.model.vo.CrsIncomingCommentsView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CrsIncomingCommentsView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.vo.CrsIncomingCommentsView.IncomingCommentsPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="CrsIncomingCommentsTlView"
+    Cardinality="-1"
+    Owner="crs.model.vo.CrsIncomingCommentsTlView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CrsIncomingCommentsTlView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.vo.CrsIncomingCommentsTlView.IncomingCommentsFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

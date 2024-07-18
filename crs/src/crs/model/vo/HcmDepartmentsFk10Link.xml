@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HcmDepartmentsFk10Link"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  EntityAssociation="crs.model.eo.HcmDepartmentsFk10Assoc">
+  <ViewLinkDefEnd
+    Name="MainParentFkHcmDepartmentsView"
+    Cardinality="1"
+    Source="true"
+    Owner="crs.model.vo.HcmDepartmentsView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="MainParentFkHcmDepartmentsView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.vo.HcmDepartmentsView.DepartmentsPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="HcmDepartmentsView5"
+    Cardinality="-1"
+    Owner="crs.model.vo.HcmDepartmentsView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="HcmDepartmentsView5"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.vo.HcmDepartmentsView.MainParentFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CrsOutgoingCommentsTlFk1Assoc"
+  Version="12.2.1.16.48"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="CrsOutgoingComments"
+    Cardinality="1"
+    Source="true"
+    Owner="crs.model.eo.CrsOutgoingComments">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CrsOutgoingComments"/>
+      <Attr Name="_foreignKey" Value="crs.model.eo.CrsOutgoingComments.CrsOutgoingCommentsPk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingComments.OutgoingCommentsPk"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="CrsOutgoingCommentsTl"
+    Cardinality="-1"
+    Owner="crs.model.eo.CrsOutgoingCommentsTl">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CrsOutgoingCommentsTl"/>
+      <Attr Name="_foreignKey" Value="crs.model.eo.CrsOutgoingCommentsTl.CrsOutgoingCommentsTlFk1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingCommentsTl.OutgoingCommentsFk"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

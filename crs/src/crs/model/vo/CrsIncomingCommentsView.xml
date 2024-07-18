@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject ComponentClass="gen.common.BaseViewObjectImpl" BindingStyle="JDBC"
+     CustomQuery="false"
+    FetchMode="FETCH_AS_NEEDED" FromListFlags="1"
+    InheritPersonalization="merge" Name="CrsIncomingCommentsView"
+    PageIterMode="Full"
+    RowClass="crs.model.vo.CrsIncomingCommentsViewRowImpl"
+    SelectAllAttributes="false" SelectListFlags="1"
+    Version="12.2.1.12.24" WhereFlags="1" xmlns="http://xmlns.oracle.com/bc4j">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Variable Kind="where" Name="p_lang" Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+        </AttrArray>
+        <TransientExpression Name="expression"><![CDATA[gen.common.GenLib.getLanguageNo()]]></TransientExpression>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+    <ViewAccessor Name="CrsIncomingDocumentsIncomingDocumentsFk"
+        RowLevelBinds="true" ViewObjectName="crs.model.vo.CrsIncomingDocumentsView"/>
+    <ListBinding ListRangeSize="10"
+        ListVOName="CrsIncomingDocumentsIncomingDocumentsFk"
+        MRUCount="0" Name="LOV_IncomingDocumentsFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="IncomingDocumentsFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="IncomingDocumentsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="IncomingDocumentsPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute"/>
+    </ListBinding>
+    <EntityUsage Entity="crs.model.eo.CrsIncomingComments" Name="CrsIncomingComments"/>
+    <ViewAttribute AliasName="INCOMING_COMMENTS_PK"
+        EntityAttrName="IncomingCommentsPk"
+        EntityUsage="CrsIncomingComments" IsNotNull="true"
+        Name="IncomingCommentsPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsIncomingComments.IncomingCommentsPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="INCOMING_DOCUMENTS_FK"
+        EntityAttrName="IncomingDocumentsFk"
+        EntityUsage="CrsIncomingComments"
+        LOVName="LOV_IncomingDocumentsFk" Name="IncomingDocumentsFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsIncomingComments.IncomingDocumentsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="CrsIncomingComments" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate" EntityUsage="CrsIncomingComments"
+        Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="CrsIncomingComments" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate" EntityUsage="CrsIncomingComments"
+        Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk"
+        EntityUsage="CrsIncomingComments" Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayCommentValue"
+        EntityAttrName="DisplayCommentValue"
+        EntityUsage="CrsIncomingComments"
+        Expression="GET_COMMENT_VALUE(INCOMING_COMMENTS_PK, ?)"
+        Name="DisplayCommentValue" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsIncomingComments.DisplayCommentValue']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplayCommentValueSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsIncomingCommentsTl.CommentValue']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewLinkAccessor IsUpdateable="true"
+        Name="CrsIncomingCommentsTlView" Type="oracle.jbo.RowIterator" ViewLink="crs.model.vl.CrsIncomingCommentsTlFk1Link"/>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

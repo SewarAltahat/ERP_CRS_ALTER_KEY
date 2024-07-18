@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.52.5" id="departmentReferencePageDef"
+                Package="crs.pageDefs">
+  <executables>
+    <iterator Binds="HcmDepartmentsView1" RangeSize="25" DataControl="AppModuleDataControl" id="HcmDepartmentsVwView1Iterator"/>
+    <searchRegion Criteria="" Binds="HcmDepartmentsVwView1Iterator" id="HcmDepartmentsVwView1CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="CrsAllowedSendDepartmentsView3" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CrsAllowedSendDepartmentsView2Iterator"/>
+    <searchRegion Criteria="" Binds="CrsAllowedSendDepartmentsView2Iterator"
+                  id="CrsAllowedSendDepartmentsView2CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="CrsFilesLocationView4" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CrsFilesLocationView3Iterator"/>
+    <searchRegion Criteria="" Binds="CrsFilesLocationView3Iterator" id="CrsFilesLocationView3CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <invokeAction id="invokeRollBack" Binds="Rollback" Refresh="prepareModel" RefreshCondition="#{!adfFacesContext.postback}"/>
+    <iterator Binds="CrsFilesLocationTlView4" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CrsFilesLocationTlView3Iterator"/>
+    <searchRegion Binds="CrsFilesLocationTlView3Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="CrsFilesLocationTlView3Query"/>
+    <iterator Binds="CrsAllowedSendTypesView3" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CrsAllowedSendTypesView2Iterator"/>
+    <searchRegion Binds="CrsAllowedSendTypesView2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="CrsAllowedSendTypesView2Query"/>
+    <iterator Binds="CrsAllowedSendTypesView1" RangeSize="10" DataControl="AppModuleDataControl"
+              id="CrsAllowedSendTypesView1Iterator"/>
+    <iterator Binds="CrsLetterTemplatesView3" RangeSize="25" DataControl="AppModuleDataControl" id="CrsLetterTemplatesView1Iterator" ChangeEventPolicy="none"/>
+    <searchRegion Criteria="" Binds="CrsLetterTemplatesView1Iterator" id="CrsLetterTemplatesView1CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="HcmDepartmentsVwView1Iterator" id="HcmDepartmentsVwView1">
+      <nodeDefinition DefName="crs.model.vo.HcmDepartmentsView" Name="HcmDepartmentsVwView10">
+        <AttrNames>
+          <Item Value="AdminParentFk"/>
+          <Item Value="BudgetFl"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="DepartmentsPk"/>
+          <Item Value="DeptBankFk"/>
+          <Item Value="DeptCatFk"/>
+          <Item Value="DeptCityFk"/>
+          <Item Value="DeptClassFk"/>
+          <Item Value="DeptCode"/>
+          <Item Value="DeptCountryFk"/>
+          <Item Value="DeptExternalFl"/>
+          <Item Value="DeptFax"/>
+          <Item Value="DeptGovCode"/>
+          <Item Value="DeptIban"/>
+          <Item Value="DeptItem"/>
+          <Item Value="DeptItemFk"/>
+          <Item Value="DeptLatitude"/>
+          <Item Value="DeptLevelFk"/>
+          <Item Value="DeptLongitude"/>
+          <Item Value="DeptManagerFk"/>
+          <Item Value="DeptMilitaryRegionFk"/>
+          <Item Value="DeptOrder"/>
+          <Item Value="DeptOrgCode"/>
+          <Item Value="DeptPhoneNo"/>
+          <Item Value="DeptSecurityFk"/>
+          <Item Value="DeptStatusFl"/>
+          <Item Value="DeptSubManagerFk"/>
+          <Item Value="DeptTypeFk"/>
+          <Item Value="DisplayAdminParentFk"/>
+          <Item Value="DisplayAdminParentFkSearch"/>
+          <Item Value="DisplayDepartmentsPk"/>
+          <Item Value="DisplayDepartmentsPkSearch"/>
+          <Item Value="DisplayNumberingDependencyFk"/>
+          <Item Value="DisplayNumberingDependencyFkSearch"/>
+          <Item Value="Division"/>
+          <Item Value="FinParentFk"/>
+          <Item Value="GeoParentFk"/>
+          <Item Value="InvParentFk"/>
+          <Item Value="MainFl"/>
+          <Item Value="MainInvFl"/>
+          <Item Value="MainParentFk"/>
+          <Item Value="MilitaryFl"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="NumberingDependencyFk"/>
+          <Item Value="RegionParentFk"/>
+          <Item Value="TrafficCode"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="VacationFl"/>
+          <Item Value="VacationPercent"/>
+          <Item Value="NumberingDependencyFkSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CrsAllowedSendDepartmentsView2Iterator" id="CrsAllowedSendDepartmentsView2">
+      <nodeDefinition DefName="crs.model.vo.CrsAllowedSendDepartmentsView" Name="CrsAllowedSendDepartmentsView10">
+        <AttrNames>
+          <Item Value="AllowedSendDepartmentsPk"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="DepartmentsFk"/>
+          <Item Value="DepartmentsFkSearch"/>
+          <Item Value="DepartmentTypeFk"/>
+          <Item Value="DepartmentTypeFkSearch"/>
+          <Item Value="DisplayDepartmentsFk"/>
+          <Item Value="DisplayDepartmentTypeFk"/>
+          <Item Value="DisplayDepartmentTypeFkSearch"/>
+          <Item Value="DisplaySentDepartmentFk"/>
+          <Item Value="DisplaySentDepartmentFkSearch"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="SentDepartmentFk"/>
+          <Item Value="SentDepartmentFkSeacrh"/>
+          <Item Value="SentDepartmentFkSwitcher"/>
+          <Item Value="UserDepartmentFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CrsFilesLocationView3Iterator" id="CrsFilesLocationView3">
+      <nodeDefinition DefName="crs.model.vo.CrsFilesLocationView" Name="CrsFilesLocationView10">
+        <AttrNames>
+          <Item Value="FilesLocationPk"/>
+          <Item Value="DisplayFileLocationDesc"/>
+          <Item Value="MainLocationFk"/>
+          <Item Value="DisplayMainLocationFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <action id="DeleteDepartmentsVw" RequiresUpdateModel="false" Action="removeCurrentRow" IterBinding="HcmDepartmentsVwView1Iterator"/>
+    <action id="CreateInsertDepartmentsVw" RequiresUpdateModel="true" Action="createInsertRow" IterBinding="HcmDepartmentsVwView1Iterator"/>
+    <!--<action id="Next1" RequiresUpdateModel="true" Action="next" IterBinding="HcmDepartmentsVwView1Iterator"/>
+    <action id="Previous1" RequiresUpdateModel="true" Action="previous" IterBinding="HcmDepartmentsVwView1Iterator"/>
+    <action id="First1" RequiresUpdateModel="true" Action="first" IterBinding="HcmDepartmentsVwView1Iterator"/>
+    <action id="Last1" RequiresUpdateModel="true" Action="last" IterBinding="HcmDepartmentsVwView1Iterator"/>
+    <action id="Find1" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="HcmDepartmentsVwView1Iterator"/>
+    <action id="Execute1" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="HcmDepartmentsVwView1Iterator"/>-->
+    <action id="DeleteAllowedSendDepartments" RequiresUpdateModel="false" Action="removeCurrentRow"
+            IterBinding="CrsAllowedSendDepartmentsView2Iterator"/>
+    <action id="CreateInsertAllowedSendDepartments" RequiresUpdateModel="true" Action="createInsertRow"
+            IterBinding="CrsAllowedSendDepartmentsView2Iterator"/>
+    <!--<action id="Next2" RequiresUpdateModel="true" Action="next" IterBinding="CrsAllowedSendDepartmentsView2Iterator"/>
+    <action id="Previous2" RequiresUpdateModel="true" Action="previous"
+            IterBinding="CrsAllowedSendDepartmentsView2Iterator"/>
+    <action id="First2" RequiresUpdateModel="true" Action="first" IterBinding="CrsAllowedSendDepartmentsView2Iterator"/>
+    <action id="Last2" RequiresUpdateModel="true" Action="last" IterBinding="CrsAllowedSendDepartmentsView2Iterator"/>
+    <action id="Find2" RequiresUpdateModel="true" Action="iteratorFind"
+            IterBinding="CrsAllowedSendDepartmentsView2Iterator"/>
+    <action id="Execute2" RequiresUpdateModel="true" Action="iteratorExecute"
+            IterBinding="CrsAllowedSendDepartmentsView2Iterator"/>-->
+    <action id="DeleteFilesLocationView" RequiresUpdateModel="false" Action="removeCurrentRow"
+            IterBinding="CrsFilesLocationView3Iterator"/>
+    <action id="CreateInsertFilesLocationView" RequiresUpdateModel="true" Action="createInsertRow"
+            IterBinding="CrsFilesLocationView3Iterator"/>
+    <!--<action id="Next3" RequiresUpdateModel="true" Action="next" IterBinding="CrsFilesLocationView3Iterator"/>
+    <action id="Previous3" RequiresUpdateModel="true" Action="previous" IterBinding="CrsFilesLocationView3Iterator"/>
+    <action id="First3" RequiresUpdateModel="true" Action="first" IterBinding="CrsFilesLocationView3Iterator"/>
+    <action id="Last3" RequiresUpdateModel="true" Action="last" IterBinding="CrsFilesLocationView3Iterator"/>
+    <action id="Find3" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="CrsFilesLocationView3Iterator"/>
+    <action id="Execute3" RequiresUpdateModel="true" Action="iteratorExecute"
+            IterBinding="CrsFilesLocationView3Iterator"/>-->
+    <action id="DeleteLetterTemplatesView" RequiresUpdateModel="false" Action="removeCurrentRow" IterBinding="CrsLetterTemplatesView1Iterator"/>
+    <action id="CreateInsertLetterTemplatesView" RequiresUpdateModel="true" Action="createInsertRow" IterBinding="CrsLetterTemplatesView1Iterator"/>
+    <!--<action id="Next5" RequiresUpdateModel="true" Action="next" IterBinding="CrsLetterTemplatesView1Iterator"/>
+    <action id="Previous5" RequiresUpdateModel="true" Action="previous" IterBinding="CrsLetterTemplatesView1Iterator"/>
+    <action id="First5" RequiresUpdateModel="true" Action="first" IterBinding="CrsLetterTemplatesView1Iterator"/>
+    <action id="Last5" RequiresUpdateModel="true" Action="last" IterBinding="CrsLetterTemplatesView1Iterator"/>
+    <action id="Find5" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="CrsLetterTemplatesView1Iterator"/>
+    <action id="Execute5" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="CrsLetterTemplatesView1Iterator"/>-->
+    <tree IterBinding="CrsFilesLocationTlView3Iterator" id="CrsFilesLocationTlView3">
+      <nodeDefinition DefName="crs.model.vo.CrsFilesLocationTlView" Name="CrsFilesLocationTlView20">
+        <AttrNames>
+          <Item Value="FileLocationDesc"/>
+          <Item Value="LanguagesFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="HcmDepartmentsVwView1Iterator" id="DepartmentsPk">
+      <AttrNames>
+        <Item Value="DepartmentsPk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsFilesLocationView3Iterator" id="FilesLocationPk">
+      <AttrNames>
+        <Item Value="FilesLocationPk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsAllowedSendDepartmentsView2Iterator" id="AllowedSendDepartmentsPk">
+      <AttrNames>
+        <Item Value="AllowedSendDepartmentsPk"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="CrsAllowedSendTypesView2Iterator" id="CrsAllowedSendTypesView2">
+      <nodeDefinition DefName="crs.model.vo.CrsAllowedSendTypesView" Name="CrsAllowedSendTypesView20">
+        <AttrNames>
+          <Item Value="DepartmentTypeFk"/>
+          <Item Value="DisplayDepartmentTypeFk"/>
+          <Item Value="DisplayDepartmentTypeFkSearch"/>
+          <Item Value="DepartmentTypeFkSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="CrsAllowedSendTypesView2Iterator" id="CreateInsertAllowedSendTypesView"
+            InstanceName="AppModuleDataControl.CrsAllowedSendTypesView2" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="CrsAllowedSendTypesView2Iterator" id="DeleteAllowedSendTypesView"
+            InstanceName="AppModuleDataControl.CrsAllowedSendTypesView2" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="CrsAllowedSendTypesView2Iterator" id="AllowedSendTypesPk">
+      <AttrNames>
+        <Item Value="AllowedSendTypesPk"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="CrsLetterTemplatesView1Iterator" id="CrsLetterTemplatesView1">
+      <nodeDefinition DefName="crs.model.vo.CrsLetterTemplatesView" Name="CrsLetterTemplatesView10">
+        <AttrNames>
+          <Item Value="LetterTemplatesPk"/>
+          <Item Value="DepartmentsFk"/>
+          <Item Value="TemplateName"/>
+          <Item Value="TemplateHeader"/>
+          <Item Value="TemplateContent"/>
+          <Item Value="TemplateFooter"/>
+          <Item Value="TemplateNameSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="CrsLetterTemplatesView1Iterator" id="CrsLetterTemplatesLetterTemplatesPk">
+      <AttrNames>
+        <Item Value="LetterTemplatesPk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsLetterTemplatesView1Iterator" id="CrsLetterTemplatesDepartmentsFk">
+      <AttrNames>
+        <Item Value="DepartmentsFk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsLetterTemplatesView1Iterator" id="CrsLetterTemplatesTemplateName">
+      <AttrNames>
+        <Item Value="TemplateName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsLetterTemplatesView1Iterator" id="CrsLetterTemplatesTemplateHeader">
+      <AttrNames>
+        <Item Value="TemplateHeader"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsLetterTemplatesView1Iterator" id="CrsLetterTemplatesTemplateContent">
+      <AttrNames>
+        <Item Value="TemplateContent"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsLetterTemplatesView1Iterator" id="CrsLetterTemplatesTemplateFooter">
+      <AttrNames>
+        <Item Value="TemplateFooter"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

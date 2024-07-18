@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:erplib="/erplib">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="Doc1" title="#{menu.resourceLabelMap['menu.deliveryStatementScan']}" uncommittedDataWarning="on"
+                 binding="#{deliveryStatementScan.doc}">
+      <af:messages id="m1"/>
+      <af:form id="form1" usesUpload="true">
+        <af:pageTemplate id="page1" viewId="/templateDef.jspx">
+          <f:attribute value="#{menu.resourceLabelMap['menu.deliveryStatementScan']}" name="pageTitle"/>
+          <f:facet name="main">
+            <af:panelGroupLayout id="pg1" layout="vertical">
+              <af:panelBox styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['menu.deliveryStatementScan']}"
+                           partialTriggers="insert">
+                <af:panelGroupLayout id="pgl19">
+                <af:spacer height="5" id="s49"/>
+                  <af:toolbar id="tb2">
+                    <af:spacer id="s1" width="15"/>
+                    <af:commandButton text="#{menu.resourceLabelMap['label.commit']}" id="insert"
+                                      styleClass="commitButton"
+                                      actionListener="#{deliveryStatementScan.insertIntoArchive}" partialSubmit="true"
+                                      icon="#{menu.commitIcon}"
+                                      disabled="#{bindings.StatementNo.inputValue eq null ||  bindings.FilePath.inputValue eq null }"
+                                      partialTriggers="it2 if2"/>
+                  </af:toolbar>
+                  <div class="card-body">
+                    <div class="form-group row">
+                      <div class="col-md-9">
+                        <label class="col-form-label">
+                          <af:outputLabel value="#{menu.resourceLabelMap['ReportParametersRVO.StatementNumber']}"
+                                          id="ol3" showRequired="true"/>
+                        </label><af:inputText value="#{bindings.StatementNo.inputValue}"
+                                              columns="#{bindings.StatementNo.hints.displayWidth}"
+                                              maximumLength="#{bindings.StatementNo.hints.precision}"
+                                              styleClass="form-control" id="it2"
+                                              autoSubmit="true">
+                          <f:validator binding="#{bindings.StatementNo.validator}"/>
+                          <af:convertNumber groupingUsed="false" pattern="#{bindings.StatementNo.format}"/>
+                        </af:inputText>
+                      </div>
+                      <div class="col-md-9">
+                        <label class="col-form-label">
+                          <af:outputLabel value="#{menu.resourceLabelMap['DeliveryStatement.Upload']}" id="ol1"/>
+                        </label><af:inputFile id="if2" valueChangeListener="#{deliveryStatementScan.uploadAttachment}"
+                                              autoSubmit="true" disabled="#{bindings.StatementNo.inputValue eq null}"
+                                              partialTriggers="it2 it1"/>
+                      </div>
+                    </div>
+                  </div>
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <af:panelBox text="#{menu.resourceLabelMap['CrsDocumentAttachment.arcView']}" id="pb1">
+                <af:panelGroupLayout id="pgl1" valign="middle">
+                  <erplib:scan/>
+                </af:panelGroupLayout>
+                <af:spacer height="30" id="s58"/>
+                <af:inputText id="scanCompId" label=" " visible="false">
+                  <af:serverListener method="#{deliveryStatementScan.refreshFromScanner}" type="refreshFromScanner"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.FilePath.inputValue}" simple="true"
+                              required="#{bindings.FilePath.hints.mandatory}"
+                              columns="#{bindings.FilePath.hints.displayWidth}"
+                              maximumLength="#{bindings.FilePath.hints.precision}"
+                              shortDesc="#{bindings.FilePath.hints.tooltip}" id="it1" partialTriggers="if2"
+                              autoSubmit="true" rendered="false"/>
+                <af:panelGroupLayout styleClass="AFStretchWidth" visible="#{bindings.FilePath.inputValue != null}"
+                                     id="pgl8" partialTriggers="if2 insert">
+                  <erplib:viewer filePath="${bindings.FilePath.inputValue}"/>
+                </af:panelGroupLayout>
+              </af:panelBox>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

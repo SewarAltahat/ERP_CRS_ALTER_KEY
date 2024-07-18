@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject ComponentClass="gen.common.BaseViewObjectImpl" BindingStyle="JDBC"
+     CustomQuery="false"
+    FetchMode="FETCH_AS_NEEDED" FromListFlags="1"
+    InheritPersonalization="merge" Name="CrsIncomingDocAttachmentsView"
+    PageIterMode="Full"
+    RowClass="crs.model.vo.CrsIncomingDocAttachmentsViewRowImpl"
+    SelectAllAttributes="false" SelectListFlags="1"
+    Version="12.2.1.16.48" WhereFlags="1" xmlns="http://xmlns.oracle.com/bc4j">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Variable Kind="where" Name="p_lang" Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+            <Item Value="1"/>
+        </AttrArray>
+        <TransientExpression Name="expression"><![CDATA[gen.common.GenLib.getLanguageNo()]]></TransientExpression>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+    <ViewAccessor Name="CrsIncomingDocumentsIncomingDocumentsFk"
+        RowLevelBinds="true" ViewObjectName="crs.model.vo.CrsIncomingDocumentsView"/>
+    <ViewAccessor Name="SsoSystemLookupValuesAttachmentTypeFk"
+        RowLevelBinds="true" ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView">
+        <ViewCriteriaUsage
+            FullName="crs.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter" Name="SsoSystemLookupValuesFilter"/>
+        <ParameterMap>
+            <PIMap Variable="p_system_lookups_fk">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[13]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ListBinding ListRangeSize="10"
+        ListVOName="CrsIncomingDocumentsIncomingDocumentsFk"
+        MRUCount="0" Name="LOV_IncomingDocumentsFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="IncomingDocumentsFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="IncomingDocumentsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="IncomingDocumentsPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding ListRangeSize="10"
+        ListVOName="SsoSystemLookupValuesAttachmentTypeFk" MRUCount="0"
+        Name="LOV_AttachmentTypeFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="AttachmentTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayAttachmentTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="SsoSystemLookupValuesLOVSearch"/>
+    </ListBinding>
+    <EntityUsage Entity="crs.model.eo.CrsIncomingDocAttachments" Name="CrsIncomingDocAttachments"/>
+    <ViewAttribute AliasName="INCOMING_DOC_ATTACHMENTS_PK"
+        EntityAttrName="IncomingDocAttachmentsPk"
+        EntityUsage="CrsIncomingDocAttachments" IsNotNull="true"
+        Name="IncomingDocAttachmentsPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsIncomingDocAttachments.IncomingDocAttachmentsPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="ATTACHMENT_TYPE_FK"
+        EntityAttrName="AttachmentTypeFk"
+        EntityUsage="CrsIncomingDocAttachments"
+        LOVName="LOV_AttachmentTypeFk" Name="AttachmentTypeFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsIncomingDocAttachments.AttachmentTypeFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="INCOMING_DOCUMENTS_FK"
+        EntityAttrName="IncomingDocumentsFk"
+        EntityUsage="CrsIncomingDocAttachments"
+        LOVName="LOV_IncomingDocumentsFk" Name="IncomingDocumentsFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsIncomingDocAttachments.IncomingDocumentsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="CrsIncomingDocAttachments" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate"
+        EntityUsage="CrsIncomingDocAttachments" Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="CrsIncomingDocAttachments" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate"
+        EntityUsage="CrsIncomingDocAttachments" Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk"
+        EntityUsage="CrsIncomingDocAttachments" Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayAttachmentTypeFk"
+        ColumnType="VARCHAR2"
+        Expression="GET_LOOKUP_DESC(ATTACHMENT_TYPE_FK, ?)"
+        IsPersistent="false" Name="DisplayAttachmentTypeFk"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['SsoSystemLookupValues.SystemLookupValuesPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayInAttachDesc"
+        EntityAttrName="DisplayInAttachDesc"
+        EntityUsage="CrsIncomingDocAttachments"
+        Expression="GET_IN_ATTACH_DESC(INCOMING_DOC_ATTACHMENTS_PK, ?)"
+        Name="DisplayInAttachDesc" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsIncomingDocAttachments.DisplayInAttachDesc']}"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayAttachmentTypeFkSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayAttachmentTypeFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="AttachmentTypeFkSearch"
+        ColumnType="BIGINT" IsPersistent="false" IsSelected="false"
+        Name="AttachmentTypeFkSearch" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplayInAttachDescSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewLinkAccessor IsUpdateable="true"
+        Name="CrsIncomingDocAttachTlView" Type="oracle.jbo.RowIterator" ViewLink="crs.model.vl.CrsIncomingDocAttachTFk1Link"/>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

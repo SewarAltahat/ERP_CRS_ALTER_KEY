@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" version="2.1">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="Doc1" title="#{menu.resourceLabelMap['menu.departmentGroups']}" uncommittedDataWarning="on">
+      <af:messages id="m1"/>
+      <af:form id="form1">
+        <af:pageTemplate id="page1" viewId="/templateDef.jspx">
+          <f:attribute name="pageTitle" value="#{menu.resourceLabelMap['menu.departmentGroups']}"/>
+          <f:facet name="main">
+            <af:panelGroupLayout id="pg1" layout="scroll">
+              <af:panelBox id="pb2" styleClass="AFStretchWidth"
+                           text="#{menu.resourceLabelMap['menu.departmentGroups']}">
+                <af:panelGroupLayout id="pgl11">
+                  <af:panelStretchLayout dimensionsFrom="children" id="psl12" styleClass="AFStretchWidth">
+                    <f:facet name="center">
+                      <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem" id="pc1"
+                                          styleClass="AFStretchWidth">
+                        <f:facet name="secondaryToolbar">
+                          <af:toolbar id="tb1">
+                            <af:commandButton action="#{menu.genericDeleteAction}"
+                                              disabled="#{!menu.deleteAllowed or !bindings.DeleteCrsDeptGroupView1.enabled}"
+                                              icon="#{menu.deleteIcon}" id="Del1" immediate="true" partialSubmit="true"
+                                              text="#{menu.resourceLabelMap['label.delete']}" styleClass="deleteButton">
+                              <af:setPropertyListener from="DeleteCrsDeptGroupView1" to="#{sessionScope.deleteParam}"
+                                                      type="action"/>
+                              <af:setPropertyListener from="CrsDeptGroup1 pb1" to="#{sessionScope.refreshParam}"
+                                                      type="action"/>
+                              <af:setPropertyListener from="CrsDeptGroupView1" to="#{sessionScope.viewParam}"
+                                                      type="action"/>
+                            </af:commandButton>
+                            <af:spacer id="s13" width="5"/>
+                            <af:commandButton actionListener="#{bindings.CreateInsertCrsDeptGroupView1.execute}"
+                                              disabled="#{!menu.insertAllowed}" icon="#{menu.createInsertIcon}" id="ci1"
+                                              partialSubmit="true" text="#{menu.resourceLabelMap['label.createInsert']}"
+                                              styleClass="insertButton"/>
+                            <af:spacer id="s14" width="5"/>
+                            <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                              disabled="#{!menu.updateAllowed}" icon="#{menu.commitIcon}" id="Commit1"
+                                              partialSubmit="true" text="#{menu.resourceLabelMap['label.commit']}"
+                                              styleClass="commitButton"/>
+                            <af:spacer id="s15" width="5"/>
+                            <af:commandButton actionListener="#{bindings.Rollback.execute}" icon="#{menu.rollbackIcon}"
+                                              id="rb1" immediate="true" partialSubmit="true"
+                                              text="#{menu.resourceLabelMap['label.rollback']}"
+                                              styleClass="rollbackButton" visible="#{menu.rollbackVisible}">
+                              <af:resetActionListener/>
+                            </af:commandButton>
+                            <af:spacer id="s16" width="5"/>
+                            <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print1"
+                                              immediate="true" partialSubmit="true"
+                                              text="#{menu.resourceLabelMap['label.print']}" styleClass="printButton"
+                                              visible="#{menu.printVisible}">
+                              <af:showPrintablePageBehavior/>
+                            </af:commandButton>
+                            <af:spacer id="s17" width="5"/>
+                            <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel1"
+                                              immediate="true" partialSubmit="true"
+                                              text="#{menu.resourceLabelMap['label.excel']}" styleClass="excelButton"
+                                              visible="#{menu.excelVisible}">
+                              <af:setPropertyListener from="CrsDeptGroup1" to="#{sessionScope.tableId}" type="action"/>
+                              <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                            </af:commandButton>
+                            <af:spacer id="s18" width="5"/>
+                            <af:commandButton disabled="#{!bindings.DeleteCrsDeptGroupView1.enabled  or bindings.DeptGroupPk.inputValue == null}"
+                                              icon="#{menu.translationIcon}" id="translation1" immediate="true"
+                                              partialSubmit="true" partialTriggers="Commit1 rb1"
+                                              text="#{menu.resourceLabelMap['label.translation']}"
+                                              styleClass="printButton">
+                              <af:showPopupBehavior popupId="::CrsDeptGroupTlPopup" triggerType="action"/>
+                            </af:commandButton>
+                            <af:spacer id="s19" width="5"/>
+                          </af:toolbar>
+                        </f:facet>
+                        <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple"
+                                  columnStretching="column:DisplayGroupNameC10" displayRow="selected"
+                                  editingMode="editAll"
+                                  emptyText="#{bindings.CrsDeptGroupView1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                  fetchSize="#{bindings.CrsDeptGroupView1.rangeSize}"
+                                  filterModel="#{bindings.CrsDeptGroupView1CriteriaQuery.queryDescriptor}"
+                                  filterVisible="false" id="CrsDeptGroup1"
+                                  partialTriggers="::ci1 :::CrsDeptGroupTlDialog ::Commit1 ::rb1"
+                                  queryListener="#{bindings.CrsDeptGroupView1CriteriaQuery.processQuery}"
+                                  rowBandingInterval="1" rowSelection="single"
+                                  rows="#{bindings.CrsDeptGroupView1.rangeSize}" scrollPolicy="page"
+                                  selectedRowKeys="#{bindings.CrsDeptGroupView1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.CrsDeptGroupView1.collectionModel.makeCurrent}"
+                                  styleClass="AFStretchWidth" value="#{bindings.CrsDeptGroupView1.collectionModel}"
+                                  var="row" varStatus="vs" verticalGridVisible="false">
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['CrsDeptGroup.DeptGroupPk']}"
+                                     id="DeptGroupPkC3" sortProperty="DeptGroupPk" sortable="true" width="200">
+                            <af:inputText columns="#{bindings.CrsDeptGroupView1.hints.DeptGroupPk.displayWidth}"
+                                          id="crsDeptGroupDeptgrouppk"
+                                          label="#{menu.resourceLabelMap['CrsDeptGroup.DeptGroupPk']}"
+                                          maximumLength="#{bindings.CrsDeptGroupView1.hints.DeptGroupPk.precision}"
+                                          readOnly="true"
+                                          required="#{bindings.CrsDeptGroupView1.hints.DeptGroupPk.mandatory}"
+                                          value="#{row.bindings.DeptGroupPk.inputValue}">
+                              <af:convertNumber groupingUsed="false" pattern="#{row.bindings.DeptGroupPk.format}"/>
+                              <f:validator binding="#{row.bindings.DeptGroupPk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['CrsDeptGroupTl.GroupName']}"
+                                     id="DisplayGroupNameC10" showRequired="true" sortProperty="DisplayGroupNameSearch"
+                                     sortable="true" width="200">
+                            <af:inputText autoSubmit="true"
+                                          columns="#{bindings.CrsDeptGroupView1.hints.DisplayGroupName.displayWidth}"
+                                          id="crsDeptGroupDisplaygroupname"
+                                          label="#{menu.resourceLabelMap['CrsDeptGroupTl.GroupName']}"
+                                          maximumLength="#{bindings.CrsDeptGroupView1.hints.DisplayGroupName.precision}"
+                                          required="true" value="#{row.bindings.DisplayGroupName.inputValue}"
+                                          valueChangeListener="#{departmentGroups.displayGroupNameChanged}">
+                              <f:validator binding="#{row.bindings.DisplayGroupName.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column align="center" filterable="true"
+                                     headerText="#{bindings.CrsDeptGroupView1.hints.StartDate.label}" id="c2"
+                                     sortProperty="StartDate" sortable="true" width="270">
+                            <af:inputDate autoSubmit="true"
+                                          columns="#{bindings.CrsDeptGroupView1.hints.StartDate.displayWidth}" id="id1"
+                                          label="#{bindings.CrsDeptGroupView1.hints.StartDate.label}"
+                                          required="#{bindings.CrsDeptGroupView1.hints.StartDate.mandatory}"
+                                          value="#{row.bindings.StartDate.inputValue}">
+                              <f:validator binding="#{row.bindings.StartDate.validator}"/>
+                              <af:convertDateTime pattern="#{menu.dateFormat}"/>
+                            </af:inputDate>
+                          </af:column>
+                          <af:column align="center" filterable="true"
+                                     headerText="#{bindings.CrsDeptGroupView1.hints.EndDate.label}" id="c3"
+                                     sortProperty="EndDate" sortable="true" width="270">
+                            <af:inputDate autoSubmit="true"
+                                          columns="#{bindings.CrsDeptGroupView1.hints.EndDate.displayWidth}" id="id2"
+                                          label="#{bindings.CrsDeptGroupView1.hints.EndDate.label}"
+                                          required="#{bindings.CrsDeptGroupView1.hints.EndDate.mandatory}"
+                                          value="#{row.bindings.EndDate.inputValue}">
+                              <f:validator binding="#{row.bindings.EndDate.validator}"/>
+                              <af:convertDateTime pattern="#{menu.dateFormat}"/>
+                            </af:inputDate>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['CrsDeptGroup.ActiveFl']}" id="ActiveFlC9"
+                                     sortProperty="ActiveFl" sortable="true" width="200">
+                            <!--<af:selectBooleanCheckbox value="#{row.bindings.ActiveFl.inputValue}"
+                                                                                  label="#{menu.resourceLabelMap['CrsDeptGroup.ActiveFl']}"
+                                                                                  id="crsDeptGroupActivefl"
+                                                                                  autoSubmit="true"/>-->
+                            <af:commandImageLink actionListener="#{departmentGroups.untick}" icon="/images/checked-checkbox.png"
+                                                 id="check" partialSubmit="true" partialTriggers="check uncheck"
+                                                 visible="#{row.bindings.ActiveFl.inputValue == '1'}">
+                              <f:attribute name="iteratorName" value="CrsDeptGroupView1Iterator"/>
+                              <f:attribute name="attributeName" value="ActiveFl"/>
+                            </af:commandImageLink>
+                            <af:commandImageLink actionListener="#{departmentGroups.tick}" icon= "/images/unchecked-checkbox.png"
+                                                 id="uncheck" partialSubmit="true" partialTriggers="check uncheck"
+                                                 visible="#{row.bindings.ActiveFl.inputValue == null or row.bindings.ActiveFl.inputValue == '0'}">
+                              <f:attribute name="iteratorName" value="CrsDeptGroupView1Iterator"/>
+                              <f:attribute name="attributeName" value="ActiveFl"/>
+                            </af:commandImageLink>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </f:facet>
+                  </af:panelStretchLayout>
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <af:spacer height="30" rendered="false"/>
+              <af:panelBox id="pb1" partialTriggers="pc1:Commit1 pb2 pc1:CrsDeptGroup1" styleClass="AFStretchWidth"
+                           text="#{menu.resourceLabelMap['label.GroupDepartmentDetails']}">
+                <af:panelGroupLayout id="pgl25">
+                  <af:panelStretchLayout dimensionsFrom="children" id="psl26" styleClass="AFStretchWidth">
+                    <f:facet name="center">
+                      <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem" id="pc13"
+                                          styleClass="AFStretchWidth">
+                        <f:facet name="secondaryToolbar">
+                          <af:toolbar id="tb2">
+                            <af:commandButton action="#{menu.genericDeleteAction}"
+                                              disabled="#{!menu.deleteAllowed or !bindings.DeleteCrsDeptGroupDeptsView2.enabled}"
+                                              icon="#{menu.deleteIcon}" id="Del2" immediate="true" partialSubmit="true"
+                                              text="#{menu.resourceLabelMap['label.delete']}" styleClass="deleteButton">
+                              <af:setPropertyListener from="DeleteCrsDeptGroupDeptsView2"
+                                                      to="#{sessionScope.deleteParam}" type="action"/>
+                              <af:setPropertyListener from="CrsDeptGroupDepts1" to="#{sessionScope.refreshParam}"
+                                                      type="action"/>
+                              <af:setPropertyListener from="CrsDeptGroupDeptsView2" to="#{sessionScope.viewParam}"
+                                                      type="action"/>
+                            </af:commandButton>
+                            <af:spacer id="s7" width="5"/>
+                            <af:commandButton actionListener="#{bindings.CreateInsertCrsDeptGroupDeptsView2.execute}"
+                                              disabled="#{!menu.insertAllowed or !bindings.DeleteCrsDeptGroupView1.enabled or bindings.DeptGroupPk.inputValue==null}"
+                                              icon="#{menu.createInsertIcon}" id="ci2" partialSubmit="true"
+                                              text="#{menu.resourceLabelMap['label.createInsert']}"
+                                              styleClass="insertButton"/>
+                            <af:spacer id="s8" width="5"/>
+                            <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                              disabled="#{!menu.updateAllowed}" icon="#{menu.commitIcon}" id="Commit2"
+                                              partialSubmit="true" text="#{menu.resourceLabelMap['label.commit']}"
+                                              styleClass="commitButton"/>
+                            <af:spacer id="s9" width="5"/>
+                            <af:commandButton actionListener="#{bindings.Rollback.execute}" icon="#{menu.rollbackIcon}"
+                                              id="rb2" immediate="true" partialSubmit="true"
+                                              text="#{menu.resourceLabelMap['label.rollback']}"
+                                              styleClass="rollbackButton" visible="#{menu.rollbackVisible}">
+                              <af:resetActionListener/>
+                            </af:commandButton>
+                            <af:spacer id="s10" width="5"/>
+                            <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print2"
+                                              immediate="true" partialSubmit="true"
+                                              text="#{menu.resourceLabelMap['label.print']}" styleClass="printButton"
+                                              visible="#{menu.printVisible}">
+                              <af:showPrintablePageBehavior/>
+                            </af:commandButton>
+                            <af:spacer id="s11" width="5"/>
+                            <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel2"
+                                              immediate="true" partialSubmit="true"
+                                              text="#{menu.resourceLabelMap['label.excel']}" styleClass="excelButton"
+                                              visible="#{menu.excelVisible}">
+                              <af:setPropertyListener from="CrsDeptGroupDepts1" to="#{sessionScope.tableId}"
+                                                      type="action"/>
+                              <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                            </af:commandButton>
+                            <af:spacer id="s12" width="5"/>
+                          </af:toolbar>
+                        </f:facet>
+                        <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple"
+                                  columnStretching="column:c4" displayRow="selected"
+                                  editingMode="editAll"
+                                  emptyText="#{bindings.CrsDeptGroupDeptsView1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                  fetchSize="#{bindings.CrsDeptGroupDeptsView1.rangeSize}"
+                                  filterModel="#{bindings.CrsDeptGroupDeptsView1CriteriaQuery.queryDescriptor}"
+                                  filterVisible="false" id="CrsDeptGroupDepts1"
+                                  partialTriggers=":::pc1:ci1 :::pc1:CrsDeptGroup1 ::ci2 ::Commit2"
+                                  queryListener="#{bindings.CrsDeptGroupDeptsView1CriteriaQuery.processQuery}"
+                                  rowBandingInterval="1" rowSelection="single"
+                                  rows="#{bindings.CrsDeptGroupDeptsView1.rangeSize}" scrollPolicy="page"
+                                  selectedRowKeys="#{bindings.CrsDeptGroupDeptsView1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.CrsDeptGroupDeptsView1.collectionModel.makeCurrent}"
+                                  styleClass="AFStretchWidth" value="#{bindings.CrsDeptGroupDeptsView1.collectionModel}"
+                                  var="row" varStatus="vs" verticalGridVisible="false">
+                          <af:column headerText="#{bindings.CrsDeptGroupDeptsView1.hints.DepartmentsFk.label}" id="c6">
+                            <af:inputListOfValues id="ilov1"
+                                                  popupTitle="Search and Select: #{bindings.CrsDeptGroupDeptsView1.hints.DepartmentsFk.label}"
+                                                  value="#{row.bindings.DepartmentsFk.inputValue}"
+                                                  model="#{row.bindings.DepartmentsFk.listOfValuesModel}"
+                                                  required="#{bindings.CrsDeptGroupDeptsView1.hints.DepartmentsFk.mandatory}"
+                                                  columns="#{bindings.CrsDeptGroupDeptsView1.hints.DepartmentsFk.displayWidth}"
+                                                  shortDesc="#{bindings.CrsDeptGroupDeptsView1.hints.DepartmentsFk.tooltip}"
+                                                  autoSubmit="true" partialTriggers="departmentsFkId">
+                              <f:validator binding="#{row.bindings.DepartmentsFk.validator}"/>
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.CrsDeptGroupDeptsView1.hints.DepartmentsFk.format}"/>
+                            </af:inputListOfValues>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive"
+                                     headerText="#{bindings.CrsDeptGroupDeptsView1.hints.UsersFk.label}"
+                                     id="DeptGroupDeptsPkC15"
+                                     sortProperty="#{bindings.CrsDeptGroupDeptsView1.hints.UsersFk.name}"
+                                     sortable="true" width="250">
+                            <af:inputListOfValues id="usersFkId1"
+                                                  popupTitle="Search and Select: #{bindings.CrsDeptGroupDeptsView1.hints.UsersFk.label}"
+                                                  value="#{row.bindings.UsersFk.inputValue}"
+                                                  model="#{row.bindings.UsersFk.listOfValuesModel}"
+                                                  required="#{bindings.CrsDeptGroupDeptsView1.hints.UsersFk.mandatory}"
+                                                  columns="#{bindings.CrsDeptGroupDeptsView1.hints.UsersFk.displayWidth}"
+                                                  shortDesc="#{bindings.CrsDeptGroupDeptsView1.hints.UsersFk.tooltip}"
+                                                  autoSubmit="true" partialTriggers="usersFkId">
+                              <f:validator binding="#{row.bindings.UsersFk.validator}"/>
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.CrsDeptGroupDeptsView1.hints.UsersFk.format}"/>
+                            </af:inputListOfValues>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['CrsDeptGroupDepts.DisplayDepartmentsFk']}" id="c1"
+                                     showRequired="true"
+                                     sortProperty="DisplayDepartmentsFkSearch"
+                                     sortable="true" width="350">
+                                     <af:inputComboboxListOfValues id="departmentsFkId" popupTitle="#{menu.resourceLabelMap['CrsDeptGroupDepts.DisplayDepartmentsFk']}" 
+                                     value="#{row.bindings.DisplayDepartmentsFk.inputValue}" 
+                                     label="#{menu.resourceLabelMap['CrsDeptGroupDepts.DisplayDepartmentsFk']}"
+                                     model="#{row.bindings.DisplayDepartmentsFk.listOfValuesModel}" 
+                                     required="true" 
+                                     columns="#{bindings.DisplayDepartmentsFk.hints.displayWidth}" 
+                                     simple="true" autoSubmit="true" partialTriggers="ilov1">
+                            <f:validator binding="#{row.bindings.DisplayDepartmentsFk.validator}"/>
+                          </af:inputComboboxListOfValues>
+                            <!--<af:panelGroupLayout id="pgl18" layout="horizontal">
+                              <af:inputListOfValues autoSubmit="true"
+                                                    columns="#{bindings.CrsDeptGroupDeptsView1.hints.DepartmentsFk.displayWidth}"
+                                                    id="departmentsFkId"
+                                                    label="#{menu.resourceLabelMap['CrsDeptGroupDepts.DepartmentsFk']}"
+                                                    model="#{row.bindings.DepartmentsFk.listOfValuesModel}"
+                                                    popupTitle="#{menu.resourceLabelMap['CrsDeptGroupDepts.DepartmentsFk']}"
+                                                    required="true" value="#{row.bindings.DepartmentsFk.inputValue}">
+                                <f:validator binding="#{row.bindings.DepartmentsFk.validator}"/>
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.CrsDeptGroupDeptsView1.hints.DepartmentsFk.format}"/>
+                              </af:inputListOfValues>
+                            </af:panelGroupLayout>-->
+                          </af:column>
+                          <!--<af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['CrsDeptGroupDepts.DisplayDepartmentsFk']}"
+                                     id="DisplayDepartmentsFkC24"
+                                     sortProperty="#{bindings.CrsDeptGroupDeptsView1.hints.DisplayDepartmentsFk.name}"
+                                     sortable="true">
+                            <af:inputText autoSubmit="true"
+                                          columns="#{bindings.CrsDeptGroupDeptsView1.hints.DisplayDepartmentsFk.displayWidth}"
+                                          id="crsDeptGroupDeptsDisplaydepartmentsfk"
+                                          label="#{menu.resourceLabelMap['CrsDeptGroupDepts.DisplayDepartmentsFk']}"
+                                          maximumLength="#{bindings.CrsDeptGroupDeptsView1.hints.DisplayDepartmentsFk.precision}"
+                                          partialTriggers="departmentsFkId" readOnly="true"
+                                          required="#{bindings.CrsDeptGroupDeptsView1.hints.DisplayDepartmentsFk.mandatory}"
+                                          value="#{row.bindings.DisplayDepartmentsFk.inputValue}">
+                              <f:validator binding="#{row.bindings.DisplayDepartmentsFk.validator}"/>
+                            </af:inputText>
+                          </af:column>-->
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['CrsDeptGroupDepts.DisplayUsersFk']}" id="c4"
+                                     sortProperty="DisplayUsersFkSearch" sortable="true" width="200">
+                            <!--<af:inputListOfValues autoSubmit="true"
+                                                  columns="#{bindings.CrsDeptGroupDeptsView1.hints.UsersFk.displayWidth}"
+                                                  id="usersFkId" model="#{row.bindings.UsersFk.listOfValuesModel}"
+                                                  partialTriggers="departmentsFkId"
+                                                  popupTitle="#{menu.resourceLabelMap['CrsDeptGroupDepts.UsersFk']}"
+                                                  required="#{bindings.CrsDeptGroupDeptsView1.hints.UsersFk.mandatory}"
+                                                  value="#{row.bindings.UsersFk.inputValue}">
+                              <f:validator binding="#{row.bindings.UsersFk.validator}"/>
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.CrsDeptGroupDeptsView1.hints.UsersFk.format}"/>
+                            </af:inputListOfValues>-->
+                             <af:inputComboboxListOfValues id="usersFkId" 
+                             popupTitle="#{menu.resourceLabelMap['CrsDeptGroupDepts.DisplayUsersFk']}" 
+                                     value="#{row.bindings.DisplayUsersFk.inputValue}" 
+                                     label="#{menu.resourceLabelMap['CrsDeptGroupDepts.DisplayUsersFk']}"
+                                     model="#{row.bindings.DisplayUsersFk.listOfValuesModel}" 
+                                     partialTriggers="departmentsFkId usersFkId1"
+                                     columns="#{bindings.DisplayUsersFk.hints.displayWidth}" 
+                                     simple="true" autoSubmit="true">
+                            <f:validator binding="#{row.bindings.DisplayUsersFk.validator}"/>
+                          </af:inputComboboxListOfValues>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['CrsDeptGroupDepts.DisplayUsersFk']}" id="c5"
+                                     sortProperty="#{bindings.CrsDeptGroupDeptsView1.hints.DisplayUsersFk.name}"
+                                     sortable="true" width="400" rendered="false">
+                            <af:inputText columns="#{bindings.CrsDeptGroupDeptsView1.hints.DisplayUsersFk.displayWidth}"
+                                          id="it1" label="#{menu.resourceLabelMap['CrsDeptGroupDepts.DisplayUsersFk']}"
+                                          maximumLength="#{bindings.CrsDeptGroupDeptsView1.hints.DisplayUsersFk.precision}"
+                                          partialTriggers="usersFkId" readOnly="true"
+                                          required="#{bindings.CrsDeptGroupDeptsView1.hints.DisplayUsersFk.mandatory}"
+                                          value="#{row.bindings.DisplayUsersFk.inputValue}">
+                              <f:validator binding="#{row.bindings.DisplayUsersFk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </f:facet>
+                  </af:panelStretchLayout>
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <af:popup contentDelivery="lazyUncached" id="CrsDeptGroupTlPopup"
+                        partialTriggers="pc13:Del2 pc13:rb2 pc13:Commit2 pc1:Del1 pc1:rb1"
+                        popupCanceledListener="#{departmentGroups.cancelCrsDeptGroupTlTranslation}">
+                <af:dialog dialogListener="#{departmentGroups.commitCrsDeptGroupTlTranslation}"
+                           id="CrsDeptGroupTlDialog" type="okCancel">
+                  <af:panelTabbed dimensionsFrom="disclosedChild" id="pt1" styleClass="AFStretchWidth">
+                    <af:showDetailItem id="sdi1" styleClass="AFStretchWidth"
+                                       text="#{menu.resourceLabelMap['label.translation']}">
+                      <af:panelStretchLayout dimensionsFrom="children" id="psl39" styleClass="AFStretchWidth">
+                        <f:facet name="center">
+                          <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem"
+                                              id="pc27" styleClass="AFStretchWidth">
+                            <f:facet name="secondaryToolbar">
+                              <af:toolbar id="tb3" partialTriggers="::pc1:Del1">
+                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print3"
+                                                  immediate="true" partialSubmit="true"
+                                                  text="#{menu.resourceLabelMap['label.print']}"
+                                                  styleClass="printButton" visible="#{menu.printVisible}">
+                                  <af:showPrintablePageBehavior/>
+                                </af:commandButton>
+                                <af:spacer id="s5" width="5"/>
+                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel3"
+                                                  immediate="true" partialSubmit="true"
+                                                  text="#{menu.resourceLabelMap['label.excel']}"
+                                                  styleClass="excelButton" visible="#{menu.excelVisible}">
+                                  <af:setPropertyListener from="CrsDeptGroupTl1" to="#{sessionScope.tableId}"
+                                                          type="action"/>
+                                  <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                                </af:commandButton>
+                                <af:spacer id="s6" width="5"/>
+                              </af:toolbar>
+                            </f:facet>
+                            <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple"
+                                      columnStretching="last" displayRow="selected" editingMode="editAll"
+                                      emptyText="#{bindings.CrsDeptGroupTlView1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                      fetchSize="#{bindings.CrsDeptGroupTlView1.rangeSize}"
+                                      filterModel="#{bindings.CrsDeptGroupTlView1CriteriaQuery.queryDescriptor}"
+                                      filterVisible="false" id="CrsDeptGroupTl1"
+                                      queryListener="#{bindings.CrsDeptGroupTlView1CriteriaQuery.processQuery}"
+                                      rowBandingInterval="1" rowSelection="single"
+                                      rows="#{bindings.CrsDeptGroupTlView1.rangeSize}" scrollPolicy="page"
+                                      selectedRowKeys="#{bindings.CrsDeptGroupTlView1.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.CrsDeptGroupTlView1.collectionModel.makeCurrent}"
+                                      styleClass="AFStretchWidth"
+                                      value="#{bindings.CrsDeptGroupTlView1.collectionModel}" var="row" varStatus="vs"
+                                      verticalGridVisible="false">
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                         headerText="#{menu.resourceLabelMap['CrsDeptGroupTl.LanguagesFk']}"
+                                         id="LanguagesFkC31" sortProperty="LanguagesFk" sortable="true" width="150">
+                                <af:selectOneChoice autoSubmit="false" id="crsDeptGroupTlLanguagesfk"
+                                                    label="#{menu.resourceLabelMap['CrsDeptGroupTl.LanguagesFk']}"
+                                                    readOnly="true"
+                                                    required="#{bindings.CrsDeptGroupTlView1.hints.LanguagesFk.mandatory}"
+                                                    value="#{row.bindings.LanguagesFk.inputValue}">
+                                  <f:selectItems id="LanguagesFk1" value="#{row.bindings.LanguagesFk.items}"/>
+                                </af:selectOneChoice>
+                              </af:column>
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                         headerText="#{menu.resourceLabelMap['CrsDeptGroupTl.GroupName']}"
+                                         id="GroupNameC32" showRequired="true" sortProperty="GroupNameSearch"
+                                         sortable="true">
+                                <af:inputText autoSubmit="true"
+                                              columns="#{bindings.CrsDeptGroupTlView1.hints.GroupName.displayWidth}"
+                                              id="crsDeptGroupTlGroupname"
+                                              label="#{menu.resourceLabelMap['CrsDeptGroupTl.GroupName']}"
+                                              maximumLength="#{bindings.CrsDeptGroupTlView1.hints.GroupName.precision}"
+                                              required="true" value="#{row.bindings.GroupName.inputValue}">
+                                  <f:validator binding="#{row.bindings.GroupName.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:showDetailItem>
+                  </af:panelTabbed>
+                </af:dialog>
+              </af:popup>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

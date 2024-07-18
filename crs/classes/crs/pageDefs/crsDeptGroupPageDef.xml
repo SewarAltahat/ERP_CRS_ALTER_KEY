@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="crsDeptGroupPageDef"
+                Package="crs.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CrsDeptGroupRVO" RangeSize="25" DataControl="AppModuleDataControl" id="CrsDeptGroupRVOIterator"/>
+    <searchRegion Binds="CrsDeptGroupRVOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="CrsDeptGroupRVOQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="CrsDeptGroupRVOIterator" id="CrsDeptGroupRVO">
+      <nodeDefinition DefName="crs.model.ro.CrsDeptGroupRVO" Name="CrsDeptGroupRVO0">
+        <AttrNames>
+          <Item Value="DeptGroupPk"/>
+          <Item Value="DisplayDeptGroupPk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

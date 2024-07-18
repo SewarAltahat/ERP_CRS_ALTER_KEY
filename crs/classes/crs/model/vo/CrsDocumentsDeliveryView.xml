@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject ComponentClass="gen.common.BaseViewObjectImpl" BindingStyle="JDBC"
+     CustomQuery="false"
+    FetchMode="FETCH_AS_NEEDED" FromListFlags="1"
+    InheritPersonalization="merge" Name="CrsDocumentsDeliveryView"
+    PageIterMode="Full" SelectAllAttributes="false" SelectListFlags="1"
+    Version="12.2.1.16.48" WhereFlags="1" xmlns="http://xmlns.oracle.com/bc4j">
+    <ViewAccessor
+        Name="CrsIncomingDocumentsIncomingDocumentsFk"
+        ViewObjectName="crs.model.vo.CrsIncomingDocumentsView"
+        RowLevelBinds="false"/>
+    <ViewAccessor
+        Name="CrsOutgoingDocumentsOutgoingDocumentsFk"
+        ViewObjectName="crs.model.vo.CrsOutgoingDocumentsView"
+        RowLevelBinds="false"/>
+    <ViewAccessor
+        Name="SsoSystemLookupValuesDeliveryTypeFk"
+        ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView"
+        RowLevelBinds="false"/>
+    <ListBinding
+        ListRangeSize="10"
+        ListVOName="CrsIncomingDocumentsIncomingDocumentsFk"
+        MRUCount="0"
+        Name="LOV_IncomingDocumentsFk"
+        NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="IncomingDocumentsFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="IncomingDocumentsFkDesc"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="IncomingDocumentsPk"/>
+            <Item Value="IncomingDocumentsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="IncomingDocumentsPk"/>
+        </AttrArray>
+        <DisplayCriteria
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding
+        ListRangeSize="10"
+        ListVOName="CrsOutgoingDocumentsOutgoingDocumentsFk"
+        MRUCount="0"
+        Name="LOV_OutgoingDocumentsFk"
+        NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="OutgoingDocumentsFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="OutgoingDocumentsFkDesc"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="OutgoingDocumentsPk"/>
+            <Item Value="OutgoingDocumentsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="OutgoingDocumentsPk"/>
+        </AttrArray>
+        <DisplayCriteria
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding
+        ListRangeSize="10"
+        ListVOName="SsoSystemLookupValuesDeliveryTypeFk"
+        MRUCount="0"
+        Name="LOV_DeliveryTypeFk"
+        NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="DeliveryTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DeliveryTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="SystemLookupValuesPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+        </AttrArray>
+        <DisplayCriteria
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <EntityUsage Entity="crs.model.eo.CrsDocumentsDelivery" Name="CrsDocumentsDelivery"/>
+    <ViewAttribute AliasName="DOCUMENTS_DELIVERY_PK"
+        EntityAttrName="DocumentsDeliveryPk"
+        EntityUsage="CrsDocumentsDelivery" IsNotNull="true"
+        Name="DocumentsDeliveryPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsDocumentsDelivery.DocumentsDeliveryPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DELIVERY_TYPE_FK"
+        EntityAttrName="DeliveryTypeFk"
+        EntityUsage="CrsDocumentsDelivery" LOVName="LOV_DeliveryTypeFk"
+        Name="DeliveryTypeFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE Value="input_text_lov"/>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsDocumentsDelivery.DeliveryTypeFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OUTGOING_DOCUMENTS_FK"
+        EntityAttrName="OutgoingDocumentsFk"
+        EntityUsage="CrsDocumentsDelivery"
+        LOVName="LOV_OutgoingDocumentsFk" Name="OutgoingDocumentsFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE Value="input_text_lov"/>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsDocumentsDelivery.OutgoingDocumentsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="INCOMING_DOCUMENTS_FK"
+        EntityAttrName="IncomingDocumentsFk"
+        EntityUsage="CrsDocumentsDelivery"
+        LOVName="LOV_IncomingDocumentsFk" Name="IncomingDocumentsFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE Value="input_text_lov"/>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsDocumentsDelivery.IncomingDocumentsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="CrsDocumentsDelivery" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate" EntityUsage="CrsDocumentsDelivery"
+        Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="CrsDocumentsDelivery" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate" EntityUsage="CrsDocumentsDelivery"
+        Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk"
+        EntityUsage="CrsDocumentsDelivery" Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="IncomingDocumentsFkDesc"
+        ColumnType="VARCHAR2"
+        Expression="select a.INCOMING_DOCUMENTS_PK from CRS_INCOMING_DOCUMENTS a where a.INCOMING_DOCUMENTS_PK=CrsDocumentsDelivery.INCOMING_DOCUMENTS_FK"
+        IsPersistent="false" Name="IncomingDocumentsFkDesc"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsIncomingDocuments.IncomingDocumentsPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OutgoingDocumentsFkDesc"
+        ColumnType="VARCHAR2"
+        Expression="select a.OUTGOING_DOCUMENTS_PK from CRS_OUTGOING_DOCUMENTS a where a.OUTGOING_DOCUMENTS_PK=CrsDocumentsDelivery.OUTGOING_DOCUMENTS_FK"
+        IsPersistent="false" Name="OutgoingDocumentsFkDesc"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingDocuments.OutgoingDocumentsPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

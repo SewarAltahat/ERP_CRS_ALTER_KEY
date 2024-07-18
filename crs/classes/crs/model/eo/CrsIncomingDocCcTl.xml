@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity AliasName="CrsIncomingDocCcTl" BindingStyle="JDBC"
+    DBObjectName="CRS_INCOMING_DOC_CC_TL" DBObjectType="table"
+    InheritPersonalization="merge" Name="CrsIncomingDocCcTl"
+    RowClass="crs.model.eo.CrsIncomingDocCcTlImpl"
+    Version="12.2.1.12.24" xmlns="http://xmlns.oracle.com/bc4j">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Attribute ColumnName="INCOMING_DOC_CC_TL_PK" ColumnType="NUMBER" Name="IncomingDocCcTlPk" PrimaryKey="true"
+        SQLType="NUMERIC" TableName="CRS_INCOMING_DOC_CC_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="INCOMING_DOC_CC_FK" ColumnType="NUMBER"
+        Name="IncomingDocCcFk" SQLType="NUMERIC"
+        TableName="CRS_INCOMING_DOC_CC_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="LANGUAGES_FK" ColumnType="NUMBER"
+        Name="LanguagesFk" SQLType="NUMERIC"
+        TableName="CRS_INCOMING_DOC_CC_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="NOTES" ColumnType="VARCHAR2" Name="Notes"
+        Precision="4000" SQLType="VARCHAR"
+        TableName="CRS_INCOMING_DOC_CC_TL" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </Attribute>
+    <Attribute ColumnName="CREATED_BY" ColumnType="NUMBER"
+        Name="CreatedBy" SQLType="NUMERIC"
+        TableName="CRS_INCOMING_DOC_CC_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATION_DATE" ColumnType="TIMESTAMP"
+        Name="CreationDate" SQLType="TIMESTAMP"
+        TableName="CRS_INCOMING_DOC_CC_TL" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="MODIFIED_BY" ColumnType="NUMBER"
+        Name="ModifiedBy" SQLType="NUMERIC"
+        TableName="CRS_INCOMING_DOC_CC_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="MODIFIED_DATE" ColumnType="TIMESTAMP"
+        Name="ModifiedDate" SQLType="TIMESTAMP"
+        TableName="CRS_INCOMING_DOC_CC_TL" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="USER_DEPARTMENT_FK" ColumnType="NUMBER"
+        Name="UserDepartmentFk" SQLType="NUMERIC"
+        TableName="CRS_INCOMING_DOC_CC_TL" Type="java.math.BigDecimal"/>
+    <Attribute
+        Name="RejectReason"
+        Precision="300"
+        ColumnName="REJECT_REASON"
+        SQLType="VARCHAR"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        TableName="CRS_INCOMING_DOC_CC_TL">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="300"/>
+        </DesignTime>
+    </Attribute>
+    <Attribute
+        Name="IncomingDocGuidance"
+        Precision="400"
+        ColumnName="INCOMING_DOC_GUIDANCE"
+        SQLType="VARCHAR"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        TableName="CRS_INCOMING_DOC_CC_TL">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="400"/>
+        </DesignTime>
+    </Attribute>
+    <AccessorAttribute
+        Name="CrsIncomingDocCc"
+        Association="crs.model.assoc.IncomingDocCcAssoc"
+        AssociationEnd="crs.model.assoc.IncomingDocCcAssoc.CrsIncomingDocCc"
+        AssociationOtherEnd="crs.model.assoc.IncomingDocCcAssoc.CrsIncomingDocCcTl"
+        Type="crs.model.eo.CrsIncomingDocCcImpl"
+        IsUpdateable="true"/>
+    <Key Name="CrsIncomingDocCcTlPk" PrimaryKey="true">
+        <DesignTime>
+            <Attr Name="_DBObjectName" Value="CRS_INCOMING_DOC_CC_TL_PK"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsIncomingDocCcTl.IncomingDocCcTlPk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsIncomingDocCcTlFk1">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="SSO_LANGUAGES_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_INCOMING_DOC_CC_TL_FK1"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsIncomingDocCcTl.LanguagesFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsIncomingDocCcTlFk2">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="CRS_INCOMING_DOC_CC_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_INCOMING_DOC_CC_TL_FK2"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsIncomingDocCcTl.IncomingDocCcFk"/>
+        </AttrArray>
+    </Key>
+    <Key
+        Name="fk_CrsIncomingDocCcTl">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="CRS_INCOMING_DOC_CC_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="FK_CRS_INCOMING_DOC_CC_TL"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsIncomingDocCcTl.IncomingDocCcFk"/>
+        </AttrArray>
+    </Key>
+</Entity>
+<!---->

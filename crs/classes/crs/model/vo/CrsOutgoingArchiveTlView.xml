@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject ComponentClass="gen.common.BaseViewObjectImpl" BindingStyle="JDBC"
+     CustomQuery="false"
+    FetchMode="FETCH_AS_NEEDED" FromListFlags="1"
+    InheritPersonalization="merge" Name="CrsOutgoingArchiveTlView"
+    PageIterMode="Full" SelectAllAttributes="false" SelectListFlags="1"
+    Version="12.2.1.12.24" WhereFlags="1" xmlns="http://xmlns.oracle.com/bc4j">
+    <ViewAccessor Name="CrsOutgoingArchiveOutgoingArchiveFk"
+        RowLevelBinds="false" ViewObjectName="crs.model.vo.CrsOutgoingArchiveView"/>
+    <ViewAccessor Name="SsoLanguagesLanguagesFk" RowLevelBinds="false" ViewObjectName="crs.model.ro.SsoLanguagesVwView"/>
+    <ListBinding ListRangeSize="10"
+        ListVOName="CrsOutgoingArchiveOutgoingArchiveFk" MRUCount="0"
+        Name="LOV_OutgoingArchiveFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="OutgoingArchiveFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="OutgoingArchivePk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="OutgoingArchivePk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding ListRangeSize="10" ListVOName="SsoLanguagesLanguagesFk"
+        MRUCount="0" Name="LOV_LanguagesFk" NullValueFlag="start" NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
+        <AttrArray Name="AttrNames">
+            <Item Value="LanguagesFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="LanguagesPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="LangName"/>
+        </AttrArray>
+        <DisplayCriteria/>
+    </ListBinding>
+    <EntityUsage Entity="crs.model.eo.CrsOutgoingArchiveTl" Name="CrsOutgoingArchiveTl"/>
+    <ViewAttribute AliasName="OUTGOING_ARCHIVE_TL_PK"
+        EntityAttrName="OutgoingArchiveTlPk"
+        EntityUsage="CrsOutgoingArchiveTl" IsNotNull="true"
+        Name="OutgoingArchiveTlPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingArchiveTl.OutgoingArchiveTlPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="ARC_DOC_NAME" EntityAttrName="ArcDocName"
+        EntityUsage="CrsOutgoingArchiveTl" Name="ArcDocName" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingArchiveTl.ArcDocName']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="ARC_DOC_DESC" EntityAttrName="ArcDocDesc"
+        EntityUsage="CrsOutgoingArchiveTl" Name="ArcDocDesc" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingArchiveTl.ArcDocDesc']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="LANGUAGES_FK" EntityAttrName="LanguagesFk"
+        EntityUsage="CrsOutgoingArchiveTl" LOVName="LOV_LanguagesFk"
+        Name="LanguagesFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingArchiveTl.LanguagesFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <AUTOSUBMIT Value="true"/>
+                <CONTROLTYPE Value="combo"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OUTGOING_ARCHIVE_FK"
+        EntityAttrName="OutgoingArchiveFk"
+        EntityUsage="CrsOutgoingArchiveTl"
+        LOVName="LOV_OutgoingArchiveFk" Name="OutgoingArchiveFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsOutgoingArchiveTl.OutgoingArchiveFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="CrsOutgoingArchiveTl" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate" EntityUsage="CrsOutgoingArchiveTl"
+        Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="CrsOutgoingArchiveTl" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate" EntityUsage="CrsOutgoingArchiveTl"
+        Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk"
+        EntityUsage="CrsOutgoingArchiveTl" Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

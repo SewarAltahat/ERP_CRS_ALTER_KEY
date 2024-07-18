@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:erplib="/erplib" 
+          xmlns:f="http://java.sun.com/jsf/core"  
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:sdHijri="sdHijri" version="2.1">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="Doc1" title="#{menu.resourceLabelMap['menu.docAssignment']}" uncommittedDataWarning="on">
+      <af:messages id="m1"/> 
+      <af:form id="form1">
+        <af:pageTemplate id="page1" viewId="/templateDef.jspx">
+          <f:attribute name="pageTitle" value="#{menu.resourceLabelMap['menu.docAssignment=Doc Assignment']}"/>
+          <f:facet name="main">
+            <af:panelGroupLayout id="pg1">
+              <af:region value="#{bindings.DocAssignmentTf1.regionModel}" id="r1"/> 
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

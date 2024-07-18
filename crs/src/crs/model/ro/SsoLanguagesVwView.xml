@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject ComponentClass="gen.common.BaseViewObjectImpl" BindingStyle="JDBC" CustomQuery="true"
+    FetchMode="FETCH_AS_NEEDED" FetchSize="25"
+    InheritPersonalization="merge" Name="SsoLanguagesVwView"
+    PageIterMode="Full" Version="12.2.1.16.48" xmlns="http://xmlns.oracle.com/bc4j">
+    <DesignTime>
+        <Attr Name="_isExpertMode" Value="true"/>
+    </DesignTime>
+    <SQLQuery><![CDATA[SELECT ErpSsoSsoLanguagesVw.LANGUAGES_PK,
+       ErpSsoSsoLanguagesVw.LANG_NAME,
+       ErpSsoSsoLanguagesVw.LANG_CODE,
+       ErpSsoSsoLanguagesVw.LANG_FLAG_IMAGE,
+       ErpSsoSsoLanguagesVw.RTL_FL,
+       ErpSsoSsoLanguagesVw.INTERFACE_FL,
+       ErpSsoSsoLanguagesVw.DATA_FL,
+       ErpSsoSsoLanguagesVw.LANG_STATUS_FL
+FROM SSO_LANGUAGES_VW ErpSsoSsoLanguagesVw]]></SQLQuery>
+    <ViewAttribute AliasName="LANGUAGES_PK" ColumnType="NUMBER"
+        Expression="LANGUAGES_PK" IsNotNull="true" IsPersistent="false"
+        IsUpdateable="true" Name="LanguagesPk" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="LANG_NAME" ColumnType="VARCHAR2"
+        Expression="LANG_NAME" IsPersistent="false" IsUpdateable="true"
+        Name="LangName" Precision="100" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="100"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute AliasName="LANG_CODE" ColumnType="VARCHAR2"
+        Expression="LANG_CODE" IsPersistent="false" IsUpdateable="true"
+        Name="LangCode" Precision="2" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="2"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute AliasName="LANG_FLAG_IMAGE" ColumnType="VARCHAR2"
+        Expression="LANG_FLAG_IMAGE" IsPersistent="false"
+        IsUpdateable="true" Name="LangFlagImage" Precision="200"
+        PrecisionRule="true" SQLType="VARCHAR" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="200"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute AliasName="RTL_FL" ColumnType="NUMBER"
+        Expression="RTL_FL" IsPersistent="false" IsUpdateable="true"
+        Name="RtlFl" PrecisionRule="true" SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="INTERFACE_FL" ColumnType="NUMBER"
+        Expression="INTERFACE_FL" IsPersistent="false"
+        IsUpdateable="true" Name="InterfaceFl" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="DATA_FL" ColumnType="NUMBER"
+        Expression="DATA_FL" IsPersistent="false" IsUpdateable="true"
+        Name="DataFl" PrecisionRule="true" SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="LANG_STATUS_FL" ColumnType="NUMBER"
+        Expression="LANG_STATUS_FL" IsPersistent="false"
+        IsUpdateable="true" Name="LangStatusFl" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <AttrArray Name="KeyAttributes">
+        <Item Value="LanguagesPk"/>
+        <Item Value="LangName"/>
+        <Item Value="LangCode"/>
+        <Item Value="LangFlagImage"/>
+        <Item Value="RtlFl"/>
+        <Item Value="InterfaceFl"/>
+        <Item Value="DataFl"/>
+        <Item Value="LangStatusFl"/>
+    </AttrArray>
+</ViewObject>
+<!---->

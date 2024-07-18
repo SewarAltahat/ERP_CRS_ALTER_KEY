@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject ComponentClass="gen.common.BaseViewObjectImpl" BindingStyle="JDBC"
+    CustomQuery="true"
+    FetchMode="FETCH_AS_NEEDED"
+    InheritPersonalization="merge" Name="CrsAllowedSendTypesView"
+    PageIterMode="Full"
+    Version="12.2.1.12.24" xmlns="http://xmlns.oracle.com/bc4j"
+    RowClass="crs.model.vo.CrsAllowedSendTypesViewRowImpl">
+    <DesignTime>
+        <Attr Name="_isExpertMode" Value="true"/>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Variable Kind="where" Name="p_lang" Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+            <Item Value="1"/>
+        </AttrArray>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+        <TransientExpression
+            Name="VariableScript">gen.common.GenLib.getLanguageNo()</TransientExpression>
+    </Variable>
+    <ViewAccessor
+        Name="SsoActiveLookupValuesVwView1"
+        ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView"
+        RowLevelBinds="true">
+        <ViewCriteriaUsage
+            Name="SsoSystemLookupValuesFilter"
+            FullName="crs.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter"/>
+        <ParameterMap>
+            <PIMap Variable="p_system_lookups_fk">
+                <TransientExpression
+                    trustMode="untrusted"
+                    Name="ExpressionScript"><![CDATA[93]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ListBinding
+        Name="LOV_DepartmentTypeFk"
+        ListVOName="SsoActiveLookupValuesVwView1"
+        ComboRowCountHint="10"
+        NullValueFlag="none"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="DepartmentTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayDepartmentTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="SsoSystemLookupValuesLOVSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <SQLQuery><![CDATA[SELECT CrsAllowedSendTypes.ALLOWED_SEND_TYPES_PK,    
+       CrsAllowedSendTypes.DEPARTMENTS_FK,    
+       CrsAllowedSendTypes.DEPARTMENT_TYPE_FK,    
+       CrsAllowedSendTypes.CREATED_BY,    
+       CrsAllowedSendTypes.CREATION_DATE,    
+       CrsAllowedSendTypes.MODIFIED_BY,    
+       CrsAllowedSendTypes.MODIFIED_DATE,    
+       CrsAllowedSendTypes.USER_DEPARTMENT_FK,    
+       GET_LOOKUP_DESC(ALLOWED_SEND_TYPES_PK, ?) AS DisplayDepartmentsFk,    
+       GET_LOOKUP_DESC(DEPARTMENT_TYPE_FK, ?) AS DisplayDepartmentTypeFk   
+FROM  CRS_ALLOWED_SEND_TYPES CrsAllowedSendTypes]]></SQLQuery>
+    <EntityUsage Entity="crs.model.eo.CrsAllowedSendTypes" Name="CrsAllowedSendTypes"/>
+    <ViewAttribute AliasName="ALLOWED_SEND_TYPES_PK"
+        EntityAttrName="AllowedSendTypesPk"
+        EntityUsage="CrsAllowedSendTypes" IsNotNull="true"
+        Name="AllowedSendTypesPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAllowedSendTypes.AllowedSendTypesPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DEPARTMENTS_FK"
+        EntityAttrName="DepartmentsFk" EntityUsage="CrsAllowedSendTypes"
+        Name="DepartmentsFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAllowedSendTypes.DepartmentsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DEPARTMENT_TYPE_FK"
+        EntityAttrName="DepartmentTypeFk"
+        EntityUsage="CrsAllowedSendTypes" Name="DepartmentTypeFk" PrecisionRule="true"
+        LOVName="LOV_DepartmentTypeFk">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAllowedSendTypes.DepartmentTypeFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="CrsAllowedSendTypes" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate" EntityUsage="CrsAllowedSendTypes"
+        Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="CrsAllowedSendTypes" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate" EntityUsage="CrsAllowedSendTypes"
+        Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk"
+        EntityUsage="CrsAllowedSendTypes" Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayDepartmentsFk" ColumnType="CHAR"
+        Expression="get_ALLOWED_SEND_TYPES_DEPARTM(ALLOWED_SEND_TYPES_PK, ?)"
+        Name="DisplayDepartmentsFk" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAllowedSendTypes.DepartmentsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="DisplayDepartmentTypeFk"
+        ColumnType="CHAR"
+        Expression="get_ALLOWED_SEND_TYPES_DEPARTM(ALLOWED_SEND_TYPES_PK, ?)"
+        Name="DisplayDepartmentTypeFk"
+        PrecisionRule="true"
+        SQLType="VARCHAR"
+        Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['CrsAllowedSendTypes.DepartmentTypeFk']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayDepartmentsFkSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayDepartmentsFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAllowedSendTypes.DepartmentsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayDepartmentTypeFkSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayDepartmentTypeFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAllowedSendTypes.DepartmentTypeFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DepartmentTypeFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="BIGINT"
+        AliasName="VIEW_ATTR"
+        SQLType="NUMERIC"/>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

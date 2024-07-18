@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl3" layout="scroll">
+    <af:panelBox  id="pb3" styleClass="AFStretchWidth">
+    <af:panelTabbed id="PTCrsIncomingDocuments13" styleClass="AFStretchWidth" dimensionsFrom="disclosedChild">
+    <af:showDetailItem id="sdi_CrsIncomingDocuments64" styleClass="AFStretchWidth" immediate="true"
+                           text="#{menu.resourceLabelMap['CrsDeptGroupDepts.Department']}">
+     <af:panelGroupLayout id="pgl172">
+      <div class="card-body">
+          <div class="form-group row">
+            <div class="col-md-3">
+              <label class="col-form-label">
+                <af:outputLabel value="#{menu.resourceLabelMap['CrsDepartment.Departmentfk']}" id="ol37" showRequired="true"/>
+              </label>
+                     <af:panelGroupLayout id="pgl18" layout="horizontal">
+
+              <af:inputListOfValues id="ilov12" popupTitle="#{menu.resourceLabelMap['CrsDepartment.Departmentfk']}"
+                                    value="#{bindings.DepartmentsFk.inputValue}"
+                                    label="#{bindings.DepartmentsFk.hints.label}"
+                                    model="#{bindings.DepartmentsFk.listOfValuesModel}"
+                                    required="false"
+                                    columns="#{bindings.DepartmentsFk.hints.displayWidth}" simple="true"
+                                    styleClass="form-control" autoSubmit="true" >
+                <f:validator binding="#{bindings.DepartmentsFk.validator}"/>
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentsFk.format}"/>
+              </af:inputListOfValues>
+                
+    </af:panelGroupLayout>
+            </div>
+            <div class="col-md-3">
+              <label class="col-form-label">
+                <af:outputLabel value="#{menu.resourceLabelMap['CrsDepartment.DisplayDepartmentfk']}" id="ol818"/>
+              </label>
+               
+              <af:inputText value="#{bindings.DisplayDepartmentsFk.inputValue}" simple="true"
+                            required="#{bindings.DisplayDepartmentsFk.hints.mandatory}"
+                            columns="#{bindings.DisplayDepartmentsFk.hints.displayWidth}"
+                            maximumLength="#{bindings.DisplayDepartmentsFk.hints.precision}" partialTriggers="ilov12"
+                            readOnly="true" styleClass="form-control" id="it63">
+                <f:validator binding="#{bindings.DisplayDepartmentsFk.validator}"/>
+              </af:inputText>
+            </div>
+            <div class="col-md-3 ">
+              <label class="col-form-label">
+                <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFk']}" id="ol47"
+                                showRequired="true"/>
+              </label>
+               
+              <af:inputListOfValues id="ilov23" popupTitle="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFk']}"
+                                    value="#{bindings.ActionFk.inputValue}" label="#{bindings.ActionFk.hints.label}"
+                                    model="#{bindings.ActionFk.listOfValuesModel}" required="false"
+                                    columns="#{bindings.ActionFk.hints.displayWidth}" simple="true"
+                                    styleClass="form-control" autoSubmit="true">
+                <f:validator binding="#{bindings.ActionFk.validator}"/>
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.ActionFk.format}"/>
+              </af:inputListOfValues>
+            </div>
+            <div class="col-md-3 ">
+              <label class="col-form-label">
+                <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFkDesc']}" id="ol72"/>
+              </label>
+               
+              <af:inputText value="#{bindings.DisplayActionFk.inputValue}" simple="true"
+                            required="#{bindings.DisplayActionFk.hints.mandatory}"
+                            columns="#{bindings.DisplayActionFk.hints.displayWidth}"
+                            maximumLength="#{bindings.DisplayActionFk.hints.precision}" readOnly="true"
+                            styleClass="form-control" partialTriggers="ilov23" id="it46">
+                <f:validator binding="#{bindings.DisplayActionFk.validator}"/>
+              </af:inputText>
+            </div>
+          <div class="col-md-3 ">
+              <label class="col-form-label">
+                <af:outputLabel value="#{menu.resourceLabelMap['CrsGuidance.Guidance']}" id="oll72"/>
+              </label>
+               
+              
+            </div>
+          </div>
+        </div>
+            <af:inputText value="#{bindings.Guidance.inputValue}" simple="true"
+                          required="#{bindings.Guidance.hints.mandatory}"
+                          columns="#{bindings.Guidance.hints.displayWidth}"
+                          maximumLength="#{bindings.Guidance.hints.precision}" styleClass="form-control;width:100%;" id="it486"
+                          rows="2">
+              <f:validator binding="#{bindings.Guidance.validator}"/>
+            </af:inputText>
+          </af:panelGroupLayout>
+    </af:showDetailItem>
+    <af:showDetailItem id="sdi_CrsIncomingDocuments648" styleClass="AFStretchWidth" immediate="true"
+                           text="#{menu.resourceLabelMap['CrsDeptGroup.DepartmentGroup']}">
+                    <af:panelGroupLayout id="pgl12">
+        <div class="card-body">
+          <div class="form-group row">
+            <div class="col-md-3">
+              <label class="col-form-label">
+                <af:outputLabel value="#{menu.resourceLabelMap['CrsDeptGroup.DeptGroupPk']}" id="ol3" showRequired="true"/>
+              </label>
+                     <af:panelGroupLayout id="pgl1" layout="horizontal">
+
+              <af:inputListOfValues id="ilov1" popupTitle="#{menu.resourceLabelMap['CrsDeptGroup.DeptGroupPk']}"
+                                    value="#{bindings.DeptGroupFk.inputValue}"
+                                    label="#{bindings.DeptGroupFk.hints.label}"
+                                    model="#{bindings.DeptGroupFk.listOfValuesModel}"
+                                    required="true"
+                                    columns="#{bindings.DeptGroupFk.hints.displayWidth}" simple="true"
+                                    styleClass="form-control" autoSubmit="true" partialTriggers="crsDeptGroupDialog" disabled="true">
+                <f:validator binding="#{bindings.DeptGroupFk.validator}"/>
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.DeptGroupFk.format}"/>
+              </af:inputListOfValues>
+                <af:spacer width="30" height="10" id="s1"/>
+                <af:commandButton text="#{menu.resourceLabelMap['DeparmentsRVO.SelectFl']}" id="createInsert"
+                      styleClass="insertButton" immediate="true" partialSubmit="true" icon="/images/approve.png">
+      <af:showPopupBehavior popupId="crsDeptGroupPopup" triggerType="action"/>
+    </af:commandButton>
+    </af:panelGroupLayout>
+            </div>
+            <div class="col-md-3">
+              <label class="col-form-label">
+                <af:outputLabel value="#{menu.resourceLabelMap['CrsDeptGroupTl.GroupName']}" id="ol1"/>
+              </label>
+               
+              <af:inputText value="#{bindings.DisplayDeptGroupFk.inputValue}" simple="true"
+                            required="#{bindings.DisplayDeptGroupFk.hints.mandatory}"
+                            columns="#{bindings.DisplayDeptGroupFk.hints.displayWidth}"
+                            maximumLength="#{bindings.DisplayDeptGroupFk.hints.precision}" partialTriggers="ilov1"
+                            readOnly="true" styleClass="form-control" id="it3">
+                <f:validator binding="#{bindings.DisplayDeptGroupFk.validator}"/>
+              </af:inputText>
+            </div>
+            <div class="col-md-3 ">
+              <label class="col-form-label">
+                <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFk']}" id="ol4"
+                                showRequired="true"/>
+              </label>
+               
+              <af:inputListOfValues id="ilov2" popupTitle="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFk']}"
+                                    value="#{bindings.ActionFk.inputValue}" label="#{bindings.ActionFk.hints.label}"
+                                    model="#{bindings.ActionFk.listOfValuesModel}" required="true"
+                                    columns="#{bindings.ActionFk.hints.displayWidth}" simple="true"
+                                    styleClass="form-control" autoSubmit="true">
+                <f:validator binding="#{bindings.ActionFk.validator}"/>
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.ActionFk.format}"/>
+              </af:inputListOfValues>
+            </div>
+            <div class="col-md-3 ">
+              <label class="col-form-label">
+                <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFkDesc']}" id="ol2"/>
+              </label>
+               
+              <af:inputText value="#{bindings.DisplayActionFk.inputValue}" simple="true"
+                            required="#{bindings.DisplayActionFk.hints.mandatory}"
+                            columns="#{bindings.DisplayActionFk.hints.displayWidth}"
+                            maximumLength="#{bindings.DisplayActionFk.hints.precision}" readOnly="true"
+                            styleClass="form-control" partialTriggers="ilov2" id="it4">
+                <f:validator binding="#{bindings.DisplayActionFk.validator}"/>
+              </af:inputText>
+            </div>
+          <div class="col-md-3 ">
+              <label class="col-form-label">
+                <af:outputLabel value="#{menu.resourceLabelMap['CrsGuidance.Guidance']}" id="ol272"/>
+              </label>
+               
+              
+            </div>
+          </div>
+        </div>
+            <af:inputText value="#{bindings.Guidance.inputValue}" simple="true"
+                          required="#{bindings.Guidance.hints.mandatory}"
+                          columns="#{bindings.Guidance.hints.displayWidth}"
+                          maximumLength="#{bindings.Guidance.hints.precision}" styleClass="form-control width:100%;"
+                          id="it886" rows="2">
+              <f:validator binding="#{bindings.Guidance.validator}"/>
+            </af:inputText>
+          </af:panelGroupLayout>       
+    </af:showDetailItem>
+    <af:showDetailItem id="sdi_CrsIncomingDocuments6498" styleClass="AFStretchWidth" immediate="true"
+                           text="#{menu.resourceLabelMap['CrsIndividual.Individual']}">
+      
+      <af:panelGroupLayout id="pgl1728">
+      <div class="card-body">
+          <div class="form-group row">
+            <div class="col-md-3">
+              <label class="col-form-label">
+                <af:outputLabel value="#{menu.resourceLabelMap['CrsEmployee.EmployeeFk']}" id="ol377" showRequired="true"/>
+              </label>
+                     <af:panelGroupLayout id="pgl188" layout="horizontal">
+
+              <af:inputListOfValues id="ilov13" popupTitle="#{menu.resourceLabelMap['CrsEmployee.EmployeeFk']}"
+                                    value="#{bindings.EmployeeFk.inputValue}"
+                                    label="#{bindings.EmployeeFk.hints.label}"
+                                    model="#{bindings.EmployeeFk.listOfValuesModel}"
+                                    required="false"
+                                    columns="#{bindings.EmployeeFk.hints.displayWidth}" simple="true"
+                                    styleClass="form-control" autoSubmit="true" >
+                <f:validator binding="#{bindings.EmployeeFk.validator}"/>
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeeFk.format}"/>
+              </af:inputListOfValues>
+                
+    </af:panelGroupLayout>
+            </div>
+            <div class="col-md-3">
+              <label class="col-form-label">
+                <af:outputLabel value="#{menu.resourceLabelMap['CrsEmployee.DisplayEmployeeFk']}" id="ol8184"/>
+              </label>
+               
+              <af:inputText value="#{bindings.DisplayEmployeeFk.inputValue}" simple="true"
+                            required="#{bindings.DisplayEmployeeFk.hints.mandatory}"
+                            columns="#{bindings.DisplayEmployeeFk.hints.displayWidth}"
+                            maximumLength="#{bindings.DisplayEmployeeFk.hints.precision}" partialTriggers="ilov13"
+                            readOnly="true" styleClass="form-control" id="it663">
+                <f:validator binding="#{bindings.DisplayEmployeeFk.validator}"/>
+              </af:inputText>
+            </div>
+            <div class="col-md-3 ">
+              <label class="col-form-label">
+                <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFk']}" id="ol478"
+                                showRequired="true"/>
+              </label>
+               
+              <af:inputListOfValues id="ilov24" popupTitle="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFk']}"
+                                    value="#{bindings.ActionFk.inputValue}" label="#{bindings.ActionFk.hints.label}"
+                                    model="#{bindings.ActionFk.listOfValuesModel}" required="false"
+                                    columns="#{bindings.ActionFk.hints.displayWidth}" simple="true"
+                                    styleClass="form-control" autoSubmit="true">
+                <f:validator binding="#{bindings.ActionFk.validator}"/>
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.ActionFk.format}"/>
+              </af:inputListOfValues>
+            </div>
+            <div class="col-md-3 ">
+              <label class="col-form-label">
+                <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFkDesc']}" id="ol727"/>
+              </label>
+               
+              <af:inputText value="#{bindings.DisplayActionFk.inputValue}" simple="true"
+                            required="#{bindings.DisplayActionFk.hints.mandatory}"
+                            columns="#{bindings.DisplayActionFk.hints.displayWidth}"
+                            maximumLength="#{bindings.DisplayActionFk.hints.precision}" readOnly="true"
+                            styleClass="form-control" partialTriggers="ilov24" id="it49986">
+                <f:validator binding="#{bindings.DisplayActionFk.validator}"/>
+              </af:inputText>
+            </div>
+         <div class="col-md-3 ">
+              <label class="col-form-label">
+                <af:outputLabel value="#{menu.resourceLabelMap['CrsGuidance.Guidance']}" id="ol872"/>
+              </label>
+               
+              
+            </div>
+          </div>
+        </div>
+            <af:inputText value="#{bindings.Guidance.inputValue}" simple="true"
+                          required="#{bindings.Guidance.hints.mandatory}"
+                          columns="#{bindings.Guidance.hints.displayWidth}"
+                          maximumLength="#{bindings.Guidance.hints.precision}" styleClass="form-control;width:100%;" id="it986"
+                          rows="2">
+              <f:validator binding="#{bindings.Guidance.validator}"/>
+            </af:inputText>
+          </af:panelGroupLayout>         
+    </af:showDetailItem>
+    </af:panelTabbed>
+    </af:panelBox>
+  </af:panelGroupLayout>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="crsDeptGroupPopup" contentDelivery="lazyUncached">
+    <af:dialog id="crsDeptGroupDialog" type="okCancel" dialogListener="#{docCc.choiseDeptCc}">
+      <af:region value="#{bindings.CrsDeptGroupTF1.regionModel}" id="r1"/>
+    </af:dialog>
+  </af:popup>
+</jsp:root>

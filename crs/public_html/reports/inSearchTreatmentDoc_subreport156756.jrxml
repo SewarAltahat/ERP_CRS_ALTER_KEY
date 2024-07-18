@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="inSearchTreatmentDoc_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" scriptletClass="gen.common.JasperScriptlet" uuid="ff5108d0-7211-4990-a54f-d596ea4ebd58">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<parameter name="p_incoming_documents_pk" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_follow_up_income" class="java.lang.String"/>
+	<parameter name="p_execution_date_g_label" class="java.lang.String"/>
+	<parameter name="p_deptdesc_label" class="java.lang.String"/>
+	<parameter name="p_date_format" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+       CrsAssignments.ACTION_fk,
+
+       CrsAssignments.DEPARTMENTS_FK,
+      GET_DEPARTMENT_NAME(DEPARTMENTS_FK, 1) DeptDesc,
+              to_char(CrsAssignments.EXECUTION_DATE_G, 'dd/MM/yyyy hh24:mi:ss') EXECUTION_DATE_G,
+
+       (SELECT a.received_date_g FROM CRS_INCOMING_DOCUMENTS  A WHERE A.incoming_documents_pk = CrsAssignments.INCOMING_DOCUMENTS_FK) AS ReceivedDater,
+       CrsAssignments.EXECUTION_DATE_H
+
+FROM CRS_INCOMING_DOC_CC CrsAssignments
+where CrsAssignments.INCOMING_DOCUMENTS_FK =$P{p_incoming_documents_pk}]]>
+	</queryString>
+	<field name="ACTION_FK" class="java.math.BigDecimal"/>
+	<field name="DEPARTMENTS_FK" class="java.math.BigDecimal"/>
+	<field name="DEPTDESC" class="java.lang.String"/>
+	<field name="EXECUTION_DATE_G" class="java.lang.String"/>
+	<field name="RECEIVEDDATER" class="oracle.sql.TIMESTAMP"/>
+	<field name="EXECUTION_DATE_H" class="java.math.BigDecimal"/>
+	<title>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement style="reportContentsStyle" x="71" y="0" width="404" height="20" uuid="0aea1f09-6523-4065-95d6-66bb55c2a0db"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#6666FF"/>
+					<topPen lineWidth="0.0" lineColor="#6666FF"/>
+					<leftPen lineWidth="0.0" lineColor="#6666FF"/>
+					<bottomPen lineWidth="0.0" lineColor="#6666FF"/>
+					<rightPen lineWidth="0.0" lineColor="#6666FF"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Arial" size="14"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_follow_up_income}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement style="reportHeaderStyle" x="359" y="0" width="116" height="20" uuid="a80b3851-0170-4837-af1b-6deaeae408ee"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#6666FF"/>
+					<topPen lineWidth="0.0" lineColor="#6666FF"/>
+					<leftPen lineWidth="0.0" lineColor="#6666FF"/>
+					<bottomPen lineWidth="0.0" lineColor="#6666FF"/>
+					<rightPen lineWidth="0.0" lineColor="#6666FF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_execution_date_g_label}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="reportHeaderStyle" x="0" y="0" width="359" height="20" uuid="9fcce391-aeb1-4ce2-8f06-89d9a451903e"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#6666FF"/>
+					<topPen lineWidth="0.0" lineColor="#6666FF"/>
+					<leftPen lineWidth="0.0" lineColor="#6666FF"/>
+					<bottomPen lineWidth="0.0" lineColor="#6666FF"/>
+					<rightPen lineWidth="0.0" lineColor="#6666FF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_deptdesc_label}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement style="rowStyle" stretchType="RelativeToBandHeight" mode="Opaque" x="359" y="0" width="116" height="20" forecolor="#000000" backcolor="#F9F9F9" uuid="1b2a8d26-9940-4a2b-8885-f72e282c2d64"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#6666FF"/>
+					<topPen lineWidth="0.0" lineColor="#6666FF"/>
+					<leftPen lineWidth="0.0" lineColor="#6666FF"/>
+					<bottomPen lineWidth="0.0" lineColor="#6666FF"/>
+					<rightPen lineWidth="0.0" lineColor="#6666FF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.formatDate($F{EXECUTION_DATE_G},$P{p_date_format})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement style="rowStyle" stretchType="RelativeToBandHeight" mode="Opaque" x="0" y="0" width="359" height="20" forecolor="#000000" backcolor="#F9F9F9" uuid="2ac1635a-05dd-4adf-b339-010baaec8495"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#6666FF"/>
+					<topPen lineWidth="0.0" lineColor="#6666FF"/>
+					<leftPen lineWidth="0.0" lineColor="#6666FF"/>
+					<bottomPen lineWidth="0.0" lineColor="#6666FF"/>
+					<rightPen lineWidth="0.0" lineColor="#6666FF"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DEPTDESC}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

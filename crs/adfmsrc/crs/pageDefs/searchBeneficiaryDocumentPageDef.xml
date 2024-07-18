@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.1.52.5" id="searchBeneficiaryDocumentPageDef"
+                Package="crs.pageDefs">
+    <executables>
+        <iterator Binds="DocumentBeneficiariesVwView1" RangeSize="10" DataControl="AppModuleDataControl"
+                  id="DocumentBeneficiariesVwView1Iterator"/>
+        <searchRegion Criteria="" Binds="DocumentBeneficiariesVwView1Iterator"
+                      id="DocumentBeneficiariesVwView1CriteriaQuery"
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+        <iterator Binds="ArchiveVwView3" RangeSize="10" DataControl="AppModuleDataControl" id="ArchiveVwView1Iterator"/>
+        <searchRegion Criteria="" Binds="ArchiveVwView1Iterator" id="ArchiveVwView1CriteriaQuery"
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+        <iterator Binds="AttachmentsVwView3" RangeSize="10" DataControl="AppModuleDataControl"
+                  id="AttachmentsVwView1Iterator"/>
+        <searchRegion Criteria="" Binds="AttachmentsVwView1Iterator" id="AttachmentsVwView1CriteriaQuery"
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+        <iterator Binds="DocCcVwView3" RangeSize="10" DataControl="AppModuleDataControl" id="DocCcVwView1Iterator"/>
+        <searchRegion Criteria="" Binds="DocCcVwView1Iterator" id="DocCcVwView1CriteriaQuery"
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+        <iterator Binds="RelatedLettersVwView3" RangeSize="10" DataControl="AppModuleDataControl"
+                  id="RelatedLettersVwView1Iterator"/>
+        <searchRegion Criteria="" Binds="RelatedLettersVwView1Iterator" id="RelatedLettersVwView1CriteriaQuery"
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+        <iterator Binds="BeneficiariesVwView3" RangeSize="10" DataControl="AppModuleDataControl"
+                  id="BeneficiariesVwView1Iterator"/>
+        <searchRegion Criteria="" Binds="BeneficiariesVwView1Iterator" id="BeneficiariesVwView1CriteriaQuery"
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+        <invokeAction id="invokeRollBack" Binds="Rollback" Refresh="prepareModel"
+                      RefreshCondition="#{!adfFacesContext.postback}"/>
+        <searchRegion Criteria="DocumentBeneficiariesVwViewSearch"
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                      Binds="DocumentBeneficiariesVwView1Iterator" id="DocumentBeneficiariesVwViewSearchQuery"/>
+        <iterator Binds="ReportParametersRVO1" RangeSize="10" DataControl="AppModuleDataControl"
+                  id="ReportParametersRVO1Iterator"/>
+        <searchRegion id="DocCcVw1CriteriaQuery" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                      Binds="DocCcVwView1Iterator"/>
+    </executables>
+    <bindings>
+        <tree IterBinding="DocumentBeneficiariesVwView1Iterator" id="DocumentBeneficiariesVwView1">
+            <nodeDefinition DefName="crs.model.ro.DocumentBeneficiariesVwView" Name="DocumentBeneficiariesVwView10">
+                <AttrNames>
+                    <Item Value="DocTypeFk"/>
+                    <Item Value="IncomingDocumentsPk"/>
+                    <Item Value="InDocYear"/>
+                    <Item Value="InDocDateG"/>
+                    <Item Value="InDocDateH"/>
+                    <Item Value="InDocTypeFk"/>
+                    <Item Value="IncomingTypeFk"/>
+                    <Item Value="InDocNo"/>
+                    <Item Value="FromDepartmentFk"/>
+                    <Item Value="ToDepartmentFk"/>
+                    <Item Value="PriorityFk"/>
+                    <Item Value="SecurityLevelFk"/>
+                    <Item Value="AttachmentsNo"/>
+                    <Item Value="FilesLocationFk"/>
+                    <Item Value="Barcode"/>
+                    <Item Value="RespondPeriod"/>
+                    <Item Value="ReceivedDateG"/>
+                    <Item Value="ReceivedDateH"/>
+                    <Item Value="OutgoingDocumentsFk"/>
+                    <Item Value="ReplyFl"/>
+                    <Item Value="CreatedBy"/>
+                    <Item Value="CreationDate"/>
+                    <Item Value="ModifiedBy"/>
+                    <Item Value="ModifiedDate"/>
+                    <Item Value="UserDepartmentFk"/>
+                    <Item Value="DisplayInDocTypeFk"/>
+                    <Item Value="DisplayIncomingTypeFk"/>
+                    <Item Value="DisplayToDepartmentFk"/>
+                    <Item Value="DisplayFromDepartmentFk"/>
+                    <Item Value="DisplayFilesLocationFk"/>
+                    <Item Value="DisplaySecurityLevelFk"/>
+                    <Item Value="DisplayPriorityFk"/>
+                    <Item Value="DisplayDocTypeFk"/>
+                    <Item Value="DisplayCreatedBy"/>
+                    <Item Value="DisplayCreatedBySearch"/>
+                    <Item Value="DisplayDocTypeFkSearch"/>
+                    <Item Value="DisplayFilesLocationFkSearch"/>
+                    <Item Value="DisplayFromDepartmentFkSearch"/>
+                    <Item Value="DisplayIncomingTypeFkSearch"/>
+                    <Item Value="DisplayInDocTypeFkSearch"/>
+                    <Item Value="DisplayModifiedBy"/>
+                    <Item Value="DisplayModifiedBySearch"/>
+                    <Item Value="DisplayOutgoingDocumentsFk"/>
+                    <Item Value="DisplayOutgoingDocumentsFkSearch"/>
+                    <Item Value="DisplayPriorityFkSearch"/>
+                    <Item Value="DisplaySecurityLevelFkSearch"/>
+                    <Item Value="DisplayToDepartmentFkSearch"/>
+                    <Item Value="DocTypeFkSearch"/>
+                    <Item Value="FromDepartmentFkSearch"/>
+                    <Item Value="InDocTypeFkSearch"/>
+                    <Item Value="PriorityFkSearch"/>
+                    <Item Value="SecurityLevelFkSearch"/>
+                    <Item Value="ToDepartmentFkSearch"/>
+                    <Item Value="IncomingDocumentsNo"/>
+                    <Item Value="DisplayBeneficiariesFk"/>
+                    <Item Value="DisplayBeneficiarieEmail"/>
+                    <Item Value="DisplayBeneficiarieMobileNo"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <tree IterBinding="ArchiveVwView1Iterator" id="ArchiveVwView1">
+            <nodeDefinition DefName="crs.model.ro.ArchiveVwView" Name="ArchiveVwView10">
+                <AttrNames>
+                    <Item Value="ArcFilePath"/>
+                    <Item Value="CreatedBy"/>
+                    <Item Value="CreationDate"/>
+                    <Item Value="DocTypeFk"/>
+                    <Item Value="IncomingArchivePk"/>
+                    <Item Value="IncomingDocumentsFk"/>
+                    <Item Value="ModifiedBy"/>
+                    <Item Value="ModifiedDate"/>
+                    <Item Value="SecurityLevelFk"/>
+                    <Item Value="UserDepartmentFk"/>
+                    <Item Value="DisplayArcDocdesc"/>
+                    <Item Value="DisplayArcDocname"/>
+                    <Item Value="DisplayCreatedBy"/>
+                    <Item Value="DisplayCreatedBySearch"/>
+                    <Item Value="DisplayDocTypeFk"/>
+                    <Item Value="DisplayDocTypeFkSearch"/>
+                    <Item Value="DisplayModifiedBy"/>
+                    <Item Value="DisplayModifiedBySearch"/>
+                    <Item Value="DisplaySecurityLevelFk"/>
+                    <Item Value="DisplaySecurityLevelFkSearch"/>
+                    <Item Value="DocTypeFkSearch"/>
+                    <Item Value="SecurityLevelFkSearch"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <tree IterBinding="AttachmentsVwView1Iterator" id="AttachmentsVwView1">
+            <nodeDefinition DefName="crs.model.ro.AttachmentsVwView" Name="AttachmentsVwView10">
+                <AttrNames>
+                    <Item Value="AttachmentTypeFk"/>
+                    <Item Value="CreatedBy"/>
+                    <Item Value="CreationDate"/>
+                    <Item Value="DocTypeFk"/>
+                    <Item Value="IncomingDocAttachmentsPk"/>
+                    <Item Value="ModifiedBy"/>
+                    <Item Value="ModifiedDate"/>
+                    <Item Value="UserDepartmentFk"/>
+                    <Item Value="AttachmentTypeFkDesc"/>
+                    <Item Value="AttachmentTypeFkSearch"/>
+                    <Item Value="DisplayAttachmentTypeFk"/>
+                    <Item Value="DisplayAttachmentTypeFkSearch"/>
+                    <Item Value="DisplayCreatedBy"/>
+                    <Item Value="DisplayCreatedBySearch"/>
+                    <Item Value="DisplayDocTypeFk"/>
+                    <Item Value="DisplayDocTypeFkSearch"/>
+                    <Item Value="DisplayInAttachDesc"/>
+                    <Item Value="DisplayModifiedBy"/>
+                    <Item Value="DisplayModifiedBySearch"/>
+                    <Item Value="DocTypeFkSearch"/>
+                    <Item Value="IncomingDocumentsFk"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <tree IterBinding="RelatedLettersVwView1Iterator" id="RelatedLettersVwView1">
+            <nodeDefinition DefName="crs.model.ro.RelatedLettersVwView" Name="RelatedLettersVwView10">
+                <AttrNames>
+                    <Item Value="CreatedBy"/>
+                    <Item Value="CreationDate"/>
+                    <Item Value="DocTypeFk"/>
+                    <Item Value="IncomingDocumentsFk"/>
+                    <Item Value="IncomingRelatedLettersPk"/>
+                    <Item Value="ModifiedBy"/>
+                    <Item Value="ModifiedDate"/>
+                    <Item Value="UserDepartmentFk"/>
+                    <Item Value="DisplayCreatedBy"/>
+                    <Item Value="DisplayCreatedBySearch"/>
+                    <Item Value="DisplayDocTypeFk"/>
+                    <Item Value="DisplayDocTypeFkSearch"/>
+                    <Item Value="DisplayinDocDateG"/>
+                    <Item Value="DisplayinDocDateH"/>
+                    <Item Value="DisplayModifiedBy"/>
+                    <Item Value="DisplayModifiedBySearch"/>
+                    <Item Value="DisplayoutDocDateG"/>
+                    <Item Value="DisplayoutDocDateH"/>
+                    <Item Value="DisplayRelatedDocTypeFk"/>
+                    <Item Value="DisplayReldocFk"/>
+                    <Item Value="DisplayRelinDocFk"/>
+                    <Item Value="DisplayReloutFk"/>
+                    <Item Value="DocTypeFkSearch"/>
+                    <Item Value="RelatedDocumentTypeFk"/>
+                    <Item Value="RelatedOutgoingDocumentsFk"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <tree IterBinding="DocCcVwView1Iterator" id="DocCcVwView1">
+            <nodeDefinition DefName="crs.model.ro.DocCcVwView" Name="DocCcVwView10">
+                <AttrNames>
+                    <Item Value="CreatedBy"/>
+                    <Item Value="CreationDate"/>
+                    <Item Value="DepartmentsFk"/>
+                    <Item Value="DocTypeFk"/>
+                    <Item Value="IncomingDocCcPk"/>
+                    <Item Value="IncomingDocumentsFk"/>
+                    <Item Value="ModifiedBy"/>
+                    <Item Value="ModifiedDate"/>
+                    <Item Value="UserDepartmentFk"/>
+                    <Item Value="ActionFk"/>
+                    <Item Value="DisplayActionFk"/>
+                    <Item Value="DisplayActionFkSearch"/>
+                    <Item Value="DisplayCreatedBy"/>
+                    <Item Value="DisplayCreatedBySearch"/>
+                    <Item Value="DisplayDepartmentsFk"/>
+                    <Item Value="DisplayDepartmentsFkSearch"/>
+                    <Item Value="DisplayDocTypeFk"/>
+                    <Item Value="DisplayDocTypeFkSearch"/>
+                    <Item Value="DisplayModifiedBy"/>
+                    <Item Value="DisplayModifiedBySearch"/>
+                    <Item Value="DocTypeFkSearch"/>
+                    <Item Value="ExecutionDateG"/>
+                    <Item Value="ExecutionDateH"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <tree IterBinding="BeneficiariesVwView1Iterator" id="BeneficiariesVwView1">
+            <nodeDefinition DefName="crs.model.ro.BeneficiariesVwView" Name="BeneficiariesVwView10">
+                <AttrNames>
+                    <Item Value="BeneficiariesFk"/>
+                    <Item Value="CreatedBy"/>
+                    <Item Value="CreationDate"/>
+                    <Item Value="DocTypeFk"/>
+                    <Item Value="IncomingBeneficiariesPk"/>
+                    <Item Value="IncomingDocumentsFk"/>
+                    <Item Value="ModifiedBy"/>
+                    <Item Value="ModifiedDate"/>
+                    <Item Value="UserDepartmentFk"/>
+                    <Item Value="DisplayBeneficiarieEmail"/>
+                    <Item Value="DisplayBeneficiarieMobileno"/>
+                    <Item Value="DisplayBeneficiariesFk"/>
+                    <Item Value="DisplayCreatedBy"/>
+                    <Item Value="DisplayCreatedBySearch"/>
+                    <Item Value="DisplayDocTypeFk"/>
+                    <Item Value="DisplayDocTypeFkSearch"/>
+                    <Item Value="DisplayModifiedBy"/>
+                    <Item Value="DisplayModifiedBySearch"/>
+                    <Item Value="DocTypeFkSearch"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <button IterBinding="DocumentBeneficiariesVwView1Iterator" id="ReplyFl" DTSupportsMRU="false" StaticList="true">
+            <AttrNames>
+                <Item Value="ReplyFl"/>
+            </AttrNames>
+            <ValueList>
+                <Item Value="1"/>
+                <Item Value="0"/>
+            </ValueList>
+        </button>
+        <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+        <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+                DataControl="AppModuleDataControl"/>
+        <action id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow"
+                IterBinding="DocumentBeneficiariesVwView1Iterator"/>
+        <action id="CreateInsert1" RequiresUpdateModel="true" Action="createInsertRow"
+                IterBinding="DocumentBeneficiariesVwView1Iterator"/>
+        <action id="Next1" RequiresUpdateModel="true" Action="next" IterBinding="DocumentBeneficiariesVwView1Iterator"/>
+        <action id="Previous1" RequiresUpdateModel="true" Action="previous"
+                IterBinding="DocumentBeneficiariesVwView1Iterator"/>
+        <action id="First1" RequiresUpdateModel="true" Action="first"
+                IterBinding="DocumentBeneficiariesVwView1Iterator"/>
+        <action id="Last1" RequiresUpdateModel="true" Action="last" IterBinding="DocumentBeneficiariesVwView1Iterator"/>
+        <action id="Find1" RequiresUpdateModel="true" Action="iteratorFind"
+                IterBinding="DocumentBeneficiariesVwView1Iterator"/>
+        <action id="Execute1" RequiresUpdateModel="true" Action="iteratorExecute"
+                IterBinding="DocumentBeneficiariesVwView1Iterator"/>
+        <action id="Delete2" RequiresUpdateModel="false" Action="removeCurrentRow"
+                IterBinding="ArchiveVwView1Iterator"/>
+        <action id="CreateInsert2" RequiresUpdateModel="true" Action="createInsertRow"
+                IterBinding="ArchiveVwView1Iterator"/>
+        <action id="Next2" RequiresUpdateModel="true" Action="next" IterBinding="ArchiveVwView1Iterator"/>
+        <action id="Previous2" RequiresUpdateModel="true" Action="previous" IterBinding="ArchiveVwView1Iterator"/>
+        <action id="First2" RequiresUpdateModel="true" Action="first" IterBinding="ArchiveVwView1Iterator"/>
+        <action id="Last2" RequiresUpdateModel="true" Action="last" IterBinding="ArchiveVwView1Iterator"/>
+        <action id="Find2" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="ArchiveVwView1Iterator"/>
+        <action id="Execute2" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="ArchiveVwView1Iterator"/>
+        <action id="Delete3" RequiresUpdateModel="false" Action="removeCurrentRow"
+                IterBinding="AttachmentsVwView1Iterator"/>
+        <action id="CreateInsert3" RequiresUpdateModel="true" Action="createInsertRow"
+                IterBinding="AttachmentsVwView1Iterator"/>
+        <action id="Next3" RequiresUpdateModel="true" Action="next" IterBinding="AttachmentsVwView1Iterator"/>
+        <action id="Previous3" RequiresUpdateModel="true" Action="previous" IterBinding="AttachmentsVwView1Iterator"/>
+        <action id="First3" RequiresUpdateModel="true" Action="first" IterBinding="AttachmentsVwView1Iterator"/>
+        <action id="Last3" RequiresUpdateModel="true" Action="last" IterBinding="AttachmentsVwView1Iterator"/>
+        <action id="Find3" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="AttachmentsVwView1Iterator"/>
+        <action id="Execute3" RequiresUpdateModel="true" Action="iteratorExecute"
+                IterBinding="AttachmentsVwView1Iterator"/>
+        <action id="Delete4" RequiresUpdateModel="false" Action="removeCurrentRow" IterBinding="DocCcVwView1Iterator"/>
+        <action id="CreateInsert4" RequiresUpdateModel="true" Action="createInsertRow"
+                IterBinding="DocCcVwView1Iterator"/>
+        <action id="Next4" RequiresUpdateModel="true" Action="next" IterBinding="DocCcVwView1Iterator"/>
+        <action id="Previous4" RequiresUpdateModel="true" Action="previous" IterBinding="DocCcVwView1Iterator"/>
+        <action id="First4" RequiresUpdateModel="true" Action="first" IterBinding="DocCcVwView1Iterator"/>
+        <action id="Last4" RequiresUpdateModel="true" Action="last" IterBinding="DocCcVwView1Iterator"/>
+        <action id="Find4" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="DocCcVwView1Iterator"/>
+        <action id="Execute4" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="DocCcVwView1Iterator"/>
+        <action id="Delete5" RequiresUpdateModel="false" Action="removeCurrentRow"
+                IterBinding="RelatedLettersVwView1Iterator"/>
+        <action id="CreateInsert5" RequiresUpdateModel="true" Action="createInsertRow"
+                IterBinding="RelatedLettersVwView1Iterator"/>
+        <action id="Next5" RequiresUpdateModel="true" Action="next" IterBinding="RelatedLettersVwView1Iterator"/>
+        <action id="Previous5" RequiresUpdateModel="true" Action="previous"
+                IterBinding="RelatedLettersVwView1Iterator"/>
+        <action id="First5" RequiresUpdateModel="true" Action="first" IterBinding="RelatedLettersVwView1Iterator"/>
+        <action id="Last5" RequiresUpdateModel="true" Action="last" IterBinding="RelatedLettersVwView1Iterator"/>
+        <action id="Find5" RequiresUpdateModel="true" Action="iteratorFind"
+                IterBinding="RelatedLettersVwView1Iterator"/>
+        <action id="Execute5" RequiresUpdateModel="true" Action="iteratorExecute"
+                IterBinding="RelatedLettersVwView1Iterator"/>
+        <action id="Delete6" RequiresUpdateModel="false" Action="removeCurrentRow"
+                IterBinding="BeneficiariesVwView1Iterator"/>
+        <action id="CreateInsert6" RequiresUpdateModel="true" Action="createInsertRow"
+                IterBinding="BeneficiariesVwView1Iterator"/>
+        <action id="Next6" RequiresUpdateModel="true" Action="next" IterBinding="BeneficiariesVwView1Iterator"/>
+        <action id="Previous6" RequiresUpdateModel="true" Action="previous" IterBinding="BeneficiariesVwView1Iterator"/>
+        <action id="First6" RequiresUpdateModel="true" Action="first" IterBinding="BeneficiariesVwView1Iterator"/>
+        <action id="Last6" RequiresUpdateModel="true" Action="last" IterBinding="BeneficiariesVwView1Iterator"/>
+        <action id="Find6" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="BeneficiariesVwView1Iterator"/>
+        <action id="Execute6" RequiresUpdateModel="true" Action="iteratorExecute"
+                IterBinding="BeneficiariesVwView1Iterator"/>
+        <attributeValues IterBinding="ArchiveVwView1Iterator" id="ArcFilePath">
+            <AttrNames>
+                <Item Value="ArcFilePath"/>
+            </AttrNames>
+        </attributeValues>
+        <tree IterBinding="ReportParametersRVO1Iterator" id="ReportParametersRVO1">
+            <nodeDefinition DefName="crs.model.ro.ReportParametersRVO" Name="ReportParametersRVO10">
+                <AttrNames>
+                    <Item Value="CrsDocumentsPk"/>
+                    <Item Value="J1"/>
+                    <Item Value="TypeFk"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <attributeValues IterBinding="DocumentBeneficiariesVwView1Iterator" id="DocTypeFk">
+            <AttrNames>
+                <Item Value="DocTypeFk"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="ReportParametersRVO1Iterator" id="PShowDetails">
+            <AttrNames>
+                <Item Value="PShowDetails"/>
+            </AttrNames>
+        </attributeValues>
+    </bindings>
+</pageDefinition>

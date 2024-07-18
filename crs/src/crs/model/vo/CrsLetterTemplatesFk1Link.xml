@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CrsLetterTemplatesFk1Link"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  EntityAssociation="crs.model.eo.CrsLetterTemplatesFk1Assoc">
+  <ViewLinkDefEnd
+    Name="HcmDepartmentsView"
+    Cardinality="1"
+    Source="true"
+    Owner="crs.model.vo.HcmDepartmentsView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="HcmDepartmentsView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.vo.HcmDepartmentsView.DepartmentsPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="CrsLetterTemplatesView"
+    Cardinality="-1"
+    Owner="crs.model.vo.CrsLetterTemplatesView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CrsLetterTemplatesView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.vo.CrsLetterTemplatesView.DepartmentsFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

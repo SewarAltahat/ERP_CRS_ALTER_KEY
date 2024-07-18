@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CrsDeptGroupDeptsFk2Assoc"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="HcmDepartments"
+    Cardinality="1"
+    Source="true"
+    Owner="crs.model.eo.HcmDepartments">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="HcmDepartments"/>
+      <Attr Name="_foreignKey" Value="crs.model.eo.HcmDepartments.HcmDepartmentsPk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.HcmDepartments.DepartmentsPk"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="CrsDeptGroupDepts"
+    Cardinality="-1"
+    Owner="crs.model.eo.CrsDeptGroupDepts">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CrsDeptGroupDepts"/>
+      <Attr Name="_foreignKey" Value="crs.model.eo.CrsDeptGroupDepts.CrsDeptGroupDeptsFk2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsDeptGroupDepts.DepartmentsFk"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

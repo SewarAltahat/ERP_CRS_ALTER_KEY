@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="inSearchTreatmentDoc_subreport2" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" scriptletClass="sdcrs.view.converter.HijriConverterJasper" uuid="7934931f-b2e1-46a7-9049-6f89971d7103">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<parameter name="deptId" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="defaultDate" class="java.lang.String"/>
+	<parameter name="outDocumentNumber" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT indocs.out_number,
+  indocs.department_code_to,
+  1 AS isReceived,
+  (SELECT deptref.department_desc
+  FROM crs_department_ref deptRef
+  WHERE deptref.department_code = indocs.department_code_to
+  ) AS deptDesc ,
+  to_char(indocs.recieved_date_g, 'dd/MM/yyyy hh24:mi:ss') recieved_date_g,
+  indocs.recieved_date_h
+FROM crs_in_documents indocs
+WHERE indocs.department_code_from = $P{deptId}
+AND indocs.out_number             = $P{outDocumentNumber}
+UNION ALL
+SELECT TO_CHAR(outcc.out_doc_code),
+  outcc.department_code,
+  0,
+  (SELECT deptref.department_desc
+  FROM crs_department_ref deptRef
+  WHERE deptref.department_code = outcc.department_code
+  ) AS deptDesc,
+  NULL,
+  NULL
+FROM crs_out_cc outCc
+WHERE NOT EXISTS
+  (SELECT 1
+  FROM crs_in_documents indocs
+  WHERE indocs.out_number       = TO_CHAR( outcc.out_doc_code)
+  AND indocs.department_code_to = outcc.department_code
+  )
+AND outCc.out_doc_code = $P{outDocumentNumber}
+UNION ALL
+SELECT TO_CHAR(CrsOutDocuments.OUT_DOCUMENT_NUMBER),
+  crsoutdocuments.department_code_to ,
+  0,
+  (SELECT deptref.department_desc
+  FROM crs_department_ref deptRef
+  WHERE deptref.department_code = crsoutdocuments.department_code_to
+  ) AS deptDesc,
+  to_char(CrsOutDocuments.OUT_DOC_DATE_G, 'dd/MM/yyyy hh24:mi:ss') OUT_DOC_DATE_G,
+  CrsOutDocuments.OUT_DOC_DATE_H
+FROM crs_out_documents CrsOutDocuments
+WHERE NOT EXISTS
+  (SELECT 1
+  FROM CRS_IN_DOCUMENTS
+  WHERE out_number       = TO_CHAR(CrsOutDocuments.OUT_DOCUMENT_NUMBER)
+  AND DEPARTMENT_CODE_TO = crsoutdocuments.department_code_to
+  )
+AND CrsOutDocuments.OUT_DOCUMENT_NUMBER = $P{outDocumentNumber}]]>
+	</queryString>
+	<field name="OUT_NUMBER" class="java.lang.String"/>
+	<field name="DEPARTMENT_CODE_TO" class="java.math.BigDecimal"/>
+	<field name="ISRECEIVED" class="java.math.BigDecimal"/>
+	<field name="DEPTDESC" class="java.lang.String"/>
+	<field name="RECIEVED_DATE_G" class="java.lang.String"/>
+	<field name="RECIEVED_DATE_H" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="9ee994e0-6625-4fb2-af89-61ed19695f32" key="element-90" mode="Transparent" x="202" y="0" width="148" height="30" forecolor="#000000" backcolor="#999999"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.25" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SdArial" size="16" isBold="true" isStrikeThrough="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[متابعة المعاملة الصادرة]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="254a3451-eb4a-44a1-aff4-c8d9b87ab115" key="rectangle" mode="Opaque" x="0" y="0" width="555" height="20" forecolor="#000000" backcolor="#808080"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="98acfe12-ed5f-4d4a-8b9c-a545d814132b" key="staticText" x="120" y="0" width="317" height="20" forecolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SdArial" size="12" isBold="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[اسم الجهة المرسل إليها]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c4e755f9-dd55-4975-a0d4-1ba5b73d2189" key="staticText" x="437" y="0" width="118" height="20" forecolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SdArial" size="12" isBold="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[رقم الجهة المرسل إليها]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="98d7e143-6f4f-4b0d-9283-0c1a02e4d30d" key="staticText" x="0" y="0" width="120" height="20" forecolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SdArial" size="12" isBold="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[التاريخ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="352e9fd9-5ac1-4bad-bc58-9389a6a3f97f" key="textField" stretchType="RelativeToTallestObject" x="120" y="0" width="317" height="17" forecolor="#000000"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SdArial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DEPTDESC}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="be0a3c73-67e4-47aa-b9b6-7ca19e1b7834" key="textField" stretchType="RelativeToTallestObject" x="437" y="0" width="118" height="17" forecolor="#000000"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SdArial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.convertToArabic($F{DEPARTMENT_CODE_TO})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="yyyy/MM/dd" isBlankWhenNull="true">
+				<reportElement uuid="f32b92db-42d8-4dab-87dc-66e14ab66dad" key="textField" stretchType="RelativeToTallestObject" x="0" y="0" width="120" height="17" forecolor="#000000">
+					<printWhenExpression><![CDATA[$P{defaultDate}.equals("G")]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SdArial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.convertToArabic($F{RECIEVED_DATE_G})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="a06ca2a7-27c6-447d-8e35-067d08c85608" stretchType="RelativeToTallestObject" x="0" y="0" width="120" height="17">
+					<printWhenExpression><![CDATA[$P{defaultDate}.equals("H")]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SdArial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.convertToArabic($P{REPORT_SCRIPTLET}.getHijriNumberDateTime( $F{RECIEVED_DATE_H} ))]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

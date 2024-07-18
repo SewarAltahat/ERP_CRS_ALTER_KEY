@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject ComponentClass="gen.common.BaseViewObjectImpl" BindingStyle="JDBC"
+     CustomQuery="false"
+    FetchMode="FETCH_AS_NEEDED" FromListFlags="1"
+    InheritPersonalization="merge" Name="CrsBeneficiariesTlView"
+    PageIterMode="Full" SelectAllAttributes="false" SelectListFlags="1"
+    Version="12.2.1.16.48" WhereFlags="1" xmlns="http://xmlns.oracle.com/bc4j">
+    <ViewAccessor Name="CrsBeneficiariesBeneficiariesFk"
+        RowLevelBinds="false" ViewObjectName="crs.model.vo.CrsBeneficiariesView"/>
+    <ViewAccessor Name="SsoLanguagesLanguagesFk" RowLevelBinds="true" ViewObjectName="crs.model.ro.SsoLanguagesVwView"/>
+    <ViewAccessor Name="SsoLanguagesVwView1" RowLevelBinds="true" ViewObjectName="crs.model.ro.SsoLanguagesVwView"/>
+    <ListBinding ListRangeSize="10"
+        ListVOName="CrsBeneficiariesBeneficiariesFk" MRUCount="0"
+        Name="LOV_BeneficiariesFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="BeneficiariesFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="BeneficiariesFkDesc"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="BeneficiariesPk"/>
+            <Item Value="BeneficiariesPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="BeneficiariesPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding ListRangeSize="10" ListVOName="SsoLanguagesVwView1"
+        MRUCount="0" Name="LOV_LanguagesFk" NullValueFlag="start" NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
+        <AttrArray Name="AttrNames">
+            <Item Value="LanguagesFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="LanguagesPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="LangName"/>
+        </AttrArray>
+        <DisplayCriteria/>
+    </ListBinding>
+    <EntityUsage Entity="crs.model.eo.CrsBeneficiariesTl" Name="CrsBeneficiariesTl"/>
+    <ViewAttribute AliasName="BENEFICIARIES_TL_PK"
+        EntityAttrName="BeneficiariesTlPk"
+        EntityUsage="CrsBeneficiariesTl" IsNotNull="true"
+        Name="BeneficiariesTlPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsBeneficiariesTl.BeneficiariesTlPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="BENEFICIARY_NAME"
+        EntityAttrName="BeneficiaryName"
+        EntityUsage="CrsBeneficiariesTl" Name="BeneficiaryName" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsBeneficiariesTl.BeneficiaryName']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="NOTES" EntityAttrName="Notes"
+        EntityUsage="CrsBeneficiariesTl" Name="Notes" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsBeneficiariesTl.Notes']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="BENEFICIARIES_FK"
+        EntityAttrName="BeneficiariesFk"
+        EntityUsage="CrsBeneficiariesTl" LOVName="LOV_BeneficiariesFk"
+        Name="BeneficiariesFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE Value="input_text_lov"/>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsBeneficiariesTl.BeneficiariesFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="LANGUAGES_FK" EntityAttrName="LanguagesFk"
+        EntityUsage="CrsBeneficiariesTl" LOVName="LOV_LanguagesFk"
+        Name="LanguagesFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsBeneficiariesTl.LanguagesFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="choice"/>
+                <AUTOSUBMIT Value="true"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="CrsBeneficiariesTl" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate" EntityUsage="CrsBeneficiariesTl"
+        Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="CrsBeneficiariesTl" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate" EntityUsage="CrsBeneficiariesTl"
+        Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk"
+        EntityUsage="CrsBeneficiariesTl" Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="BeneficiariesFkDesc" ColumnType="VARCHAR2"
+        Expression="select a.BENEFICIARIES_PK from CRS_BENEFICIARIES a where a.BENEFICIARIES_PK=CrsBeneficiariesTl.BENEFICIARIES_FK"
+        IsPersistent="false" Name="BeneficiariesFkDesc"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsBeneficiaries.BeneficiariesPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="LanguagesFkDesc" ColumnType="VARCHAR2"
+        Expression="select a.LANGUAGES_PK from SSO_LANGUAGES_VW a where a.LANGUAGES_PK=CrsBeneficiariesTl.LANGUAGES_FK"
+        IsPersistent="false" Name="LanguagesFkDesc" SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['SsoLanguages.LanguagesPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+    <SortCriteria>
+        <Sort Attribute="LanguagesFk"/>
+    </SortCriteria>
+</ViewObject>
+<!---->

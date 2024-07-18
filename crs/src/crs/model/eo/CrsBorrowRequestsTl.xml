@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity AliasName="CrsBorrowRequestsTl" BindingStyle="JDBC"
+    DBObjectName="CRS_BORROW_REQUESTS_TL" DBObjectType="table"
+    InheritPersonalization="merge" Name="CrsBorrowRequestsTl"
+    RowClass="crs.model.eo.CrsBorrowRequestsTlImpl"
+    Version="12.2.1.16.48" xmlns="http://xmlns.oracle.com/bc4j">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Attribute ColumnName="BORROW_REQUESTS_TL_PK" ColumnType="NUMBER"
+        IsNotNull="false" Name="BorrowRequestsTlPk" PrimaryKey="true"
+        SQLType="NUMERIC" TableName="CRS_BORROW_REQUESTS_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="REQUEST_REASON" ColumnType="VARCHAR2"
+        Name="RequestReason" Precision="500" SQLType="VARCHAR"
+        TableName="CRS_BORROW_REQUESTS_TL" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="500"/>
+        </DesignTime>
+    </Attribute>
+    <Attribute ColumnName="NOTES" ColumnType="VARCHAR2" Name="Notes"
+        Precision="500" SQLType="VARCHAR"
+        TableName="CRS_BORROW_REQUESTS_TL" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="500"/>
+        </DesignTime>
+    </Attribute>
+    <Attribute ColumnName="LANGUAGES_FK" ColumnType="NUMBER"
+        Name="LanguagesFk" SQLType="NUMERIC"
+        TableName="CRS_BORROW_REQUESTS_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="BORROW_REQUESTS_FK" ColumnType="NUMBER"
+        Name="BorrowRequestsFk" SQLType="NUMERIC"
+        TableName="CRS_BORROW_REQUESTS_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATED_BY" ColumnType="NUMBER"
+        Name="CreatedBy" SQLType="NUMERIC"
+        TableName="CRS_BORROW_REQUESTS_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATION_DATE" ColumnType="TIMESTAMP"
+        Name="CreationDate" SQLType="TIMESTAMP"
+        TableName="CRS_BORROW_REQUESTS_TL" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="MODIFIED_BY" ColumnType="NUMBER"
+        Name="ModifiedBy" SQLType="NUMERIC"
+        TableName="CRS_BORROW_REQUESTS_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="MODIFIED_DATE" ColumnType="TIMESTAMP"
+        Name="ModifiedDate" SQLType="TIMESTAMP"
+        TableName="CRS_BORROW_REQUESTS_TL" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="USER_DEPARTMENT_FK" ColumnType="NUMBER"
+        Name="UserDepartmentFk" SQLType="NUMERIC"
+        TableName="CRS_BORROW_REQUESTS_TL" Type="java.math.BigDecimal"/>
+    <AccessorAttribute
+        Association="crs.model.assoc.CrsDocBorrowReqTlFk1Assoc"
+        AssociationEnd="crs.model.assoc.CrsDocBorrowReqTlFk1Assoc.CrsBorrowRequests"
+        AssociationOtherEnd="crs.model.assoc.CrsDocBorrowReqTlFk1Assoc.CrsBorrowRequestsTl"
+        IsUpdateable="true" Name="CrsBorrowRequests" Type="crs.model.eo.CrsBorrowRequestsImpl"/>
+    <Key Name="CrsDocBorrowReqTlPk" PrimaryKey="true">
+        <DesignTime>
+            <Attr Name="_DBObjectName" Value="CRS_DOC_BORROW_REQ_TL_PK"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsBorrowRequestsTl.BorrowRequestsTlPk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsDocBorrowReqTlFk1">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="CRS_DOC_BORROW_REQUEST_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_DOC_BORROW_REQ_TL_FK1"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsBorrowRequestsTl.BorrowRequestsFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsDocBorrowReqTlFk2">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="SSO_LANGUAGES_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_DOC_BORROW_REQ_TL_FK2"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsBorrowRequestsTl.LanguagesFk"/>
+        </AttrArray>
+    </Key>
+</Entity>
+<!---->

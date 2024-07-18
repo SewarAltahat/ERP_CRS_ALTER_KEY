@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity
+    AliasName="CrsOutgoingBeneficiaries"
+    BindingStyle="JDBC"
+    DBObjectName="CRS_OUTGOING_BENEFICIARIES"
+    DBObjectType="table"
+    InheritPersonalization="merge"
+    Name="CrsOutgoingBeneficiaries"
+    RowClass="crs.model.eo.CrsOutgoingBeneficiariesImpl"
+    Version="12.2.1.12.24"
+    xmlns="http://xmlns.oracle.com/bc4j"
+    xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+      ColumnName="OUTGOING_BENEFICIARIES_PK"
+      ColumnType="NUMBER"
+      Name="OutgoingBeneficiariesPk"
+      PrimaryKey="true"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_BENEFICIARIES"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="BENEFICIARIES_FK"
+      ColumnType="NUMBER"
+      Name="BeneficiariesFk"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_BENEFICIARIES"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="OUTGOING_DOCUMENTS_FK"
+      ColumnType="NUMBER"
+      Name="OutgoingDocumentsFk"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_BENEFICIARIES"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="OUTGOING_DOC_PREPARATION_FK"
+      ColumnType="NUMBER"
+      Name="OutgoingDocPreparationFk"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_BENEFICIARIES"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="CREATED_BY"
+      ColumnType="NUMBER"
+      Name="CreatedBy"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_BENEFICIARIES"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="CREATION_DATE"
+      ColumnType="TIMESTAMP"
+      Name="CreationDate"
+      SQLType="TIMESTAMP"
+      TableName="CRS_OUTGOING_BENEFICIARIES"
+      Type="java.sql.Timestamp"/>
+  <Attribute
+      ColumnName="MODIFIED_BY"
+      ColumnType="NUMBER"
+      Name="ModifiedBy"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_BENEFICIARIES"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="MODIFIED_DATE"
+      ColumnType="TIMESTAMP"
+      Name="ModifiedDate"
+      SQLType="TIMESTAMP"
+      TableName="CRS_OUTGOING_BENEFICIARIES"
+      Type="java.sql.Timestamp"/>
+  <Attribute
+      ColumnName="USER_DEPARTMENT_FK"
+      ColumnType="NUMBER"
+      Name="UserDepartmentFk"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_BENEFICIARIES"
+      Type="java.math.BigDecimal"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsOutgoingBeneficiarieFk2Assoc"
+      AssociationEnd="crs.model.assoc.CrsOutgoingBeneficiarieFk2Assoc.CrsBeneficiaries"
+      AssociationOtherEnd="crs.model.assoc.CrsOutgoingBeneficiarieFk2Assoc.CrsOutgoingBeneficiaries"
+      IsUpdateable="true"
+      Name="CrsBeneficiaries"
+      Type="crs.model.eo.CrsBeneficiariesImpl"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsOutgoingBeneficiarieFk1Assoc"
+      AssociationEnd="crs.model.assoc.CrsOutgoingBeneficiarieFk1Assoc.CrsOutgoingDocuments"
+      AssociationOtherEnd="crs.model.assoc.CrsOutgoingBeneficiarieFk1Assoc.CrsOutgoingBeneficiaries"
+      IsUpdateable="true"
+      Name="CrsOutgoingDocuments"
+      Type="crs.model.eo.CrsOutgoingDocumentsImpl"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsOutgoingBeneficiarieFk3Assoc"
+      AssociationEnd="crs.model.assoc.CrsOutgoingBeneficiarieFk3Assoc.CrsOutgoingDocPreparation"
+      AssociationOtherEnd="crs.model.assoc.CrsOutgoingBeneficiarieFk3Assoc.CrsOutgoingBeneficiaries"
+      IsUpdateable="true"
+      Name="CrsOutgoingDocPreparation"
+      Type="crs.model.eo.CrsOutgoingDocPreparationImpl"/>
+  <Key
+      Name="CrsOutgoingBeneficiariesPk"
+      PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_BENEFICIARIES_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingBeneficiaries.OutgoingBeneficiariesPk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="UniqueKeyWithinBeneficiariesAltKey"
+      AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_BENEFICIARIES"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingBeneficiaries.OutgoingDocumentsFk"/>
+      <Item Value="crs.model.eo.CrsOutgoingBeneficiaries.BeneficiariesFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="UniqueKeyWithinBeneficiariesPreAltKey"
+      AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_BENEFICIARIES"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingBeneficiaries.BeneficiariesFk"/>
+      <Item Value="crs.model.eo.CrsOutgoingBeneficiaries.OutgoingDocPreparationFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="CrsOutgoingBeneficiarieFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CRS_OUTGOING_DOCUMENT_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_BENEFICIARIE_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingBeneficiaries.OutgoingDocumentsFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="CrsOutgoingBeneficiarieFk2">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CRS_BENEFICIARIES_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_BENEFICIARIE_FK2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingBeneficiaries.BeneficiariesFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="CrsOutgoingBeneficiarieFk3">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CRS_OUTGOING_DOC_PREPARATI_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_BENEFICIARIE_FK3"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingBeneficiaries.OutgoingDocPreparationFk"/>
+    </AttrArray>
+  </Key>
+  <validation:UniqueKeyValidationBean
+      Name="CrsOutgoingBeneficiariesRule0"
+      ResId="#{menu.resourceLabelMap['error.DuplicateCode']}"
+      KeyName="UniqueKeyWithinBeneficiariesAltKey">
+    <validation:OnAttributes>
+      <validation:Item
+          Value="OutgoingDocumentsFk"/>
+      <validation:Item
+          Value="BeneficiariesFk"/>
+    </validation:OnAttributes>
+    <validation:OnCondition>
+        <![CDATA[OutgoingDocumentsFk != null]]>
+        </validation:OnCondition>
+  </validation:UniqueKeyValidationBean>
+  <validation:UniqueKeyValidationBean
+      Name="CrsOutgoingBeneficiariesRule1"
+      ResId="#{menu.getResourceLabel('error.DuplicateCode')}"
+      KeyName="UniqueKeyWithinBeneficiariesPreAltKey">
+    <validation:OnAttributes>
+      <validation:Item
+          Value="BeneficiariesFk"/>
+      <validation:Item
+          Value="OutgoingDocPreparationFk"/>
+    </validation:OnAttributes>
+    <validation:OnCondition>
+        <![CDATA[OutgoingDocPreparationFk != null]]>
+        </validation:OnCondition>
+  </validation:UniqueKeyValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+        PropertiesFile="crs.view.scrlabels"/>
+  </ResourceBundle>
+</Entity>
+<!---->

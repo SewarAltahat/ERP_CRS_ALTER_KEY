@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.52.5" id="outDocPreparationReportPageDef"
+                Package="crs.pageDefs">
+  <executables>
+
+    <invokeAction id="invokeRollBack" Binds="Rollback" Refresh="prepareModel" RefreshCondition="#{!adfFacesContext.postback}"/>
+    <iterator Binds="ReportParametersRVO1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ReportParametersRVO1Iterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="ReportParametersRVO1Iterator" StaticList="false" Uses="LOV_TypeFk" id="TypeFk"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <listOfValues IterBinding="ReportParametersRVO1Iterator" StaticList="false" Uses="LOV_FromDepartmentFk"
+                  id="FromDepartmentFk"/>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DisplayFromDepartmentFk">
+      <AttrNames>
+        <Item Value="DisplayFromDepartmentFk"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="ReportParametersRVO1Iterator" StaticList="false" Uses="LOV_ToDepartmentFk"
+                  id="ToDepartmentFk"/>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DisplayToDepartmentFk">
+      <AttrNames>
+        <Item Value="DisplayToDepartmentFk"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="ReportParametersRVO1Iterator" StaticList="false" Uses="LOV_InDocTypeFk"
+                  id="DocTypeFk"/>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DisplayDocTypeFk">
+      <AttrNames>
+        <Item Value="DisplayDocTypeFk"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="ReportParametersRVO1Iterator" StaticList="false" Uses="LOV_PriorityFk" id="PriorityFk"/>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DisplayPriorityFk">
+      <AttrNames>
+        <Item Value="DisplayPriorityFk"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="ReportParametersRVO1Iterator" StaticList="false" Uses="LOV_SecurityLevelFk"
+                  id="SecurityLevelFk"/>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DisplaySecurityLevelFk">
+      <AttrNames>
+        <Item Value="DisplaySecurityLevelFk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DateFrom">
+      <AttrNames>
+        <Item Value="DateFrom"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DateTo">
+      <AttrNames>
+        <Item Value="DateTo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="HijriDateFrom">
+      <AttrNames>
+        <Item Value="HijriDateFrom"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="HijriDateTo">
+      <AttrNames>
+        <Item Value="HijriDateTo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="AddDayToDateTo">
+      <AttrNames>
+        <Item Value="AddDayToDateTo"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues Uses="LOV_InsideDepartmentFk" StaticList="false" IterBinding="ReportParametersRVO1Iterator"
+                  id="InsideDepartmentFk"/>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DispalyInsideDepartmentFk">
+      <AttrNames>
+        <Item Value="DispalyInsideDepartmentFk"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

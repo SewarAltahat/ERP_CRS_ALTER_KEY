@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document styleClass="sidebar-mini" id="Document1" title="#{menu.resourceLabelMap['label.mainPage']}" uncommittedDataWarning="on"
+    binding="#{mainPage.doc}">
+      <af:messages id="m1"/>
+      <af:form id="form1">
+        <af:pageTemplate viewId="/templateDef.jspx" id="page1">
+          <f:attribute name="pageTitle" value="#{menu.resourceLabelMap['label.mainPage']}"/>
+          <f:attribute name="collapsed" value="true"/>
+          <f:facet name="main">
+            <af:panelGroupLayout layout="scroll" rendered="true">
+              <af:panelGroupLayout rendered="#{adfFacesContext.rightToLeft == true}">
+                <link rel="stylesheet" href="main_css/main_page-rtl.css"/>
+              </af:panelGroupLayout>
+              <af:panelGroupLayout rendered="#{adfFacesContext.rightToLeft == false}">
+                <link rel="stylesheet" href="main_css/main_page.css"/>
+              </af:panelGroupLayout>
+              <section class="content">
+                <div class="container-fluid">
+                  <div class="cards">
+                    <div class="row">
+                      
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

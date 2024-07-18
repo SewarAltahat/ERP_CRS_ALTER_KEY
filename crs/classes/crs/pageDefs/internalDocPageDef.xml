@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.52.5" id="internalDocPageDef"
+                Package="crs.pageDefs">
+  <executables>
+    <invokeAction id="invokeRollBack" Binds="Rollback" Refresh="prepareModel" RefreshCondition="#{!adfFacesContext.postback}"/>
+    <iterator Binds="CrsOutgoingDocumentsView4" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CrsOutgoingDocumentsView4Iterator"/>
+    <searchRegion Binds="CrsOutgoingDocumentsView4Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="CrsOutgoingDocumentsView4Query"/>
+    <iterator Binds="CrsOutgoingArchiveView4" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CrsOutgoingArchiveView4Iterator"/>
+    <searchRegion id="CrsOutgoingArchiveView4CriteriaQuery" Binds="CrsOutgoingArchiveView4Iterator"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <taskFlow id="OutDocView1" taskFlowId="/WEB-INF/OutDocView.xml#OutDocView" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <iterator id="CrsIncomingDocumentsView1Iterator" Binds="CrsIncomingDocumentsView1"
+              DataControl="AppModuleDataControl" RangeSize="25"/>
+    <iterator id="CrsIncomingArchiveView2Iterator" Binds="CrsIncomingArchiveView2" DataControl="AppModuleDataControl"
+              RangeSize="25"/>
+    <iterator id="CrsIncomingBeneficiariesView3Iterator" Binds="CrsIncomingBeneficiariesView3"
+              DataControl="AppModuleDataControl" RangeSize="25"/>
+    <iterator id="CrsIncomingCommentsView2Iterator" Binds="CrsIncomingCommentsView2" DataControl="AppModuleDataControl"
+              RangeSize="25"/>
+    <iterator id="CrsIncomingDocAttachmentsView2Iterator" Binds="CrsIncomingDocAttachmentsView2"
+              DataControl="AppModuleDataControl" RangeSize="25"/>
+    <iterator id="CrsIncomingDocCcView2Iterator" Binds="CrsIncomingDocCcView2" DataControl="AppModuleDataControl"
+              RangeSize="25"/>
+    <iterator id="CrsIncomingRelatedLettersView2Iterator" Binds="CrsIncomingRelatedLettersView2"
+              DataControl="AppModuleDataControl" RangeSize="25"/>
+    <iterator id="CrsOutgoingBeneficiariesView5Iterator" Binds="CrsOutgoingBeneficiariesView5"
+              DataControl="AppModuleDataControl" RangeSize="25"/>
+    <iterator id="CrsIncomingRelatedLettersView5Iterator" Binds="CrsIncomingRelatedLettersView5"
+              DataControl="AppModuleDataControl" RangeSize="25"/>
+    <iterator id="CrsOutgoingCommentsView3Iterator" Binds="CrsOutgoingCommentsView3" DataControl="AppModuleDataControl"
+              RangeSize="25"/>
+    <iterator id="CrsOutgoingDocAttachmentsView4Iterator" Binds="CrsOutgoingDocAttachmentsView4"
+              DataControl="AppModuleDataControl" RangeSize="25"/>
+    <iterator id="CrsOutgoingDocCcView4Iterator" Binds="CrsOutgoingDocCcView4" DataControl="AppModuleDataControl"
+              RangeSize="25"/>
+    <iterator id="CrsOutgoingRelatedLettersView3Iterator" Binds="CrsOutgoingRelatedLettersView3"
+              DataControl="AppModuleDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <tree IterBinding="CrsOutgoingDocumentsView4Iterator" id="CrsOutgoingDocumentsView4">
+      <nodeDefinition DefName="crs.model.vo.CrsOutgoingDocumentsView" Name="CrsOutgoingDocumentsView40">
+        <AttrNames>
+          <Item Value="OutgoingDocumentsPk"/>
+          <Item Value="FromDepartmentFk"/>
+          <Item Value="DisplayFromDepartmentFk"/>
+          <Item Value="OutDocDateG"/>
+          <Item Value="OutDocDateH"/>
+          <Item Value="DisplayOutSubject"/>
+          <Item Value="SupplyFl"/>
+          <Item Value="OutingDocStsFk"/>
+          <Item Value="SeletedFl"/>
+          <Item Value="AttachmentsNo"/>
+          <Item Value="Barcode"/>
+          <Item Value="ClassificationFk"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="DisplayClassificationFk"/>
+          <Item Value="DisplayDistributionTypeFk"/>
+          <Item Value="DisplayDistributionTypeFkSearch"/>
+          <Item Value="DisplayFilesLocationFk"/>
+          <Item Value="DisplayFromDepartmentFkSearch"/>
+          <Item Value="DisplayIncomingDocumentsFk"/>
+          <Item Value="DisplayKeyword"/>
+          <Item Value="DisplayKeywordSearch"/>
+          <Item Value="DisplayNotes"/>
+          <Item Value="DisplayNotesSearch"/>
+          <Item Value="DisplayOutDocTypeFk"/>
+          <Item Value="DisplayOutgoingTypeFk"/>
+          <Item Value="DisplayOutSubjectSearch"/>
+          <Item Value="DisplayPriorityFk"/>
+          <Item Value="DisplaySecurityLevelFk"/>
+          <Item Value="DisplayToDepartmentFk"/>
+          <Item Value="DisplayToDepartmentFkSearch"/>
+          <Item Value="DistributionTypeFk"/>
+          <Item Value="DistributionTypeFkSearch"/>
+          <Item Value="FilesLocationFk"/>
+          <Item Value="IncomingDocumentsFk"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="OutDocNo"/>
+          <Item Value="OutDocTypeFk"/>
+          <Item Value="OutDocYear"/>
+          <Item Value="OutgoingDocumentsNo"/>
+          <Item Value="OutgoingInsertFl"/>
+          <Item Value="OutgoingTypeFk"/>
+          <Item Value="OutText"/>
+          <Item Value="PriorityFk"/>
+          <Item Value="ReceivedDateG"/>
+          <Item Value="ReceivedDateH"/>
+          <Item Value="RejectedFk"/>
+          <Item Value="RejectedFl"/>
+          <Item Value="RejectedReason"/>
+          <Item Value="RespondPeriod"/>
+          <Item Value="SecurityLevelFk"/>
+          <Item Value="StatementNumber"/>
+          <Item Value="ToDepartmentFk"/>
+          <Item Value="ToDepartmentFkSwitcher"/>
+          <Item Value="UserDepartmentFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CrsOutgoingArchiveView4Iterator" id="CrsOutgoingArchiveView4">
+      <nodeDefinition DefName="crs.model.vo.CrsOutgoingArchiveView" Name="CrsOutgoingArchiveView40">
+        <AttrNames>
+          <Item Value="OutgoingArchivePk"/>
+          <Item Value="ArcFilePath"/>
+          <Item Value="OutgoingDocumentsFk"/>
+          <Item Value="OutgoingDocPreparationFk"/>
+          <Item Value="SecurityLevelFk"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="DisplaySecurityLevelFk"/>
+          <Item Value="SecurityLevelFkSearch"/>
+          <Item Value="DisplaySecurityLevelFkSearch"/>
+          <Item Value="DisplayArcDocName"/>
+          <Item Value="DisplayArcDocDesc"/>
+          <Item Value="DisplayArcDocNameSearch"/>
+          <Item Value="DisplayArcDocDescSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="CrsOutgoingDocumentsView4Iterator" id="OutgoingDocumentsPk">
+      <AttrNames>
+        <Item Value="OutgoingDocumentsPk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsOutgoingArchiveView4Iterator" id="ArcFilePath">
+      <AttrNames>
+        <Item Value="ArcFilePath"/>
+      </AttrNames>
+    </attributeValues>
+    <!--<button IterBinding="CrsOutgoingDocumentsView4Iterator" id="SupplyFl" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="SupplyFl"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>-->
+  </bindings>
+</pageDefinition>

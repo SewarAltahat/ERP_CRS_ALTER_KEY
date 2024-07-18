@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CrsDocClassTlFk1Link"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  EntityAssociation="crs.model.assoc.CrsDocClassTlFk1Assoc">
+  <ViewLinkDefEnd
+    Name="CrsDocClassView"
+    Cardinality="1"
+    Source="true"
+    Owner="crs.model.vo.CrsDocClassView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CrsDocClassView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.vo.CrsDocClassView.DocClassPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="CrsDocClassTlView"
+    Cardinality="-1"
+    Owner="crs.model.vo.CrsDocClassTlView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CrsDocClassTlView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.vo.CrsDocClassTlView.DocClassFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

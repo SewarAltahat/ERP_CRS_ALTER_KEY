@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject ComponentClass="gen.common.BaseViewObjectImpl"
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DeparmentsRVO"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  BindingStyle="JDBC"
+  CustomQuery="true"
+  PageIterMode="Full"
+  RowClass="crs.model.ro.DeparmentsRVORowImpl">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="p_lang"
+    Kind="where" 
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="0"/>
+      <Item Value="1"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenLib.getLanguageNo()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+    <Variable
+    Name="p_admin_type"
+    Kind="where" 
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="4"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenConstants.ADMINUSER]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_normal_user_type"
+    Kind="where" 
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="6"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenConstants.ORDINARY_USER]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_dept_manager_type"
+    Kind="where" 
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="9"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenConstants.SUPERVISOR]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_user_type_fk"
+    Kind="where" 
+    Type="BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="3"/>
+      <Item Value="5"/>
+      <Item Value="8"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenLib.getUserType()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_departments_fk"
+    Kind="where" 
+    Type="BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="7"/>
+      <Item Value="10"/>
+      <Item Value="11"/>
+      <Item Value="14"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenLib.getUserLoginDepartment()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_all_data"
+    Kind="where"
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="2"/>
+    </AttrArray>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_users_fk"
+    Kind="where" 
+    Type="BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="12"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenLib.getUserId()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+   <Variable
+    Name="p_systems_fk"
+    Kind="where" 
+    Type="BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="13"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenLib.getSystemId()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_departments_pk"
+    Kind="viewcriteria"
+    Type="java.math.BigDecimal"/>
+  <ViewAccessor
+    Name="SsoSystemLookupValuesActionFk"
+    ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SsoSystemLookupValuesFilter"
+      FullName="crs.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter"/>
+    <ParameterMap>
+      <PIMap Variable="p_system_lookups_fk">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[18]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_ActionFk"
+    ListVOName="SsoSystemLookupValuesActionFk"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ActionFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DisplayActionFk"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="SystemLookupValuesPk"/>
+      <Item Value="DisplaySystemLookupsFk"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="SystemLookupValuesPk"/>
+      <Item Value="DisplaySystemLookupsFk"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SsoSystemLookupValuesLOVSearch"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <SQLQuery><![CDATA[SELECT DISTINCT  DEPARTMENTS_PK , GET_DEPARTMENT_NAME(DEPARTMENTS_PK ,?)  as Department_Name,    
+ HcmDepartments.DEPT_TYPE_FK AS DEPT_TYPE_FK ,    
+ GET_LOOKUP_DESC(HcmDepartments.DEPT_TYPE_FK , ? ) AS DISPLAY_DEPT_TYPE_FK,    
+ HcmDepartments.DEPT_STATUS_FL AS DEPT_STATUS_FL,    
+ HcmDepartments.DEPT_SECURITY_FK AS DEPT_SECURITY_FK   , 
+ HcmDepartments.DEPT_EXTERNAL_FL as DEPT_EXTERNAL_FL 
+ from HCM_DEPARTMENTS HcmDepartments                    
+ where          
+ (       
+  ? IS NOT NULL        
+  OR        
+  (        
+  ? = ?                       
+  or (? = ? and  HcmDepartments.DEPARTMENTS_PK = ?)                       
+  or (? = ? and (HcmDepartments.DEPARTMENTS_PK = ? or HcmDepartments.DEPARTMENTS_PK IN (SELECT HIER.CHILD_DEPARTMENT FROM HCM_DEPARTMENTS_HIERARCHY HIER WHERE HIER.PARENT_DEPARTMENT = ?)))                            
+  )       
+  )       
+  AND       
+    (       
+    HcmDepartments.DEPT_SECURITY_FK IS NULL OR       
+    HcmDepartments.DEPT_SECURITY_FK IN        
+   (SELECT SECURITY_LEVELS_FK FROM SSO_USER_SECURITY_LEVELS_VW VW       
+    WHERE VW.USERS_PK = ?       
+    AND VW.SYSTEMS_FK = ?       
+    AND VW.DEPARTMENTS_FK = ?       
+  )         
+  )       
+ ORDER BY DEPARTMENTS_PK]]></SQLQuery>
+  <ViewAttribute
+    Name="DepartmentsPk"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DEPARTMENTS_PK"
+    Expression="DEPARTMENTS_PK"
+    SQLType="NUMERIC">
+      <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['SsoDepartments.PK']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+  <ViewAttribute
+    Name="DepartmentName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DEPARTMENT_NAME"
+    Expression="DEPARTMENT_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+       <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['SsoDepartments.DeptName']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DeptTypeFk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DEPT_TYPE_FK"
+    Expression="DEPT_TYPE_FK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DisplayDeptTypeFk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DISPLAY_DEPT_TYPE_FK"
+    Expression="DISPLAY_DEPT_TYPE_FK"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DeptStatusFl"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DEPT_STATUS_FL"
+    Expression="DEPT_STATUS_FL"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DeptSecurityFk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DEPT_SECURITY_FK"
+    Expression="DEPT_SECURITY_FK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DeptExternalFl"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DEPT_EXTERNAL_FL"
+    Expression="DEPT_EXTERNAL_FL"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="SelectedFl"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DeparmentsRVO.SelectFl']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+        </ViewAttribute>
+  <ViewAttribute
+    Name="DepartmentNameSearch"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+       <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['SsoDepartments.DeptName']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+        </ViewAttribute>
+        <ViewAttribute
+    Name="ActionFk"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"
+    LOVName="LOV_ActionFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DisplayActionFk"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="Guidance"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewCriteria
+    Name="DeparmentsLovSearch"
+    ViewObjectName="crs.model.ro.DeparmentsRVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="false"/>
+        <Property
+          Name="showInList"
+          Value="false"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="DeparmentsRVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="DepartmentsPk"
+        ViewAttribute="DepartmentsPk"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="DeparmentsRVOCriteria_DeparmentsRVOCriteria_row_0_DepartmentName"
+        ViewAttribute="DepartmentName"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="FilterByDeptStatusFl"
+    ViewObjectName="crs.model.ro.DeparmentsRVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="DeparmentsRVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="DeptStatusFl"
+        ViewAttribute="DeptStatusFl"
+        Operator="="
+        Conjunction="AND"
+        Value="1"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="FilterByDeptNotExternalFl"
+    ViewObjectName="crs.model.ro.DeparmentsRVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="DeparmentsRVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="DeptExternalFl"
+        ViewAttribute="DeptExternalFl"
+        Operator="="
+        Conjunction="AND"
+        Value="0"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="NumberingDependencyCriteria"
+    ViewObjectName="crs.model.ro.DeparmentsRVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="DeparmentsRVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="DepartmentsPk"
+        ViewAttribute="DepartmentsPk"
+        Operator="&lt;>"
+        Conjunction="AND"
+        Value=":p_departments_pk"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="FilterByDeptExternalFl"
+    ViewObjectName="crs.model.ro.DeparmentsRVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="DeparmentsRVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="DeptExternalFl"
+        ViewAttribute="DeptExternalFl"
+        Operator="="
+        Conjunction="AND"
+        Value="1"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="DepartmentsPk"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="crs.view.scrlabels"/>
+  </ResourceBundle>
+</ViewObject>

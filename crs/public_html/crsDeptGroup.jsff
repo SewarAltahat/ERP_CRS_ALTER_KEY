@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl3" layout="scroll">
+    <af:panelBox styleClass="AFStretchWidth" id="pb22">
+      <af:panelTabbed id="PTCrsIncomingDocuments13" styleClass="AFStretchWidth" dimensionsFrom="disclosedChild">
+        <af:showDetailItem id="sdi_CrsIncomingDocuments64" styleClass="AFStretchWidth" immediate="true"
+                           text="#{menu.resourceLabelMap['menu.departmentGroups']}">
+          <af:panelGroupLayout id="pglCrsIncomingBeneficiaries65" layout="vertical" halign="center">
+            <af:panelGroupLayout id="pgl62">
+              <af:panelStretchLayout id="psl63" styleClass="AFStretchWidth" dimensionsFrom="children">
+                <f:facet name="center">
+                  <af:panelCollection id="pc48" styleClass="AFStretchWidth"
+                                      featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem">
+                    <!--<f:facet name="secondaryToolbar">
+                      <af:toolbar id="tb4">
+                        <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="print4"
+                                          styleClass="printButton" immediate="true" disabled="#{!menu.selectAllowed}"
+                                          partialSubmit="true" icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+                          <af:showPrintablePageBehavior/>
+                        </af:commandButton>
+                        <af:spacer width="5" id="s1"/>
+                        <af:commandButton text="#{menu.resourceLabelMap['label.excel']}" id="excel4"
+                                          styleClass="excelButton" immediate="true" disabled="#{!menu.selectAllowed}"
+                                          partialSubmit="true" icon="#{menu.excelIcon}" visible="#{menu.excelVisible}">
+                          <af:setPropertyListener to="#{sessionScope.tableId}" from="t1" type="action"/>
+                          <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                        </af:commandButton>
+                      </af:toolbar>
+                    </f:facet>-->
+                    <af:table value="#{bindings.CrsDeptGroupRVO.collectionModel}" var="row"
+                              rows="#{bindings.CrsDeptGroupRVO.rangeSize}"
+                              emptyText="#{bindings.CrsDeptGroupRVO.viewable ? menu.emptyText : menu.accessDeniedText}"
+                              rowBandingInterval="1"
+                              selectedRowKeys="#{bindings.CrsDeptGroupRVO.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.CrsDeptGroupRVO.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.CrsDeptGroupRVO.rangeSize}"
+                              filterModel="#{bindings.CrsDeptGroupRVOQuery.queryDescriptor}" filterVisible="false"
+                              queryListener="#{bindings.CrsDeptGroupRVOQuery.processQuery}" varStatus="vs" id="t1"
+                              columnSelection="multiple" columnStretching="column:c2" verticalGridVisible="false"
+                              displayRow="selected" editingMode="editAll" autoHeightRows="10"
+                              blockRowNavigationOnError="always" scrollPolicy="page">
+                      <af:column sortProperty="DeptGroupPk" headerText="#{menu.resourceLabelMap['SsoDepartments.PK']}"
+                                 id="c1" sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                 align="center" width="300">
+                        <af:inputText value="#{row.bindings.DeptGroupPk.inputValue}"
+                                      label="#{bindings.CrsDeptGroupRVO.hints.DeptGroupPk.label}"
+                                      required="#{bindings.CrsDeptGroupRVO.hints.DeptGroupPk.mandatory}"
+                                      columns="#{bindings.CrsDeptGroupRVO.hints.DeptGroupPk.displayWidth}"
+                                      maximumLength="#{bindings.CrsDeptGroupRVO.hints.DeptGroupPk.precision}" id="it1">
+                          <f:validator binding="#{row.bindings.DeptGroupPk.validator}"/>
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.CrsDeptGroupRVO.hints.DeptGroupPk.format}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column sortProperty="DisplayDeptGroupPk"
+                                 headerText="#{menu.resourceLabelMap['SsoDepartments.PK']}" id="c2" sortable="true"
+                                 filterable="true" filterFeatures="caseInsensitive" align="center" width="300">
+                        <af:inputText value="#{row.bindings.DisplayDeptGroupPk.inputValue}"
+                                      label="#{bindings.CrsDeptGroupRVO.hints.DisplayDeptGroupPk.label}"
+                                      required="#{bindings.CrsDeptGroupRVO.hints.DisplayDeptGroupPk.mandatory}"
+                                      columns="#{bindings.CrsDeptGroupRVO.hints.DisplayDeptGroupPk.displayWidth}"
+                                      maximumLength="#{bindings.CrsDeptGroupRVO.hints.DisplayDeptGroupPk.precision}"
+                                      id="it2">
+                          <f:validator binding="#{row.bindings.DisplayDeptGroupPk.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                </f:facet>
+              </af:panelStretchLayout>
+            </af:panelGroupLayout>
+          </af:panelGroupLayout>
+        </af:showDetailItem>
+      </af:panelTabbed>
+    </af:panelBox>
+  </af:panelGroupLayout>
+</jsp:root>

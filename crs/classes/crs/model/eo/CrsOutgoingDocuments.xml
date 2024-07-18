@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity
+    AliasName="CrsOutgoingDocuments"
+    BindingStyle="JDBC"
+    DBObjectName="CRS_OUTGOING_DOCUMENTS"
+    DBObjectType="table"
+    InheritPersonalization="merge"
+    Name="CrsOutgoingDocuments"
+    RowClass="crs.model.eo.CrsOutgoingDocumentsImpl"
+    Version="12.2.1.12.24"
+    xmlns="http://xmlns.oracle.com/bc4j">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+      ColumnName="OUTGOING_DOCUMENTS_PK"
+      ColumnType="NUMBER"
+      Name="OutgoingDocumentsPk"
+      PrimaryKey="true"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="OUT_DOC_YEAR"
+      ColumnType="NUMBER"
+      Name="OutDocYear"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="OUTGOING_TYPE_FK"
+      ColumnType="NUMBER"
+      Name="OutgoingTypeFk"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="OUT_DOC_NO"
+      ColumnType="VARCHAR2"
+      Name="OutDocNo"
+      Precision="20"
+      SQLType="VARCHAR"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.lang.String">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+      ColumnName="OUT_DOC_DATE_G"
+      ColumnType="TIMESTAMP"
+      Name="OutDocDateG"
+      SQLType="TIMESTAMP"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.sql.Timestamp"/>
+  <Attribute
+      ColumnName="OUT_DOC_DATE_H"
+      ColumnType="NUMBER"
+      Name="OutDocDateH"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="OUT_DOC_TYPE_FK"
+      ColumnType="NUMBER"
+      Name="OutDocTypeFk"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="FROM_DEPARTMENT_FK"
+      ColumnType="NUMBER"
+      Name="FromDepartmentFk"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="TO_DEPARTMENT_FK"
+      ColumnType="NUMBER"
+      Name="ToDepartmentFk"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="PRIORITY_FK"
+      ColumnType="NUMBER"
+      Name="PriorityFk"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="RESPOND_PERIOD"
+      ColumnType="NUMBER"
+      Name="RespondPeriod"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="ATTACHMENTS_NO"
+      ColumnType="NUMBER"
+      Name="AttachmentsNo"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="INCOMING_DOCUMENTS_FK"
+      ColumnType="NUMBER"
+      Name="IncomingDocumentsFk"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="FILES_LOCATION_FK"
+      ColumnType="NUMBER"
+      Name="FilesLocationFk"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="BARCODE"
+      ColumnType="NUMBER"
+      Name="Barcode"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="SECURITY_LEVEL_FK"
+      ColumnType="NUMBER"
+      Name="SecurityLevelFk"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="RECEIVED_DATE_G"
+      ColumnType="TIMESTAMP"
+      Name="ReceivedDateG"
+      SQLType="TIMESTAMP"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.sql.Timestamp"/>
+  <Attribute
+      ColumnName="RECEIVED_DATE_H"
+      ColumnType="NUMBER"
+      Name="ReceivedDateH"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="CREATED_BY"
+      ColumnType="NUMBER"
+      Name="CreatedBy"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="CREATION_DATE"
+      ColumnType="TIMESTAMP"
+      Name="CreationDate"
+      SQLType="TIMESTAMP"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.sql.Timestamp"/>
+  <Attribute
+      ColumnName="MODIFIED_BY"
+      ColumnType="NUMBER"
+      Name="ModifiedBy"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="MODIFIED_DATE"
+      ColumnType="TIMESTAMP"
+      Name="ModifiedDate"
+      SQLType="TIMESTAMP"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.sql.Timestamp"/>
+  <Attribute
+      ColumnName="USER_DEPARTMENT_FK"
+      ColumnType="NUMBER"
+      Name="UserDepartmentFk"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      Name="ClassificationFk"
+      ColumnName="CLASSIFICATION_FK"
+      SQLType="NUMERIC"
+      Type="java.math.BigDecimal"
+      ColumnType="NUMBER"
+      TableName="CRS_OUTGOING_DOCUMENTS"/>
+  <Attribute
+      Name="DisplayOutSubject"
+      Precision="200"
+      SQLType="VARCHAR"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      IsPersistent="false"
+      ColumnName="$none$"/>
+  <Attribute
+      Name="DisplayKeyword"
+      Precision="200"
+      SQLType="VARCHAR"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      IsPersistent="false"
+      ColumnName="$none$"/>
+  <Attribute
+      Name="DisplayNotes"
+      Precision="500"
+      SQLType="VARCHAR"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      IsPersistent="false"
+      ColumnName="$none$"/>
+  <Attribute
+      ColumnName="OUT_TEXT"
+      ColumnType="CLOB"
+      IsQueriable="false"
+      Name="OutText"
+      SQLType="CLOB"
+      TableName="CRS_OUTGOING_DOCUMENTS"
+      Type="java.lang.String"/>
+  <Attribute
+      Name="OutgoingDocumentsNo"
+      ColumnName="OUTGOING_DOCUMENTS_NO"
+      SQLType="NUMERIC"
+      Type="java.math.BigDecimal"
+      ColumnType="NUMBER"
+      TableName="CRS_OUTGOING_DOCUMENTS"/>
+  <Attribute
+      Name="RejectedFk"
+      ColumnName="REJECTED_FK"
+      SQLType="NUMERIC"
+      Type="java.math.BigDecimal"
+      ColumnType="NUMBER"
+      TableName="CRS_OUTGOING_DOCUMENTS"/>
+  <Attribute
+      Name="RejectedFl"
+      ColumnName="REJECTED_FL"
+      SQLType="NUMERIC"
+      Type="java.math.BigDecimal"
+      ColumnType="NUMBER"
+      TableName="CRS_OUTGOING_DOCUMENTS"/>
+  <Attribute
+      Name="RejectedReason"
+      Precision="600"
+      ColumnName="REJECTED_REASON"
+      SQLType="VARCHAR"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      TableName="CRS_OUTGOING_DOCUMENTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="600"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+      Name="SupplyFl"
+      ColumnName="SUPPLY_FL"
+      SQLType="NUMERIC"
+      Type="java.math.BigDecimal"
+      ColumnType="NUMBER"
+      TableName="CRS_OUTGOING_DOCUMENTS"/>
+  <Attribute
+    Name="DistributionTypeFk"
+    ColumnName="DISTRIBUTION_TYPE_FK"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CRS_OUTGOING_DOCUMENTS"/>
+  <Attribute
+    Name="OutingDocStsFk"
+    ColumnName="OUTING_DOC_STS_FK"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CRS_OUTGOING_DOCUMENTS"/>
+  <Attribute
+    Name="NumberingDependencyFk"
+    ColumnName="NUMBERING_DEPENDENCY_FK"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CRS_OUTGOING_DOCUMENTS"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsOutgoingBeneficiarieFk1Assoc"
+      AssociationEnd="crs.model.assoc.CrsOutgoingBeneficiarieFk1Assoc.CrsOutgoingBeneficiaries"
+      AssociationOtherEnd="crs.model.assoc.CrsOutgoingBeneficiarieFk1Assoc.CrsOutgoingDocuments"
+    IsUpdateable="false"
+      Name="CrsOutgoingBeneficiaries"
+      Type="oracle.jbo.RowIterator"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsDocumentsDeliveryFk2Assoc"
+      AssociationEnd="crs.model.assoc.CrsDocumentsDeliveryFk2Assoc.CrsDocumentsDelivery"
+      AssociationOtherEnd="crs.model.assoc.CrsDocumentsDeliveryFk2Assoc.CrsOutgoingDocuments"
+    IsUpdateable="false"
+      Name="CrsDocumentsDelivery"
+      Type="oracle.jbo.RowIterator"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsBorrowRequestsFk1Assoc"
+      AssociationEnd="crs.model.assoc.CrsBorrowRequestsFk1Assoc.CrsBorrowRequests"
+      AssociationOtherEnd="crs.model.assoc.CrsBorrowRequestsFk1Assoc.CrsOutgoingDocuments"
+    IsUpdateable="false"
+      Name="CrsBorrowRequests"
+      Type="oracle.jbo.RowIterator"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsOutgoingArchiveFk1Assoc"
+      AssociationEnd="crs.model.assoc.CrsOutgoingArchiveFk1Assoc.CrsOutgoingArchive"
+      AssociationOtherEnd="crs.model.assoc.CrsOutgoingArchiveFk1Assoc.CrsOutgoingDocuments"
+    IsUpdateable="false"
+      Name="CrsOutgoingArchive"
+      Type="oracle.jbo.RowIterator"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsIncomingDocumentsFk6Assoc"
+      AssociationEnd="crs.model.assoc.CrsIncomingDocumentsFk6Assoc.CrsIncomingDocuments"
+      AssociationOtherEnd="crs.model.assoc.CrsIncomingDocumentsFk6Assoc.CrsOutgoingDocuments"
+    IsUpdateable="false"
+      Name="CrsIncomingDocuments"
+      Type="oracle.jbo.RowIterator"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsIncomingRelatedLettFk2Assoc"
+      AssociationEnd="crs.model.assoc.CrsIncomingRelatedLettFk2Assoc.CrsIncomingRelatedLetters"
+      AssociationOtherEnd="crs.model.assoc.CrsIncomingRelatedLettFk2Assoc.CrsOutgoingDocuments"
+    IsUpdateable="false"
+      Name="CrsIncomingRelatedLetters"
+      Type="oracle.jbo.RowIterator"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsOutgoingCommentsFk1Assoc"
+      AssociationEnd="crs.model.assoc.CrsOutgoingCommentsFk1Assoc.CrsOutgoingComments"
+      AssociationOtherEnd="crs.model.assoc.CrsOutgoingCommentsFk1Assoc.CrsOutgoingDocuments"
+    IsUpdateable="false"
+      Name="CrsOutgoingComments"
+      Type="oracle.jbo.RowIterator"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsOutgoingDocumentsFk4Assoc"
+      AssociationEnd="crs.model.assoc.CrsOutgoingDocumentsFk4Assoc.CrsIncomingDocuments1"
+      AssociationOtherEnd="crs.model.assoc.CrsOutgoingDocumentsFk4Assoc.CrsOutgoingDocuments1"
+      IsUpdateable="true"
+      Name="CrsIncomingDocuments1"
+      Type="crs.model.eo.CrsIncomingDocumentsImpl"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsOutgoingDocumentsFk8Assoc"
+      AssociationEnd="crs.model.assoc.CrsOutgoingDocumentsFk8Assoc.CrsFilesLocation"
+      AssociationOtherEnd="crs.model.assoc.CrsOutgoingDocumentsFk8Assoc.CrsOutgoingDocuments"
+      IsUpdateable="true"
+      Name="CrsFilesLocation"
+      Type="crs.model.eo.CrsFilesLocationImpl"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsOutgoingDocumentsTlFk1Assoc"
+      AssociationEnd="crs.model.assoc.CrsOutgoingDocumentsTlFk1Assoc.CrsOutgoingDocumentsTl"
+      AssociationOtherEnd="crs.model.assoc.CrsOutgoingDocumentsTlFk1Assoc.CrsOutgoingDocuments"
+    IsUpdateable="false"
+      Name="CrsOutgoingDocumentsTl"
+      Type="oracle.jbo.RowIterator"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsOutgoingDocAttachmeFk1Assoc"
+      AssociationEnd="crs.model.assoc.CrsOutgoingDocAttachmeFk1Assoc.CrsOutgoingDocAttachments"
+      AssociationOtherEnd="crs.model.assoc.CrsOutgoingDocAttachmeFk1Assoc.CrsOutgoingDocuments"
+    IsUpdateable="false"
+      Name="CrsOutgoingDocAttachments"
+      Type="oracle.jbo.RowIterator"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsOutgoingDocCcFk1Assoc"
+      AssociationEnd="crs.model.assoc.CrsOutgoingDocCcFk1Assoc.CrsOutgoingDocCc"
+      AssociationOtherEnd="crs.model.assoc.CrsOutgoingDocCcFk1Assoc.CrsOutgoingDocuments"
+    IsUpdateable="false"
+      Name="CrsOutgoingDocCc"
+      Type="oracle.jbo.RowIterator"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsOutgoingDocPreparatFk7Assoc"
+      AssociationEnd="crs.model.assoc.CrsOutgoingDocPreparatFk7Assoc.CrsOutgoingDocPreparation"
+      AssociationOtherEnd="crs.model.assoc.CrsOutgoingDocPreparatFk7Assoc.CrsOutgoingDocuments"
+    IsUpdateable="false"
+      Name="CrsOutgoingDocPreparation"
+      Type="oracle.jbo.RowIterator"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsOutgoingRelatedLettFk1Assoc"
+      AssociationEnd="crs.model.assoc.CrsOutgoingRelatedLettFk1Assoc.CrsOutgoingRelatedLetters"
+      AssociationOtherEnd="crs.model.assoc.CrsOutgoingRelatedLettFk1Assoc.CrsOutgoingDocuments"
+    IsUpdateable="false"
+      Name="CrsOutgoingRelatedLetters"
+      Type="oracle.jbo.RowIterator"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsOutgoingRelatedLettFk2Assoc"
+      AssociationEnd="crs.model.assoc.CrsOutgoingRelatedLettFk2Assoc.CrsOutgoingRelatedLetters1"
+      AssociationOtherEnd="crs.model.assoc.CrsOutgoingRelatedLettFk2Assoc.CrsOutgoingDocuments1"
+    IsUpdateable="false"
+      Name="CrsOutgoingRelatedLetters1"
+      Type="oracle.jbo.RowIterator"/>
+  <AccessorAttribute
+    Name="HcmDepartments"
+    Association="crs.model.eo.CrsOutgoingDocumentsFk3Assoc"
+    AssociationEnd="crs.model.eo.CrsOutgoingDocumentsFk3Assoc.HcmDepartments"
+    AssociationOtherEnd="crs.model.eo.CrsOutgoingDocumentsFk3Assoc.CrsOutgoingDocuments"
+    Type="crs.model.eo.HcmDepartmentsImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="HcmDepartments1"
+    Association="crs.model.eo.CrsOutgoingDocumentsFk2Assoc"
+    AssociationEnd="crs.model.eo.CrsOutgoingDocumentsFk2Assoc.HcmDepartments1"
+    AssociationOtherEnd="crs.model.eo.CrsOutgoingDocumentsFk2Assoc.CrsOutgoingDocuments1"
+    Type="crs.model.eo.HcmDepartmentsImpl"
+    IsUpdateable="true"/>
+  <Key
+      Name="CrsOutgoingDocumentPk"
+      PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_DOCUMENT_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingDocuments.OutgoingDocumentsPk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="CrsOutgoingDocumentFk2">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYSTEM_LOOKUP_VALUES_REF_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_DOCUMENT_FK2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingDocuments.PriorityFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="CrsOutgoingDocumentsFk2">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="HCM_DEPARTMENTS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_DOCUMENTS_FK2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingDocuments.FromDepartmentFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="CrsOutgoingDocumentsFk3">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="HCM_DEPARTMENTS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_DOCUMENTS_FK3"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingDocuments.ToDepartmentFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="CrsOutgoingDocumentsFk4">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CRS_INCOMING_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_DOCUMENTS_FK4"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingDocuments.IncomingDocumentsFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="CrsOutgoingDocumentsFk6">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYSTEM_LOOKUP_VALUES_REF_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_DOCUMENTS_FK6"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingDocuments.OutDocTypeFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="CrsOutgoingDocumentsFk7">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYSTEM_LOOKUP_VALUES_REF_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_DOCUMENTS_FK7"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingDocuments.SecurityLevelFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="CrsOutgoingDocumentsFk8">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CRS_FILE_LOCATION_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_DOCUMENTS_FK8"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingDocuments.FilesLocationFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="CrsOutgoingDocumentsFk9">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYSTEM_LOOKUP_VALUES_REF_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_DOCUMENTS_FK9"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingDocuments.OutgoingTypeFk"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+        PropertiesFile="crs.view.scrlabels"/>
+  </ResourceBundle>
+</Entity>
+<!---->

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><Application xmlns="http://xmlns.oracle.com/adfm/application" ClientType="Generic" Package="crs" SeparateXMLFiles="false" id="DataBindings" version="12.2.1.16.48">
+  <definitionFactories>
+    <factory className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl" nameSpace="http://xmlns.oracle.com/adf/controller/binding"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/beneficiaries.jspx" usageId="beneficiariesUsageId"/>
+    <page path="/departmentReference.jspx" usageId="departmentReferenceUsageId"/>
+    <page path="/internalDoc.jspx" usageId="internalDocUsageId"/>
+    <page path="/indoc.jspx" usageId="indocUsageId"/>
+    <page path="/outDocPreparation.jspx" usageId="outDocPreparationUsageId"/>
+    <page path="/outDoc.jspx" usageId="outDocUsageId"/>
+    <page path="/borrow.jspx" usageId="borrowUsageId"/>
+    <page path="/deliveryStatement.jspx" usageId="deliveryStatementUsageId"/>
+    <page path="/deliveryStatementScan.jspx" usageId="deliveryStatementScanUsageId"/>
+    <page path="/taskList.jspx" usageId="taskListUsageId"/>
+    <page path="/entryCountReport.jspx" usageId="entryCountReportUsageId"/>
+    <page path="/inDocReport.jspx" usageId="inDocReportUsageId"/>
+    <page path="/outDocReport.jspx" usageId="outDocReportUsageId"/>
+    <page path="/outDocPreparationReport.jspx" usageId="outDocPreparationReportUsageId"/>
+    <page path="/borrowReport.jspx" usageId="borrowReportUsageId"/>
+    <page path="/searchDoc.jspx" usageId="searchDocUsageId"/>
+    <page path="/generalSearch.jspx" usageId="generalSearchUsageId"/>
+    <page path="/searchBeneficiaryDocument.jspx" usageId="searchBeneficiaryDocumentUsageId"/>
+    <page path="/mainpage.jspx" usageId="crs_mainpagePageDef"/>
+    <page path="/inDocReveiw.jsff" usageId="crs_IndocViewPageDef"/>
+    <page path="/outDocReview.jsff" usageId="crs_OutDocViewPageDef"/>
+    <page path="/beneficiaries.jsff" usageId="crs_beneficiariesPageDef1"/>
+    <page path="/docClass.jspx" usageId="docClassUsageId"/>
+    <page path="/departmentGroups.jspx" usageId="departmentGroupsUsageId"/>
+    <page path="/outPreDocView.jsff" usageId="crs_outPreDocViewPageDef"/>
+    <page path="/crsTaskList.jspx" usageId="crsTaskListUsageId"/>
+    <page path="/docCc.jsff" usageId="crs_docCcPageDef"/>
+    <page path="/docCcDept.jsff" usageId="crs_docCcDeptPageDef"/>
+    <page path="/crsDeptGroup.jsff" usageId="crs_crsDeptGroupPageDef"/>
+    <page path="/docAssignment.jspx" usageId="docAssignmentUsageId"/>
+    <page path="/returnedDoc.jspx" usageId="returnedDocUsageId"/>
+    <page path="/closedDoc.jspx" usageId="closedDocUsageId"/>
+    <page path="/docAssignment.jsff" usageId="crs_docAssignmentPageDef1"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="beneficiariesUsageId" path="crs.pageDefs.beneficiariesPageDef"/>
+    <page id="departmentReferenceUsageId" path="crs.pageDefs.departmentReferencePageDef"/>
+    <page id="internalDocUsageId" path="crs.pageDefs.internalDocPageDef"/>
+    <page id="indocUsageId" path="crs.pageDefs.indocPageDef"/>
+    <page id="outDocPreparationUsageId" path="crs.pageDefs.outDocPreparationPageDef"/>
+    <page id="outDocUsageId" path="crs.pageDefs.outDocPageDef"/>
+    <page id="borrowUsageId" path="crs.pageDefs.borrowPageDef"/>
+    <page id="deliveryStatementUsageId" path="crs.pageDefs.deliveryStatementPageDef"/>
+    <page id="deliveryStatementScanUsageId" path="crs.pageDefs.deliveryStatementScanPageDef"/>
+    <page id="taskListUsageId" path="crs.pageDefs.taskListPageDef"/>
+    <page id="entryCountReportUsageId" path="crs.pageDefs.entryCountReportPageDef"/>
+    <page id="inDocReportUsageId" path="crs.pageDefs.inDocReportPageDef"/>
+    <page id="outDocReportUsageId" path="crs.pageDefs.outDocReportPageDef"/>
+    <page id="outDocPreparationReportUsageId" path="crs.pageDefs.outDocPreparationReportPageDef"/>
+    <page id="borrowReportUsageId" path="crs.pageDefs.borrowReportPageDef"/>
+    <page id="searchDocUsageId" path="crs.pageDefs.searchDocPageDef"/>
+    <page id="generalSearchUsageId" path="crs.pageDefs.generalSearchPageDef"/>
+    <page id="searchBeneficiaryDocumentUsageId" path="crs.pageDefs.searchBeneficiaryDocumentPageDef"/>
+    <page id="crs_mainpagePageDef" path="crs.pageDefs.mainpagePageDef"/>
+    <page id="crs_IndocViewPageDef" path="crs.pageDefs.IndocViewPageDef"/>
+    <page id="crs_OutDocViewPageDef" path="crs.pageDefs.OutDocViewPageDef"/>
+    <page id="crs_beneficiariesPageDef1" path="crs.pageDefs.beneficiariesPageDef1"/>
+    <page id="docClassUsageId" path="crs.pageDefs.docClassPageDef"/>
+    <page id="departmentGroupsUsageId" path="crs.pageDefs.departmentGroupsPageDef"/>
+    <page id="crs_outPreDocViewPageDef" path="crs.pageDefs.outPreDocViewPageDef"/>
+    <page id="crsTaskListUsageId" path="crs.pageDefs.crsTaskListPageDef"/>
+    <page id="crs_docCcPageDef" path="crs.pageDefs.docCcPageDef"/>
+    <page id="crs_docCcDeptPageDef" path="crs.pageDefs.docCcDeptPageDef"/>
+    <page id="crs_crsDeptGroupPageDef" path="crs.pageDefs.crsDeptGroupPageDef"/>
+    <page id="docAssignmentUsageId" path="crs.pageDefs.docAssignmentPageDef"/>
+    <page id="returnedDocUsageId" path="crs.pageDefs.returnedDocPageDef"/>
+    <page id="closedDocUsageId" path="crs.pageDefs.closedDocPageDef"/>
+    <page id="crs_docAssignmentPageDef1" path="crs.pageDefs.docAssignmentPageDef1"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl xmlns="http://xmlns.oracle.com/adfm/datacontrol" Configuration="AppModuleLocal" FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" Package="crs.model" SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true" SupportsSortCollection="true" SupportsTransactions="true" id="AppModuleDataControl" syncMode="Immediate"/>
+    <BC4JDataControl xmlns="http://xmlns.oracle.com/adfm/datacontrol" Configuration="AppModuleLocal" FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" Package="hcm.model" SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true" SupportsSortCollection="true" SupportsTransactions="true" id="AppModuleDataControl1" syncMode="Immediate"/>
+    <BC4JDataControl xmlns="http://xmlns.oracle.com/adfm/datacontrol" Configuration="AppModuleLocal" FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" Package="hcm.model" SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true" SupportsSortCollection="true" SupportsTransactions="true" id="AppModuleDataControl11" syncMode="Immediate"/>
+  </dataControlUsages>
+</Application>

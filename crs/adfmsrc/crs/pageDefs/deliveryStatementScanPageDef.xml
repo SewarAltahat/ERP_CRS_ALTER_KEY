@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.52.5" id="deliveryStatementScanPageDef"
+                Package="crs.pageDefs">
+  <executables>
+    <iterator Binds="CrsDocumentsDeliveryView1" RangeSize="10" DataControl="AppModuleDataControl" id="CrsDocumentsDeliveryView1Iterator"/>
+    <invokeAction id="invokeRollBack" Binds="Rollback" Refresh="prepareModel" RefreshCondition="#{!adfFacesContext.postback}"/>
+    <invokeAction Binds="CreateInsert1" id="ci1" Refresh="prepareModel"
+                  RefreshCondition="#{!adfFacesContext.postback}"/>
+    <iterator Binds="DeliveryStatmentAttachPVO1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="DeliveryStatmentAttachPVO1Iterator"/>
+    <iterator id="CrsIncomingArchiveView1Iterator" Binds="CrsIncomingArchiveView1" DataControl="AppModuleDataControl"
+              RangeSize="25"/>
+  </executables>
+  <bindings>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Next1" RequiresUpdateModel="true" Action="next" IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <action id="Previous1" RequiresUpdateModel="true" Action="previous" IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <action id="First1" RequiresUpdateModel="true" Action="first" IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <action id="Last1" RequiresUpdateModel="true" Action="last" IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <action id="Find1" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <action id="Execute1" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <attributeValues IterBinding="DeliveryStatmentAttachPVO1Iterator" id="StatementNo">
+      <AttrNames>
+        <Item Value="StatementNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DeliveryStatmentAttachPVO1Iterator" id="FilePath">
+      <AttrNames>
+        <Item Value="FilePath"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DeliveryStatmentAttachPVO1Iterator" id="FileName">
+      <AttrNames>
+        <Item Value="FileName"/>
+      </AttrNames>
+    </attributeValues>
+        <action IterBinding="DeliveryStatmentAttachPVO1Iterator" id="CreateInsert1"
+            InstanceName="AppModuleDataControl.DeliveryStatmentAttachPVO1" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

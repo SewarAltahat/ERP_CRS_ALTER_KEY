@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HcmDepartmentsView"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  ComponentClass="gen.common.BaseViewObjectImpl"
+  PageIterMode="Full"
+  RowClass="crs.model.vo.HcmDepartmentsViewRowImpl"
+  SelectList="HcmDepartments.DEPARTMENTS_PK, 
+       HcmDepartments.ADMIN_PARENT_FK, 
+       HcmDepartments.DEPT_STATUS_FL, 
+       HcmDepartments.CREATED_BY, 
+       HcmDepartments.CREATION_DATE, 
+       HcmDepartments.MODIFIED_BY, 
+       HcmDepartments.MODIFIED_DATE, 
+       HcmDepartments.USER_DEPARTMENT_FK, 
+       HcmDepartments.DEPT_TYPE_FK, 
+       HcmDepartments.DEPT_LEVEL_FK, 
+       HcmDepartments.DEPT_CAT_FK, 
+       HcmDepartments.DEPT_EXTERNAL_FL, 
+       HcmDepartments.DEPT_MANAGER_FK, 
+       HcmDepartments.DEPT_SUB_MANAGER_FK, 
+       HcmDepartments.DEPT_ORG_CODE, 
+       HcmDepartments.DEPT_GOV_CODE, 
+       HcmDepartments.DEPT_PHONE_NO, 
+       HcmDepartments.GEO_PARENT_FK, 
+       HcmDepartments.FIN_PARENT_FK, 
+       HcmDepartments.INV_PARENT_FK, 
+       HcmDepartments.MAIN_PARENT_FK, 
+       HcmDepartments.REGION_PARENT_FK, 
+       HcmDepartments.DEPT_CITY_FK, 
+       HcmDepartments.TRAFFIC_CODE, 
+       HcmDepartments.DEPT_LONGITUDE, 
+       HcmDepartments.DEPT_LATITUDE, 
+       HcmDepartments.BUDGET_FL, 
+       HcmDepartments.DEPT_FAX, 
+       HcmDepartments.DEPT_ORDER, 
+       HcmDepartments.VACATION_FL, 
+       HcmDepartments.VACATION_PERCENT, 
+       HcmDepartments.DEPT_IBAN, 
+       HcmDepartments.DEPT_BANK_FK, 
+       HcmDepartments.DEPT_SECURITY_FK, 
+       HcmDepartments.DEPT_MILITARY_REGION_FK, 
+       HcmDepartments.DEPT_ITEM_FK, 
+       HcmDepartments.DEPT_CODE, 
+       HcmDepartments.DEPT_CLASS_FK, 
+       HcmDepartments.DEPT_COUNTRY_FK, 
+       HcmDepartments.DIVISION, 
+       HcmDepartments.MAIN_FL, 
+       HcmDepartments.MILITARY_FL, 
+       HcmDepartments.MAIN_INV_FL, 
+       HcmDepartments.DEPT_ITEM, 
+       HcmDepartments.NUMBERING_DEPENDENCY_FK, 
+       GET_DEPARTMENT_NAME(ADMIN_PARENT_FK, ?) AS DisplayAdminParentFk, 
+       GET_DEPARTMENT_NAME(DEPARTMENTS_PK, ?) AS DisplayDepartmentsPk, 
+       GET_DEPARTMENT_NAME(NUMBERING_DEPENDENCY_FK, ?) AS VIEW_ATTR"
+  FromList="HCM_DEPARTMENTS HcmDepartments"
+  Where="(? IS NOT NULL                 
+OR ( ? = ?                              
+OR (? = ? and  (HcmDepartments.DEPARTMENTS_PK = ? or HcmDepartments.DEPT_EXTERNAL_FL = 1) )    
+OR (? = ? and (HcmDepartments.DEPARTMENTS_PK = ? or HcmDepartments.DEPT_EXTERNAL_FL = 1     
+OR HcmDepartments.DEPARTMENTS_PK IN (SELECT HIER.CHILD_DEPARTMENT FROM HCM_DEPARTMENTS_HIERARCHY HIER WHERE HIER.PARENT_DEPARTMENT = ?))) ))     
+AND ( HcmDepartments.DEPT_SECURITY_FK IS NULL     
+OR  HcmDepartments.DEPT_SECURITY_FK IN (SELECT SECURITY_LEVELS_FK FROM SSO_USER_DEPARTMENTS_SECURITY_LEVELS_VW VW     
+WHERE VW.USERS_PK = ?  ))"
+  OrderBy="HcmDepartments.DEPARTMENTS_PK">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="p_lang"
+    Kind="where"
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="0"/>
+      <Item Value="1"/>
+      <Item Value="2"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression">gen.common.GenLib.getLanguageNo()</TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+   <Variable Kind="where" Name="p_admin_type" Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="5"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenConstants.ADMINUSER]]></TransientExpression>
+    <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+  <Variable
+    Kind="where"
+    Name="p_all_data"
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="3"/>
+    </AttrArray>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable Kind="where" Name="p_departments_fk" Type="java.math.BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="8"/>
+      <Item Value="11"/>
+      <Item Value="12"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenLib.getUserLoginDepartment()]]></TransientExpression>
+    <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+  <Variable Kind="where" Name="p_dept_manager_type" Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="10"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenConstants.SUPERVISOR]]></TransientExpression>
+    <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+  <Variable Kind="where" Name="p_normal_user_type" Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="7"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenConstants.ORDINARY_USER]]></TransientExpression>
+    <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+  <Variable Kind="where" Name="p_user_type_fk" Type="java.math.BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="4"/>
+      <Item Value="6"/>
+      <Item Value="9"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenLib.getUserType()]]></TransientExpression>
+    <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+    <Variable Kind="where" Name="p_users_fk" Type="java.math.BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="13"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenLib.getUserId()]]></TransientExpression>
+    <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+  <ViewAccessor
+    Name="DeparmentsRVO"
+    ViewObjectName="crs.model.ro.DeparmentsRVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="FilterByDeptStatusFl"
+      FullName="crs.model.ro.DeparmentsRVO.FilterByDeptStatusFl"/>
+    <ViewCriteriaUsage
+      Name="NumberingDependencyCriteria"
+      FullName="crs.model.ro.DeparmentsRVO.NumberingDependencyCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="p_departments_pk">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[DepartmentsPk]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_NumberingDependencyFk"
+    ListVOName="DeparmentsRVO"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="NumberingDependencyFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DisplayNumberingDependencyFk"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DepartmentsPk"/>
+      <Item Value="DepartmentName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DepartmentsPk"/>
+      <Item Value="DepartmentNameSearch"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="DeparmentsLovSearch"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_DisplayNumberingDependencyFk"
+    ListVOName="DeparmentsRVO"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DisplayNumberingDependencyFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="NumberingDependencyFk"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DepartmentName"/>
+      <Item Value="DepartmentsPk"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DepartmentsPk"/>
+      <Item Value="DepartmentNameSearch"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="DeparmentsLovSearch"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <EntityUsage
+    Name="HcmDepartments"
+    Entity="crs.model.eo.HcmDepartments"/>
+  <ViewAttribute
+    Name="DepartmentsPk"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentsPk"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPARTMENTS_PK"/>
+  <ViewAttribute
+    Name="AdminParentFk"
+    PrecisionRule="true"
+    EntityAttrName="AdminParentFk"
+    EntityUsage="HcmDepartments"
+    AliasName="ADMIN_PARENT_FK"/>
+  <ViewAttribute
+    Name="DeptStatusFl"
+    PrecisionRule="true"
+    EntityAttrName="DeptStatusFl"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_STATUS_FL"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="HcmDepartments"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="HcmDepartments"
+    AliasName="CREATION_DATE"/>
+  <ViewAttribute
+    Name="ModifiedBy"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedBy"
+    EntityUsage="HcmDepartments"
+    AliasName="MODIFIED_BY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="HcmDepartments"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="UserDepartmentFk"
+    PrecisionRule="true"
+    EntityAttrName="UserDepartmentFk"
+    EntityUsage="HcmDepartments"
+    AliasName="USER_DEPARTMENT_FK"/>
+  <ViewAttribute
+    Name="DeptTypeFk"
+    PrecisionRule="true"
+    EntityAttrName="DeptTypeFk"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_TYPE_FK"/>
+  <ViewAttribute
+    Name="DeptLevelFk"
+    PrecisionRule="true"
+    EntityAttrName="DeptLevelFk"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_LEVEL_FK"/>
+  <ViewAttribute
+    Name="DeptCatFk"
+    PrecisionRule="true"
+    EntityAttrName="DeptCatFk"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_CAT_FK"/>
+  <ViewAttribute
+    Name="DeptExternalFl"
+    PrecisionRule="true"
+    EntityAttrName="DeptExternalFl"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_EXTERNAL_FL"/>
+  <ViewAttribute
+    Name="DeptManagerFk"
+    PrecisionRule="true"
+    EntityAttrName="DeptManagerFk"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_MANAGER_FK"/>
+  <ViewAttribute
+    Name="DeptSubManagerFk"
+    PrecisionRule="true"
+    EntityAttrName="DeptSubManagerFk"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_SUB_MANAGER_FK"/>
+  <ViewAttribute
+    Name="DeptOrgCode"
+    PrecisionRule="true"
+    EntityAttrName="DeptOrgCode"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_ORG_CODE"/>
+  <ViewAttribute
+    Name="DeptGovCode"
+    PrecisionRule="true"
+    EntityAttrName="DeptGovCode"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_GOV_CODE"/>
+  <ViewAttribute
+    Name="DeptPhoneNo"
+    PrecisionRule="true"
+    EntityAttrName="DeptPhoneNo"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_PHONE_NO"/>
+  <ViewAttribute
+    Name="GeoParentFk"
+    PrecisionRule="true"
+    EntityAttrName="GeoParentFk"
+    EntityUsage="HcmDepartments"
+    AliasName="GEO_PARENT_FK"/>
+  <ViewAttribute
+    Name="FinParentFk"
+    PrecisionRule="true"
+    EntityAttrName="FinParentFk"
+    EntityUsage="HcmDepartments"
+    AliasName="FIN_PARENT_FK"/>
+  <ViewAttribute
+    Name="InvParentFk"
+    PrecisionRule="true"
+    EntityAttrName="InvParentFk"
+    EntityUsage="HcmDepartments"
+    AliasName="INV_PARENT_FK"/>
+  <ViewAttribute
+    Name="MainParentFk"
+    PrecisionRule="true"
+    EntityAttrName="MainParentFk"
+    EntityUsage="HcmDepartments"
+    AliasName="MAIN_PARENT_FK"/>
+  <ViewAttribute
+    Name="RegionParentFk"
+    PrecisionRule="true"
+    EntityAttrName="RegionParentFk"
+    EntityUsage="HcmDepartments"
+    AliasName="REGION_PARENT_FK"/>
+  <ViewAttribute
+    Name="DeptCityFk"
+    PrecisionRule="true"
+    EntityAttrName="DeptCityFk"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_CITY_FK"/>
+  <ViewAttribute
+    Name="TrafficCode"
+    PrecisionRule="true"
+    EntityAttrName="TrafficCode"
+    EntityUsage="HcmDepartments"
+    AliasName="TRAFFIC_CODE"/>
+  <ViewAttribute
+    Name="DeptLongitude"
+    PrecisionRule="true"
+    EntityAttrName="DeptLongitude"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_LONGITUDE"/>
+  <ViewAttribute
+    Name="DeptLatitude"
+    PrecisionRule="true"
+    EntityAttrName="DeptLatitude"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_LATITUDE"/>
+  <ViewAttribute
+    Name="BudgetFl"
+    PrecisionRule="true"
+    EntityAttrName="BudgetFl"
+    EntityUsage="HcmDepartments"
+    AliasName="BUDGET_FL"/>
+  <ViewAttribute
+    Name="DeptFax"
+    PrecisionRule="true"
+    EntityAttrName="DeptFax"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_FAX"/>
+  <ViewAttribute
+    Name="DeptOrder"
+    PrecisionRule="true"
+    EntityAttrName="DeptOrder"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_ORDER"/>
+  <ViewAttribute
+    Name="VacationFl"
+    PrecisionRule="true"
+    EntityAttrName="VacationFl"
+    EntityUsage="HcmDepartments"
+    AliasName="VACATION_FL"/>
+  <ViewAttribute
+    Name="VacationPercent"
+    PrecisionRule="true"
+    EntityAttrName="VacationPercent"
+    EntityUsage="HcmDepartments"
+    AliasName="VACATION_PERCENT"/>
+  <ViewAttribute
+    Name="DeptIban"
+    PrecisionRule="true"
+    EntityAttrName="DeptIban"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_IBAN"/>
+  <ViewAttribute
+    Name="DeptBankFk"
+    PrecisionRule="true"
+    EntityAttrName="DeptBankFk"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_BANK_FK"/>
+  <ViewAttribute
+    Name="DeptSecurityFk"
+    PrecisionRule="true"
+    EntityAttrName="DeptSecurityFk"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_SECURITY_FK"/>
+  <ViewAttribute
+    Name="DeptMilitaryRegionFk"
+    PrecisionRule="true"
+    EntityAttrName="DeptMilitaryRegionFk"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_MILITARY_REGION_FK"/>
+  <ViewAttribute
+    Name="DeptItemFk"
+    PrecisionRule="true"
+    EntityAttrName="DeptItemFk"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_ITEM_FK"/>
+  <ViewAttribute
+    Name="DeptCode"
+    PrecisionRule="true"
+    EntityAttrName="DeptCode"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_CODE"/>
+  <ViewAttribute
+    Name="DeptClassFk"
+    PrecisionRule="true"
+    EntityAttrName="DeptClassFk"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_CLASS_FK"/>
+  <ViewAttribute
+    Name="DeptCountryFk"
+    PrecisionRule="true"
+    EntityAttrName="DeptCountryFk"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_COUNTRY_FK"/>
+  <ViewAttribute
+    Name="Division"
+    PrecisionRule="true"
+    EntityAttrName="Division"
+    EntityUsage="HcmDepartments"
+    AliasName="DIVISION"/>
+  <ViewAttribute
+    Name="MainFl"
+    PrecisionRule="true"
+    EntityAttrName="MainFl"
+    EntityUsage="HcmDepartments"
+    AliasName="MAIN_FL"/>
+  <ViewAttribute
+    Name="MilitaryFl"
+    PrecisionRule="true"
+    EntityAttrName="MilitaryFl"
+    EntityUsage="HcmDepartments"
+    AliasName="MILITARY_FL"/>
+  <ViewAttribute
+    Name="MainInvFl"
+    PrecisionRule="true"
+    EntityAttrName="MainInvFl"
+    EntityUsage="HcmDepartments"
+    AliasName="MAIN_INV_FL"/>
+  <ViewAttribute
+    Name="DeptItem"
+    PrecisionRule="true"
+    EntityAttrName="DeptItem"
+    EntityUsage="HcmDepartments"
+    AliasName="DEPT_ITEM"/>
+  <ViewAttribute
+    Name="NumberingDependencyFk"
+    PrecisionRule="true"
+    EntityAttrName="NumberingDependencyFk"
+    EntityUsage="HcmDepartments"
+    AliasName="NUMBERING_DEPENDENCY_FK"
+    LOVName="LOV_NumberingDependencyFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    AliasName="DisplayAdminParentFk"
+    ColumnType="VARCHAR2"
+    Expression="GET_DEPARTMENT_NAME(ADMIN_PARENT_FK, ?)"
+    IsPersistent="false"
+    Name="DisplayAdminParentFk"
+    SQLType="VARCHAR"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['HcmDepartments.RegionParentFkDesc']}"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    AliasName="DisplayDepartmentsPk"
+    ColumnType="VARCHAR2"
+    Expression="GET_DEPARTMENT_NAME(DEPARTMENTS_PK, ?)"
+    IsPersistent="false"
+    Name="DisplayDepartmentsPk"
+    SQLType="VARCHAR"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['HcmDepartmentsVwView.DepartmentName']}"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DisplayAdminParentFkSearch"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="DisplayDepartmentsPkSearch"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="DisplayNumberingDependencyFk"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    Expression="GET_DEPARTMENT_NAME(NUMBERING_DEPENDENCY_FK, ?)"
+    IsQueriable="false"
+    LOVName="LOV_DisplayNumberingDependencyFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DisplayNumberingDependencyFkSearch"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="NumberingDependencyFkSearch"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <ViewLinkAccessor
+    Name="CrsOutgoingDocPreparationView"
+    ViewLink="crs.model.vo.CrsOutgoingDocPreparatFk4Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="CrsOutgoingDocPreparationView1"
+    ViewLink="crs.model.vo.CrsOutgoingDocPreparatFk3Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="CrsDeptGroupDeptsView"
+    ViewLink="crs.model.vo.CrsDeptGroupDeptsFk2Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="CrsAllowedSendDepartmentsView"
+    ViewLink="crs.model.vo.CrsFollowupDepartmentsFkLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="CrsAllowedSendDepartmentsView1"
+    ViewLink="crs.model.vo.CrsDepartmentsFollowupFk1Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="HcmDepartmentsView"
+    ViewLink="crs.model.vo.HcmDepartmentsFk11Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="HcmDepartmentsView1"
+    ViewLink="crs.model.vo.HcmDepartmentsFk7Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="HcmDepartmentsView2"
+    ViewLink="crs.model.vo.HcmDepartmentsFk9Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="HcmDepartmentsView3"
+    ViewLink="crs.model.vo.HcmDepartmentsFk1Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="HcmDepartmentsView4"
+    ViewLink="crs.model.vo.HcmDepartmentsFk8Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="HcmDepartmentsView5"
+    ViewLink="crs.model.vo.HcmDepartmentsFk10Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="CrsFilesLocationView"
+    ViewLink="crs.model.vo.CrsFileLocationFkLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="CrsDocClassCcView"
+    ViewLink="crs.model.vo.CrsDocClassCcFk2Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="CrsOutgoingDocCcView"
+    ViewLink="crs.model.vo.CrsOutgoingDocCcFk2Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="CrsIncomingDocumentsView"
+    ViewLink="crs.model.vo.CrsIncomingDocumentsFk4Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="CrsIncomingDocumentsView1"
+    ViewLink="crs.model.vo.CrsIncomingDocumentFk5Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="CrsOutgoingDocumentsView"
+    ViewLink="crs.model.vo.CrsOutgoingDocumentsFk3Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="CrsOutgoingDocumentsView1"
+    ViewLink="crs.model.vo.CrsOutgoingDocumentsFk2Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="CrsLetterTemplatesView"
+    ViewLink="crs.model.vo.CrsLetterTemplatesFk1Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="CrsIncomingDocCcView"
+    ViewLink="crs.model.vo.CrsIncomingDocCcFk2Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="CrsAllowedSendTypesView"
+    ViewLink="crs.model.vo.CrsAllowedSendTypesFkLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="crs.view.scrlabels"/>
+  </ResourceBundle>
+</ViewObject>

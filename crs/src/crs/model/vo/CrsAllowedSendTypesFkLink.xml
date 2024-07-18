@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CrsAllowedSendTypesFkLink"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  EntityAssociation="crs.model.eo.CrsAllowedSendTypesFkAssoc">
+  <ViewLinkDefEnd
+    Name="HcmDepartmentsView"
+    Cardinality="1"
+    Source="true"
+    Owner="crs.model.vo.HcmDepartmentsView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="HcmDepartmentsView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.vo.HcmDepartmentsView.DepartmentsPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="CrsAllowedSendTypesView"
+    Cardinality="-1"
+    Owner="crs.model.vo.CrsAllowedSendTypesView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CrsAllowedSendTypesView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.vo.CrsAllowedSendTypesView.DepartmentsFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

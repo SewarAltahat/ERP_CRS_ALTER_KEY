@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="docCcDeptPageDef"
+                Package="crs.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="DeparmentsRVO" RangeSize="25" DataControl="AppModuleDataControl" id="DeparmentsRVOIterator"/>
+    <searchRegion Binds="DeparmentsRVOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="DeparmentsRVOQuery"/>
+    <iterator Binds="ReportParametersRVO1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ReportParametersRVO1Iterator"/>
+    <iterator Binds="HcmEmpBasicDataVw1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="HcmEmpBasicDataVw1Iterator"/>
+    <searchRegion Binds="HcmEmpBasicDataVw1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="HcmEmpBasicDataVw1Query"/>
+    <searchRegion Binds="ReportParametersRVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ReportParametersRVO1Query"/>
+    <iterator Binds="CrsDeptGroupRVO" RangeSize="25" DataControl="AppModuleDataControl" id="CrsDeptGroupRVOIterator"/>
+    <searchRegion Binds="CrsDeptGroupRVOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="CrsDeptGroupRVOQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="DeparmentsRVOIterator" id="DeparmentsRVO">
+      <nodeDefinition DefName="crs.model.ro.DeparmentsRVO" Name="DeparmentsRVO0">
+        <AttrNames>
+          <Item Value="DepartmentsPk"/>
+          <Item Value="DepartmentName"/>
+          <Item Value="SelectedFl"/>
+          <Item Value="DepartmentNameSearch"/>
+          <Item Value="DisplayActionFk"/>
+          <Item Value="ActionFk"/>
+          <Item Value="Guidance"/>
+          <Item Value="DeptExternalFl"/>
+          <Item Value="DeptSecurityFk"/>
+          <Item Value="DeptStatusFl"/>
+          <Item Value="DeptTypeFk"/>
+          <Item Value="DisplayDeptTypeFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues IterBinding="ReportParametersRVO1Iterator" StaticList="false" Uses="LOV_ActionFk" id="ActionFk"/>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DisplayActionFk">
+      <AttrNames>
+        <Item Value="DisplayActionFk"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="HcmEmpBasicDataVw1Iterator" id="HcmEmpBasicDataVw1">
+      <nodeDefinition DefName="crs.model.ro.HcmEmpBasicDataVw" Name="HcmEmpBasicDataVw10">
+        <AttrNames>
+          <Item Value="EmployeesPk"/>
+          <Item Value="DisplayEmployeesPk"/>
+          <Item Value="ActionFk"/>
+          <Item Value="DisplayActionFk"/>
+          <Item Value="Guidance"/>
+          <Item Value="SelectedFl"/>
+          <Item Value="SeletedFl"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ReportParametersRVO1Iterator" id="ReportParametersRVO1">
+      <nodeDefinition DefName="crs.model.ro.ReportParametersRVO" Name="ReportParametersRVO10">
+        <AttrNames>
+          <Item Value="DeptGroupFk"/>
+          <Item Value="DisplayDeptGroupFk"/>
+          <Item Value="ActionFk"/>
+          <Item Value="DisplayActionFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CrsDeptGroupRVOIterator" id="CrsDeptGroupRVO">
+      <nodeDefinition DefName="crs.model.ro.CrsDeptGroupRVO" Name="CrsDeptGroupRVO0">
+        <AttrNames>
+          <Item Value="DeptGroupPk"/>
+          <Item Value="DisplayDeptGroupPk"/>
+          <Item Value="ActionFk"/>
+          <Item Value="DisplayActionFk"/>
+          <Item Value="Guidance"/>
+          <Item Value="SeletedFl"/>
+          <Item Value="ActiveFl"/>
+          <Item Value="EndDate"/>
+          <Item Value="SelectedFl"/>
+          <Item Value="StartDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

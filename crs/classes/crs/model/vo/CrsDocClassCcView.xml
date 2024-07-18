@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject ComponentClass="gen.common.BaseViewObjectImpl" BindingStyle="JDBC" CustomQuery="false"
+    FetchMode="FETCH_AS_NEEDED" FromListFlags="1"
+    InheritPersonalization="merge" Name="CrsDocClassCcView"
+    PageIterMode="Full" SelectAllAttributes="false" SelectListFlags="1"
+    Version="12.2.1.12.24" WhereFlags="1" xmlns="http://xmlns.oracle.com/bc4j"
+    RowClass="crs.model.vo.CrsDocClassCcViewRowImpl">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Variable
+        Kind="where"
+        Name="p_lang"
+        Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+            <Item Value="1"/>
+            <Item Value="2"/>
+        </AttrArray>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT
+                    Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+        <TransientExpression
+            Name="VariableScript">gen.common.GenLib.getLanguageNo()</TransientExpression>
+    </Variable>
+    <ViewAccessor
+        Name="HcmDepartmentsVwView1"
+        ViewObjectName="crs.model.ro.HcmDepartmentsVwView"
+        RowLevelBinds="true"/>
+    <ViewAccessor
+        Name="SsoActiveLookupValuesVwView"
+        ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView"
+        RowLevelBinds="true">
+        <ViewCriteriaUsage
+            Name="SsoSystemLookupValuesFilter"
+            FullName="crs.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter"/>
+        <ParameterMap>
+            <PIMap Variable="p_system_lookups_fk">
+                <TransientExpression
+                    trustMode="untrusted"
+                    Name="ExpressionScript"><![CDATA[92]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor
+        Name="DeparmentsRVO"
+        ViewObjectName="crs.model.ro.DeparmentsRVO"
+        RowLevelBinds="true">
+        <ViewCriteriaUsage
+            Name="FilterByDeptNotExternalFl"
+            FullName="crs.model.ro.DeparmentsRVO.FilterByDeptNotExternalFl"/>
+        <ViewCriteriaUsage
+            Name="FilterByDeptStatusFl"
+            FullName="crs.model.ro.DeparmentsRVO.FilterByDeptStatusFl"/>
+    </ViewAccessor>
+    <ListBinding
+        Name="LOV_ActionFk"
+        ListVOName="SsoActiveLookupValuesVwView"
+        ComboRowCountHint="10"
+        NullValueFlag="none"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="ActionFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayActionFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="SsoSystemLookupValuesLOVSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_DepartmentsFk"
+        ListVOName="DeparmentsRVO"
+        ComboRowCountHint="10"
+        NullValueFlag="none"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="DepartmentsFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayDepartmentsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DepartmentName"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DepartmentName"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="DeparmentsLovSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <EntityUsage Entity="crs.model.eo.CrsDocClassCc" Name="CrsDocClassCc"/>
+    <ViewAttribute AliasName="DOC_CLASS_CC_PK"
+        EntityAttrName="DocClassCcPk" EntityUsage="CrsDocClassCc"
+        IsNotNull="true" Name="DocClassCcPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsDocClassCc.DocClassCcPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DOC_CLASS_FK" EntityAttrName="DocClassFk"
+        EntityUsage="CrsDocClassCc" Name="DocClassFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsDocClassCc.DocClassFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DEPARTMENTS_FK"
+        EntityAttrName="DepartmentsFk" EntityUsage="CrsDocClassCc"
+        Name="DepartmentsFk" PrecisionRule="true"
+        LOVName="LOV_DepartmentsFk">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsDocClassCc.DepartmentsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="ACTION_FK" EntityAttrName="ActionFk"
+        EntityUsage="CrsDocClassCc" Name="ActionFk" PrecisionRule="true"
+        LOVName="LOV_ActionFk">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsDocClassCc.ActionFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="CrsDocClassCc" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate" EntityUsage="CrsDocClassCc"
+        Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="CrsDocClassCc" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate" EntityUsage="CrsDocClassCc"
+        Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk" EntityUsage="CrsDocClassCc"
+        Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="DisplayDocClassFkSearch"
+        ColumnType="CHAR"
+        IsPersistent="false"
+        IsSelected="false"
+        Name="DisplayDocClassFkSearch"
+        PrecisionRule="true"
+        SQLType="VARCHAR"
+        Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['CrsDocClassCc.DocClassFk']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="DisplayDepartmentsFk"
+        ColumnType="CHAR"
+        Expression="GET_DEPARTMENT_NAME(DEPARTMENTS_FK, ?)"
+        Name="DisplayDepartmentsFk"
+        PrecisionRule="true"
+        SQLType="VARCHAR"
+        Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['CrsDocClassCc.DepartmentsFk']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="DisplayDepartmentsFkSearch"
+        ColumnType="CHAR"
+        IsPersistent="false"
+        IsSelected="false"
+        Name="DisplayDepartmentsFkSearch"
+        PrecisionRule="true"
+        SQLType="VARCHAR"
+        Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['CrsDocClassCc.DepartmentsFk']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="DisplayActionFk"
+        ColumnType="CHAR"
+        Expression="GET_LOOKUP_DESC(ACTION_FK, ?)"
+        Name="DisplayActionFk"
+        PrecisionRule="true"
+        SQLType="VARCHAR"
+        Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['CrsDocClassCc.ActionFk']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="DisplayActionFkSearch"
+        ColumnType="CHAR"
+        IsPersistent="false"
+        IsSelected="false"
+        Name="DisplayActionFkSearch"
+        PrecisionRule="true"
+        SQLType="VARCHAR"
+        Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['CrsDocClassCc.ActionFk']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="DisplayNotes"
+        EntityAttrName="DisplayNotes"
+        EntityUsage="CrsDocClassCc"
+        Expression="get_DOC_CLASS_CC_NOTES(DOC_CLASS_CC_PK, ?)"
+        Name="DisplayNotes"
+        PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['CrsDocClassCcTl.Notes']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="DisplayNotesSearch"
+        ColumnType="CHAR"
+        IsPersistent="false"
+        IsSelected="false"
+        Name="DisplayNotesSearch"
+        PrecisionRule="true"
+        SQLType="VARCHAR"
+        Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['CrsDocClassCcTl.Notes']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="ActionFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="BIGINT"
+        AliasName="VIEW_ATTR"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        Name="DepartmentsFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="BIGINT"
+        AliasName="VIEW_ATTR"
+        SQLType="NUMERIC"/>
+    <ViewLinkAccessor
+        IsUpdateable="false" Name="CrsDocClassCcTlView"
+        Type="oracle.jbo.RowIterator" ViewLink="crs.model.vl.CrsDocClassCcTlFk1Link"/>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+    <SortCriteria>
+        <Sort
+            Attribute="DocClassCcPk"/>
+    </SortCriteria>
+</ViewObject>
+<!---->

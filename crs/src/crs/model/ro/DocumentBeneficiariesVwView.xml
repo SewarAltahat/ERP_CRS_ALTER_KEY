@@ -1,0 +1,1211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject ComponentClass="gen.common.BaseViewObjectImpl" BindingStyle="JDBC" CustomQuery="true"
+    FetchMode="FETCH_AS_NEEDED" InheritPersonalization="merge"
+    Name="DocumentBeneficiariesVwView" PageIterMode="Full"
+    Version="12.2.1.12.24" xmlns="http://xmlns.oracle.com/bc4j"
+    RowClass="crs.model.ro.DocumentBeneficiariesVwViewRowImpl">
+    <DesignTime>
+        <Attr Name="_isExpertMode" Value="true"/>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    
+    <Variable
+      Name="p_lang"
+      Kind="where"
+      Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+            <Item Value="1"/>
+            <Item Value="2"/>
+            <Item Value="3"/>
+            <Item Value="4"/>
+            <Item Value="5"/>
+            <Item Value="6"/>
+            <Item Value="7"/>
+            <Item Value="8"/>
+            <Item Value="9"/>
+            <Item Value="10"/>
+            <Item Value="11"/>
+        </AttrArray>
+        <TransientExpression
+            Name="expression"><![CDATA[gen.common.GenLib.getLanguageNo()]]></TransientExpression>
+        <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+            Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+    <ViewAccessor
+        Name="SsoActiveLookupValuesVwDocTypeFK"
+        ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView"
+        RowLevelBinds="true">
+        <ViewCriteriaUsage
+            Name="SsoSystemLookupValuesFilter"
+            FullName="crs.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter"/>
+        <ParameterMap>
+            <PIMap Variable="p_system_lookups_fk">
+                <TransientExpression
+                    trustMode="untrusted"
+                    Name="ExpressionScript"><![CDATA[14]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor
+        Name="SsoActiveLookupValuesInDocTypeFK"
+        ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView"
+        RowLevelBinds="true"/>
+    <ViewAccessor
+        Name="SsoActiveLookupValuesVwIncomingType"
+        ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView"
+        RowLevelBinds="true"/>
+    <ViewAccessor
+        Name="HcmDepartmentsVwView1"
+        ViewObjectName="crs.model.ro.HcmDepartmentsVwView"
+        RowLevelBinds="true"/>
+    <ViewAccessor
+        Name="SsoActiveLookupValuesVwPriorityFK"
+        ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView"
+        RowLevelBinds="true">
+        <ViewCriteriaUsage
+            Name="SsoSystemLookupValuesFilter"
+            FullName="crs.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter"/>
+        <ParameterMap>
+            <PIMap Variable="p_system_lookups_fk">
+                <TransientExpression
+                    trustMode="untrusted"
+                    Name="ExpressionScript"><![CDATA[12]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor
+        Name="SsoActiveLookupValuesVwSecurityFK"
+        ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView"
+        RowLevelBinds="true">
+        <ViewCriteriaUsage
+            Name="SsoSystemLookupValuesFilter"
+            FullName="crs.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter"/>
+        <ParameterMap>
+            <PIMap Variable="p_system_lookups_fk">
+                <TransientExpression
+                    trustMode="untrusted"
+                    Name="ExpressionScript"><![CDATA[112]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor
+        Name="CrsFilesLocationViewFileLocationFK"
+        ViewObjectName="crs.model.vo.CrsFilesLocationView"
+        RowLevelBinds="true">
+        <ViewCriteriaUsage
+            Name="CrsFilesLocationViewFilterByDepartmentsFk"
+            FullName="crs.model.vo.CrsFilesLocationView.CrsFilesLocationViewFilterByDepartmentsFk"/>
+        <ParameterMap>
+            <PIMap Variable="p_departments">
+                <TransientExpression
+                    trustMode="untrusted"
+                    Name="ExpressionScript"><![CDATA[FromDepartmentFk]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ListBinding
+        Name="LOV_DocTypeFk"
+        ListVOName="SsoActiveLookupValuesVwDocTypeFK"
+        ComboRowCountHint="10"
+        NullValueFlag="none"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="DocTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayDocTypeFkSearch"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="SsoSystemLookupValuesLOVSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_InDocTypeFk"
+        ListVOName="SsoActiveLookupValuesInDocTypeFK"
+        ComboRowCountHint="10"
+        NullValueFlag="none"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="InDocTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayInDocTypeFkSearch"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="SsoSystemLookupValuesLOVSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_IncomingTypeFk"
+        ListVOName="SsoActiveLookupValuesVwIncomingType"
+        ComboRowCountHint="10"
+        NullValueFlag="none"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="IncomingTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="SsoSystemLookupValuesLOVSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_FromDepartmentFk"
+        ListVOName="HcmDepartmentsVwView1"
+        NullValueFlag="none"
+        MRUCount="0"
+        ComboRowCountHint="10">
+        <AttrArray Name="AttrNames">
+            <Item Value="FromDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayFromDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DisplayDepartmentsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DisplayDepartmentsPk"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="HcmDepartmentsVwViewLOVSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_ToDepartmentFk"
+        ListVOName="HcmDepartmentsVwView1"
+        ComboRowCountHint="10"
+        NullValueFlag="none"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="ToDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayToDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DisplayDepartmentsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DisplayDepartmentsPk"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="HcmDepartmentsVwViewLOVSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_PriorityFk"
+        ListVOName="SsoActiveLookupValuesVwPriorityFK"
+        ComboRowCountHint="10"
+        NullValueFlag="none"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="PriorityFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayPriorityFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="SsoSystemLookupValuesLOVSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_SecurityLevelFk"
+        ListVOName="SsoActiveLookupValuesVwSecurityFK"
+        NullValueFlag="none"
+        MRUCount="0"
+        ComboRowCountHint="10">
+        <AttrArray Name="AttrNames">
+            <Item Value="SecurityLevelFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplaySecurityLevelFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="SsoSystemLookupValuesLOVSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_FilesLocationFk"
+        ListVOName="CrsFilesLocationViewFileLocationFK"
+        ComboRowCountHint="10"
+        NullValueFlag="none"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="FilesLocationFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayFilesLocationFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="FilesLocationPk"/>
+            <Item Value="DisplayMainLocationFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="FilesLocationPk"/>
+            <Item Value="DisplayMainLocationFk"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="CrsFilesLocationLOVSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <SQLQuery><![CDATA[SELECT DocumentBeneficiariesVw.DOC_TYPE_FK,                                                
+       DocumentBeneficiariesVw.INCOMING_DOCUMENTS_PK,                                                
+       DocumentBeneficiariesVw.IN_DOC_YEAR,                                                
+       DocumentBeneficiariesVw.IN_DOC_DATE_G,                                                
+       DocumentBeneficiariesVw.IN_DOC_DATE_H,                                                
+       DocumentBeneficiariesVw.IN_DOC_TYPE_FK,                                                
+       DocumentBeneficiariesVw.INCOMING_TYPE_FK,                                                
+       DocumentBeneficiariesVw.IN_DOC_NO,                                                
+       DocumentBeneficiariesVw.FROM_DEPARTMENT_FK,                                                
+       DocumentBeneficiariesVw.TO_DEPARTMENT_FK,                                                
+       DocumentBeneficiariesVw.PRIORITY_FK,                                                
+       DocumentBeneficiariesVw.SECURITY_LEVEL_FK,                                                
+       DocumentBeneficiariesVw.ATTACHMENTS_NO,                                                
+       DocumentBeneficiariesVw.FILES_LOCATION_FK,                                                
+       DocumentBeneficiariesVw.BARCODE,                                                
+       DocumentBeneficiariesVw.RESPOND_PERIOD,                                                
+       DocumentBeneficiariesVw.RECEIVED_DATE_G,                                                
+       DocumentBeneficiariesVw.RECEIVED_DATE_H,                                                
+       DocumentBeneficiariesVw.OUTGOING_DOCUMENTS_FK,                                                
+       DocumentBeneficiariesVw.REPLY_FL,                                                
+       DocumentBeneficiariesVw.CREATED_BY,                                                
+       DocumentBeneficiariesVw.CREATION_DATE,                                                
+       DocumentBeneficiariesVw.MODIFIED_BY,                                                
+       DocumentBeneficiariesVw.MODIFIED_DATE,              
+       DocumentBeneficiariesVw.INCOMING_DOCUMENTS_NO,       
+       DocumentBeneficiariesVw.beneficiaries_fk,      
+       DocumentBeneficiariesVw.incoming_beneficiaries_pk,        
+       GET_LOOKUP_DESC(DOC_TYPE_FK,  ?) as Display_Doc_Type_Fk,                              
+       GET_LOOKUP_DESC(PRIORITY_FK, ?) as Display_Priority_Fk,                           
+       GET_LOOKUP_DESC(SECURITY_LEVEL_FK,  ?) as Display_Security_Level_Fk,                         
+       GET_FILE_LOCATION_DESC (FILES_LOCATION_FK,?) as Display_Files_Location_Fk,                       
+       GET_LOOKUP_DESC(OUTGOING_DOCUMENTS_FK, ?) as Display_Outgoing_Documents_Fk,                     
+       GET_USER_FULL_NAME(CREATED_BY, ?) as Display_Created_By,                                                
+       GET_USER_FULL_NAME(MODIFIED_BY, ?) as Display_Modified_By,                                                   
+       GET_LOOKUP_DESC(IN_DOC_TYPE_FK, ?) as Display_In_Doc_Type_Fk,                   
+       GET_DEPARTMENT_NAME(FROM_DEPARTMENT_FK, ?) as Display_From_Department_Fk,                                               
+       GET_DEPARTMENT_NAME(TO_DEPARTMENT_FK, ?) as Display_To_Department_Fk,                
+       GET_LOOKUP_DESC(INCOMING_TYPE_FK, ?) as Display_Incoming_Type_Fk,      
+        GET_BENEFICIARY_NAME (BENEFICIARIES_FK,?) AS DisplayBeneficiariesFk,       
+       GET_BENEFICIARIE_EMAIL (BENEFICIARIES_FK) AS DisplayBeneficiarieEmail,     
+       GET_BENEFICIARIE_MOBILE_NO (BENEFICIARIES_FK) AS DisplayBeneficiarieMobileNo,    
+       DocumentBeneficiariesVw.USER_DEPARTMENT_FK                                                
+FROM DOCUMENT_BENEFICIARIES_VW DocumentBeneficiariesVw]]></SQLQuery>
+    <ViewAttribute AliasName="DOC_TYPE_FK"
+        ColumnType="NUMBER" Expression="DOC_TYPE_FK"
+        IsPersistent="false" Name="DocTypeFk"
+        PrecisionRule="true" SQLType="NUMERIC" Type="java.math.BigDecimal"
+        LOVName="LOV_DocTypeFk">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.DocTypeFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="INCOMING_DOCUMENTS_PK" ColumnType="NUMBER"
+        Expression="INCOMING_DOCUMENTS_PK" IsPersistent="false" Name="IncomingDocumentsPk"
+        PrecisionRule="true" SQLType="NUMERIC" Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.IncomingDocumentsPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="IN_DOC_YEAR" ColumnType="NUMBER"
+        Expression="IN_DOC_YEAR" IsPersistent="false" Name="InDocYear" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.InDocYear']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="IN_DOC_DATE_G" ColumnType="TIMESTAMP"
+        Expression="IN_DOC_DATE_G" IsPersistent="false" Name="InDocDateG" PrecisionRule="true"
+        SQLType="TIMESTAMP" Type="java.sql.Timestamp">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.InDocDateG']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="IN_DOC_DATE_H" ColumnType="NUMBER"
+        Expression="IN_DOC_DATE_H" IsPersistent="false" Name="InDocDateH" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.InDocDateH']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="IN_DOC_TYPE_FK" ColumnType="NUMBER"
+        Expression="IN_DOC_TYPE_FK" IsPersistent="false" Name="InDocTypeFk" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"
+        LOVName="LOV_InDocTypeFk">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.InDocTypeFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="INCOMING_TYPE_FK" ColumnType="NUMBER"
+        Expression="INCOMING_TYPE_FK" IsPersistent="false" Name="IncomingTypeFk" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"
+        LOVName="LOV_IncomingTypeFk">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.IncomingTypeFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="IN_DOC_NO" ColumnType="VARCHAR2"
+        Expression="IN_DOC_NO" IsPersistent="false"
+        Name="InDocNo" Precision="20" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="20"/>
+        </DesignTime>
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.InDocNo']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="FROM_DEPARTMENT_FK" ColumnType="NUMBER"
+        Expression="FROM_DEPARTMENT_FK" IsPersistent="false" Name="FromDepartmentFk"
+        PrecisionRule="true" SQLType="NUMERIC" Type="java.math.BigDecimal"
+        LOVName="LOV_FromDepartmentFk">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.FromDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="TO_DEPARTMENT_FK" ColumnType="NUMBER"
+        Expression="TO_DEPARTMENT_FK" IsPersistent="false" Name="ToDepartmentFk" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"
+        LOVName="LOV_ToDepartmentFk">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.ToDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="PRIORITY_FK" ColumnType="NUMBER"
+        Expression="PRIORITY_FK" IsPersistent="false" Name="PriorityFk" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"
+        LOVName="LOV_PriorityFk">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.PriorityFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="SECURITY_LEVEL_FK" ColumnType="NUMBER"
+        Expression="SECURITY_LEVEL_FK" IsPersistent="false" Name="SecurityLevelFk" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"
+        LOVName="LOV_SecurityLevelFk">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.SecurityLevelFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="ATTACHMENTS_NO" ColumnType="NUMBER"
+        Expression="ATTACHMENTS_NO" IsPersistent="false" Name="AttachmentsNo" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.AttachmentsNo']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="FILES_LOCATION_FK" ColumnType="NUMBER"
+        Expression="FILES_LOCATION_FK" IsPersistent="false" Name="FilesLocationFk" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"
+        LOVName="LOV_FilesLocationFk">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.FilesLocationFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="BARCODE" ColumnType="NUMBER"
+        Expression="BARCODE" IsPersistent="false"
+        Name="Barcode" PrecisionRule="true" SQLType="NUMERIC" Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.Barcode']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="RESPOND_PERIOD" ColumnType="NUMBER"
+        Expression="RESPOND_PERIOD" IsPersistent="false" Name="RespondPeriod" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.RespondPeriod']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="RECEIVED_DATE_G" ColumnType="TIMESTAMP"
+        Expression="RECEIVED_DATE_G" IsPersistent="false" Name="ReceivedDateG" PrecisionRule="true"
+        SQLType="TIMESTAMP" Type="java.sql.Timestamp">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.ReceivedDateG']}"/>
+                <DISPLAYWIDTH Value="20"/>                   
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="RECEIVED_DATE_H" ColumnType="NUMBER"
+        Expression="RECEIVED_DATE_H" IsPersistent="false" Name="ReceivedDateH" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.ReceivedDateH']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OUTGOING_DOCUMENTS_FK" ColumnType="NUMBER"
+        Expression="OUTGOING_DOCUMENTS_FK" IsPersistent="false" Name="OutgoingDocumentsFk"
+        PrecisionRule="true" SQLType="NUMERIC" Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.OutgoingDocumentsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="REPLY_FL" ColumnType="NUMBER"
+        Expression="REPLY_FL" IsPersistent="false"
+        Name="ReplyFl" PrecisionRule="true" SQLType="NUMERIC" Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['DocumentBeneficiariesVw.ReplyFl']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" ColumnType="NUMBER"
+        Expression="CREATED_BY" IsPersistent="false" Name="CreatedBy" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE" ColumnType="TIMESTAMP"
+        Expression="CREATION_DATE" IsPersistent="false" Name="CreationDate" PrecisionRule="true"
+        SQLType="TIMESTAMP" Type="java.sql.Timestamp">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" ColumnType="NUMBER"
+        Expression="MODIFIED_BY" IsPersistent="false" Name="ModifiedBy" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE" ColumnType="TIMESTAMP"
+        Expression="MODIFIED_DATE" IsPersistent="false" Name="ModifiedDate" PrecisionRule="true"
+        SQLType="TIMESTAMP" Type="java.sql.Timestamp">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="IncomingDocumentsNo"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        AliasName="INCOMING_DOCUMENTS_NO"
+        Expression="INCOMING_DOCUMENTS_NO"
+        SQLType="NUMERIC">
+        <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['DocumentVw.IncomingDocumentsNo']}" />
+      </SchemaBasedProperties>
+    </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="BeneficiariesFk"
+        IsUpdateable="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        AliasName="BENEFICIARIES_FK"
+        Expression="BENEFICIARIES_FK"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        Name="IncomingBeneficiariesPk"
+        IsUpdateable="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        AliasName="INCOMING_BENEFICIARIES_PK"
+        Expression="INCOMING_BENEFICIARIES_PK"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        Name="DisplayDocTypeFk"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_DOC_TYPE_FK"
+        Expression="DISPLAY_DOC_TYPE_FK"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayPriorityFk"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_PRIORITY_FK"
+        Expression="DISPLAY_PRIORITY_FK"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplaySecurityLevelFk"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_SECURITY_LEVEL_FK"
+        Expression="DISPLAY_SECURITY_LEVEL_FK"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayFilesLocationFk"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_FILES_LOCATION_FK"
+        Expression="DISPLAY_FILES_LOCATION_FK"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayOutgoingDocumentsFk"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_OUTGOING_DOCUMENTS_FK"
+        Expression="DISPLAY_OUTGOING_DOCUMENTS_FK"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayCreatedBy"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_CREATED_BY"
+        Expression="DISPLAY_CREATED_BY"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+        
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArchiveVw.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayModifiedBy"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_MODIFIED_BY"
+        Expression="DISPLAY_MODIFIED_BY"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayInDocTypeFk"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_IN_DOC_TYPE_FK"
+        Expression="DISPLAY_IN_DOC_TYPE_FK"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayFromDepartmentFk"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_FROM_DEPARTMENT_FK"
+        Expression="DISPLAY_FROM_DEPARTMENT_FK"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayToDepartmentFk"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_TO_DEPARTMENT_FK"
+        Expression="DISPLAY_TO_DEPARTMENT_FK"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayIncomingTypeFk"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_INCOMING_TYPE_FK"
+        Expression="DISPLAY_INCOMING_TYPE_FK"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayBeneficiariesFk"
+        ColumnType="VARCHAR2"
+        Expression="GET_BENEFICIARY_NAME (BENEFICIARIES_FK,?)"
+        IsPersistent="false" Name="DisplayBeneficiariesFk"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsIncomingBeneficiaries.BeneficiariesFkDesc']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayBeneficiarieEmail"
+        ColumnType="VARCHAR2"
+        Expression="GET_BENEFICIARIE_EMAIL (BENEFICIARIES_FK)"
+        IsPersistent="false" Name="DisplayBeneficiarieEmail"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsBeneficiaries.Email']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayBeneficiarieMobileNo"
+        ColumnType="VARCHAR2"
+        Expression="GET_BENEFICIARIE_MOBILE_NO (BENEFICIARIES_FK)"
+        IsPersistent="false" Name="DisplayBeneficiarieMobileNo"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsBeneficiaries.MobileNo']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="BeneficiariesFkSearch" ColumnType="BIGINT"
+        IsPersistent="false" IsSelected="false"
+        Name="BeneficiariesFkSearch" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="DisplayBeneficiariesFkSearch" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplayBeneficiariesFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute
+        AliasName="USER_DEPARTMENT_FK"
+        ColumnType="NUMBER"
+        Expression="USER_DEPARTMENT_FK"
+        IsPersistent="false"
+        Name="UserDepartmentFk"
+        PrecisionRule="true"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayDocTypeFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.lang.String"
+        ColumnType="CHAR"
+        AliasName="DisplayDocTypeFkSearch"
+        SQLType="VARCHAR"/>
+    <ViewAttribute
+        Name="DocTypeFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="BIGINT"
+        AliasName="DocTypeFkSearch"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        Name="DisplayIncomingTypeFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="BIGINT"
+        AliasName="SecurityLevelFkSearch"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        Name="PriorityFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="BIGINT"
+        AliasName="PriorityFkSearch"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        Name="DisplayPriorityFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.lang.String"
+        ColumnType="CHAR"
+        AliasName="DisplayPriorityFkSearch"
+        SQLType="VARCHAR"/>
+    <ViewAttribute
+        Name="SecurityLevelFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="BIGINT"
+        AliasName="SecurityLevelFkSearch"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        Name="DisplaySecurityLevelFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.lang.String"
+        ColumnType="CHAR"
+        AliasName="DisplaySecurityLevelFkSearch"
+        SQLType="VARCHAR"/>
+    <ViewAttribute
+        Name="DisplayFilesLocationFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.lang.String"
+        ColumnType="CHAR"
+        AliasName="DisplayFilesLocationFkSearch"
+        SQLType="VARCHAR"/>
+    <ViewAttribute
+        Name="DisplayOutgoingDocumentsFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.lang.String"
+        ColumnType="CHAR"
+        AliasName="DisplayOutgoingDocumentsFkSearch"
+        SQLType="VARCHAR"/>
+    <ViewAttribute
+        Name="DisplayCreatedBySearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.lang.String"
+        ColumnType="CHAR"
+        AliasName="DisplayCreatedBySearch"
+        SQLType="VARCHAR"/>
+    <ViewAttribute
+        Name="DisplayModifiedBySearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.lang.String"
+        ColumnType="CHAR"
+        AliasName="DisplayModifiedBySearch"
+        SQLType="VARCHAR"/>
+    <ViewAttribute
+        Name="DisplayFromDepartmentFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.lang.String"
+        ColumnType="CHAR"
+        AliasName="DisplayFromDepartmentFkSearch"
+        SQLType="VARCHAR"/>
+    <ViewAttribute
+        Name="FromDepartmentFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="BIGINT"
+        AliasName="FromDepartmentFkSearch"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        Name="DisplayToDepartmentFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.lang.String"
+        ColumnType="CHAR"
+        AliasName="DisplayToDepartmentFkSearch"
+        SQLType="VARCHAR"/>
+    <ViewAttribute
+        Name="ToDepartmentFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="BIGINT"
+        AliasName="ToDepartmentFkSearch"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        Name="InDocTypeFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="BIGINT"
+        AliasName="VIEW_ATTR"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        Name="DisplayInDocTypeFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.lang.String"
+        ColumnType="CHAR"
+        AliasName="VIEW_ATTR"
+        SQLType="VARCHAR"/>
+    <ViewCriteria
+        Name="DocumentBeneficiariesVwViewSearch"
+        ViewObjectName="crs.model.ro.DocumentBeneficiariesVwView"
+        Conjunction="AND">
+        <Properties Name="_Props">
+            <CustomProperties>
+                <Property
+                    Name="autoExecute"
+                    Value="false"/>
+                <Property
+                    Name="mode"
+                    Value="Basic"/>
+                <Property
+                    Name="allowConjunctionOverride"
+                    Value="false"/>
+                <Property
+                    Name="showInList"
+                    Value="true"/>
+                <Property
+                    Name="displayOperators"
+                    Value="InAdvancedMode"/>
+            </CustomProperties>
+        </Properties>
+        <ViewCriteriaRow
+            Name="DocumentBeneficiariesVwViewCriteria_row_0"
+            UpperColumns="1">
+            <ViewCriteriaItem
+                Name="DocTypeFk"
+                ViewAttribute="DocTypeFk"
+                Operator="="
+                Conjunction="AND"
+                Required="Optional"/>
+            <ViewCriteriaItem
+                Name="InDocYear"
+                ViewAttribute="InDocYear"
+                Operator="="
+                Conjunction="AND"
+                Required="Optional"/>
+            <ViewCriteriaItem
+                Name="InDocDateH"
+                ViewAttribute="InDocDateH"
+                Operator="BETWEEN"
+                Conjunction="AND"
+                Required="Optional"/>
+            <ViewCriteriaItem
+                Name="InDocTypeFk"
+                ViewAttribute="InDocTypeFk"
+                Operator="="
+                Conjunction="AND"
+                Required="Optional"/>
+            <ViewCriteriaItem
+                Name="InDocNo"
+                ViewAttribute="InDocNo"
+                Operator="CONTAINS"
+                Conjunction="AND"
+                Required="Optional"/>
+            <ViewCriteriaItem
+                Name="FromDepartmentFk"
+                ViewAttribute="FromDepartmentFk"
+                Operator="="
+                Conjunction="AND"
+                Required="Optional"/>
+            <ViewCriteriaItem
+                Name="ToDepartmentFk"
+                ViewAttribute="ToDepartmentFk"
+                Operator="="
+                Conjunction="AND"
+                Required="Optional"/>
+            <ViewCriteriaItem
+                Name="PriorityFk"
+                ViewAttribute="PriorityFk"
+                Operator="="
+                Conjunction="AND"
+                Required="Optional"/>
+            <ViewCriteriaItem
+                Name="SecurityLevelFk"
+                ViewAttribute="SecurityLevelFk"
+                Operator="="
+                Conjunction="AND"
+                Required="Optional"/>
+            <ViewCriteriaItem
+                Name="AttachmentsNo"
+                ViewAttribute="AttachmentsNo"
+                Operator="="
+                Conjunction="AND"
+                Required="Optional"/>
+            <ViewCriteriaItem
+                Name="FilesLocationFk"
+                ViewAttribute="FilesLocationFk"
+                Operator="="
+                Conjunction="AND"
+                Required="Optional"/>
+            <ViewCriteriaItem
+                Name="Barcode"
+                ViewAttribute="Barcode"
+                Operator="="
+                Conjunction="AND"
+                Required="Optional"/>
+            <ViewCriteriaItem
+                Name="RespondPeriod"
+                ViewAttribute="RespondPeriod"
+                Operator="="
+                Conjunction="AND"
+                Required="Optional"/>
+            <ViewCriteriaItem
+                Name="ReceivedDateG"
+                ViewAttribute="ReceivedDateG"
+                Operator="BETWEEN"
+                Conjunction="AND"
+                Required="Optional"/>
+            <ViewCriteriaItem
+                Name="CreationDate"
+                ViewAttribute="CreationDate"
+                Operator="BETWEEN"
+                Conjunction="AND"
+                Required="Optional"/>
+            <ViewCriteriaItem
+                Name="ModifiedBy"
+                ViewAttribute="ModifiedBy"
+                Operator="="
+                Conjunction="AND"
+                Required="Optional"/>
+            <ViewCriteriaItem
+                Name="DisplayCreatedBy"
+                ViewAttribute="DisplayCreatedBy"
+                Operator="CONTAINS"
+                Conjunction="AND"
+                Required="Optional"/>
+        
+            <ViewCriteriaItem
+                Name="DisplayBeneficiariesFk"
+                ViewAttribute="DisplayBeneficiariesFk"
+                Operator="CONTAINS"
+                Conjunction="AND"
+                Required="Optional"/>
+<ViewCriteriaItem
+                Name="DisplayBeneficiarieEmail"
+                ViewAttribute="DisplayBeneficiarieEmail"
+                Operator="CONTAINS"
+                Conjunction="AND"
+                Required="Optional"/>
+            <ViewCriteriaItem
+                Name="DisplayBeneficiarieMobileNo"
+                ViewAttribute="DisplayBeneficiarieMobileNo"
+                Operator="CONTAINS"
+                Conjunction="AND"
+                Required="Optional"/>
+        </ViewCriteriaRow>
+    </ViewCriteria>
+    <ViewLinkAccessor
+        IsUpdateable="false"
+        Name="ArchiveVwView"
+        Type="oracle.jbo.RowIterator"
+        ViewLink="crs.model.vl.DocumentBeneficiariesVwArchiveVl"/>
+    <ViewLinkAccessor
+        IsUpdateable="false"
+        Name="AttachmentsVwView"
+        Type="oracle.jbo.RowIterator"
+        ViewLink="crs.model.vl.DocumentBeneficiariesVwAttachmentsVl"/>
+    <ViewLinkAccessor
+        IsUpdateable="false"
+        Name="DocCcVwView"
+        Type="oracle.jbo.RowIterator"
+        ViewLink="crs.model.vl.DocumentBeneficiariesVwDocCCVl"/>
+    <ViewLinkAccessor
+        IsUpdateable="false"
+        Name="RelatedLettersVwView"
+        Type="oracle.jbo.RowIterator"
+        ViewLink="crs.model.vl.DocumentBeneficiariesVwRelatedLettersVl"/>
+    <ViewLinkAccessor
+        IsUpdateable="false"
+        Name="BeneficiariesVwView1"
+        Type="oracle.jbo.RowIterator"
+        ViewLink="crs.model.vl.DocumentBeneficiariesVwBeneficiariesVl"/>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

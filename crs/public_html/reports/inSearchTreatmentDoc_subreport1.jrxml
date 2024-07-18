@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="insearchTreatmentDoc" pageWidth="842" pageHeight="640" whenNoDataType="NoDataSection" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" scriptletClass="gen.common.JasperScriptlet" uuid="72482c10-2f07-4a7e-81f6-20a437dc2a90">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.xls.sheet.direction" value="LTR"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<template><![CDATA[$P{SUBREPORT_DIR} + "reportStyle.jrtx"]]></template>
+	<style name="rowStyle" mode="Opaque" forecolor="#000000" backcolor="#F9F9F9">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT} %  2 == 0]]></conditionExpression>
+			<style backcolor="#FFFFFF"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT} %  2 != 0]]></conditionExpression>
+			<style mode="Opaque" forecolor="#000000" backcolor="#F9F9F9"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[".\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_incoming_documents_pk" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_follow_up_income_label" class="java.lang.String"/>
+	<parameter name="p_execution_date_g_label" class="java.lang.String"/>
+	<parameter name="p_deptdesc_label" class="java.lang.String"/>
+	<parameter name="p_date_format" class="java.lang.String"/>
+	<parameter name="p_no_data_label" class="java.lang.String"/>
+	<parameter name="p_execution_date_h_label" class="java.lang.String"/>
+	<parameter name="p_lang" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+GET_DEPARTMENT_NAME(DEPARTMENTS_FK, $P{p_lang}) DeptDesc,
+EXECUTION_DATE_G,
+EXECUTION_DATE_h
+
+FROM CRS_INCOMING_DOC_CC CrsAssignments
+
+where CrsAssignments.INCOMING_DOCUMENTS_FK =$P{p_incoming_documents_pk}]]>
+	</queryString>
+	<field name="DEPTDESC" class="java.lang.String"/>
+	<field name="EXECUTION_DATE_G" class="java.sql.Timestamp"/>
+	<field name="EXECUTION_DATE_H" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="53">
+			<textField isBlankWhenNull="true">
+				<reportElement style="reportHeaderStyle" x="460" y="33" width="307" height="20" uuid="90c8b46f-f8ec-443b-878c-bf60ec7293ac"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#6666FF"/>
+					<topPen lineWidth="0.0" lineColor="#6666FF"/>
+					<leftPen lineWidth="0.0" lineColor="#6666FF"/>
+					<bottomPen lineWidth="0.0" lineColor="#6666FF"/>
+					<rightPen lineWidth="0.0" lineColor="#6666FF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_deptdesc_label}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="reportHeaderStyle" x="253" y="33" width="207" height="20" uuid="eb7a1b2d-8e7f-4909-9312-941ab0b910c2"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#6666FF"/>
+					<topPen lineWidth="0.0" lineColor="#6666FF"/>
+					<leftPen lineWidth="0.0" lineColor="#6666FF"/>
+					<bottomPen lineWidth="0.0" lineColor="#6666FF"/>
+					<rightPen lineWidth="0.0" lineColor="#6666FF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_execution_date_g_label}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="subTitleStyle" x="0" y="0" width="767" height="20" uuid="5f9d0957-713c-4c7b-9efa-2b7b975fbf5d"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="1.0" lineColor="#6666FF"/>
+					<topPen lineWidth="1.0" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_follow_up_income_label}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="reportHeaderStyle" x="0" y="33" width="253" height="20" uuid="1c79a02d-a907-4fd7-89a2-2fc298623d97"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#6666FF"/>
+					<topPen lineWidth="0.0" lineColor="#6666FF"/>
+					<leftPen lineWidth="0.0" lineColor="#6666FF"/>
+					<bottomPen lineWidth="0.0" lineColor="#6666FF"/>
+					<rightPen lineWidth="0.0" lineColor="#6666FF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_execution_date_h_label}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement style="rowStyle" stretchType="RelativeToBandHeight" mode="Opaque" x="460" y="0" width="307" height="20" uuid="e124781b-5695-4edf-9a31-ef952a209f1c"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#6666FF"/>
+					<topPen lineWidth="0.0" lineColor="#6666FF"/>
+					<leftPen lineWidth="0.0" lineColor="#6666FF"/>
+					<bottomPen lineWidth="0.0" lineColor="#6666FF"/>
+					<rightPen lineWidth="0.0" lineColor="#6666FF"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DEPTDESC}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement style="rowStyle" stretchType="RelativeToBandHeight" mode="Opaque" x="253" y="0" width="207" height="20" uuid="6a920f43-fbdd-4b84-820a-db392b73db05"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#6666FF"/>
+					<topPen lineWidth="0.0" lineColor="#6666FF"/>
+					<leftPen lineWidth="0.0" lineColor="#6666FF"/>
+					<bottomPen lineWidth="0.0" lineColor="#6666FF"/>
+					<rightPen lineWidth="0.0" lineColor="#6666FF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.formatDate($F{EXECUTION_DATE_G},$P{p_date_format})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement style="rowStyle" stretchType="RelativeToBandHeight" mode="Opaque" x="0" y="0" width="253" height="20" uuid="04c2b9c1-4b59-46c2-9c8a-ca3a774a5c5f"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#6666FF"/>
+					<topPen lineWidth="0.0" lineColor="#6666FF"/>
+					<leftPen lineWidth="0.0" lineColor="#6666FF"/>
+					<bottomPen lineWidth="0.0" lineColor="#6666FF"/>
+					<rightPen lineWidth="0.0" lineColor="#6666FF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.convertHijriBigDecimalToString($F{EXECUTION_DATE_H})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

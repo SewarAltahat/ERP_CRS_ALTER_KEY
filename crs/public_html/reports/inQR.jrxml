@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="inQR" pageWidth="200" pageHeight="200" columnWidth="200" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" scriptletClass="gen.common.JasperScriptlet" uuid="36e45a51-5332-416b-b66c-dc6c8cd9959d">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<parameter name="p_barcode" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_lang" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_in_number_label" class="java.lang.String"/>
+	<parameter name="p_in_type_label" class="java.lang.String"/>
+	<parameter name="p_in_doc_date_g_label" class="java.lang.String"/>
+	<parameter name="p_attachment_no" class="java.lang.String"/>
+	<parameter name="p_dept_ref" class="java.lang.String"/>
+	<parameter name="p_incoming" class="java.lang.String"/>
+	<parameter name="p_date_format" class="java.lang.String"/>
+	<parameter name="p_incoming_documents_pk" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+GET_DEPARTMENT_NAME(FROM_DEPARTMENT_FK, $P{p_lang}) AS DEP_REF,
+BARCODE AS CRS_IN_DOCUMENTS_BAR_CODE,
+INCOMING_DOCUMENTS_NO AS CRS_IN_DOCUMENTS_OUT_NUMBER,
+IN_DOC_DATE_G IN_DOC_DATE_G ,
+IN_DOC_DATE_H,
+ATTACHMENTS_NO,
+GET_DEPARTMENT_NAME(TO_DEPARTMENT_FK  , $P{p_lang}) AS PARTITION
+FROM
+
+CRS_INCOMING_DOCUMENTS CRS_IN_DOCUMENTS
+
+
+
+where  CRS_IN_DOCUMENTS.Incoming_Documents_Pk= $P{p_incoming_documents_pk}]]>
+	</queryString>
+	<field name="DEP_REF" class="java.lang.String"/>
+	<field name="CRS_IN_DOCUMENTS_BAR_CODE" class="java.math.BigDecimal"/>
+	<field name="CRS_IN_DOCUMENTS_OUT_NUMBER" class="java.math.BigDecimal"/>
+	<field name="IN_DOC_DATE_G" class="java.sql.Timestamp"/>
+	<field name="IN_DOC_DATE_H" class="java.math.BigDecimal"/>
+	<field name="ATTACHMENTS_NO" class="java.math.BigDecimal"/>
+	<field name="PARTITION" class="java.lang.String"/>
+	<pageHeader>
+		<band height="200" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="200" height="200" uuid="c8c74d57-8302-4bcb-9934-1816d815705f"/>
+				<imageExpression><![CDATA[$P{REPORT_SCRIPTLET}.getQRCodeBufferedImage(
+
+$P{p_in_number_label} + " : " + $F{CRS_IN_DOCUMENTS_OUT_NUMBER} + " \n" +
+$P{p_in_type_label} +" : " + $P{p_incoming}+ " \n" +
+$P{p_in_doc_date_g_label} +" : " + $P{REPORT_SCRIPTLET}.formatDate($F{IN_DOC_DATE_G},$P{p_date_format}) + " - " + $P{REPORT_SCRIPTLET}.convertHijriBigDecimalToString($F{IN_DOC_DATE_H}) + " \n" +
+$P{p_attachment_no}+ " : " +$F{ATTACHMENTS_NO}+ " \n" +
+$P{p_dept_ref} +" : " + $F{DEP_REF} + " \n"
+, 200 , 200)]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+</jasperReport>

@@ -1,0 +1,276 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:sdHijri="sdHijri" xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="Doc1" title="#{menu.resourceLabelMap['menu.entryCountReport']}" uncommittedDataWarning="on">
+      <af:messages id="m1"/>
+      <af:form id="form1">
+        <af:pageTemplate id="page1" viewId="/templateDef.jspx">
+          <f:attribute value="#{menu.resourceLabelMap['menu.entryCountReport']}" name="pageTitle"/>
+          <f:facet name="main">
+            <af:panelGroupLayout id="pg1" layout="scroll">
+              <af:panelBox styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['menu.entryCountReport']}"
+                           partialTriggers="b2">
+                <af:panelGroupLayout id="pgl12">
+                  <div class="card-body">
+                    <div class="form-group row">
+                      <div class="col-md-3">
+                        <label class="col-form-label">
+                          <af:outputLabel value="#{menu.resourceLabelMap['label.DateFrom']}" id="ol96"/>
+                        </label>
+                         
+                        <af:inputDate value="#{bindings.DateFrom.inputValue}"
+                                      required="#{bindings.DateFrom.hints.mandatory}"
+                                      columns="#{bindings.DateFrom.hints.displayWidth}" styleClass="form-control"
+                                      id="id1" simple="true" valueChangeListener="#{entryCountReport.dateFromChanged}"
+                                      autoSubmit="true">
+                          <f:validator binding="#{bindings.DateFrom.validator}"/>
+                          <af:convertDateTime pattern="#{menu.dateFormat}"/>
+                        </af:inputDate>
+                      </div>
+                      <div class="col-md-3 ">
+                        <label class="col-form-label">
+                          <af:outputLabel value="#{menu.resourceLabelMap['label.DateTo']}" id="ol3"/>
+                        </label>
+                         
+                        <af:inputDate value="#{bindings.DateTo.inputValue}"
+                                      required="#{bindings.DateTo.hints.mandatory}"
+                                      minValue="#{bindings.DateFrom.inputValue}"
+                                      columns="#{bindings.DateTo.hints.displayWidth}" styleClass="form-control" id="id2"
+                                      simple="true" valueChangeListener="#{entryCountReport.dateToChanged}"
+                                      autoSubmit="true">
+                          <f:validator binding="#{bindings.DateTo.validator}"/>
+                          <af:convertDateTime pattern="#{menu.dateFormat}"/>
+                        </af:inputDate>
+                      </div>
+                      <div class="col-md-3">
+                        <label class="col-form-label">
+                          <af:outputLabel value="#{menu.resourceLabelMap['label.HijriDateFrom']}" id="ol7"/>
+                        </label>
+                         
+                        <af:panelGroupLayout id="pgl01" layout="horizontal" styleClass="hijri-group">
+                          <af:inputText value="#{bindings.HijriDateFrom.inputValue}"
+                                        required="#{bindings.HijriDateFrom.hints.mandatory}"
+                                         styleClass="form-control hijri-control" 
+                                        columns="#{bindings.HijriDateFrom.hints.displayWidth}"
+                                        maximumLength="#{bindings.HijriDateFrom.hints.precision}" id="HijriDateFrom"
+                                       simple="true"
+                                        valueChangeListener="#{entryCountReport.hijriDateFromChanged}"
+                                        autoSubmit="true">
+                            <f:converter converterId="hijriDateConverter"/>
+                          </af:inputText>
+                          <sdHijri:hijriCalendar direction="1" id="hc1" inputId="page1:HijriDateFrom" type="1"/>
+                        </af:panelGroupLayout>
+                      </div>
+                      <div class="col-md-3 ">
+                        <label class="col-form-label">
+                          <af:outputLabel value="#{menu.resourceLabelMap['label.HijriDateTo']}" id="ol8"/>
+                        </label>
+                         
+                        <af:panelGroupLayout id="pgl1" layout="horizontal" styleClass="hijri-group">
+                          <af:inputText value="#{bindings.HijriDateTo.inputValue}"
+                                        required="#{bindings.HijriDateTo.hints.mandatory}"
+                                        columns="#{bindings.HijriDateTo.hints.displayWidth}"
+                                        maximumLength="#{bindings.HijriDateTo.hints.precision}" id="HijriDateTo"
+                                        styleClass="form-control hijri-control"  simple="true"
+                                        valueChangeListener="#{entryCountReport.hijriDateToChanged}" autoSubmit="true">
+                            <f:converter converterId="hijriDateConverter"/>
+                          </af:inputText>
+                          <sdHijri:hijriCalendar direction="1" id="hc2" inputId="page1:HijriDateTo" type="1"/>
+                        </af:panelGroupLayout>
+                      </div>
+                      <div class="col-md-3 ">
+                        <label class="col-form-label">
+                          <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFk']}"
+                                          id="ol5"/>
+                        </label>
+                         
+                        <af:inputListOfValues id="fromDepartmentFkId" value="#{bindings.FromDepartmentFk.inputValue}"
+                                              label="#{bindings.FromDepartmentFk.hints.label}"
+                                              model="#{bindings.FromDepartmentFk.listOfValuesModel}"
+                                              required="#{bindings.FromDepartmentFk.hints.mandatory}"
+                                              columns="#{bindings.FromDepartmentFk.hints.displayWidth}"
+                                              autoSubmit="true" styleClass="form-control" simple="true">
+                          <f:validator binding="#{bindings.FromDepartmentFk.validator}"/>
+                          <af:convertNumber groupingUsed="false" pattern="#{bindings.FromDepartmentFk.format}"/>
+                        </af:inputListOfValues>
+                      </div>
+                      <div class="col-md-3 ">
+                        <label class="col-form-label">
+                          <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFk']}"
+                                          id="ol9"/>
+                        </label>
+                         
+                        <af:inputText value="#{bindings.DisplayFromDepartmentFk.inputValue}"
+                                      required="#{bindings.DisplayFromDepartmentFk.hints.mandatory}"
+                                      columns="#{bindings.DisplayFromDepartmentFk.hints.displayWidth}"
+                                      maximumLength="#{bindings.DisplayFromDepartmentFk.hints.precision}"
+                                      styleClass="form-control"  id="it2"
+                                      simple="true" disabled="true" partialTriggers="fromDepartmentFkId">
+                          <f:validator binding="#{bindings.DisplayFromDepartmentFk.validator}"/>
+                        </af:inputText>
+                      </div>
+                      <div class="col-md-3 ">
+                        <label class="col-form-label">
+                          <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.ToDepartmentFk']}"
+                                          id="ol6"/>
+                        </label>
+                         
+                        <af:inputListOfValues id="toDepartmentFkId" value="#{bindings.ToDepartmentFk.inputValue}"
+                                              label="#{bindings.ToDepartmentFk.hints.label}"
+                                              model="#{bindings.ToDepartmentFk.listOfValuesModel}"
+                                              required="#{bindings.ToDepartmentFk.hints.mandatory}"
+                                              columns="#{bindings.ToDepartmentFk.hints.displayWidth}"
+                                              styleClass="form-control" simple="true">
+                          <f:validator binding="#{bindings.ToDepartmentFk.validator}"/>
+                          <af:convertNumber groupingUsed="false" pattern="#{bindings.ToDepartmentFk.format}"/>
+                        </af:inputListOfValues>
+                      </div>
+                      <div class="col-md-3 ">
+                        <label class="col-form-label">
+                          <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.ToDepartmentFk']}"
+                                          id="ol10"/>
+                        </label>
+                         
+                        <af:inputText value="#{bindings.DisplayToDepartmentFk.inputValue}"
+                                      required="#{bindings.DisplayToDepartmentFk.hints.mandatory}"
+                                      columns="#{bindings.DisplayToDepartmentFk.hints.displayWidth}"
+                                      maximumLength="#{bindings.DisplayToDepartmentFk.hints.precision}" id="it1"
+                                       simple="true" disabled="true"
+                                      styleClass="form-control" partialTriggers="toDepartmentFkId">
+                          <f:validator binding="#{bindings.DisplayToDepartmentFk.validator}"/>
+                        </af:inputText>
+                      </div>
+                      <div class="col-md-3">
+                        <label class="col-form-label">
+                          <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocTypeFk']}"
+                                          id="ol4"/>
+                        </label>
+                         
+                        <af:inputListOfValues id="DocTypeFkId" value="#{bindings.DocTypeFk.inputValue}"
+                                              label="#{bindings.DocTypeFk.hints.label}"
+                                              model="#{bindings.DocTypeFk.listOfValuesModel}"
+                                              required="#{bindings.DocTypeFk.hints.mandatory}"
+                                              columns="#{bindings.DocTypeFk.hints.displayWidth}" autoSubmit="true"
+                                              styleClass="form-control" simple="true">
+                          <f:validator binding="#{bindings.DocTypeFk.validator}"/>
+                          <af:convertNumber groupingUsed="false" pattern="#{bindings.DocTypeFk.format}"/>
+                        </af:inputListOfValues>
+                      </div>
+                      <div class="col-md-3">
+                        <label class="col-form-label">
+                          <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.DisplayInDocType']}"
+                                          id="ol11"/>
+                        </label>
+                         
+                        <af:inputText value="#{bindings.DisplayDocTypeFk.inputValue}" simple="true"
+                                      required="#{bindings.DisplayDocTypeFk.hints.mandatory}"
+                                      columns="#{bindings.DisplayDocTypeFk.hints.displayWidth}"
+                                      styleClass="form-control"
+                                      maximumLength="#{bindings.DisplayDocTypeFk.hints.precision}" id="it3"
+                                       disabled="true"
+                                      partialTriggers="DocTypeFkId">
+                          <f:validator binding="#{bindings.DisplayDocTypeFk.validator}"/>
+                        </af:inputText>
+                      </div>
+                      <div class="col-md-3">
+                        <label class="col-form-label">
+                          <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.PriorityFk']}" id="ol1"/>
+                        </label>
+                         
+                        <af:inputListOfValues id="priorityFkId" value="#{bindings.PriorityFk.inputValue}"
+                                              label="#{bindings.PriorityFk.hints.label}"
+                                              model="#{bindings.PriorityFk.listOfValuesModel}"
+                                              required="#{bindings.PriorityFk.hints.mandatory}"
+                                              styleClass="form-control"
+                                              columns="#{bindings.PriorityFk.hints.displayWidth}" autoSubmit="true"
+                                              simple="true">
+                          <f:validator binding="#{bindings.PriorityFk.validator}"/>
+                          <af:convertNumber groupingUsed="false" pattern="#{bindings.PriorityFk.format}"/>
+                        </af:inputListOfValues>
+                      </div>
+                      <div class="col-md-3">
+                        <label class="col-form-label">
+                          <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.DispalyPriorityFkdesc']}"
+                                          id="ol12"/>
+                        </label>
+                         
+                        <af:inputText value="#{bindings.DisplayPriorityFk.inputValue}" simple="true"
+                                      required="#{bindings.DisplayPriorityFk.hints.mandatory}"
+                                      columns="#{bindings.DisplayPriorityFk.hints.displayWidth}"
+                                      maximumLength="#{bindings.DisplayPriorityFk.hints.precision}"
+                                      styleClass="form-control"  disabled="true"
+                                      partialTriggers="priorityFkId" id="it4">
+                          <f:validator binding="#{bindings.DisplayPriorityFk.validator}"/>
+                        </af:inputText>
+                      </div>
+                      <div class="col-md-3 ">
+                        <label class="col-form-label">
+                          <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.SecurityLevelFk']}"
+                                          id="ol2"/>
+                        </label>
+                         
+                        <af:inputListOfValues id="securityLevelFkId" value="#{bindings.SecurityLevelFk.inputValue}"
+                                              label="#{bindings.SecurityLevelFk.hints.label}"
+                                              model="#{bindings.SecurityLevelFk.listOfValuesModel}"
+                                              required="#{bindings.SecurityLevelFk.hints.mandatory}"
+                                              columns="#{bindings.SecurityLevelFk.hints.displayWidth}" autoSubmit="true"
+                                              styleClass="form-control" simple="true">
+                          <f:validator binding="#{bindings.SecurityLevelFk.validator}"/>
+                          <af:convertNumber groupingUsed="false" pattern="#{bindings.SecurityLevelFk.format}"/>
+                        </af:inputListOfValues>
+                      </div>
+                      <div class="col-md-3 ">
+                        <label class="col-form-label">
+                          <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.SecurityLevelDesc']}"
+                                          id="ol13"/>
+                        </label>
+                         
+                        <af:inputText value="#{bindings.DisplaySecurityLevelFk.inputValue}" simple="true"
+                                      required="#{bindings.DisplaySecurityLevelFk.hints.mandatory}"
+                                      columns="#{bindings.DisplaySecurityLevelFk.hints.displayWidth}"
+                                      maximumLength="#{bindings.DisplaySecurityLevelFk.hints.precision}" id="it5"
+                                       disabled="true" styleClass="form-control"
+                                      partialTriggers="securityLevelFkId">
+                          <f:validator binding="#{bindings.DisplaySecurityLevelFk.validator}"/>
+                        </af:inputText>
+                      </div>
+                      </div>
+                      </div>
+                                                                          
+                        <af:panelGroupLayout id="pgl9" halign="center" layout="horizontal">
+                         
+                                            <af:commandButton partialSubmit="true"
+                                          icon="/images/refresh.png" id="b3" action="#{entryCountReport.getEntryCountReportData}"
+                                          partialTriggers="barChart1"
+                                                              text="#{menu.resourceLabelMap['button.getData']}"/>
+                        <af:spacer width="10" height="10" id="s10"/>
+                        <af:commandButton partialSubmit="true"
+                                          actionListener="#{bindings.Rollback.execute}" icon="/images/clear.png"
+                                          id="b2" text="#{menu.resourceLabelMap['button.clearData']}"/>
+                        </af:panelGroupLayout>
+                   
+                
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <!--<af:spacer height="30" id="s5"/>-->
+              <af:panelBox text="#{menu.resourceLabelMap['Label.ChartDoc']}" id="pb1" styleClass="AFStretchWidth">
+                <dvt:barChart contentDelivery="immediate" dataSelection="single" drilling="off" hideAndShowBehavior="withRescale" 
+                hoverBehavior="dim" seriesEffect="color" stack="off" id="barChart1" var="row" value="#{bindings.EntryCountDocView1.collectionModel}"
+                              splitterPosition="1" styleClass="AFStretchWidth">
+                  <dvt:chartLegend id="cl1"/>
+                  <f:facet name="dataStamp">
+                    <dvt:chartDataItem id="di1" series="#{row.Displaydoctypefk}" value="#{row.Totalincoming}"
+                                       group="#{row.Createdbydesc}"/>
+                  </f:facet>
+                </dvt:barChart>
+              </af:panelBox>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

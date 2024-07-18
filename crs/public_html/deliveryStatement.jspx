@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" version="2.1">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{deliveryStatement.doc}" id="Doc1" title="#{menu.resourceLabelMap['menu.deliveryStatement']}"
+                 uncommittedDataWarning="on">
+      <af:messages id="m1"/>
+      <af:form id="form1">
+        <af:pageTemplate id="page1" viewId="/templateDef.jspx">
+          <f:attribute name="pageTitle" value="#{menu.resourceLabelMap['menu.deliveryStatement']}"/>
+          <f:facet name="main">
+            <af:panelGroupLayout id="pg1" layout="vertical">
+              <af:panelBox id="pb22" styleClass="AFStretchWidth"
+                           text="#{menu.resourceLabelMap['menu.deliveryStatement']}">
+                <af:panelTabbed dimensionsFrom="disclosedChild" id="PTdeliveryStatement2" styleClass="AFStretchWidth">
+                  <af:showDetailItem id="Tab1" immediate="true" styleClass="AFStretchWidth"
+                                     text="#{menu.resourceLabelMap['deliveryStatement.Tab1']}">
+                    <af:panelGroupLayout halign="center" id="pglCrsIncomingDocuments3" layout="vertical">
+                      <af:panelGroupLayout id="pgl82">
+                        <af:panelStretchLayout dimensionsFrom="children" id="psl83" styleClass="AFStretchWidth">
+                          <f:facet name="center">
+                            <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem"
+                                                id="pc40" styleClass="AFStretchWidth">
+                              <f:facet name="secondaryToolbar">
+                                <af:toolbar id="tb1" rendered="false">
+                                  <af:commandButton action="#{menu.genericDeleteAction}"
+                                                    disabled="#{!menu.deleteAllowed or !bindings.DeleteDocumentsDeliveryView.enabled}"
+                                                    icon="#{menu.deleteIcon}" id="Del1" immediate="true"
+                                                    partialSubmit="true" text="#{menu.resourceLabelMap['label.delete']}"
+                                                    styleClass="deleteButton">
+                                    <af:setPropertyListener from="DeleteDocumentsDeliveryView" to="#{sessionScope.deleteParam}"
+                                                            type="action"/>
+                                    <af:setPropertyListener from="CrsIncomingDocuments1"
+                                                            to="#{sessionScope.refreshParam}" type="action"/>
+                                    <af:setPropertyListener from="CrsIncomingDocumentsView1"
+                                                            to="#{sessionScope.viewParam}" type="action"/>
+                                  </af:commandButton>
+                                  <af:spacer width="5"/>
+                                  <af:commandButton actionListener="#{bindings.CreateInsertDocumentsDeliveryView.execute}"
+                                                    disabled="#{!menu.insertAllowed}" icon="#{menu.createInsertIcon}"
+                                                    id="ci1" partialSubmit="true"
+                                                    text="#{menu.resourceLabelMap['label.createInsert']}"
+                                                    styleClass="insertButton"/>
+                                  <af:spacer width="5"/>
+                                  <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                                    disabled="#{!menu.updateAllowed}" icon="#{menu.commitIcon}"
+                                                    id="Commit1" partialSubmit="true"
+                                                    text="#{menu.resourceLabelMap['label.commit']}"
+                                                    styleClass="commitButton"/>
+                                  <af:spacer width="5"/>
+                                  <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                                                    icon="#{menu.rollbackIcon}" id="rb1" immediate="true"
+                                                    partialSubmit="true"
+                                                    text="#{menu.resourceLabelMap['label.rollback']}"
+                                                    styleClass="rollbackButton" visible="#{menu.rollbackVisible}">
+                                    <af:resetActionListener/>
+                                  </af:commandButton>
+                                  <af:spacer width="5"/>
+                                  <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}"
+                                                    id="print1" immediate="true" partialSubmit="true"
+                                                    text="#{menu.resourceLabelMap['label.print']}"
+                                                    styleClass="printButton" visible="#{menu.printVisible}">
+                                    <af:showPrintablePageBehavior/>
+                                  </af:commandButton>
+                                  <af:spacer width="5"/>
+                                  <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}"
+                                                    id="excel1" immediate="true" partialSubmit="true"
+                                                    text="#{menu.resourceLabelMap['label.excel']}"
+                                                    styleClass="excelButton" visible="#{menu.excelVisible}">
+                                    <af:setPropertyListener from="CrsIncomingDocuments1" to="#{sessionScope.tableId}"
+                                                            type="action"/>
+                                    <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                                  </af:commandButton>
+                                  <af:spacer width="5"/>
+                                </af:toolbar>
+                              </f:facet>
+                              <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple"
+                                        columnStretching="column:DisplayInSubjectC1" displayRow="selected"
+                                        editingMode="editAll"
+                                        emptyText="#{bindings.CrsIncomingDocumentsView1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                        fetchSize="#{bindings.CrsIncomingDocumentsView1.rangeSize}"
+                                        filterModel="#{bindings.CrsIncomingDocumentsView1CriteriaQuery.queryDescriptor}"
+                                        filterVisible="false" id="CrsIncomingDocuments1"
+                                        queryListener="#{bindings.CrsIncomingDocumentsView1CriteriaQuery.processQuery}"
+                                        rowBandingInterval="1" rowSelection="single"
+                                        rows="#{bindings.CrsIncomingDocumentsView1.rangeSize}" scrollPolicy="page"
+                                        selectedRowKeys="#{bindings.CrsIncomingDocumentsView1.collectionModel.selectedRow}"
+                                        selectionListener="#{bindings.CrsIncomingDocumentsView1.collectionModel.makeCurrent}"
+                                        styleClass="AFStretchWidth t50"
+                                        value="#{bindings.CrsIncomingDocumentsView1.collectionModel}" var="row"
+                                        varStatus="vs" verticalGridVisible="false">
+                                <af:column align="center" filterFeatures="caseInsensitive"
+                                           headerText="#{menu.resourceLabelMap['label.InsertFl']}" id="c1"
+                                           sortProperty="IncomingInsertFl" sortable="true" width="150">
+                                  <!--<af:inputText value="#{row.bindings.IncomingInsertFl.inputValue}"
+                                              label="#{bindings.CrsIncomingDocumentsView1.hints.IncomingInsertFl.label}"
+                                              required="#{bindings.CrsIncomingDocumentsView1.hints.IncomingInsertFl.mandatory}"
+                                              columns="#{bindings.CrsIncomingDocumentsView1.hints.IncomingInsertFl.displayWidth}"
+                                              maximumLength="#{bindings.CrsIncomingDocumentsView1.hints.IncomingInsertFl.precision}"
+                                              shortDesc="#{bindings.CrsIncomingDocumentsView1.hints.IncomingInsertFl.tooltip}"
+                                              id="it8">
+                                  <f:validator binding="#{row.bindings.IncomingInsertFl.validator}"/>
+                                  <af:convertNumber groupingUsed="false"
+                                                    pattern="#{bindings.CrsIncomingDocumentsView1.hints.IncomingInsertFl.format}"/>
+                                </af:inputText>-->
+                                  <af:commandButton actionListener="#{deliveryStatement.viewIncomingDocuments}"
+                                                    disabled="#{!menu.insertAllowed}" icon="#{menu.createInsertIcon}"
+                                                    id="insertInDoc" partialSubmit="true"
+                                                    text="#{menu.resourceLabelMap['label.InsertFl']}"
+                                                    styleClass="insertButton"/>
+                                </af:column>
+                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                           headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.IncomingDocumentsPk']}"
+                                           id="IncomingDocumentsPkC42" sortProperty="IncomingDocumentsPk"
+                                           sortable="true" width="100">
+                                  <af:inputText columns="#{bindings.CrsIncomingDocumentsView1.hints.IncomingDocumentsPk.displayWidth}"
+                                                id="crsIncomingDocumentsIncomingdocumentspk"
+                                                label="#{menu.resourceLabelMap['CrsIncomingDocuments.IncomingDocumentsPk']}"
+                                                maximumLength="#{bindings.CrsIncomingDocumentsView1.hints.IncomingDocumentsPk.precision}"
+                                                readOnly="true"
+                                                required="#{bindings.CrsIncomingDocumentsView1.hints.IncomingDocumentsPk.mandatory}"
+                                                value="#{row.bindings.IncomingDocumentsPk.inputValue}">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{row.bindings.IncomingDocumentsPk.format}"/>
+                                    <f:validator binding="#{row.bindings.IncomingDocumentsPk.validator}"/>
+                                  </af:inputText>
+                                </af:column>
+                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                           headerText="#{bindings.CrsIncomingDocumentsView1.hints.DisplayInSubject.label}"
+                                           id="DisplayInSubjectC1" sortProperty="DisplayInSubjectSearch"
+                                           sortable="true">
+                                  <af:inputText columns="#{bindings.CrsIncomingDocumentsView1.hints.DisplayInSubject.displayWidth}"
+                                                id="it5"
+                                                label="#{bindings.CrsIncomingDocumentsView1.hints.DisplayInSubject.label}"
+                                                maximumLength="#{bindings.CrsIncomingDocumentsView1.hints.DisplayInSubject.precision}"
+                                                readOnly="true"
+                                                required="#{bindings.CrsIncomingDocumentsView1.hints.DisplayInSubject.mandatory}"
+                                                shortDesc="#{bindings.CrsIncomingDocumentsView1.hints.DisplayInSubject.tooltip}"
+                                                value="#{row.bindings.DisplayInSubject.inputValue}">
+                                    <f:validator binding="#{row.bindings.DisplayInSubject.validator}"/>
+                                  </af:inputText>
+                                </af:column>
+                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                           headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFk']}"
+                                           id="DisplayFromDepartmentFkC5" sortProperty="DisplayFromDepartmentFkSearch"
+                                           sortable="true" width="180">
+                                  <af:inputText columns="#{bindings.CrsIncomingDocumentsView1.hints.DisplayFromDepartmentFk.displayWidth}"
+                                                id="it6"
+                                                label="#{bindings.CrsIncomingDocumentsView1.hints.DisplayFromDepartmentFk.label}"
+                                                maximumLength="#{bindings.CrsIncomingDocumentsView1.hints.DisplayFromDepartmentFk.precision}"
+                                                readOnly="true"
+                                                required="#{bindings.CrsIncomingDocumentsView1.hints.DisplayFromDepartmentFk.mandatory}"
+                                                shortDesc="#{bindings.CrsIncomingDocumentsView1.hints.DisplayFromDepartmentFk.tooltip}"
+                                                value="#{row.bindings.DisplayFromDepartmentFk.inputValue}">
+                                    <f:validator binding="#{row.bindings.DisplayFromDepartmentFk.validator}"/>
+                                  </af:inputText>
+                                </af:column>
+                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                           headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.ToDepartmentFk']}"
+                                           id="DisplayToDepartmentFkC6" sortProperty="DisplayToDepartmentFkSearch"
+                                           sortable="true" width="180">
+                                  <af:inputText columns="#{bindings.CrsIncomingDocumentsView1.hints.DisplayToDepartmentFk.displayWidth}"
+                                                id="it7"
+                                                label="#{bindings.CrsIncomingDocumentsView1.hints.DisplayToDepartmentFk.label}"
+                                                maximumLength="#{bindings.CrsIncomingDocumentsView1.hints.DisplayToDepartmentFk.precision}"
+                                                readOnly="true"
+                                                required="#{bindings.CrsIncomingDocumentsView1.hints.DisplayToDepartmentFk.mandatory}"
+                                                shortDesc="#{bindings.CrsIncomingDocumentsView1.hints.DisplayToDepartmentFk.tooltip}"
+                                                value="#{row.bindings.DisplayToDepartmentFk.inputValue}">
+                                    <f:validator binding="#{row.bindings.DisplayToDepartmentFk.validator}"/>
+                                  </af:inputText>
+                                </af:column>
+                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                           headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocNo']}"
+                                           id="InDocNoC52" rendered="false"
+                                           sortProperty="#{bindings.CrsIncomingDocumentsView1.hints.InDocNo.name}"
+                                           sortable="true" width="160">
+                                  <af:inputText columns="#{bindings.CrsIncomingDocumentsView1.hints.InDocNo.displayWidth}"
+                                                id="crsIncomingDocumentsIndocno"
+                                                label="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocNo']}"
+                                                maximumLength="#{bindings.CrsIncomingDocumentsView1.hints.InDocNo.precision}"
+                                                readOnly="true"
+                                                required="#{bindings.CrsIncomingDocumentsView1.hints.InDocNo.mandatory}"
+                                                value="#{row.bindings.InDocNo.inputValue}">
+                                    <f:validator binding="#{row.bindings.InDocNo.validator}"/>
+                                  </af:inputText>
+                                </af:column>
+                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                           headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.IncomingDocumentsNo']}"
+                                           id="c8" sortProperty="IncomingDocumentsNo" sortable="true" width="100">
+                                  <af:inputText columns="#{bindings.CrsIncomingDocumentsView1.hints.IncomingDocumentsNo.displayWidth}"
+                                                id="it8"
+                                                label="#{bindings.CrsIncomingDocumentsView1.hints.IncomingDocumentsNo.label}"
+                                                maximumLength="#{bindings.CrsIncomingDocumentsView1.hints.IncomingDocumentsNo.precision}"
+                                                readOnly="true"
+                                                required="#{bindings.CrsIncomingDocumentsView1.hints.IncomingDocumentsNo.mandatory}"
+                                                shortDesc="#{bindings.CrsIncomingDocumentsView1.hints.IncomingDocumentsNo.tooltip}"
+                                                value="#{row.bindings.IncomingDocumentsNo.inputValue}">
+                                    <f:validator binding="#{row.bindings.IncomingDocumentsNo.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.CrsIncomingDocumentsView1.hints.IncomingDocumentsNo.format}"/>
+                                  </af:inputText>
+                                </af:column>
+                              </af:table>
+                            </af:panelCollection>
+                          </f:facet>
+                        </af:panelStretchLayout>
+                      </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                  </af:showDetailItem>
+                  <af:showDetailItem id="Tab2" immediate="true" styleClass="AFStretchWidth"
+                                     text="#{menu.resourceLabelMap['deliveryStatement.Tab2']}">
+                    <af:panelGroupLayout halign="center" id="pglCrsOutgoingDocuments4" layout="vertical">
+                      <af:panelGroupLayout id="pgl125">
+                        <af:panelStretchLayout dimensionsFrom="children" id="psl126" styleClass="AFStretchWidth">
+                          <f:facet name="center">
+                            <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem"
+                                                id="pc84" styleClass="AFStretchWidth">
+                              <f:facet name="secondaryToolbar">
+                                <af:toolbar id="tb2" rendered="false">
+                                  <af:commandButton action="#{menu.genericDeleteAction}"
+                                                    disabled="#{!menu.deleteAllowed or !bindings.Delete2.enabled}"
+                                                    icon="#{menu.deleteIcon}" id="Del2" immediate="true"
+                                                    partialSubmit="true" text="#{menu.resourceLabelMap['label.delete']}"
+                                                    styleClass="deleteButton">
+                                    <af:setPropertyListener from="Delete2" to="#{sessionScope.deleteParam}"
+                                                            type="action"/>
+                                    <af:setPropertyListener from="CrsOutgoingDocuments1"
+                                                            to="#{sessionScope.refreshParam}" type="action"/>
+                                    <af:setPropertyListener from="CrsOutgoingDocumentsView1"
+                                                            to="#{sessionScope.viewParam}" type="action"/>
+                                  </af:commandButton>
+                                  <af:spacer width="5"/>
+                                  <af:commandButton actionListener="#{bindings.CreateInsert2.execute}"
+                                                    disabled="#{!menu.insertAllowed}" icon="#{menu.createInsertIcon}"
+                                                    id="ci2" partialSubmit="true"
+                                                    text="#{menu.resourceLabelMap['label.createInsert']}"
+                                                    styleClass="insertButton"/>
+                                  <af:spacer width="5"/>
+                                  <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                                    disabled="#{!menu.updateAllowed}" icon="#{menu.commitIcon}"
+                                                    id="Commit2" partialSubmit="true"
+                                                    text="#{menu.resourceLabelMap['label.commit']}"
+                                                    styleClass="commitButton"/>
+                                  <af:spacer width="5"/>
+                                  <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                                                    icon="#{menu.rollbackIcon}" id="rb2" immediate="true"
+                                                    partialSubmit="true"
+                                                    text="#{menu.resourceLabelMap['label.rollback']}"
+                                                    styleClass="rollbackButton" visible="#{menu.rollbackVisible}">
+                                    <af:resetActionListener/>
+                                  </af:commandButton>
+                                  <af:spacer width="5"/>
+                                  <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}"
+                                                    id="print2" immediate="true" partialSubmit="true"
+                                                    text="#{menu.resourceLabelMap['label.print']}"
+                                                    styleClass="printButton" visible="#{menu.printVisible}">
+                                    <af:showPrintablePageBehavior/>
+                                  </af:commandButton>
+                                  <af:spacer width="5"/>
+                                  <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}"
+                                                    id="excel2" immediate="true" partialSubmit="true"
+                                                    text="#{menu.resourceLabelMap['label.excel']}"
+                                                    styleClass="excelButton" visible="#{menu.excelVisible}">
+                                    <af:setPropertyListener from="CrsOutgoingDocuments1" to="#{sessionScope.tableId}"
+                                                            type="action"/>
+                                    <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                                  </af:commandButton>
+                                  <af:spacer width="5"/>
+                                </af:toolbar>
+                              </f:facet>
+                              <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple"
+                                        columnStretching="column:DisplayOutSubjectC1" editingMode="editAll"
+                                        emptyText="#{bindings.CrsOutgoingDocumentsView1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                        fetchSize="#{bindings.CrsOutgoingDocumentsView1.rangeSize}"
+                                        filterModel="#{bindings.CrsOutgoingDocumentsView1CriteriaQuery.queryDescriptor}"
+                                        filterVisible="false" id="CrsOutgoingDocuments1"
+                                        queryListener="#{bindings.CrsOutgoingDocumentsView1CriteriaQuery.processQuery}"
+                                        rowBandingInterval="1" rowSelection="single"
+                                        rows="#{bindings.CrsOutgoingDocumentsView1.rangeSize}" scrollPolicy="page"
+                                        selectedRowKeys="#{bindings.CrsOutgoingDocumentsView1.collectionModel.selectedRow}"
+                                        selectionListener="#{bindings.CrsOutgoingDocumentsView1.collectionModel.makeCurrent}"
+                                        styleClass="AFStretchWidth t50"
+                                        value="#{bindings.CrsOutgoingDocumentsView1.collectionModel}" var="row"
+                                        varStatus="vs" verticalGridVisible="false">
+                                <af:column align="center" filterFeatures="caseInsensitive"
+                                           headerText="#{menu.resourceLabelMap['label.InsertFl']}" id="c2"
+                                           sortProperty="OutgoingInsertFl" sortable="true" width="150">
+                                  <!--<af:inputText value="#{row.bindings.OutgoingInsertFl.inputValue}"
+                                              label="#{bindings.CrsOutgoingDocumentsView1.hints.OutgoingInsertFl.label}"
+                                              required="#{bindings.CrsOutgoingDocumentsView1.hints.OutgoingInsertFl.mandatory}"
+                                              columns="#{bindings.CrsOutgoingDocumentsView1.hints.OutgoingInsertFl.displayWidth}"
+                                              maximumLength="#{bindings.CrsOutgoingDocumentsView1.hints.OutgoingInsertFl.precision}"
+                                              shortDesc="#{bindings.CrsOutgoingDocumentsView1.hints.OutgoingInsertFl.tooltip}"
+                                              id="it9">
+                                  <f:validator binding="#{row.bindings.OutgoingInsertFl.validator}"/>
+                                  <af:convertNumber groupingUsed="false"
+                                                    pattern="#{bindings.CrsOutgoingDocumentsView1.hints.OutgoingInsertFl.format}"/>
+                                </af:inputText>-->
+                                  <af:commandButton actionListener="#{deliveryStatement.viewOutgoingDocuments}"
+                                                    disabled="#{!menu.insertAllowed}" icon="#{menu.createInsertIcon}"
+                                                    id="insertOutDoc" partialSubmit="true"
+                                                    text="#{menu.resourceLabelMap['label.InsertFl']}"
+                                                    styleClass="insertButton"/>
+                                </af:column>
+                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                           headerText="#{menu.resourceLabelMap['CrsOutgoingDocuments.OutgoingDocumentsPk']}"
+                                           id="OutgoingDocumentsPkC86" sortProperty="OutgoingDocumentsPk"
+                                           sortable="true" width="120">
+                                  <af:inputText columns="#{bindings.CrsOutgoingDocumentsView1.hints.OutgoingDocumentsPk.displayWidth}"
+                                                id="crsOutgoingDocumentsOutgoingdocumentspk"
+                                                label="#{menu.resourceLabelMap['CrsOutgoingDocuments.OutgoingDocumentsPk']}"
+                                                maximumLength="#{bindings.CrsOutgoingDocumentsView1.hints.OutgoingDocumentsPk.precision}"
+                                                readOnly="true"
+                                                required="#{bindings.CrsOutgoingDocumentsView1.hints.OutgoingDocumentsPk.mandatory}"
+                                                value="#{row.bindings.OutgoingDocumentsPk.inputValue}">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{row.bindings.OutgoingDocumentsPk.format}"/>
+                                    <f:validator binding="#{row.bindings.OutgoingDocumentsPk.validator}"/>
+                                  </af:inputText>
+                                </af:column>
+                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                           headerText="#{bindings.CrsOutgoingDocumentsView1.hints.DisplayOutSubject.label}"
+                                           id="DisplayOutSubjectC1" sortProperty="DisplayOutSubjectSearch"
+                                           sortable="true">
+                                  <af:inputText columns="#{bindings.CrsOutgoingDocumentsView1.hints.DisplayOutSubject.displayWidth}"
+                                                id="it1"
+                                                label="#{bindings.CrsOutgoingDocumentsView1.hints.DisplayOutSubject.label}"
+                                                maximumLength="#{bindings.CrsOutgoingDocumentsView1.hints.DisplayOutSubject.precision}"
+                                                readOnly="true"
+                                                required="#{bindings.CrsOutgoingDocumentsView1.hints.DisplayOutSubject.mandatory}"
+                                                shortDesc="#{bindings.CrsOutgoingDocumentsView1.hints.DisplayOutSubject.tooltip}"
+                                                value="#{row.bindings.DisplayOutSubject.inputValue}">
+                                    <f:validator binding="#{row.bindings.DisplayOutSubject.validator}"/>
+                                  </af:inputText>
+                                </af:column>
+                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                           headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFk']}"
+                                           id="DisplayFromDepartmentFkC2" sortProperty="DisplayFromDepartmentFkSearch"
+                                           sortable="true" width="150">
+                                  <af:inputText columns="#{bindings.CrsOutgoingDocumentsView1.hints.DisplayFromDepartmentFk.displayWidth}"
+                                                id="it2"
+                                                label="#{bindings.CrsOutgoingDocumentsView1.hints.DisplayFromDepartmentFk.label}"
+                                                maximumLength="#{bindings.CrsOutgoingDocumentsView1.hints.DisplayFromDepartmentFk.precision}"
+                                                readOnly="true"
+                                                required="#{bindings.CrsOutgoingDocumentsView1.hints.DisplayFromDepartmentFk.mandatory}"
+                                                shortDesc="#{bindings.CrsOutgoingDocumentsView1.hints.DisplayFromDepartmentFk.tooltip}"
+                                                value="#{row.bindings.DisplayFromDepartmentFk.inputValue}">
+                                    <f:validator binding="#{row.bindings.DisplayFromDepartmentFk.validator}"/>
+                                  </af:inputText>
+                                </af:column>
+                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                           headerText="#{menu.resourceLabelMap['CrsIncomingDocuments.ToDepartmentFk']}"
+                                           id="DisplayToDepartmentFkC3" sortProperty="DisplayToDepartmentFkSearch"
+                                           sortable="true" width="150">
+                                  <af:inputText columns="#{bindings.CrsOutgoingDocumentsView1.hints.DisplayToDepartmentFk.displayWidth}"
+                                                id="it3"
+                                                label="#{bindings.CrsOutgoingDocumentsView1.hints.DisplayToDepartmentFk.label}"
+                                                maximumLength="#{bindings.CrsOutgoingDocumentsView1.hints.DisplayToDepartmentFk.precision}"
+                                                readOnly="true"
+                                                required="#{bindings.CrsOutgoingDocumentsView1.hints.DisplayToDepartmentFk.mandatory}"
+                                                shortDesc="#{bindings.CrsOutgoingDocumentsView1.hints.DisplayToDepartmentFk.tooltip}"
+                                                value="#{row.bindings.DisplayToDepartmentFk.inputValue}">
+                                    <f:validator binding="#{row.bindings.DisplayToDepartmentFk.validator}"/>
+                                  </af:inputText>
+                                </af:column>
+                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                           headerText="#{bindings.CrsOutgoingDocumentsView1.hints.OutgoingDocumentsNo.label}"
+                                           id="OutgoingDocumentsNoC4" sortProperty="OutgoingDocumentsNo" sortable="true"
+                                           width="200">
+                                  <af:inputText columns="#{bindings.CrsOutgoingDocumentsView1.hints.OutgoingDocumentsNo.displayWidth}"
+                                                id="it4"
+                                                label="#{bindings.CrsOutgoingDocumentsView1.hints.OutgoingDocumentsNo.label}"
+                                                maximumLength="#{bindings.CrsOutgoingDocumentsView1.hints.OutgoingDocumentsNo.precision}"
+                                                readOnly="true"
+                                                required="#{bindings.CrsOutgoingDocumentsView1.hints.OutgoingDocumentsNo.mandatory}"
+                                                shortDesc="#{bindings.CrsOutgoingDocumentsView1.hints.OutgoingDocumentsNo.tooltip}"
+                                                value="#{row.bindings.OutgoingDocumentsNo.inputValue}">
+                                    <f:validator binding="#{row.bindings.OutgoingDocumentsNo.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.CrsOutgoingDocumentsView1.hints.OutgoingDocumentsNo.format}"/>
+                                  </af:inputText>
+                                </af:column>
+                              </af:table>
+                            </af:panelCollection>
+                          </f:facet>
+                        </af:panelStretchLayout>
+                      </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                  </af:showDetailItem>
+                </af:panelTabbed>
+              </af:panelBox>
+              <!--<af:spacer id="s6" width="30"/>-->
+              <af:panelBox id="pb21" partialTriggers="pc1808:DeliverySelectedDocumentsPVO1:delDoc"
+                           styleClass="AFStretchWidth"
+                           text="#{menu.resourceLabelMap['menu.selectedDeliveryStatement']}">
+                <f:facet name="toolbar"/>
+                <af:panelGroupLayout id="pgl1858">
+                  <af:panelStretchLayout dimensionsFrom="children" id="psl1859" styleClass="AFStretchWidth">
+                    <f:facet name="center">
+                      <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem" id="pc1808"
+                                          styleClass="AFStretchWidth">
+                        <f:facet name="secondaryToolbar">
+                          <af:toolbar id="t1">
+                            <af:commandButton actionListener="#{deliveryStatement.insertSelectedCrsDocDelivery}"
+                                              disabled="#{bindings.DocumentPk.inputValue == null}"
+                                              icon="#{menu.printIcon}" id="cb7" partialSubmit="true"
+                                              partialTriggers="DeliverySelectedDocumentsPVO1 ::pc40:CrsIncomingDocuments1 ::pc84:CrsOutgoingDocuments1"
+                                              styleClass="printButton"
+                                              text="#{menu.resourceLabelMap['label.deliverystatement']}">
+                              <f:attribute name="reportName" value="deliveryStatement"/>
+                            </af:commandButton>
+                          </af:toolbar>
+                        </f:facet>
+                       
+                        <af:table autoHeightRows="5" columnStretching="last"
+                                  emptyText="#{bindings.DeliverySelectedDocumentsPVO1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                  fetchSize="#{bindings.DeliverySelectedDocumentsPVO1.rangeSize}"
+                                  filterModel="#{bindings.DeliverySelectedDocumentsPVO11Query.queryDescriptor}"
+                                  filterVisible="false" id="DeliverySelectedDocumentsPVO1"
+                                  partialTriggers=":::pc40:CrsIncomingDocuments1 :::pc40:CrsIncomingDocuments1:insertInDoc :::pc84:CrsOutgoingDocuments1 :::pc84:CrsOutgoingDocuments1:insertOutDoc ::cb7 delDoc"
+                                  queryListener="#{bindings.DeliverySelectedDocumentsPVO1Query.processQuery}"
+                                  rowBandingInterval="1" rowSelection="single" 
+                                  rows="#{bindings.DeliverySelectedDocumentsPVO1.rangeSize}" scrollPolicy="page"
+                                  selectedRowKeys="#{bindings.DeliverySelectedDocumentsPVO1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.DeliverySelectedDocumentsPVO1.collectionModel.makeCurrent}"
+                                  styleClass="AFStretchWidth"
+                                  value="#{bindings.DeliverySelectedDocumentsPVO1.collectionModel}" var="row"
+                                  varStatus="vs" blockRowNavigationOnError="always" columnSelection="multiple"
+                                  displayRow="selected" editingMode="editAll" verticalGridVisible="false">
+                          <af:column align="center" filterable="false"
+                                     headerText="#{menu.resourceLabelMap['label.DeleteFl']}" id="c3" 
+                                     sortProperty="#{bindings.DeliverySelectedDocumentsPVO1.hints.DocumentType.name}"
+                                     sortable="true" width="100">
+                            <af:outputText id="ot1" rendered="false"
+                                           shortDesc="#{bindings.DeliverySelectedDocumentsPVO1.hints.DocumentType.tooltip}"
+                                           value="#{row.DocumentType}">
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.DeliverySelectedDocumentsPVO1.hints.DocumentType.format}"/>
+                            </af:outputText>
+                            <af:commandButton actionListener="#{bindings.DeleteDeliverySelectedDocuments.execute}"
+                                              disabled="#{!bindings.DeleteDeliverySelectedDocuments.enabled}" icon="#{menu.deleteIcon}"
+                                              id="delDoc" partialSubmit="true"
+                                              text="#{menu.resourceLabelMap['label.delete']}"
+                                              styleClass="deleteButton"/>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" 
+                                     headerText="#{menu.resourceLabelMap['label.DeleteFl']}" id="c7" rendered="false"
+                                     sortProperty="OutgoingInsertFl" sortable="true" width="150" filterable="true"/>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['DocumentVw.IncomingDocumentsPk']}" id="c4"
+                                     sortProperty="DocumentPk"
+                                     sortable="true" width="200">
+                            <af:outputText id="ot2"
+                                           shortDesc="#{bindings.DeliverySelectedDocumentsPVO1.hints.DocumentPk.tooltip}"
+                                           value="#{row.DocumentPk}">
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.DeliverySelectedDocumentsPVO1.hints.DocumentPk.format}"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['DocumentVw.InDocNo']}" id="c5"
+                                     sortProperty="DocumentNo"
+                                     sortable="true" width="200">
+                            <af:outputText id="ot3"
+                                           shortDesc="#{bindings.DeliverySelectedDocumentsPVO1.hints.DocumentNo.tooltip}"
+                                           value="#{row.DocumentNo}">
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.DeliverySelectedDocumentsPVO1.hints.DocumentNo.format}"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['DocumentVw.DisplayDocTypeFk']}" id="c6"
+                                     sortProperty="DisplayDocumentType"
+                                     sortable="true">
+                            <af:outputText id="ot4" partialTriggers="ot1"
+                                           shortDesc="#{bindings.DeliverySelectedDocumentsPVO1.hints.DisplayDocumentType.tooltip}"
+                                           value="#{row.DisplayDocumentType}"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </f:facet>
+                  </af:panelStretchLayout>
+                </af:panelGroupLayout>
+              </af:panelBox>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

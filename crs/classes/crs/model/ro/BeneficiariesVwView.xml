@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject ComponentClass="gen.common.BaseViewObjectImpl" BindingStyle="JDBC" CustomQuery="true"
+    FetchMode="FETCH_AS_NEEDED" InheritPersonalization="merge"
+    Name="BeneficiariesVwView" PageIterMode="Full"
+    Version="12.2.1.12.24" xmlns="http://xmlns.oracle.com/bc4j"
+    RowClass="crs.model.ro.BeneficiariesVwViewRowImpl">
+    <DesignTime>
+        <Attr Name="_isExpertMode" Value="true"/>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Variable
+      Name="p_lang"
+      Kind="where"
+      Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+            <Item Value="1"/>
+            <Item Value="2"/>
+            <Item Value="3"/>
+            <Item Value="3"/>
+        </AttrArray>
+        <TransientExpression
+            Name="expression"><![CDATA[gen.common.GenLib.getLanguageNo()]]></TransientExpression>
+        <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+            Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+    <ViewAccessor
+        Name="SsoActiveLookupValuesVwDocTyypeFk"
+        ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView"
+        RowLevelBinds="true">
+        <ViewCriteriaUsage
+            Name="SsoSystemLookupValuesFilter"
+            FullName="crs.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter"/>
+        <ParameterMap>
+            <PIMap Variable="p_system_lookups_fk">
+                <TransientExpression
+                    trustMode="untrusted"
+                    Name="ExpressionScript"><![CDATA[3]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ListBinding
+        Name="LOV_DocTypeFk"
+        ListVOName="SsoActiveLookupValuesVwDocTyypeFk"
+        ComboRowCountHint="10"
+        NullValueFlag="none"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="DocTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayDocTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="DisplaySystemLookupsFk"/>
+            <Item Value="SystemLookupValuesPk"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="SsoSystemLookupValuesLOVSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <SQLQuery><![CDATA[SELECT BeneficiariesVw.DOC_TYPE_FK,                 
+       BeneficiariesVw.INCOMING_BENEFICIARIES_PK,                 
+       BeneficiariesVw.BENEFICIARIES_FK,                 
+       BeneficiariesVw.INCOMING_DOCUMENTS_FK,                 
+       BeneficiariesVw.CREATED_BY,                 
+       BeneficiariesVw.CREATION_DATE,                 
+       BeneficiariesVw.MODIFIED_BY,                 
+       BeneficiariesVw.MODIFIED_DATE,                 
+       GET_LOOKUP_DESC(DOC_TYPE_FK,  ?) as Display_Doc_Type_Fk,                 
+       GET_USER_FULL_NAME(CREATED_BY, ?) as Display_Created_By,                 
+       GET_USER_FULL_NAME(MODIFIED_BY, ?) as Display_Modified_By,                 
+       GET_BENEFICIARIE_EMAIL (BENEFICIARIES_FK) as Display_Beneficiarie_Email,                   
+       GET_BENEFICIARIE_MOBILE_NO (BENEFICIARIES_FK)as Display_Beneficiarie_MobileNo,                  
+       GET_BENEFICIARY_NAME (BENEFICIARIES_FK,?)as  Display_Beneficiaries_Fk,             
+       BeneficiariesVw.USER_DEPARTMENT_FK                 
+FROM BENEFICIARIES_VW BeneficiariesVw]]></SQLQuery>
+    <ViewAttribute AliasName="DOC_TYPE_FK"
+        ColumnType="NUMBER" Expression="DOC_TYPE_FK"
+        IsPersistent="false" Name="DocTypeFk"
+        PrecisionRule="true" SQLType="NUMERIC" Type="java.math.BigDecimal"
+        LOVName="LOV_DocTypeFk">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['BeneficiariesVw.DocTypeFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="IncomingBeneficiariesPk"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        AliasName="INCOMING_BENEFICIARIES_PK"
+        Expression="INCOMING_BENEFICIARIES_PK"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        Name="BeneficiariesFk"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        AliasName="BENEFICIARIES_FK"
+        Expression="BENEFICIARIES_FK"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        AliasName="INCOMING_DOCUMENTS_FK"
+        ColumnType="NUMBER"
+        Expression="INCOMING_DOCUMENTS_FK"
+        IsPersistent="false"
+        Name="IncomingDocumentsFk"
+        PrecisionRule="true"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['BeneficiariesVw.IncomingDocumentsFk']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="CREATED_BY"
+        ColumnType="NUMBER"
+        Expression="CREATED_BY"
+        IsPersistent="false"
+        Name="CreatedBy"
+        PrecisionRule="true"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="CREATION_DATE"
+        ColumnType="TIMESTAMP"
+        Expression="CREATION_DATE"
+        IsPersistent="false"
+        Name="CreationDate"
+        PrecisionRule="true"
+        SQLType="TIMESTAMP"
+        Type="java.sql.Timestamp">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="MODIFIED_BY"
+        ColumnType="NUMBER"
+        Expression="MODIFIED_BY"
+        IsPersistent="false"
+        Name="ModifiedBy"
+        PrecisionRule="true"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="MODIFIED_DATE"
+        ColumnType="TIMESTAMP"
+        Expression="MODIFIED_DATE"
+        IsPersistent="false"
+        Name="ModifiedDate"
+        PrecisionRule="true"
+        SQLType="TIMESTAMP"
+        Type="java.sql.Timestamp">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayDocTypeFk"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_DOC_TYPE_FK"
+        Expression="DISPLAY_DOC_TYPE_FK"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayCreatedBy"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_CREATED_BY"
+        Expression="DISPLAY_CREATED_BY"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayModifiedBy"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_MODIFIED_BY"
+        Expression="DISPLAY_MODIFIED_BY"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayBeneficiarieEmail"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_BENEFICIARIE_EMAIL"
+        Expression="DISPLAY_BENEFICIARIE_EMAIL"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayBeneficiarieMobileno"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_BENEFICIARIE_MOBILENO"
+        Expression="DISPLAY_BENEFICIARIE_MOBILENO"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayBeneficiariesFk"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_BENEFICIARIES_FK"
+        Expression="DISPLAY_BENEFICIARIES_FK"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="USER_DEPARTMENT_FK"
+        ColumnType="NUMBER"
+        Expression="USER_DEPARTMENT_FK"
+        IsPersistent="false"
+        Name="UserDepartmentFk"
+        PrecisionRule="true"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+      Name="DisplayDocTypeFkSearch"
+      IsSelected="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="DisplayDocTypeFkSearch"
+      SQLType="VARCHAR"/>
+      <ViewAttribute
+      Name="DocTypeFkSearch"
+      IsSelected="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.math.BigDecimal"
+      ColumnType="BIGINT"
+      AliasName="DocTypeFkSearch"
+      SQLType="NUMERIC"/>
+  <ViewAttribute
+      Name="DisplayCreatedBySearch" 
+      IsSelected="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="DisplayCreatedBySearch"
+      SQLType="VARCHAR"/>
+  <ViewAttribute
+      Name="DisplayModifiedBySearch"
+      IsSelected="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="DisplayModifiedBySearch"
+      SQLType="VARCHAR"/>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

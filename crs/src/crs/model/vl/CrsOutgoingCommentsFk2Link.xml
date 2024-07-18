@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CrsOutgoingCommentsFk2Link"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  EntityAssociation="crs.model.assoc.CrsOutgoingCommentsFk2Assoc">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="crs.model.vl.CrsOutgoingCommentsFk2Link_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="CrsOutgoingDocPreparationView"
+    Cardinality="1"
+    Source="true"
+    Owner="crs.model.vo.CrsOutgoingDocPreparationView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CrsOutgoingDocPreparationView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.vo.CrsOutgoingDocPreparationView.OutgoingDocPreparationPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="CrsOutgoingCommentsView"
+    Cardinality="-1"
+    Owner="crs.model.vo.CrsOutgoingCommentsView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CrsOutgoingCommentsView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.vo.CrsOutgoingCommentsView.OutgoingDocPreparationFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="crs.view.scrlabels"/>
+  </ResourceBundle>
+</ViewLink>

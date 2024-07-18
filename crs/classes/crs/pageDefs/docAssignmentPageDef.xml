@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.52.5" id="docAssignmentPageDef"
+                Package="crs.pageDefs">
+  <executables>
+  <invokeAction id="invokeRollBack" Binds="Rollback" Refresh="prepareModel" RefreshCondition="#{!adfFacesContext.postback}"/>
+    <iterator Binds="CrsIncomingDocumentsDocAssignmentView" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CrsIncomingDocumentsDocAssignmentViewIterator"/>
+    <searchRegion Binds="CrsIncomingDocumentsDocAssignmentViewIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CrsIncomingDocumentsDocAssignmentViewQuery"/>
+    <iterator Binds="CrsIncomingArchiveDocAssignmentView" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CrsIncomingArchiveDocAssignmentViewIterator"/>
+    <searchRegion Binds="CrsIncomingArchiveDocAssignmentViewIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CrsIncomingArchiveDocAssignmentViewQuery"/>
+    <iterator Binds="CrsIncomingDocCcDocAssignmentView" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CrsIncomingDocCcDocAssignmentViewIterator"/>
+    <searchRegion Binds="CrsIncomingDocCcDocAssignmentViewIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CrsIncomingDocCcDocAssignmentViewQuery"/>
+    <iterator Binds="CrsIncomingArchiveTlDocAssignmentView" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CrsIncomingArchiveTlDocAssignmentViewIterator"/>
+    <searchRegion Binds="CrsIncomingArchiveTlDocAssignmentViewIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CrsIncomingArchiveTlDocAssignmentViewQuery"/>
+    <taskFlow id="docCcDeptTF1" taskFlowId="/WEB-INF/docCcDeptTF.xml#docCcDeptTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="DocCcTF1" taskFlowId="/WEB-INF/DocCcTF.xml#DocCcTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <iterator id="ReportParametersRVO1Iterator" Binds="ReportParametersRVO1" DataControl="AppModuleDataControl"
+              RangeSize="25"/>
+    <iterator id="DeparmentsRVOIterator" Binds="DeparmentsRVO" DataControl="AppModuleDataControl" RangeSize="25"/>
+    <taskFlow id="InDocView1" taskFlowId="/WEB-INF/InDocView.xml#InDocView" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <iterator Binds="CrsIncomingDocumentsCopyDocCcView" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CrsIncomingDocumentsCopyDocCcViewIterator"/>
+    <searchRegion Binds="CrsIncomingDocumentsCopyDocCcViewIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CrsIncomingDocumentsCopyDocCcViewQuery"/>
+    <iterator Binds="SsoActiveLookupValuesVwView1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="SsoActiveLookupValuesVwView1Iterator"/>
+    <searchRegion Binds="SsoActiveLookupValuesVwView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SsoActiveLookupValuesVwView1Query"/>
+    <iterator Binds="CrsIncomingDocCcTlView4" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CrsIncomingDocCcTlView1Iterator"/>
+    <searchRegion Binds="CrsIncomingDocCcTlView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="CrsIncomingDocCcTlView1Query"/>
+    <taskFlow id="DocAssignmentTf1" taskFlowId="/WEB-INF/DocAssignmentTf.xml#DocAssignmentTf" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <tree IterBinding="CrsIncomingDocumentsDocAssignmentViewIterator" id="CrsIncomingDocumentsDocAssignmentView">
+      <nodeDefinition DefName="crs.model.vo.CrsIncomingDocumentsView" Name="CrsIncomingDocumentsDocAssignmentView0">
+        <AttrNames>
+          <Item Value="IncomingDocumentsPk"/>
+          <Item Value="InDocYear"/>
+          <Item Value="InDocDateG"/>
+          <Item Value="InDocDateH"/>
+          <Item Value="InDocTypeFk"/>
+          <Item Value="IncomingTypeFk"/>
+          <Item Value="InDocNo"/>
+          <Item Value="FromDepartmentFk"/>
+          <Item Value="ToDepartmentFk"/>
+          <Item Value="PriorityFk"/>
+          <Item Value="SecurityLevelFk"/>
+          <Item Value="AttachmentsNo"/>
+          <Item Value="FilesLocationFk"/>
+          <Item Value="Barcode"/>
+          <Item Value="RespondPeriod"/>
+          <Item Value="ReceivedDateG"/>
+          <Item Value="ReceivedDateH"/>
+          <Item Value="OutgoingDocumentsFk"/>
+          <Item Value="ReplyFl"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="DisplayFilesLocationFk"/>
+          <Item Value="DisplayFromDepartmentFk"/>
+          <Item Value="DisplayToDepartmentFk"/>
+          <Item Value="DisplaySecurityLevelFk"/>
+          <Item Value="DisplayInDocTypeFk"/>
+          <Item Value="DisplayPriorityFk"/>
+          <Item Value="DisplayIncomingTypeFk"/>
+          <Item Value="DisplayInSubject"/>
+          <Item Value="DisplayKeyword"/>
+          <Item Value="ClassificationFk"/>
+          <Item Value="DisplayClassificationFk"/>
+          <Item Value="DisplayNotes"/>
+          <Item Value="IncomingDocumentsNo"/>
+          <Item Value="StatementNumber"/>
+          <Item Value="DisplayInSubjectSearch"/>
+          <Item Value="DisplayKeywordSearch"/>
+          <Item Value="DisplayNotesSearch"/>
+          <Item Value="IncomingInsertFl"/>
+          <Item Value="DisplayFromDepartmentFkSearch"/>
+          <Item Value="DisplayToDepartmentFkSearch"/>
+          <Item Value="DistributionTypeFk"/>
+          <Item Value="DisplayDistributionTypeFk"/>
+          <Item Value="DistributionTypeFkSearch"/>
+          <Item Value="DisplayDistributionTypeFkSearch"/>
+          <Item Value="ConfirmAssignmentFl"/>
+          <Item Value="ClassificationFkSearch"/>
+          <Item Value="DisplayClassificationFkSearch"/>
+          <Item Value="FromDepartmentFkSearch"/>
+          <Item Value="SelectFl"/>
+		  <Item Value="SelectedFl"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CrsIncomingArchiveDocAssignmentViewIterator" id="CrsIncomingArchiveDocAssignmentView">
+      <nodeDefinition DefName="crs.model.vo.CrsIncomingArchiveView" Name="CrsIncomingArchiveDocAssignmentView0">
+        <AttrNames>
+          <Item Value="IncomingArchivePk"/>
+          <Item Value="ArcFilePath"/>
+          <Item Value="IncomingDocumentsFk"/>
+          <Item Value="SecurityLevelFk"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="DisplaySecurityLevelFk"/>
+          <Item Value="DisplayArcDocName"/>
+          <Item Value="DisplayArcDocDesc"/>
+          <Item Value="SecurityLevelFkSearch"/>
+          <Item Value="DisplaySecurityLevelFkSearch"/>
+          <Item Value="DisplayArcDocNameSearch"/>
+          <Item Value="DisplayArcDocDescSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CrsIncomingDocCcDocAssignmentViewIterator" id="CrsIncomingDocCcDocAssignmentView">
+      <nodeDefinition DefName="crs.model.vo.CrsIncomingDocCcView" Name="CrsIncomingDocCcDocAssignmentView0">
+        <AttrNames>
+          <Item Value="IncomingDocCcPk"/>
+          <Item Value="IncomingDocumentsFk"/>
+          <Item Value="DepartmentsFk"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="ActionFk"/>
+          <Item Value="ExecutionDateG"/>
+          <Item Value="ExecutionDateH"/>
+          <Item Value="DisplayDepartmentsFk"/>
+          <Item Value="DisplayActionFk"/>
+          <Item Value="DisplayNotes"/>
+          <Item Value="EmployeeFk"/>
+          <Item Value="DisplayEmployeeFk"/>
+          <Item Value="ActionFkSearch"/>
+          <Item Value="DepartmentsFkSearch"/>
+          <Item Value="DisplayDepartmentsFkSearch"/>
+          <Item Value="DisplayActionFkSearch"/>
+          <Item Value="DisplayNotesSearch"/>
+          <Item Value="EmployeeFkSearch"/>
+          <Item Value="DisplayEmployeeFkSearch"/>
+          <Item Value="SelectedFl"/>
+          <Item Value="DisplayIncomingDocGuidance"/>
+          <Item Value="DisplayIncomingDocGuidanceSearch"/>
+          <Item Value="DisplayRejectReason"/>
+          <Item Value="IncomingDocStsFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CrsIncomingArchiveTlDocAssignmentViewIterator" id="CrsIncomingArchiveTlDocAssignmentView">
+      <nodeDefinition DefName="crs.model.vo.CrsIncomingArchiveTlView" Name="CrsIncomingArchiveTlDocAssignmentView0">
+        <AttrNames>
+          <Item Value="IncomingArchiveTlPk"/>
+          <Item Value="ArcDocName"/>
+          <Item Value="ArcDocDesc"/>
+          <Item Value="LanguagesFk"/>
+          <Item Value="IncomingArchiveFk"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="CrsIncomingArchiveDocAssignmentViewIterator" id="ArcFilePath">
+      <AttrNames>
+        <Item Value="ArcFilePath"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="CrsIncomingDocCcDocAssignmentViewIterator" id="CreateInsertCrsIncomingDocCc"
+            InstanceName="AppModuleDataControl.CrsIncomingDocCcDocAssignmentView" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="CrsIncomingDocCcDocAssignmentViewIterator" id="DeleteCrsIncomingDocCc"
+            InstanceName="AppModuleDataControl.CrsIncomingDocCcDocAssignmentView" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="CrsIncomingDocCcDocAssignmentViewIterator" id="IncomingDocCcPk">
+      <AttrNames>
+        <Item Value="IncomingDocCcPk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsIncomingDocCcDocAssignmentViewIterator" id="IncomingDocumentsFk">
+      <AttrNames>
+        <Item Value="IncomingDocumentsFk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsIncomingDocumentsDocAssignmentViewIterator" id="IncomingDocumentsPk">
+      <AttrNames>
+        <Item Value="IncomingDocumentsPk"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="CrsIncomingDocumentsCopyDocCcViewIterator" id="CrsIncomingDocumentsCopyDocCcView">
+      <nodeDefinition DefName="crs.model.vo.CrsIncomingDocumentsView" Name="CrsIncomingDocumentsCopyDocCcView0">
+        <AttrNames>
+          <Item Value="IncomingDocumentsPk"/>
+          <Item Value="InDocYear"/>
+          <Item Value="InDocDateG"/>
+          <Item Value="InDocDateH"/>
+          <Item Value="InDocTypeFk"/>
+          <Item Value="IncomingTypeFk"/>
+          <Item Value="InDocNo"/>
+          <Item Value="FromDepartmentFk"/>
+          <Item Value="ToDepartmentFk"/>
+          <Item Value="PriorityFk"/>
+          <Item Value="SecurityLevelFk"/>
+          <Item Value="AttachmentsNo"/>
+          <Item Value="FilesLocationFk"/>
+          <Item Value="Barcode"/>
+          <Item Value="RespondPeriod"/>
+          <Item Value="ReceivedDateG"/>
+          <Item Value="ReceivedDateH"/>
+          <Item Value="OutgoingDocumentsFk"/>
+          <Item Value="ReplyFl"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="DisplayFilesLocationFk"/>
+          <Item Value="DisplayFromDepartmentFk"/>
+          <Item Value="DisplayToDepartmentFk"/>
+          <Item Value="DisplaySecurityLevelFk"/>
+          <Item Value="DisplayInDocTypeFk"/>
+          <Item Value="DisplayPriorityFk"/>
+          <Item Value="DisplayIncomingTypeFk"/>
+          <Item Value="DisplayInSubject"/>
+          <Item Value="DisplayKeyword"/>
+          <Item Value="ClassificationFk"/>
+          <Item Value="DisplayClassificationFk"/>
+          <Item Value="DisplayNotes"/>
+          <Item Value="IncomingDocumentsNo"/>
+          <Item Value="StatementNumber"/>
+          <Item Value="DisplayInSubjectSearch"/>
+          <Item Value="DisplayKeywordSearch"/>
+          <Item Value="DisplayNotesSearch"/>
+          <Item Value="IncomingInsertFl"/>
+          <Item Value="DisplayFromDepartmentFkSearch"/>
+          <Item Value="DisplayToDepartmentFkSearch"/>
+          <Item Value="DistributionTypeFk"/>
+          <Item Value="DisplayDistributionTypeFk"/>
+          <Item Value="DistributionTypeFkSearch"/>
+          <Item Value="DisplayDistributionTypeFkSearch"/>
+          <Item Value="ConfirmAssignmentFl"/>
+          <Item Value="DisplayClassificationFkSearch"/>
+          <Item Value="ClassificationFkSearch"/>
+          <Item Value="FromDepartmentFkSearch"/>
+          <Item Value="SelectFl"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CrsIncomingArchiveDocAssignmentViewIterator" id="CrsIncomingArchiveDocAssignmentView1">
+      <nodeDefinition DefName="crs.model.vo.CrsIncomingArchiveView" Name="CrsIncomingArchiveDocAssignmentView10">
+        <AttrNames>
+          <Item Value="IncomingArchivePk"/>
+          <Item Value="DisplayArcDocName"/>
+          <Item Value="DisplayArcDocDesc"/>
+          <Item Value="DisplaySecurityLevelFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SsoActiveLookupValuesVwView1Iterator" id="SsoActiveLookupValuesVwView1">
+      <nodeDefinition DefName="crs.model.ro.SsoActiveLookupValuesVwView" Name="SsoActiveLookupValuesVwView10">
+        <AttrNames>
+          <Item Value="SystemLookupValuesPk"/>
+          <Item Value="SystemLookupsFk"/>
+          <Item Value="ItemId"/>
+          <Item Value="ItemSeqNumber"/>
+          <Item Value="LookupValStatusFl"/>
+          <Item Value="DisplaySystemLookupsFk"/>
+          <Item Value="LanguagesFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CrsIncomingDocCcTlView1Iterator" id="CrsIncomingDocCcTlView1">
+      <nodeDefinition DefName="crs.model.vo.CrsIncomingDocCcTlView" Name="CrsIncomingDocCcTlView10">
+        <AttrNames>
+          <Item Value="LanguagesFk"/>
+          <Item Value="IncomingDocGuidance"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

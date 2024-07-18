@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity
+  AliasName="CrsOutgoingRelatedLetters"
+  BindingStyle="JDBC"
+  DBObjectName="CRS_OUTGOING_RELATED_LETTERS"
+  DBObjectType="table"
+  InheritPersonalization="merge"
+  Name="CrsOutgoingRelatedLetters"
+  RowClass="crs.model.eo.CrsOutgoingRelatedLettersImpl"
+  Version="12.2.1.12.24"
+  xmlns="http://xmlns.oracle.com/bc4j"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    ColumnName="OUTGOING_RELATED_LETTERS_PK"
+    ColumnType="NUMBER"
+    Name="OutgoingRelatedLettersPk"
+    PrimaryKey="true"
+    SQLType="NUMERIC"
+    TableName="CRS_OUTGOING_RELATED_LETTERS"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="OUTGOING_DOCUMENTS_FK"
+    ColumnType="NUMBER"
+    Name="OutgoingDocumentsFk"
+    SQLType="NUMERIC"
+    TableName="CRS_OUTGOING_RELATED_LETTERS"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="OUTGOING_DOC_PREPARATION_FK"
+    ColumnType="NUMBER"
+    Name="OutgoingDocPreparationFk"
+    SQLType="NUMERIC"
+    TableName="CRS_OUTGOING_RELATED_LETTERS"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="RELATED_OUTGOING_DOCUMENT_FK"
+    ColumnType="NUMBER"
+    Name="RelatedOutgoingDocumentFk"
+    SQLType="NUMERIC"
+    TableName="CRS_OUTGOING_RELATED_LETTERS"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="CREATED_BY"
+    ColumnType="NUMBER"
+    Name="CreatedBy"
+    SQLType="NUMERIC"
+    TableName="CRS_OUTGOING_RELATED_LETTERS"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="CREATION_DATE"
+    ColumnType="TIMESTAMP"
+    Name="CreationDate"
+    SQLType="TIMESTAMP"
+    TableName="CRS_OUTGOING_RELATED_LETTERS"
+    Type="java.sql.Timestamp"/>
+  <Attribute
+    ColumnName="MODIFIED_BY"
+    ColumnType="NUMBER"
+    Name="ModifiedBy"
+    SQLType="NUMERIC"
+    TableName="CRS_OUTGOING_RELATED_LETTERS"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="MODIFIED_DATE"
+    ColumnType="TIMESTAMP"
+    Name="ModifiedDate"
+    SQLType="TIMESTAMP"
+    TableName="CRS_OUTGOING_RELATED_LETTERS"
+    Type="java.sql.Timestamp"/>
+  <Attribute
+    ColumnName="USER_DEPARTMENT_FK"
+    ColumnType="NUMBER"
+    Name="UserDepartmentFk"
+    SQLType="NUMERIC"
+    TableName="CRS_OUTGOING_RELATED_LETTERS"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="RELATED_INCOMING_DOCUMENTS_FK"
+    ColumnType="NUMBER"
+    Name="RelatedIncomingDocumentsFk"
+    SQLType="NUMERIC"
+    TableName="CRS_OUTGOING_RELATED_LETTERS"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="RELATED_DOCUMENT_TYPE_FK"
+    ColumnType="NUMBER"
+    Name="RelatedDocumentTypeFk"
+    SQLType="NUMERIC"
+    TableName="CRS_OUTGOING_RELATED_LETTERS"
+    Type="java.math.BigDecimal"/>
+  <AccessorAttribute
+    Association="crs.model.assoc.CrsOutgoingRelatedLettFk1Assoc"
+    AssociationEnd="crs.model.assoc.CrsOutgoingRelatedLettFk1Assoc.CrsOutgoingDocuments"
+    AssociationOtherEnd="crs.model.assoc.CrsOutgoingRelatedLettFk1Assoc.CrsOutgoingRelatedLetters"
+    IsUpdateable="true"
+    Name="CrsOutgoingDocuments"
+    Type="crs.model.eo.CrsOutgoingDocumentsImpl"/>
+  <AccessorAttribute
+    Association="crs.model.assoc.CrsOutgoingRelatedLettFk2Assoc"
+    AssociationEnd="crs.model.assoc.CrsOutgoingRelatedLettFk2Assoc.CrsOutgoingDocuments1"
+    AssociationOtherEnd="crs.model.assoc.CrsOutgoingRelatedLettFk2Assoc.CrsOutgoingRelatedLetters1"
+    IsUpdateable="true"
+    Name="CrsOutgoingDocuments1"
+    Type="crs.model.eo.CrsOutgoingDocumentsImpl"/>
+  <AccessorAttribute
+    Association="crs.model.assoc.CrsOutgoingRelatedLettFk3Assoc"
+    AssociationEnd="crs.model.assoc.CrsOutgoingRelatedLettFk3Assoc.CrsOutgoingDocPreparation"
+    AssociationOtherEnd="crs.model.assoc.CrsOutgoingRelatedLettFk3Assoc.CrsOutgoingRelatedLetters"
+    IsUpdateable="true"
+    Name="CrsOutgoingDocPreparation"
+    Type="crs.model.eo.CrsOutgoingDocPreparationImpl"/>
+  <AccessorAttribute
+    Association="crs.model.assoc.CrsOutgoingRelatedLettFk4Assoc"
+    AssociationEnd="crs.model.assoc.CrsOutgoingRelatedLettFk4Assoc.CrsIncomingDocuments"
+    AssociationOtherEnd="crs.model.assoc.CrsOutgoingRelatedLettFk4Assoc.CrsOutgoingRelatedLetters"
+    IsUpdateable="true"
+    Name="CrsIncomingDocuments"
+    Type="crs.model.eo.CrsIncomingDocumentsImpl"/>
+  <Key
+    Name="CrsOutgoingRelatedLettePk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_RELATED_LETTE_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingRelatedLetters.OutgoingRelatedLettersPk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="UniqueKeyWithinRelatedTypeIncomingAltKey"
+    AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_RELATED_LETTERS"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingRelatedLetters.OutgoingDocumentsFk"/>
+      <Item Value="crs.model.eo.CrsOutgoingRelatedLetters.RelatedDocumentTypeFk"/>
+      <Item Value="crs.model.eo.CrsOutgoingRelatedLetters.RelatedIncomingDocumentsFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="UniqueKeyWithinRelatedTypeIncomingPreAltKey"
+    AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_RELATED_LETTERS"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingRelatedLetters.OutgoingDocPreparationFk"/>
+      <Item Value="crs.model.eo.CrsOutgoingRelatedLetters.RelatedDocumentTypeFk"/>
+      <Item Value="crs.model.eo.CrsOutgoingRelatedLetters.RelatedIncomingDocumentsFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="UniqueKeyWithinRelatedTypeOutgoingAltKey"
+    AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_RELATED_LETTERS"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingRelatedLetters.OutgoingDocumentsFk"/>
+      <Item Value="crs.model.eo.CrsOutgoingRelatedLetters.RelatedDocumentTypeFk"/>
+      <Item Value="crs.model.eo.CrsOutgoingRelatedLetters.RelatedOutgoingDocumentFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="UniqueKeyWithinRelatedTypeOutgoingPreAltKey"
+    AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_RELATED_LETTERS"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingRelatedLetters.OutgoingDocPreparationFk"/>
+      <Item Value="crs.model.eo.CrsOutgoingRelatedLetters.RelatedDocumentTypeFk"/>
+      <Item Value="crs.model.eo.CrsOutgoingRelatedLetters.RelatedOutgoingDocumentFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CrsOutgoingRelatedLettFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CRS_OUTGOING_DOCUMENT_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_RELATED_LETT_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingRelatedLetters.OutgoingDocumentsFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CrsOutgoingRelatedLettFk2">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CRS_OUTGOING_DOCUMENT_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_RELATED_LETT_FK2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingRelatedLetters.RelatedOutgoingDocumentFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CrsOutgoingRelatedLettFk3">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CRS_OUTGOING_DOC_PREPARATI_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_RELATED_LETT_FK3"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingRelatedLetters.OutgoingDocPreparationFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CrsOutgoingRelatedLettFk4">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CRS_INCOMING_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_RELATED_LETT_FK4"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingRelatedLetters.RelatedIncomingDocumentsFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CrsOutgoingRelatedLettFk5">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYSTEM_LOOKUP_VALUES_REF_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_RELATED_LETT_FK5"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingRelatedLetters.RelatedDocumentTypeFk"/>
+    </AttrArray>
+  </Key>
+  <validation:UniqueKeyValidationBean
+    Name="CrsOutgoingRelatedLettersRule0"
+    ResId="#{menu.getResourceLabel('error.DuplicateCode')}"
+    KeyName="UniqueKeyWithinRelatedTypeIncomingAltKey">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="OutgoingDocumentsFk"/>
+      <validation:Item
+        Value="RelatedDocumentTypeFk"/>
+      <validation:Item
+        Value="RelatedIncomingDocumentsFk"/>
+    </validation:OnAttributes>
+    <validation:OnCondition>
+        <![CDATA[RelatedIncomingDocumentsFk != null && OutgoingDocumentsFk != null]]>
+        </validation:OnCondition>
+  </validation:UniqueKeyValidationBean>
+  <validation:UniqueKeyValidationBean
+    Name="CrsOutgoingRelatedLettersRule2"
+    ResId="#{menu.getResourceLabel('error.DuplicateCode')}"
+    KeyName="UniqueKeyWithinRelatedTypeIncomingPreAltKey">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="OutgoingDocPreparationFk"/>
+      <validation:Item
+        Value="RelatedDocumentTypeFk"/>
+      <validation:Item
+        Value="RelatedIncomingDocumentsFk"/>
+    </validation:OnAttributes>
+    <validation:OnCondition>
+        <![CDATA[RelatedIncomingDocumentsFk != null && OutgoingDocPreparationFk != null]]>
+        </validation:OnCondition>
+  </validation:UniqueKeyValidationBean>
+  <validation:UniqueKeyValidationBean
+    Name="CrsOutgoingRelatedLettersRule1"
+    ResId="#{menu.getResourceLabel('error.DuplicateCode')}"
+    KeyName="UniqueKeyWithinRelatedTypeOutgoingAltKey">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="OutgoingDocumentsFk"/>
+      <validation:Item
+        Value="RelatedDocumentTypeFk"/>
+      <validation:Item
+        Value="RelatedOutgoingDocumentFk"/>
+    </validation:OnAttributes>
+    <validation:OnCondition>
+        <![CDATA[RelatedOutgoingDocumentFk != null && OutgoingDocumentsFk != null]]>
+        </validation:OnCondition>
+  </validation:UniqueKeyValidationBean>
+  <validation:UniqueKeyValidationBean
+    Name="CrsOutgoingRelatedLettersRule3"
+    ResId="#{menu.getResourceLabel('error.DuplicateCode')}"
+    KeyName="UniqueKeyWithinRelatedTypeOutgoingPreAltKey">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="OutgoingDocPreparationFk"/>
+      <validation:Item
+        Value="RelatedDocumentTypeFk"/>
+      <validation:Item
+        Value="RelatedOutgoingDocumentFk"/>
+    </validation:OnAttributes>
+    <validation:OnCondition>
+        <![CDATA[RelatedOutgoingDocumentFk != null && OutgoingDocPreparationFk != null]]>
+        </validation:OnCondition>
+  </validation:UniqueKeyValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="crs.view.scrlabels"/>
+  </ResourceBundle>
+</Entity>
+<!---->

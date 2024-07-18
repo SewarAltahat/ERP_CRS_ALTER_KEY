@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject ComponentClass="gen.common.BaseViewObjectImpl" BindingStyle="JDBC"
+     CustomQuery="false"
+    FetchMode="FETCH_AS_NEEDED" FromListFlags="1"
+    InheritPersonalization="merge" Name="CrsAuditModificationsView"
+    PageIterMode="Full" SelectAllAttributes="false" SelectListFlags="1"
+    Version="12.2.1.16.48" WhereFlags="1" xmlns="http://xmlns.oracle.com/bc4j">
+    <EntityUsage Entity="crs.model.eo.CrsAuditModifications" Name="CrsAuditModifications"/>
+    <ViewAttribute AliasName="AUDIT_MODIFICATIONS_PK"
+        EntityAttrName="AuditModificationsPk"
+        EntityUsage="CrsAuditModifications" IsNotNull="true"
+        Name="AuditModificationsPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAuditModifications.AuditModificationsPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USERS_FK" EntityAttrName="UsersFk"
+        EntityUsage="CrsAuditModifications" Name="UsersFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAuditModifications.UsersFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DB_USER" EntityAttrName="DbUser"
+        EntityUsage="CrsAuditModifications" Name="DbUser" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAuditModifications.DbUser']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="TABLE_NAME" EntityAttrName="TableName"
+        EntityUsage="CrsAuditModifications" Name="TableName" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAuditModifications.TableName']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="COLUMN_NAME" EntityAttrName="ColumnName"
+        EntityUsage="CrsAuditModifications" Name="ColumnName" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAuditModifications.ColumnName']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="COLUMN_DESC" EntityAttrName="ColumnDesc"
+        EntityUsage="CrsAuditModifications" Name="ColumnDesc" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAuditModifications.ColumnDesc']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OLD_VALUE" EntityAttrName="OldValue"
+        EntityUsage="CrsAuditModifications" IsQueriable="false"
+        Name="OldValue" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAuditModifications.OldValue']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="NEW_VALUE" EntityAttrName="NewValue"
+        EntityUsage="CrsAuditModifications" IsQueriable="false"
+        Name="NewValue" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAuditModifications.NewValue']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="REMARKS" EntityAttrName="Remarks"
+        EntityUsage="CrsAuditModifications" Name="Remarks" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAuditModifications.Remarks']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="TRANSACTION_TIME_G"
+        EntityAttrName="TransactionTimeG"
+        EntityUsage="CrsAuditModifications" Name="TransactionTimeG" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAuditModifications.TransactionTimeG']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="TRANSACTION_FK"
+        EntityAttrName="TransactionFk"
+        EntityUsage="CrsAuditModifications" Name="TransactionFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAuditModifications.TransactionFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="TABLE_RECORD_FK"
+        EntityAttrName="TableRecordFk"
+        EntityUsage="CrsAuditModifications" Name="TableRecordFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAuditModifications.TableRecordFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="PAGE_NAME" EntityAttrName="PageName"
+        EntityUsage="CrsAuditModifications" Name="PageName" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAuditModifications.PageName']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="REMOTE_HOST" EntityAttrName="RemoteHost"
+        EntityUsage="CrsAuditModifications" Name="RemoteHost" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAuditModifications.RemoteHost']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="REMOTE_IP" EntityAttrName="RemoteIp"
+        EntityUsage="CrsAuditModifications" Name="RemoteIp" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAuditModifications.RemoteIp']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OPERATION_SQL"
+        EntityAttrName="OperationSql"
+        EntityUsage="CrsAuditModifications" Name="OperationSql" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAuditModifications.OperationSql']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

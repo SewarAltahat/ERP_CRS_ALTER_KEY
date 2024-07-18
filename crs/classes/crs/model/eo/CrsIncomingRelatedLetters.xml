@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity
+  AliasName="CrsIncomingRelatedLetters"
+  BindingStyle="JDBC"
+  DBObjectName="CRS_INCOMING_RELATED_LETTERS"
+  DBObjectType="table"
+  InheritPersonalization="merge"
+  Name="CrsIncomingRelatedLetters"
+  RowClass="crs.model.eo.CrsIncomingRelatedLettersImpl"
+  Version="12.2.1.12.24"
+  xmlns="http://xmlns.oracle.com/bc4j"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    ColumnName="INCOMING_RELATED_LETTERS_PK"
+    ColumnType="NUMBER"
+    Name="IncomingRelatedLettersPk"
+    PrimaryKey="true"
+    SQLType="NUMERIC"
+    TableName="CRS_INCOMING_RELATED_LETTERS"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="INCOMING_DOCUMENTS_FK"
+    ColumnType="NUMBER"
+    Name="IncomingDocumentsFk"
+    SQLType="NUMERIC"
+    TableName="CRS_INCOMING_RELATED_LETTERS"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="RELATED_INCOMING_DOCUMENT_FK"
+    ColumnType="NUMBER"
+    Name="RelatedIncomingDocumentFk"
+    SQLType="NUMERIC"
+    TableName="CRS_INCOMING_RELATED_LETTERS"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="CREATED_BY"
+    ColumnType="NUMBER"
+    Name="CreatedBy"
+    SQLType="NUMERIC"
+    TableName="CRS_INCOMING_RELATED_LETTERS"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="CREATION_DATE"
+    ColumnType="TIMESTAMP"
+    Name="CreationDate"
+    SQLType="TIMESTAMP"
+    TableName="CRS_INCOMING_RELATED_LETTERS"
+    Type="java.sql.Timestamp"/>
+  <Attribute
+    ColumnName="MODIFIED_BY"
+    ColumnType="NUMBER"
+    Name="ModifiedBy"
+    SQLType="NUMERIC"
+    TableName="CRS_INCOMING_RELATED_LETTERS"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="MODIFIED_DATE"
+    ColumnType="TIMESTAMP"
+    Name="ModifiedDate"
+    SQLType="TIMESTAMP"
+    TableName="CRS_INCOMING_RELATED_LETTERS"
+    Type="java.sql.Timestamp"/>
+  <Attribute
+    ColumnName="USER_DEPARTMENT_FK"
+    ColumnType="NUMBER"
+    Name="UserDepartmentFk"
+    SQLType="NUMERIC"
+    TableName="CRS_INCOMING_RELATED_LETTERS"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="RELATED_OUTGOING_DOCUMENTS_FK"
+    ColumnType="NUMBER"
+    Name="RelatedOutgoingDocumentsFk"
+    SQLType="NUMERIC"
+    TableName="CRS_INCOMING_RELATED_LETTERS"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="RELATED_DOCUMENT_TYPE_FK"
+    ColumnType="NUMBER"
+    Name="RelatedDocumentTypeFk"
+    SQLType="NUMERIC"
+    TableName="CRS_INCOMING_RELATED_LETTERS"
+    Type="java.math.BigDecimal"/>
+  <AccessorAttribute
+    Association="crs.model.assoc.CrsIncomingRelatedLettFk1Assoc"
+    AssociationEnd="crs.model.assoc.CrsIncomingRelatedLettFk1Assoc.CrsIncomingDocuments"
+    AssociationOtherEnd="crs.model.assoc.CrsIncomingRelatedLettFk1Assoc.CrsIncomingRelatedLetters"
+    IsUpdateable="true"
+    Name="CrsIncomingDocuments"
+    Type="crs.model.eo.CrsIncomingDocumentsImpl"/>
+  <AccessorAttribute
+    Association="crs.model.assoc.CrsIncomingRelatedLettFk4Assoc"
+    AssociationEnd="crs.model.assoc.CrsIncomingRelatedLettFk4Assoc.CrsIncomingDocuments1"
+    AssociationOtherEnd="crs.model.assoc.CrsIncomingRelatedLettFk4Assoc.CrsIncomingRelatedLetters1"
+    IsUpdateable="true"
+    Name="CrsIncomingDocuments1"
+    Type="crs.model.eo.CrsIncomingDocumentsImpl"/>
+  <AccessorAttribute
+    Association="crs.model.assoc.CrsIncomingRelatedLettFk2Assoc"
+    AssociationEnd="crs.model.assoc.CrsIncomingRelatedLettFk2Assoc.CrsOutgoingDocuments"
+    AssociationOtherEnd="crs.model.assoc.CrsIncomingRelatedLettFk2Assoc.CrsIncomingRelatedLetters"
+    IsUpdateable="true"
+    Name="CrsOutgoingDocuments"
+    Type="crs.model.eo.CrsOutgoingDocumentsImpl"/>
+  <Key
+    Name="AltKey"
+    AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_INCOMING_RELATED_LETTERS"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsIncomingRelatedLetters.RelatedIncomingDocumentFk"/>
+      <Item Value="crs.model.eo.CrsIncomingRelatedLetters.RelatedDocumentTypeFk"/>
+      <Item Value="crs.model.eo.CrsIncomingRelatedLetters.IncomingDocumentsFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="AltKey1"
+    AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_INCOMING_RELATED_LETTERS"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsIncomingRelatedLetters.RelatedOutgoingDocumentsFk"/>
+      <Item Value="crs.model.eo.CrsIncomingRelatedLetters.RelatedDocumentTypeFk"/>
+      <Item Value="crs.model.eo.CrsIncomingRelatedLetters.IncomingDocumentsFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CrsIncomingRelatedLettePk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CRS_INCOMING_RELATED_LETTE_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsIncomingRelatedLetters.IncomingRelatedLettersPk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CrsIncomingRelatedLettFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CRS_INCOMING_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_INCOMING_RELATED_LETT_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsIncomingRelatedLetters.IncomingDocumentsFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CrsIncomingRelatedLettFk2">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CRS_OUTGOING_DOCUMENT_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_INCOMING_RELATED_LETT_FK2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsIncomingRelatedLetters.RelatedOutgoingDocumentsFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CrsIncomingRelatedLettFk3">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYSTEM_LOOKUP_VALUES_REF_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_INCOMING_RELATED_LETT_FK3"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsIncomingRelatedLetters.RelatedDocumentTypeFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CrsIncomingRelatedLettFk4">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CRS_INCOMING_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_INCOMING_RELATED_LETT_FK4"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsIncomingRelatedLetters.RelatedIncomingDocumentFk"/>
+    </AttrArray>
+  </Key>
+  <validation:UniqueKeyValidationBean
+    Name="CrsIncomingRelatedLettersRule0"
+    KeyName="AltKey"
+    ResId="#{menu.getResourceLabel('error.DuplicateCode')}">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="RelatedIncomingDocumentFk"/>
+      <validation:Item
+        Value="RelatedDocumentTypeFk"/>
+      <validation:Item
+        Value="IncomingDocumentsFk"/>
+    </validation:OnAttributes>
+    <validation:OnCondition>
+        <![CDATA[RelatedIncomingDocumentFk != null]]>
+        </validation:OnCondition>
+  </validation:UniqueKeyValidationBean>
+  <validation:UniqueKeyValidationBean
+    Name="CrsIncomingRelatedLettersRule1"
+    KeyName="AltKey1"
+    ResId="#{menu.getResourceLabel('error.DuplicateCode')}">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="RelatedOutgoingDocumentsFk"/>
+      <validation:Item
+        Value="RelatedDocumentTypeFk"/>
+      <validation:Item
+        Value="IncomingDocumentsFk"/>
+    </validation:OnAttributes>
+    <validation:OnCondition>
+        <![CDATA[RelatedOutgoingDocumentsFk != null]]>
+        </validation:OnCondition>
+  </validation:UniqueKeyValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="crs.view.scrlabels"/>
+  </ResourceBundle>
+</Entity>
+<!---->

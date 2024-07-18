@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" version="2.1">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+<f:view>
+    <af:document id="Doc1" title="#{menu.resourceLabelMap['menu.borrowReport']}" uncommittedDataWarning="on">
+        <af:form id="form1">
+            <af:pageTemplate id="page1" viewId="/templateDef.jspx">
+                <f:attribute name="pageTitle" value="#{menu.resourceLabelMap['menu.borrowReport']}"/>
+                <f:facet name="main">
+                    <af:panelGroupLayout id="pg1" layout="vertical">
+                        <af:panelBox styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['menu.borrowReport']}">
+                            <af:panelGroupLayout id="pgl17">
+                                <af:panelStretchLayout dimensionsFrom="children" id="psl18" styleClass="AFStretchWidth">
+                                    <f:facet name="center">
+                                        <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem" id="pc2" styleClass="AFStretchWidth">
+                                            <f:facet name="secondaryToolbar">
+                                                <af:toolbar id="tb1" rendered="false">
+                                                    <af:commandButton action="#{menu.genericDeleteAction}" disabled="#{!menu.deleteAllowed or !bindings.Delete1.enabled}" icon="#{menu.deleteIcon}" id="Del1" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.delete']}" styleClass="deleteButton">
+                                                        <af:setPropertyListener from="Delete1" to="#{sessionScope.deleteParam}" type="action"/>
+                                                        <af:setPropertyListener from="CrsBorrowRequests1" to="#{sessionScope.refreshParam}" type="action"/>
+                                                        <af:setPropertyListener from="CrsBorrowRequestsView1" to="#{sessionScope.viewParam}" type="action"/>
+                                                    </af:commandButton>
+                                                    <af:spacer width="5"/>
+                                                    <af:commandButton actionListener="#{bindings.CreateInsert1.execute}" disabled="#{!menu.insertAllowed}" icon="#{menu.createInsertIcon}" id="ci1" partialSubmit="true" text="#{menu.resourceLabelMap['label.createInsert']}" styleClass="insertButton"/>
+                                                    <af:spacer width="5"/>
+                                                    <af:commandButton actionListener="#{bindings.Commit.execute}" disabled="#{!menu.updateAllowed}" icon="#{menu.commitIcon}" id="Commit1" partialSubmit="true" text="#{menu.resourceLabelMap['label.commit']}" styleClass="commitButton"/>
+                                                    <af:spacer width="5"/>
+                                                    <af:commandButton actionListener="#{bindings.Rollback.execute}" icon="#{menu.rollbackIcon}" id="rb1" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.rollback']}" styleClass="rollbackButton" visible="#{menu.rollbackVisible}">
+                                                        <af:resetActionListener/>
+                                                    </af:commandButton>
+                                                    <af:spacer width="5"/>
+                                                    <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print1" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.print']}" styleClass="printButton" visible="#{menu.printVisible}">
+                                                        <af:showPrintablePageBehavior/>
+                                                    </af:commandButton>
+                                                    <af:spacer width="5"/>
+                                                    <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel1" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.excel']}" styleClass="excelButton" visible="#{menu.excelVisible}">
+                                                        <af:setPropertyListener from="CrsBorrowRequests1" to="#{sessionScope.tableId}" type="action"/>
+                                                        <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                                                    </af:commandButton>
+                                                    <af:spacer width="5"/>
+                                                </af:toolbar>
+                                            </f:facet>
+                                            <af:table autoHeightRows="10" blockRowNavigationOnError="always" columnSelection="multiple" columnStretching="last" displayRow="selected" editingMode="clickToEdit" emptyText="#{bindings.CrsBorrowRequestsView1.viewable ? menu.emptyText : menu.accessDeniedText}" fetchSize="#{bindings.CrsBorrowRequestsView1.rangeSize}" filterModel="#{bindings.CrsBorrowRequestsView1CriteriaQuery.queryDescriptor}" filterVisible="false" id="CrsBorrowRequests1" partialTriggers="::ci1" queryListener="#{bindings.CrsBorrowRequestsView1CriteriaQuery.processQuery}" rowSelection="single" rows="#{bindings.CrsBorrowRequestsView1.rangeSize}" selectedRowKeys="#{bindings.CrsBorrowRequestsView1.collectionModel.selectedRow}" selectionListener="#{bindings.CrsBorrowRequestsView1.collectionModel.makeCurrent}" styleClass="AFStretchWidth" value="#{bindings.CrsBorrowRequestsView1.collectionModel}" var="row" varStatus="vs" verticalGridVisible="false">
+                                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsBorrowRequests.BorrowRequestsPk']}" id="BorrowRequestsPkC4" sortProperty="BorrowRequestsPk" sortable="true">
+                                                    <af:inputText columns="#{bindings.CrsBorrowRequestsView1.hints.BorrowRequestsPk.displayWidth}" id="crsBorrowRequestsBorrowrequestspk" label="#{menu.resourceLabelMap['CrsBorrowRequests.BorrowRequestsPk']}" maximumLength="#{bindings.CrsBorrowRequestsView1.hints.BorrowRequestsPk.precision}" readOnly="true" required="#{bindings.CrsBorrowRequestsView1.hints.BorrowRequestsPk.mandatory}" value="#{row.bindings.BorrowRequestsPk.inputValue}">
+                                                        <af:convertNumber groupingUsed="false" pattern="#{row.bindings.BorrowRequestsPk.format}"/>
+                                                        <f:validator binding="#{row.bindings.BorrowRequestsPk.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsBorrowRequests.IncomingDocumentsFk']}" id="IncomingDocumentsFkC6" sortProperty="IncomingDocumentsFk" sortable="true">
+                                                    <af:panelGroupLayout id="pgl5IncomingDocumentsFk" layout="horizontal">
+                                                        <af:inputListOfValues autoSubmit="true" columns="#{bindings.CrsBorrowRequestsView1.hints.IncomingDocumentsFk.displayWidth}" id="crsBorrowRequestsIncomingdocumentsfk" label="#{menu.resourceLabelMap['CrsBorrowRequests.IncomingDocumentsFk']}" model="#{row.bindings.IncomingDocumentsFk.listOfValuesModel}" popupTitle="#{bindings.CrsBorrowRequestsView1.hints.IncomingDocumentsFk.label}" readOnly="true" required="#{bindings.CrsBorrowRequestsView1.hints.IncomingDocumentsFk.mandatory}" searchDesc="#{menu.resourceLabelMap['CrsBorrowRequests.IncomingDocumentsFk']}" simple="true" value="#{row.bindings.IncomingDocumentsFk.inputValue}">
+                                                            <af:convertNumber groupingUsed="false" pattern="#{row.bindings.IncomingDocumentsFk.format}"/>
+                                                            <f:validator binding="#{row.bindings.IncomingDocumentsFk.validator}"/>
+                                                        </af:inputListOfValues>
+                                                    </af:panelGroupLayout>
+                                                </af:column>
+                                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsBorrowRequests.IncomingDocumentsFkDesc']}" id="IncomingDocumentsFkDescC7" sortProperty="IncomingDocumentsFkDesc" sortable="true">
+                                                    <af:inputText columns="#{bindings.CrsBorrowRequestsView1.hints.IncomingDocumentsFkDesc.displayWidth}" id="crsBorrowRequestsIncomingdocumentsfkdesc" label="#{menu.resourceLabelMap['CrsBorrowRequests.IncomingDocumentsFkDesc']}" maximumLength="#{bindings.CrsBorrowRequestsView1.hints.IncomingDocumentsFkDesc.precision}" partialTriggers="crsBorrowRequestsIncomingdocumentsfk" readOnly="true" required="#{bindings.CrsBorrowRequestsView1.hints.IncomingDocumentsFkDesc.mandatory}" value="#{row.bindings.IncomingDocumentsFkDesc.inputValue}">
+                                                        <f:validator binding="#{row.bindings.IncomingDocumentsFkDesc.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsBorrowRequests.RequestPeriod']}" id="RequestPeriodC8" sortProperty="RequestPeriod" sortable="true">
+                                                    <af:inputText columns="#{bindings.CrsBorrowRequestsView1.hints.RequestPeriod.displayWidth}" id="crsBorrowRequestsRequestperiod" label="#{menu.resourceLabelMap['CrsBorrowRequests.RequestPeriod']}" maximumLength="#{bindings.CrsBorrowRequestsView1.hints.RequestPeriod.precision}" readOnly="true" required="#{bindings.CrsBorrowRequestsView1.hints.RequestPeriod.mandatory}" value="#{row.bindings.RequestPeriod.inputValue}">
+                                                        <af:convertNumber groupingUsed="false" pattern="#{row.bindings.RequestPeriod.format}"/>
+                                                        <f:validator binding="#{row.bindings.RequestPeriod.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsBorrowRequests.OutgoingDocumentsFk']}" id="OutgoingDocumentsFkC15" sortProperty="OutgoingDocumentsFk" sortable="true">
+                                                    <af:panelGroupLayout id="pgl14OutgoingDocumentsFk" layout="horizontal">
+                                                        <af:inputListOfValues autoSubmit="true" columns="#{bindings.CrsBorrowRequestsView1.hints.OutgoingDocumentsFk.displayWidth}" id="crsBorrowRequestsOutgoingdocumentsfk" label="#{menu.resourceLabelMap['CrsBorrowRequests.OutgoingDocumentsFk']}" model="#{row.bindings.OutgoingDocumentsFk.listOfValuesModel}" popupTitle="#{bindings.CrsBorrowRequestsView1.hints.OutgoingDocumentsFk.label}" readOnly="true" required="#{bindings.CrsBorrowRequestsView1.hints.OutgoingDocumentsFk.mandatory}" searchDesc="#{menu.resourceLabelMap['CrsBorrowRequests.OutgoingDocumentsFk']}" simple="true" value="#{row.bindings.OutgoingDocumentsFk.inputValue}">
+                                                            <af:convertNumber groupingUsed="false" pattern="#{row.bindings.OutgoingDocumentsFk.format}"/>
+                                                            <f:validator binding="#{row.bindings.OutgoingDocumentsFk.validator}"/>
+                                                        </af:inputListOfValues>
+                                                    </af:panelGroupLayout>
+                                                </af:column>
+                                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsBorrowRequests.OutgoingDocumentsFkDesc']}" id="OutgoingDocumentsFkDescC16" sortProperty="OutgoingDocumentsFkDesc" sortable="true">
+                                                    <af:inputText columns="#{bindings.CrsBorrowRequestsView1.hints.OutgoingDocumentsFkDesc.displayWidth}" id="crsBorrowRequestsOutgoingdocumentsfkdesc" label="#{menu.resourceLabelMap['CrsBorrowRequests.OutgoingDocumentsFkDesc']}" maximumLength="#{bindings.CrsBorrowRequestsView1.hints.OutgoingDocumentsFkDesc.precision}" partialTriggers="crsBorrowRequestsOutgoingdocumentsfk" readOnly="true" required="#{bindings.CrsBorrowRequestsView1.hints.OutgoingDocumentsFkDesc.mandatory}" value="#{row.bindings.OutgoingDocumentsFkDesc.inputValue}">
+                                                        <f:validator binding="#{row.bindings.OutgoingDocumentsFkDesc.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                            </af:table>
+                                        </af:panelCollection>
+                                    </f:facet>
+                                </af:panelStretchLayout>
+                            </af:panelGroupLayout>
+                            <af:panelTabbed dimensionsFrom="disclosedChild" id="PTCrsBorrowRequests19" styleClass="AFStretchWidth">
+                                <af:showDetailItem id="sdi_CrsBorrowRequests38" immediate="true" styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['CrsBorrowRequestsTl.sdi_CrsBorrowRequests38']}">
+                                    <af:panelGroupLayout halign="center" id="pglCrsBorrowRequestsTl39" layout="vertical">
+                                        <af:panelGroupLayout id="pgl36">
+                                            <af:panelStretchLayout dimensionsFrom="children" id="psl37" styleClass="AFStretchWidth">
+                                                <f:facet name="center">
+                                                    <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem" id="pc20" styleClass="AFStretchWidth">
+                                                        <f:facet name="secondaryToolbar">
+                                                            <af:toolbar id="tb2" rendered="false">
+                                                                <af:commandButton action="#{menu.genericDeleteAction}" disabled="#{!menu.deleteAllowed or !bindings.Delete2.enabled}" icon="#{menu.deleteIcon}" id="Del2" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.delete']}" styleClass="deleteButton">
+                                                                    <af:setPropertyListener from="Delete2" to="#{sessionScope.deleteParam}" type="action"/>
+                                                                    <af:setPropertyListener from="CrsBorrowRequestsTl1" to="#{sessionScope.refreshParam}" type="action"/>
+                                                                    <af:setPropertyListener from="CrsBorrowRequestsTlView1" to="#{sessionScope.viewParam}" type="action"/>
+                                                                </af:commandButton>
+                                                                <af:spacer width="5"/>
+                                                                <af:commandButton actionListener="#{bindings.CreateInsert2.execute}" disabled="#{!menu.insertAllowed}" icon="#{menu.createInsertIcon}" id="ci2" partialSubmit="true" text="#{menu.resourceLabelMap['label.createInsert']}" styleClass="insertButton"/>
+                                                                <af:spacer width="5"/>
+                                                                <af:commandButton actionListener="#{bindings.Commit.execute}" disabled="#{!menu.updateAllowed}" icon="#{menu.commitIcon}" id="Commit2" partialSubmit="true" text="#{menu.resourceLabelMap['label.commit']}" styleClass="commitButton"/>
+                                                                <af:spacer width="5"/>
+                                                                <af:commandButton actionListener="#{bindings.Rollback.execute}" icon="#{menu.rollbackIcon}" id="rb2" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.rollback']}" styleClass="rollbackButton" visible="#{menu.rollbackVisible}">
+                                                                    <af:resetActionListener/>
+                                                                </af:commandButton>
+                                                                <af:spacer width="5"/>
+                                                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print2" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.print']}" styleClass="printButton" visible="#{menu.printVisible}">
+                                                                    <af:showPrintablePageBehavior/>
+                                                                </af:commandButton>
+                                                                <af:spacer width="5"/>
+                                                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel2" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.excel']}" styleClass="excelButton" visible="#{menu.excelVisible}">
+                                                                    <af:setPropertyListener from="CrsBorrowRequestsTl1" to="#{sessionScope.tableId}" type="action"/>
+                                                                    <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                                                                </af:commandButton>
+                                                                <af:spacer width="5"/>
+                                                            </af:toolbar>
+                                                        </f:facet>
+                                                        <af:table autoHeightRows="10" blockRowNavigationOnError="always" columnSelection="multiple" columnStretching="last" displayRow="selected" editingMode="clickToEdit" emptyText="#{bindings.CrsBorrowRequestsTlView1.viewable ? menu.emptyText : menu.accessDeniedText}" fetchSize="#{bindings.CrsBorrowRequestsTlView1.rangeSize}" filterModel="#{bindings.CrsBorrowRequestsTlView1CriteriaQuery.queryDescriptor}" filterVisible="false" id="CrsBorrowRequestsTl1" partialTriggers=":::pc2:CrsBorrowRequests1 :::pc2:ci1 ::ci2" queryListener="#{bindings.CrsBorrowRequestsTlView1CriteriaQuery.processQuery}" rowSelection="single" rows="#{bindings.CrsBorrowRequestsTlView1.rangeSize}" selectedRowKeys="#{bindings.CrsBorrowRequestsTlView1.collectionModel.selectedRow}" selectionListener="#{bindings.CrsBorrowRequestsTlView1.collectionModel.makeCurrent}" styleClass="AFStretchWidth" value="#{bindings.CrsBorrowRequestsTlView1.collectionModel}" var="row" varStatus="vs" verticalGridVisible="false">
+                                                            <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsBorrowRequestsTl.BorrowRequestsTlPk']}" id="BorrowRequestsTlPkC22" sortProperty="BorrowRequestsTlPk" sortable="true">
+                                                                <af:inputText columns="#{bindings.CrsBorrowRequestsTlView1.hints.BorrowRequestsTlPk.displayWidth}" id="crsBorrowRequestsTlBorrowrequeststlpk" label="#{menu.resourceLabelMap['CrsBorrowRequestsTl.BorrowRequestsTlPk']}" maximumLength="#{bindings.CrsBorrowRequestsTlView1.hints.BorrowRequestsTlPk.precision}" readOnly="true" required="#{bindings.CrsBorrowRequestsTlView1.hints.BorrowRequestsTlPk.mandatory}" value="#{row.bindings.BorrowRequestsTlPk.inputValue}">
+                                                                    <af:convertNumber groupingUsed="false" pattern="#{row.bindings.BorrowRequestsTlPk.format}"/>
+                                                                    <f:validator binding="#{row.bindings.BorrowRequestsTlPk.validator}"/>
+                                                                </af:inputText>
+                                                            </af:column>
+                                                            <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsBorrowRequestsTl.RequestReason']}" id="RequestReasonC23" sortProperty="RequestReason" sortable="true">
+                                                                <af:inputText columns="#{bindings.CrsBorrowRequestsTlView1.hints.RequestReason.displayWidth}" id="crsBorrowRequestsTlRequestreason" label="#{menu.resourceLabelMap['CrsBorrowRequestsTl.RequestReason']}" maximumLength="#{bindings.CrsBorrowRequestsTlView1.hints.RequestReason.precision}" readOnly="true" required="#{bindings.CrsBorrowRequestsTlView1.hints.RequestReason.mandatory}" value="#{row.bindings.RequestReason.inputValue}">
+                                                                    <f:validator binding="#{row.bindings.RequestReason.validator}"/>
+                                                                </af:inputText>
+                                                            </af:column>
+                                                            <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsBorrowRequestsTl.Notes']}" id="NotesC24" sortProperty="Notes" sortable="true">
+                                                                <af:inputText columns="#{bindings.CrsBorrowRequestsTlView1.hints.Notes.displayWidth}" id="crsBorrowRequestsTlNotes" label="#{menu.resourceLabelMap['CrsBorrowRequestsTl.Notes']}" maximumLength="#{bindings.CrsBorrowRequestsTlView1.hints.Notes.precision}" readOnly="true" required="#{bindings.CrsBorrowRequestsTlView1.hints.Notes.mandatory}" value="#{row.bindings.Notes.inputValue}">
+                                                                    <f:validator binding="#{row.bindings.Notes.validator}"/>
+                                                                </af:inputText>
+                                                            </af:column>
+                                                            <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsBorrowRequestsTl.LanguagesFk']}" id="LanguagesFkC26" sortProperty="LanguagesFk" sortable="true">
+                                                                <af:panelGroupLayout id="pgl25LanguagesFk" layout="horizontal">
+                                                                    <af:inputListOfValues autoSubmit="true" columns="#{bindings.CrsBorrowRequestsTlView1.hints.LanguagesFk.displayWidth}" id="crsBorrowRequestsTlLanguagesfk" label="#{menu.resourceLabelMap['CrsBorrowRequestsTl.LanguagesFk']}" model="#{row.bindings.LanguagesFk.listOfValuesModel}" popupTitle="#{bindings.CrsBorrowRequestsTlView1.hints.LanguagesFk.label}" readOnly="true" required="#{bindings.CrsBorrowRequestsTlView1.hints.LanguagesFk.mandatory}" searchDesc="#{menu.resourceLabelMap['CrsBorrowRequestsTl.LanguagesFk']}" simple="true" value="#{row.bindings.LanguagesFk.inputValue}">
+                                                                        <af:convertNumber groupingUsed="false" pattern="#{row.bindings.LanguagesFk.format}"/>
+                                                                        <f:validator binding="#{row.bindings.LanguagesFk.validator}"/>
+                                                                    </af:inputListOfValues>
+                                                                </af:panelGroupLayout>
+                                                            </af:column>
+                                                            <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsBorrowRequestsTl.LanguagesFkDesc']}" id="LanguagesFkDescC27" sortProperty="LanguagesFkDesc" sortable="true">
+                                                                <af:inputText columns="#{bindings.CrsBorrowRequestsTlView1.hints.LanguagesFkDesc.displayWidth}" id="crsBorrowRequestsTlLanguagesfkdesc" label="#{menu.resourceLabelMap['CrsBorrowRequestsTl.LanguagesFkDesc']}" maximumLength="#{bindings.CrsBorrowRequestsTlView1.hints.LanguagesFkDesc.precision}" partialTriggers="crsBorrowRequestsTlLanguagesfk" readOnly="true" required="#{bindings.CrsBorrowRequestsTlView1.hints.LanguagesFkDesc.mandatory}" value="#{row.bindings.LanguagesFkDesc.inputValue}">
+                                                                    <f:validator binding="#{row.bindings.LanguagesFkDesc.validator}"/>
+                                                                </af:inputText>
+                                                            </af:column>
+                                                            <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsBorrowRequestsTl.BorrowRequestsFk']}" id="BorrowRequestsFkC29" sortProperty="BorrowRequestsFk" sortable="true">
+                                                                <af:panelGroupLayout id="pgl28BorrowRequestsFk" layout="horizontal">
+                                                                    <af:inputListOfValues autoSubmit="true" columns="#{bindings.CrsBorrowRequestsTlView1.hints.BorrowRequestsFk.displayWidth}" id="crsBorrowRequestsTlBorrowrequestsfk" label="#{menu.resourceLabelMap['CrsBorrowRequestsTl.BorrowRequestsFk']}" model="#{row.bindings.BorrowRequestsFk.listOfValuesModel}" popupTitle="#{bindings.CrsBorrowRequestsTlView1.hints.BorrowRequestsFk.label}" readOnly="true" required="#{bindings.CrsBorrowRequestsTlView1.hints.BorrowRequestsFk.mandatory}" searchDesc="#{menu.resourceLabelMap['CrsBorrowRequestsTl.BorrowRequestsFk']}" simple="true" value="#{row.bindings.BorrowRequestsFk.inputValue}">
+                                                                        <af:convertNumber groupingUsed="false" pattern="#{row.bindings.BorrowRequestsFk.format}"/>
+                                                                        <f:validator binding="#{row.bindings.BorrowRequestsFk.validator}"/>
+                                                                    </af:inputListOfValues>
+                                                                </af:panelGroupLayout>
+                                                            </af:column>
+                                                            <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsBorrowRequestsTl.BorrowRequestsFkDesc']}" id="BorrowRequestsFkDescC30" sortProperty="BorrowRequestsFkDesc" sortable="true">
+                                                                <af:inputText columns="#{bindings.CrsBorrowRequestsTlView1.hints.BorrowRequestsFkDesc.displayWidth}" id="crsBorrowRequestsTlBorrowrequestsfkdesc" label="#{menu.resourceLabelMap['CrsBorrowRequestsTl.BorrowRequestsFkDesc']}" maximumLength="#{bindings.CrsBorrowRequestsTlView1.hints.BorrowRequestsFkDesc.precision}" partialTriggers="crsBorrowRequestsTlBorrowrequestsfk" readOnly="true" required="#{bindings.CrsBorrowRequestsTlView1.hints.BorrowRequestsFkDesc.mandatory}" value="#{row.bindings.BorrowRequestsFkDesc.inputValue}">
+                                                                    <f:validator binding="#{row.bindings.BorrowRequestsFkDesc.validator}"/>
+                                                                </af:inputText>
+                                                            </af:column>
+                                                        </af:table>
+                                                    </af:panelCollection>
+                                                </f:facet>
+                                            </af:panelStretchLayout>
+                                        </af:panelGroupLayout>
+                                    </af:panelGroupLayout>
+                                </af:showDetailItem>
+                            </af:panelTabbed>
+                        </af:panelBox>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>
+</jsp:root>

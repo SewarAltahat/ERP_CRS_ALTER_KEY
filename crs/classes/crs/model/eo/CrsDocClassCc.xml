@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity AliasName="CrsDocClassCc" BindingStyle="JDBC"
+    DBObjectName="CRS_DOC_CLASS_CC" DBObjectType="table"
+    InheritPersonalization="merge" Name="CrsDocClassCc"
+    RowClass="crs.model.eo.CrsDocClassCcImpl"
+    Version="12.2.1.12.24" xmlns="http://xmlns.oracle.com/bc4j"
+    xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Attribute ColumnName="DOC_CLASS_CC_PK" ColumnType="NUMBER" Name="DocClassCcPk" PrimaryKey="true"
+        SQLType="NUMERIC" TableName="CRS_DOC_CLASS_CC" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="DOC_CLASS_FK" ColumnType="NUMBER"
+        Name="DocClassFk" SQLType="NUMERIC" TableName="CRS_DOC_CLASS_CC" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="DEPARTMENTS_FK" ColumnType="NUMBER"
+        Name="DepartmentsFk" SQLType="NUMERIC"
+        TableName="CRS_DOC_CLASS_CC" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="ACTION_FK" ColumnType="NUMBER"
+        Name="ActionFk" SQLType="NUMERIC" TableName="CRS_DOC_CLASS_CC" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATED_BY" ColumnType="NUMBER"
+        Name="CreatedBy" SQLType="NUMERIC" TableName="CRS_DOC_CLASS_CC" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATION_DATE" ColumnType="TIMESTAMP"
+        Name="CreationDate" SQLType="TIMESTAMP"
+        TableName="CRS_DOC_CLASS_CC" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="MODIFIED_BY" ColumnType="NUMBER"
+        Name="ModifiedBy" SQLType="NUMERIC" TableName="CRS_DOC_CLASS_CC" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="MODIFIED_DATE" ColumnType="TIMESTAMP"
+        Name="ModifiedDate" SQLType="TIMESTAMP"
+        TableName="CRS_DOC_CLASS_CC" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="USER_DEPARTMENT_FK" ColumnType="NUMBER"
+        Name="UserDepartmentFk" SQLType="NUMERIC"
+        TableName="CRS_DOC_CLASS_CC" Type="java.math.BigDecimal"/>
+    <Attribute
+        ColumnType="CHAR"
+        IsPersistent="false"
+        Name="DisplayNotes"
+        Precision="4000"
+        SQLType="VARCHAR"
+        Type="java.lang.String"
+        ColumnName="$none$"/>
+    <AccessorAttribute
+        Association="crs.model.assoc.CrsDocClassCcFk1Assoc"
+        AssociationEnd="crs.model.assoc.CrsDocClassCcFk1Assoc.CrsDocClass"
+        AssociationOtherEnd="crs.model.assoc.CrsDocClassCcFk1Assoc.CrsDocClassCc"
+        IsUpdateable="true" Name="CrsDocClass" Type="crs.model.eo.CrsDocClassImpl"/>
+    <AccessorAttribute
+        Association="crs.model.assoc.CrsDocClassCcTlFk1Assoc"
+        AssociationEnd="crs.model.assoc.CrsDocClassCcTlFk1Assoc.CrsDocClassCcTl"
+        AssociationOtherEnd="crs.model.assoc.CrsDocClassCcTlFk1Assoc.CrsDocClassCc"
+        IsUpdateable="false" Name="CrsDocClassCcTl" Type="oracle.jbo.RowIterator"/>
+    <AccessorAttribute
+        Name="HcmDepartments"
+        Association="crs.model.eo.CrsDocClassCcFk2Assoc"
+        AssociationEnd="crs.model.eo.CrsDocClassCcFk2Assoc.HcmDepartments"
+        AssociationOtherEnd="crs.model.eo.CrsDocClassCcFk2Assoc.CrsDocClassCc"
+        Type="crs.model.eo.HcmDepartmentsImpl"
+        IsUpdateable="true"/>
+    <Key
+        Name="AltKey"
+        AltKey="true">
+        <DesignTime>
+            <Attr Name="_isUnique" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_DOC_CLASS_CC"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsDocClassCc.DepartmentsFk"/>
+            <Item Value="crs.model.eo.CrsDocClassCc.DocClassFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsDocClassCcPk" PrimaryKey="true">
+        <DesignTime>
+            <Attr Name="_DBObjectName" Value="CRS_DOC_CLASS_CC_PK"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsDocClassCc.DocClassCcPk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsDocClassCcFk1">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="CRS_DOC_CLASS_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_DOC_CLASS_CC_FK1"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsDocClassCc.DocClassFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsDocClassCcFk2">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="HCM_DEPARTMENTS_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_DOC_CLASS_CC_FK2"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsDocClassCc.DepartmentsFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsDocClassCcFk3">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="SYSTEM_LOOKUP_VALUES_REF_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_DOC_CLASS_CC_FK3"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsDocClassCc.ActionFk"/>
+        </AttrArray>
+    </Key>
+    <validation:UniqueKeyValidationBean
+        Name="CrsDocClassCcRule0"
+        KeyName="AltKey" ResId="#{menu.resourceLabelMap['error.DuplicateCode']}">
+        <validation:OnAttributes>
+            <validation:Item
+                Value="DepartmentsFk"/>
+            <validation:Item
+                Value="DocClassFk"/>
+        </validation:OnAttributes>
+    </validation:UniqueKeyValidationBean>
+    <ResourceBundle>
+        <PropertiesBundle
+            PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</Entity>
+<!---->

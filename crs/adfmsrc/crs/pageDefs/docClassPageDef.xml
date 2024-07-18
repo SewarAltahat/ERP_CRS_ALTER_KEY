@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.52.5" id="docClassPageDef"
+                Package="crs.pageDefs">
+  <executables>
+    <iterator Binds="CrsDocClassView1" RangeSize="10" DataControl="AppModuleDataControl" id="CrsDocClassView1Iterator"/>
+    <searchRegion Criteria="" Binds="CrsDocClassView1Iterator" id="CrsDocClassView1CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="CrsDocClassCcView2" RangeSize="10" DataControl="AppModuleDataControl" id="CrsDocClassCcView1Iterator"/>
+    <searchRegion Criteria="" Binds="CrsDocClassCcView1Iterator" id="CrsDocClassCcView1CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="CrsDocClassTlView2" RangeSize="10" DataControl="AppModuleDataControl" id="CrsDocClassTlView1Iterator"/>
+    <searchRegion Criteria="" Binds="CrsDocClassTlView1Iterator" id="CrsDocClassTlView1CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="CrsDocClassCcTlView3" RangeSize="25" DataControl="AppModuleDataControl" id="CrsDocClassCcTlView1Iterator"/>
+    <searchRegion Criteria="" Binds="CrsDocClassCcTlView1Iterator" id="CrsDocClassCcTlView1CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <invokeAction id="invokeRollBack" Binds="Rollback" Refresh="prepareModel" RefreshCondition="#{!adfFacesContext.postback}"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="CrsDocClassView1Iterator" id="CrsDocClassView1">
+      <nodeDefinition DefName="crs.model.vo.CrsDocClassView" Name="CrsDocClassView10">
+        <AttrNames>
+          <Item Value="DocClassPk"/>
+          <Item Value="DistributionTypeFk"/>
+          <Item Value="DisplayDistributionTypeFk"/>
+          <Item Value="DisplayDocClass"/>
+          <Item Value="DisplayDistributionTypeFkSearch"/>
+          <Item Value="DisplayDocClassSearch"/>
+          <Item Value="DistributionTypeFkSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CrsDocClassCcView1Iterator" id="CrsDocClassCcView1">
+      <nodeDefinition DefName="crs.model.vo.CrsDocClassCcView" Name="CrsDocClassCcView10">
+        <AttrNames>
+          <Item Value="DocClassCcPk"/>
+          <Item Value="DepartmentsFk"/>
+          <Item Value="DisplayDepartmentsFk"/>
+          <Item Value="ActionFk"/>
+          <Item Value="DisplayActionFk"/>
+          <Item Value="DisplayNotes"/>
+          <Item Value="DisplayDocClassFkSearch"/>
+          <Item Value="DisplayActionFkSearch"/>
+          <Item Value="ActionFkSearch"/>
+          <Item Value="DisplayNotesSearch"/>
+          <Item Value="DisplayDepartmentsFkSearch"/>
+          <Item Value="DepartmentsFkSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CrsDocClassTlView1Iterator" id="CrsDocClassTlView1">
+      <nodeDefinition DefName="crs.model.vo.CrsDocClassTlView" Name="CrsDocClassTlView10">
+        <AttrNames>
+          <Item Value="DocClassTlPk"/>
+          <Item Value="DocClassFk"/>
+          <Item Value="LanguagesFk"/>
+          <Item Value="DocClass"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CrsDocClassCcTlView1Iterator" id="CrsDocClassCcTlView1">
+      <nodeDefinition DefName="crs.model.vo.CrsDocClassCcTlView" Name="CrsDocClassCcTlView10">
+        <AttrNames>
+          <Item Value="DocClassCcTlPk"/>
+          <Item Value="DocClassCcFk"/>
+          <Item Value="LanguagesFk"/>
+          <Item Value="Notes"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="NotesSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="CrsDocClassView1Iterator" id="DocClassPk">
+      <AttrNames>
+        <Item Value="DocClassPk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsDocClassCcView1Iterator" id="DocClassCcPk">
+      <AttrNames>
+        <Item Value="DocClassCcPk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsDocClassCcTlView1Iterator" id="DocClassCcTlPk">
+      <AttrNames>
+        <Item Value="DocClassCcTlPk"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <action id="DeleteCrsDocClassView1" RequiresUpdateModel="false" Action="removeCurrentRow" IterBinding="CrsDocClassView1Iterator"/>
+    <action id="CreateInsertCrsDocClassView1" RequiresUpdateModel="true" Action="createInsertRow" IterBinding="CrsDocClassView1Iterator"/>
+    <action id="DeleteCrsDocClassCcView2" RequiresUpdateModel="false" Action="removeCurrentRow" IterBinding="CrsDocClassCcView1Iterator"/>
+    <action id="CreateInsertCrsDocClassCcView2" RequiresUpdateModel="true" Action="createInsertRow" IterBinding="CrsDocClassCcView1Iterator"/>
+    <attributeValues IterBinding="CrsDocClassView1Iterator" id="DistributionTypeFk">
+      <AttrNames>
+        <Item Value="DistributionTypeFk"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

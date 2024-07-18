@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity
+    AliasName="CrsOutgoingDocAttachments"
+    BindingStyle="JDBC"
+    DBObjectName="CRS_OUTGOING_DOC_ATTACHMENTS"
+    DBObjectType="table"
+    InheritPersonalization="merge"
+    Name="CrsOutgoingDocAttachments"
+    RowClass="crs.model.eo.CrsOutgoingDocAttachmentsImpl"
+    Version="12.2.1.12.24"
+    xmlns="http://xmlns.oracle.com/bc4j">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+      ColumnName="OUTGOING_DOC_ATTACHMENTS_PK"
+      ColumnType="NUMBER"
+      Name="OutgoingDocAttachmentsPk"
+      PrimaryKey="true"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOC_ATTACHMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="ATTACHMENT_TYPE_FK"
+      ColumnType="NUMBER"
+      Name="AttachmentTypeFk"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOC_ATTACHMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="OUTGOING_DOCUMENTS_FK"
+      ColumnType="NUMBER"
+      Name="OutgoingDocumentsFk"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOC_ATTACHMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="OUTGOING_DOC_PREPARATION_FK"
+      ColumnType="NUMBER"
+      Name="OutgoingDocPreparationFk"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOC_ATTACHMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="CREATED_BY"
+      ColumnType="NUMBER"
+      Name="CreatedBy"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOC_ATTACHMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="CREATION_DATE"
+      ColumnType="TIMESTAMP"
+      Name="CreationDate"
+      SQLType="TIMESTAMP"
+      TableName="CRS_OUTGOING_DOC_ATTACHMENTS"
+      Type="java.sql.Timestamp"/>
+  <Attribute
+      ColumnName="MODIFIED_BY"
+      ColumnType="NUMBER"
+      Name="ModifiedBy"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOC_ATTACHMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="MODIFIED_DATE"
+      ColumnType="TIMESTAMP"
+      Name="ModifiedDate"
+      SQLType="TIMESTAMP"
+      TableName="CRS_OUTGOING_DOC_ATTACHMENTS"
+      Type="java.sql.Timestamp"/>
+  <Attribute
+      ColumnName="USER_DEPARTMENT_FK"
+      ColumnType="NUMBER"
+      Name="UserDepartmentFk"
+      SQLType="NUMERIC"
+      TableName="CRS_OUTGOING_DOC_ATTACHMENTS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnType="CHAR"
+      IsPersistent="false"
+      Name="DisplayOutAttachDesc"
+      Precision="200"
+      SQLType="VARCHAR"
+      Type="java.lang.String"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsOutgoingDocAttachmeFk1Assoc"
+      AssociationEnd="crs.model.assoc.CrsOutgoingDocAttachmeFk1Assoc.CrsOutgoingDocuments"
+      AssociationOtherEnd="crs.model.assoc.CrsOutgoingDocAttachmeFk1Assoc.CrsOutgoingDocAttachments"
+      IsUpdateable="true"
+      Name="CrsOutgoingDocuments"
+      Type="crs.model.eo.CrsOutgoingDocumentsImpl"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsOutgoingDocAttachTFk2Assoc"
+      AssociationEnd="crs.model.assoc.CrsOutgoingDocAttachTFk2Assoc.CrsOutgoingDocAttachTl"
+      AssociationOtherEnd="crs.model.assoc.CrsOutgoingDocAttachTFk2Assoc.CrsOutgoingDocAttachments"
+      IsUpdateable="true"
+      Name="CrsOutgoingDocAttachTl"
+      Type="oracle.jbo.RowIterator"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsOutgoingDocAttachmeFk2Assoc"
+      AssociationEnd="crs.model.assoc.CrsOutgoingDocAttachmeFk2Assoc.CrsOutgoingDocPreparation"
+      AssociationOtherEnd="crs.model.assoc.CrsOutgoingDocAttachmeFk2Assoc.CrsOutgoingDocAttachments"
+      IsUpdateable="true"
+      Name="CrsOutgoingDocPreparation"
+      Type="crs.model.eo.CrsOutgoingDocPreparationImpl"/>
+  <Key
+      Name="CrsOutDocumentAttachPk"
+      PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CRS_OUT_DOCUMENT_ATTACH_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingDocAttachments.OutgoingDocAttachmentsPk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="CrsOutDocumentAttachFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYSTEM_LOOKUP_VALUES_REF_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUT_DOCUMENT_ATTACH_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingDocAttachments.AttachmentTypeFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="CrsOutgoingDocAttachmeFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CRS_OUTGOING_DOCUMENT_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_DOC_ATTACHME_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingDocAttachments.OutgoingDocumentsFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="CrsOutgoingDocAttachmeFk2">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CRS_OUTGOING_DOC_PREPARATI_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_OUTGOING_DOC_ATTACHME_FK2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingDocAttachments.OutgoingDocPreparationFk"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+        PropertiesFile="crs.view.scrlabels"/>
+  </ResourceBundle>
+</Entity>
+<!---->

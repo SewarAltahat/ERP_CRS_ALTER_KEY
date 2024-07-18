@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CrsOutgoingDocAttachTFk2Assoc"
+  Version="12.2.1.16.48"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="CrsOutgoingDocAttachments"
+    Cardinality="1"
+    Source="true"
+    Owner="crs.model.eo.CrsOutgoingDocAttachments">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CrsOutgoingDocAttachments"/>
+      <Attr Name="_foreignKey" Value="crs.model.eo.CrsOutgoingDocAttachments.CrsOutDocumentAttachPk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingDocAttachments.OutgoingDocAttachmentsPk"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="CrsOutgoingDocAttachTl"
+    Cardinality="-1"
+    Owner="crs.model.eo.CrsOutgoingDocAttachTl">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CrsOutgoingDocAttachTl"/>
+      <Attr Name="_foreignKey" Value="crs.model.eo.CrsOutgoingDocAttachTl.CrsOutgoingDocAttachTFk2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingDocAttachTl.OutgoingDocAttachmentsFk"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

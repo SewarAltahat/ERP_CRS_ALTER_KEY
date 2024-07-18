@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="docCcPageDef"
+                Package="crs.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ReportParametersRVO1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ReportParametersRVO1Iterator"/>
+    <iterator Binds="CrsDeptGroupRVO" RangeSize="25" DataControl="AppModuleDataControl" id="CrsDeptGroupRVOIterator"/>
+    <searchRegion Binds="CrsDeptGroupRVOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="CrsDeptGroupRVOQuery"/>
+    <taskFlow id="CrsDeptGroupTF1" taskFlowId="/WEB-INF/CrsDeptGroupTF.xml#CrsDeptGroupTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings>
+    <listOfValues IterBinding="ReportParametersRVO1Iterator" StaticList="false" Uses="LOV_DeptGroupFk"
+                  id="DeptGroupFk"/>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DisplayDeptGroupFk">
+      <AttrNames>
+        <Item Value="DisplayDeptGroupFk"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="ReportParametersRVO1Iterator" StaticList="false" Uses="LOV_ActionFk" id="ActionFk"/>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DisplayActionFk">
+      <AttrNames>
+        <Item Value="DisplayActionFk"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="CrsDeptGroupRVOIterator" id="CrsDeptGroupRVO">
+      <nodeDefinition DefName="crs.model.ro.CrsDeptGroupRVO" Name="CrsDeptGroupRVO0">
+        <AttrNames>
+          <Item Value="DeptGroupPk"/>
+          <Item Value="DisplayDeptGroupPk"/>
+          <Item Value="ActiveFl"/>
+          <Item Value="EndDate"/>
+          <Item Value="StartDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues Uses="LOV_DepartmentsFk" StaticList="false" IterBinding="ReportParametersRVO1Iterator"
+                  id="DepartmentsFk"/>
+    <listOfValues Uses="LOV_EmployeeFk" StaticList="false" IterBinding="ReportParametersRVO1Iterator" id="EmployeeFk"/>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DisplayDepartmentsFk">
+      <AttrNames>
+        <Item Value="DisplayDepartmentsFk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DisplayEmployeeFk">
+      <AttrNames>
+        <Item Value="DisplayEmployeeFk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="Guidance">
+      <AttrNames>
+        <Item Value="Guidance"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

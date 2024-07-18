@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity
+  AliasName="CrsBeneficiaries"
+  BindingStyle="JDBC"
+  DBObjectName="CRS_BENEFICIARIES"
+  DBObjectType="table"
+  InheritPersonalization="merge"
+  Name="CrsBeneficiaries"
+  RowClass="crs.model.eo.CrsBeneficiariesImpl"
+  Version="12.2.1.12.24"
+  xmlns="http://xmlns.oracle.com/bc4j"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    ColumnName="BENEFICIARIES_PK"
+    ColumnType="NUMBER"
+    Name="BeneficiariesPk"
+    PrimaryKey="true"
+    SQLType="NUMERIC"
+    TableName="CRS_BENEFICIARIES"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="MOBILE_NO"
+    ColumnType="VARCHAR2"
+    Name="MobileNo"
+    Precision="50"
+    SQLType="VARCHAR"
+    TableName="CRS_BENEFICIARIES"
+    Type="java.lang.String">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    ColumnName="EMAIL"
+    ColumnType="VARCHAR2"
+    Name="Email"
+    Precision="100"
+    SQLType="VARCHAR"
+    TableName="CRS_BENEFICIARIES"
+    Type="java.lang.String">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    ColumnName="CREATED_BY"
+    ColumnType="NUMBER"
+    Name="CreatedBy"
+    SQLType="NUMERIC"
+    TableName="CRS_BENEFICIARIES"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="CREATION_DATE"
+    ColumnType="TIMESTAMP"
+    Name="CreationDate"
+    SQLType="TIMESTAMP"
+    TableName="CRS_BENEFICIARIES"
+    Type="java.sql.Timestamp"/>
+  <Attribute
+    ColumnName="MODIFIED_BY"
+    ColumnType="NUMBER"
+    Name="ModifiedBy"
+    SQLType="NUMERIC"
+    TableName="CRS_BENEFICIARIES"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="MODIFIED_DATE"
+    ColumnType="TIMESTAMP"
+    Name="ModifiedDate"
+    SQLType="TIMESTAMP"
+    TableName="CRS_BENEFICIARIES"
+    Type="java.sql.Timestamp"/>
+  <Attribute
+    ColumnName="USER_DEPARTMENT_FK"
+    ColumnType="NUMBER"
+    Name="UserDepartmentFk"
+    SQLType="NUMERIC"
+    TableName="CRS_BENEFICIARIES"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    Name="DisplayBeneficiaryName"
+    Precision="200"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    IsPersistent="false"/>
+  <Attribute
+    Name="DisplayNotes"
+    Precision="500"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    IsPersistent="false"/>
+  <Attribute
+    Name="BeneficiaryId"
+    Precision="50"
+    ColumnName="BENEFICIARY_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CRS_BENEFICIARIES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Association="crs.model.assoc.CrsBeneficiariesTlFkAssoc"
+    AssociationEnd="crs.model.assoc.CrsBeneficiariesTlFkAssoc.CrsBeneficiariesTl"
+    AssociationOtherEnd="crs.model.assoc.CrsBeneficiariesTlFkAssoc.CrsBeneficiaries"
+    IsUpdateable="true"
+    Name="CrsBeneficiariesTl"
+    Type="oracle.jbo.RowIterator"/>
+  <AccessorAttribute
+    Association="crs.model.assoc.CrsIncomingBeneficiarieFk2Assoc"
+    AssociationEnd="crs.model.assoc.CrsIncomingBeneficiarieFk2Assoc.CrsIncomingBeneficiaries"
+    AssociationOtherEnd="crs.model.assoc.CrsIncomingBeneficiarieFk2Assoc.CrsBeneficiaries"
+    IsUpdateable="true"
+    Name="CrsIncomingBeneficiaries"
+    Type="oracle.jbo.RowIterator"/>
+  <AccessorAttribute
+    Association="crs.model.assoc.CrsOutgoingBeneficiarieFk2Assoc"
+    AssociationEnd="crs.model.assoc.CrsOutgoingBeneficiarieFk2Assoc.CrsOutgoingBeneficiaries"
+    AssociationOtherEnd="crs.model.assoc.CrsOutgoingBeneficiarieFk2Assoc.CrsBeneficiaries"
+    IsUpdateable="true"
+    Name="CrsOutgoingBeneficiaries"
+    Type="oracle.jbo.RowIterator"/>
+  <Key
+    Name="CrsBeneficiariesPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CRS_BENEFICIARIES_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsBeneficiaries.BeneficiariesPk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CrsBeneficiaryIdUk"
+    AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_BENEFICIARIES"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsBeneficiaries.BeneficiaryId"/>
+    </AttrArray>
+  </Key>
+  <validation:UniqueKeyValidationBean
+    Name="CrsBeneficiariesUniqueKey"
+    KeyName="CrsBeneficiaryIdUk"
+    ResId="#{menu.resourceLabelMap['error.DuplicateCode']}">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="BeneficiaryId"/>
+    </validation:OnAttributes>
+    <validation:OnCondition
+      Name="OnConditionScript">
+        <![CDATA[BeneficiaryId != null]]>
+    </validation:OnCondition>
+  </validation:UniqueKeyValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="crs.view.scrlabels"/>
+  </ResourceBundle>
+</Entity>
+<!---->

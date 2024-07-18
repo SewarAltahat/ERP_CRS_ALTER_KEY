@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EntryCountDocView"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  BindingStyle="JDBC"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Variable
+      Name="p_lang"
+      Kind="where"
+      Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="0"/>
+      <Item Value="1"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenLib.getLanguageNo()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+            Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+      Name="p_from_department_fk"
+      Kind="where"
+      Type="java.math.BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="2"/>
+      <Item Value="3"/>
+      <Item Value="4"/>
+    </AttrArray>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+            Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+   <Variable
+      Name="p_to_department_fk"
+      Kind="where"
+      Type="java.math.BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="5"/>
+      <Item Value="6"/>
+      <Item Value="7"/>
+    </AttrArray>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+            Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+   <Variable
+      Name="p_security_level_fk"
+      Kind="where"
+      Type="java.math.BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="8"/>
+      <Item Value="9"/>
+      <Item Value="10"/>
+    </AttrArray>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+            Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+   <Variable
+      Name="p_priority_fk"
+      Kind="where"
+      Type="java.math.BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="11"/>
+      <Item Value="12"/>
+      <Item Value="13"/>
+    </AttrArray>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+            Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+   <Variable
+      Name="p_doc_type_fk"
+      Kind="where"
+      Type="java.math.BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="14"/>
+      <Item Value="15"/>
+      <Item Value="16"/>
+    </AttrArray>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+            Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+   <Variable
+      Name="p_date_from"
+      Kind="where"
+     Type="java.sql.Timestamp">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="17"/>
+      <Item Value="18"/>
+    </AttrArray>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+            Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+      Name="p_date_to"
+      Kind="where"
+     Type="java.sql.Timestamp">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="19"/>
+      <Item Value="20"/>
+    </AttrArray>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+            Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  
+  <Variable
+    Name="p_admin_type"
+    Kind="where" 
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="22"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenConstants.ADMINUSER]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_user_type_fk"
+    Kind="where" 
+    Type="BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="21"/>
+      <Item Value="23"/>
+      <Item Value="26"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenLib.getUserType()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_dept_manager_type"
+    Kind="where" 
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="27"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenConstants.SUPERVISOR]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  
+  <Variable
+    Name="p_normal_user_type"
+    Kind="where" 
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="24"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenConstants.ORDINARY_USER]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_departments_fk"
+    Kind="where" 
+    Type="BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="25"/>
+      <Item Value="28"/>
+      <Item Value="29"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenLib.getUserLoginDepartment()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <SQLQuery><![CDATA[SELECT                    
+count(*) as totalIncoming ,CREATED_BY,GET_USER_FULL_NAME(CREATED_BY,?)as CreatedByDesc  ,DOC_TYPE_FK , GET_LOOKUP_DESC(DOC_TYPE_FK, ?) AS DisplayDocTypeFk              
+FROM DOCUMENT_VW                     
+where                    
+                   
+ ( (FROM_DEPARTMENT_FK = ? or ? is null or ?=''  )                   
+and     (TO_DEPARTMENT_FK = ? or ? is null  or ? = '')                   
+and     (SECURITY_LEVEL_FK = ? or ? is null  or ? = '')                   
+and     (PRIORITY_FK  = ? or ? is null  or ? = '')                   
+and     (IN_DOC_TYPE_FK   = ? or ? is null  or ? = '')                   
+and (IN_DOC_DATE_G >= ? or ? is null)                   
+and (IN_DOC_DATE_G <= ? or ? is null)                   
+               
+and  (                   
+  ? = ?                                  
+  or (? = ? and  USER_DEPARTMENT_FK = ?)                                  
+  or (? = ? and (USER_DEPARTMENT_FK = ? or USER_DEPARTMENT_FK IN (SELECT HIER.CHILD_DEPARTMENT FROM HCM_DEPARTMENTS_HIERARCHY HIER WHERE HIER.PARENT_DEPARTMENT = ?)))                                       
+  )                  
+)                   
+ group by DOC_TYPE_FK,CREATED_BY           
+ order by totalIncoming DESC]]></SQLQuery>
+  <ViewAttribute
+    Name="Totalincoming"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="TOTALINCOMING"
+    Expression="TOTALINCOMING"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="CREATED_BY"
+    Expression="CREATED_BY"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Createdbydesc"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CREATEDBYDESC"
+    Expression="CREATEDBYDESC"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocTypeFk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DOC_TYPE_FK"
+    Expression="DOC_TYPE_FK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Displaydoctypefk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DISPLAYDOCTYPEFK"
+    Expression="DISPLAYDOCTYPEFK"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="CreatedBy"/>
+  </AttrArray>
+</ViewObject>

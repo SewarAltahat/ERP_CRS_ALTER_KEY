@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity
+  AliasName="CrsFilesLocationTl"
+  BindingStyle="JDBC"
+  DBObjectName="CRS_FILES_LOCATION_TL"
+  DBObjectType="table"
+  InheritPersonalization="merge"
+  Name="CrsFilesLocationTl"
+  RowClass="crs.model.eo.CrsFilesLocationTlImpl"
+  Version="12.2.1.12.24"
+  xmlns="http://xmlns.oracle.com/bc4j">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    ColumnName="FILES_LOCATION_TL_PK"
+    ColumnType="NUMBER"
+    Name="FilesLocationTlPk"
+    PrimaryKey="true"
+    SQLType="NUMERIC"
+    TableName="CRS_FILES_LOCATION_TL"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="FILE_LOCATION_DESC"
+    ColumnType="VARCHAR2"
+    Name="FileLocationDesc"
+    Precision="200"
+    SQLType="VARCHAR"
+    TableName="CRS_FILES_LOCATION_TL"
+    Type="java.lang.String">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    ColumnName="LANGUAGES_FK"
+    ColumnType="NUMBER"
+    Name="LanguagesFk"
+    SQLType="NUMERIC"
+    TableName="CRS_FILES_LOCATION_TL"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="FILES_LOCATION_FK"
+    ColumnType="NUMBER"
+    Name="FilesLocationFk"
+    SQLType="NUMERIC"
+    TableName="CRS_FILES_LOCATION_TL"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="CREATED_BY"
+    ColumnType="NUMBER"
+    Name="CreatedBy"
+    SQLType="NUMERIC"
+    TableName="CRS_FILES_LOCATION_TL"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="CREATION_DATE"
+    ColumnType="TIMESTAMP"
+    Name="CreationDate"
+    SQLType="TIMESTAMP"
+    TableName="CRS_FILES_LOCATION_TL"
+    Type="java.sql.Timestamp"/>
+  <Attribute
+    ColumnName="MODIFIED_BY"
+    ColumnType="NUMBER"
+    Name="ModifiedBy"
+    SQLType="NUMERIC"
+    TableName="CRS_FILES_LOCATION_TL"
+    Type="java.math.BigDecimal"/>
+  <Attribute
+    ColumnName="MODIFIED_DATE"
+    ColumnType="TIMESTAMP"
+    Name="ModifiedDate"
+    SQLType="TIMESTAMP"
+    TableName="CRS_FILES_LOCATION_TL"
+    Type="java.sql.Timestamp"/>
+  <Attribute
+    ColumnName="USER_DEPARTMENT_FK"
+    ColumnType="NUMBER"
+    Name="UserDepartmentFk"
+    SQLType="NUMERIC"
+    TableName="CRS_FILES_LOCATION_TL"
+    Type="java.math.BigDecimal"/>
+  <AccessorAttribute
+    Association="crs.model.assoc.CrsFilesLocationTlFk1Assoc"
+    AssociationEnd="crs.model.assoc.CrsFilesLocationTlFk1Assoc.CrsFilesLocation"
+    AssociationOtherEnd="crs.model.assoc.CrsFilesLocationTlFk1Assoc.CrsFilesLocationTl"
+    IsUpdateable="true"
+    Name="CrsFilesLocation"
+    Type="crs.model.eo.CrsFilesLocationImpl"/>
+  <Key
+    Name="CrsFileLocationTlPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CRS_FILE_LOCATION_TL_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsFilesLocationTl.FilesLocationTlPk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CrsFileLocationTlFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SSO_LANGUAGES_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_FILE_LOCATION_TL_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsFilesLocationTl.LanguagesFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CrsFilesLocationTlFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CRS_FILE_LOCATION_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_FILES_LOCATION_TL_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsFilesLocationTl.FilesLocationFk"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="crs.view.scrlabels"/>
+  </ResourceBundle>
+</Entity>
+<!---->

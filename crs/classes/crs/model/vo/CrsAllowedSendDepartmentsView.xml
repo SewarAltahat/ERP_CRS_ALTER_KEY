@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject ComponentClass="gen.common.BaseViewObjectImpl" BindingStyle="JDBC"
+     CustomQuery="false"
+    FetchMode="FETCH_AS_NEEDED" FromListFlags="1"
+    InheritPersonalization="merge" Name="CrsAllowedSendDepartmentsView"
+    PageIterMode="Full"
+    RowClass="crs.model.vo.CrsAllowedSendDepartmentsViewRowImpl"
+    SelectAllAttributes="false" SelectListFlags="1"
+    Version="12.2.1.12.24" WhereFlags="1" xmlns="http://xmlns.oracle.com/bc4j">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Variable Kind="where" Name="p_lang" Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+            <Item Value="1"/>
+            <Item Value="2"/>
+        </AttrArray>
+        <TransientExpression
+            Name="expression">gen.common.GenLib.getLanguageNo()</TransientExpression>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+    <ViewAccessor Name="HcmDepartmentsSentDepartmentFk"
+        RowLevelBinds="true" ViewObjectName="crs.model.ro.DeparmentsRVO">
+        <ViewCriteriaUsage
+            Name="FilterByDeptNotExternalFl"
+            FullName="crs.model.ro.DeparmentsRVO.FilterByDeptNotExternalFl"/>
+        <ViewCriteriaUsage
+            Name="FilterByDeptStatusFl"
+            FullName="crs.model.ro.DeparmentsRVO.FilterByDeptStatusFl"/>
+    </ViewAccessor>
+    <ViewAccessor Name="HcmDepartmentsDepartmentsFk"
+        RowLevelBinds="true" ViewObjectName="crs.model.ro.DeparmentsRVO">
+        <ViewCriteriaUsage
+            Name="FilterByDeptNotExternalFl"
+            FullName="crs.model.ro.DeparmentsRVO.FilterByDeptExternalFl"/>
+        <ViewCriteriaUsage
+            Name="FilterByDeptStatusFl"
+            FullName="crs.model.ro.DeparmentsRVO.FilterByDeptStatusFl"/>
+    </ViewAccessor>
+    <ViewAccessor Name="SsoActiveLookupValuesVwView1" RangeSize="10"
+        RowLevelBinds="true" ViewObjectName="crs.model.ro.SsoActiveLookupValuesVwView">
+        <ViewCriteriaUsage
+            FullName="crs.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter" Name="SsoSystemLookupValuesFilter"/>
+        <ParameterMap>
+            <PIMap Variable="p_system_lookups_fk">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[191]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor Name="HcmDepartmentsVwView1" RowLevelBinds="true" ViewObjectName="crs.model.ro.DeparmentsRVO">
+       <ViewCriteriaUsage
+            Name="FilterByDeptNotExternalFl"
+            FullName="crs.model.ro.DeparmentsRVO.FilterByDeptExternalFl"/>
+        <ViewCriteriaUsage
+            Name="FilterByDeptStatusFl"
+            FullName="crs.model.ro.DeparmentsRVO.FilterByDeptStatusFl"/>
+    </ViewAccessor>
+    <ListBinding ListRangeSize="10"
+        ListVOName="HcmDepartmentsSentDepartmentFk" MRUCount="0"
+        Name="LOV_SentInternalDepartmentFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="SentDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplaySentDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DepartmentNameSearch"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DepartmentNameSearch"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute"
+            Name="DeparmentsLovSearch"/>
+    </ListBinding>
+    <ListBinding ListRangeSize="10"
+        ListVOName="HcmDepartmentsDepartmentsFk" MRUCount="0"
+        Name="LOV_DepartmentsFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="DepartmentsFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayDepartmentsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DepartmentsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="DepartmentsPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding ListVOName="SsoActiveLookupValuesVwView1" MRUCount="0"
+        Name="LOV_DepartmentTypeFk"
+        NullValueFlag="none"
+        ComboRowCountHint="10">
+        <AttrArray Name="AttrNames">
+            <Item Value="DepartmentTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayDepartmentTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="SsoSystemLookupValuesLOVSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding ListRangeSize="10" ListVOName="HcmDepartmentsVwView1"
+        MRUCount="0" Name="LOV_SentExternalDepartmentFk"
+        NullValueFlag="start" NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
+        <AttrArray Name="AttrNames">
+            <Item Value="SentDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplaySentDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DepartmentNameSearch"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DepartmentNameSearch"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute"
+            Name="DeparmentsLovSearch"/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_DisplayDepartmentTypeFk"
+        ListVOName="SsoActiveLookupValuesVwView1"
+        NullValueFlag="none"
+        MRUCount="0"
+        ComboRowCountHint="10">
+        <AttrArray Name="AttrNames">
+            <Item Value="DisplayDepartmentTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DepartmentTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="DisplaySystemLookupsFk"/>
+            <Item Value="SystemLookupValuesPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="SsoSystemLookupValuesLOVSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_InternalDisplaySentDepartmentFk"
+        ListVOName="HcmDepartmentsSentDepartmentFk"
+        ComboRowCountHint="10"
+        NullValueFlag="none"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="DisplaySentDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="SentDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="DepartmentName"/>
+            <Item Value="DepartmentsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DepartmentNameSearch"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="DeparmentsLovSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_ExternalDisplaySentDepartmentFk1"
+        ListVOName="HcmDepartmentsVwView1"
+        NullValueFlag="start"
+        NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="DisplaySentDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="SentDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="DepartmentName"/>
+            <Item Value="DepartmentsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DepartmentNameSearch"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="DeparmentsLovSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <EntityUsage Entity="crs.model.eo.CrsAllowedSendDepartments" Name="CrsAllowedSendDepartments"/>
+    <ViewAttribute AliasName="ALLOWED_SEND_DEPARTMENTS_PK"
+        EntityAttrName="AllowedSendDepartmentsPk"
+        EntityUsage="CrsAllowedSendDepartments" IsNotNull="true"
+        Name="AllowedSendDepartmentsPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAllowedSendDepartments.AllowedSendDepartmentsPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DEPARTMENTS_FK"
+        EntityAttrName="DepartmentsFk"
+        EntityUsage="CrsAllowedSendDepartments"
+        LOVName="LOV_DepartmentsFk" Name="DepartmentsFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE Value="input_text_lov"/>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAllowedSendDepartments.DepartmentsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="SENT_DEPARTMENT_FK"
+        EntityAttrName="SentDepartmentFk"
+        EntityUsage="CrsAllowedSendDepartments"
+        LOVFinder="SentDepartmentFkSwitcher"
+        LOVName="LOV_SentInternalDepartmentFk" Name="SentDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAllowedSendDepartments.DepartmentsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="CrsAllowedSendDepartments" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate"
+        EntityUsage="CrsAllowedSendDepartments" Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="CrsAllowedSendDepartments" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate"
+        EntityUsage="CrsAllowedSendDepartments" Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk"
+        EntityUsage="CrsAllowedSendDepartments" Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="SentDepartmentFkDesc"
+        ColumnType="VARCHAR2"
+        Expression="get_Department_name(sent_department_fk,?)"
+        IsPersistent="false" IsQueriable="false"
+        Name="DisplaySentDepartmentFk" SQLType="VARCHAR" Type="java.lang.String"
+        LOVName="LOV_InternalDisplaySentDepartmentFk"
+        LOVFinder="SentDepartmentFkSwitcher">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsAllowedSendDepartments.DisplayDepartmentsPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE
+                    Value="combo_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DepartmentsFkDesc" ColumnType="VARCHAR2"
+        Expression="get_Department_name(DEPARTMENTS_FK,?)"
+        IsPersistent="false" IsQueriable="false"
+        Name="DisplayDepartmentsFk" SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['HcmDepartments.DepartmentsPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DEPARTMENT_TYPE_FK"
+        EntityAttrName="DepartmentTypeFk"
+        EntityUsage="CrsAllowedSendDepartments"
+        LOVName="LOV_DepartmentTypeFk" Name="DepartmentTypeFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['CrsAllowedSendDepartments.DepartmentTypeFk']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+                <CONTROLTYPE
+                    Value="combo_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute ColumnType="$none$" IsPersistent="false"
+        IsQueriable="false" IsSelected="false"
+        Name="SentDepartmentFkSwitcher" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplaySentDepartmentFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute
+        Name="DepartmentsFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="BIGINT"
+        AliasName="VIEW_ATTR"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        Name="SentDepartmentFkSeacrh"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="BIGINT"
+        AliasName="VIEW_ATTR"
+        SQLType="NUMERIC"/>
+   <ViewAttribute AliasName="DisplayDepartmentTypeFk"
+        ColumnType="VARCHAR2"
+        Expression="GET_LOOKUP_DESC(DEPARTMENT_TYPE_FK,?)"
+        IsPersistent="false" IsQueriable="false"
+        Name="DisplayDepartmentTypeFk" SQLType="VARCHAR" Type="java.lang.String"
+       LOVName="LOV_DisplayDepartmentTypeFk">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE
+                    Value="combo_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DepartmentTypeFkSearch"
+        IsUpdateable="false"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="BIGINT"
+        AliasName="VIEW_ATTR"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        Name="DisplayDepartmentTypeFkSearch"
+        IsUpdateable="false"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.lang.String"
+        ColumnType="CHAR"
+        AliasName="VIEW_ATTR"
+        SQLType="VARCHAR"/>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

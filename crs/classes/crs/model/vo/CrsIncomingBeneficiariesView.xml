@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject ComponentClass="gen.common.BaseViewObjectImpl" BindingStyle="JDBC"
+     CustomQuery="false"
+    FetchMode="FETCH_AS_NEEDED" FromListFlags="1"
+    InheritPersonalization="merge" Name="CrsIncomingBeneficiariesView"
+    PageIterMode="Full"
+    RowClass="crs.model.vo.CrsIncomingBeneficiariesViewRowImpl"
+    SelectAllAttributes="false" SelectListFlags="1"
+    Version="12.2.1.12.24" WhereFlags="1" xmlns="http://xmlns.oracle.com/bc4j">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Variable Kind="where" Name="p_lang" Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+        </AttrArray>
+        <TransientExpression
+            Name="expression"><![CDATA[gen.common.GenLib.getLanguageNo()]]></TransientExpression>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+    <ViewAccessor Name="CrsBeneficiariesBeneficiariesFk"
+        RowLevelBinds="true" ViewObjectName="crs.model.vo.CrsBeneficiariesView"/>
+    <ViewAccessor Name="CrsIncomingDocumentsIncomingDocumentsFk"
+        RowLevelBinds="true" ViewObjectName="crs.model.vo.CrsIncomingDocumentsView"/>
+    <ListBinding ListRangeSize="10"
+        ListVOName="CrsBeneficiariesBeneficiariesFk" MRUCount="0"
+        Name="LOV_BeneficiariesFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="BeneficiariesFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayBeneficiariesFk"/>
+            <Item Value="DisplayBeneficiarieMobileNo"/>
+            <Item Value="DisplayBeneficiarieBeneficiaryId"/>
+            <Item Value="DisplayBeneficiarieEmail"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="BeneficiariesPk"/>
+            <Item Value="DisplayBeneficiaryName"/>
+            <Item Value="MobileNo"/>
+            <Item Value="BeneficiaryId"/>
+            <Item Value="Email"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="BeneficiariesPk"/>
+            <Item Value="DisplayBeneficiaryName"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="CrsBeneficiariesViewLOVSearch"/>
+    </ListBinding>
+    <ListBinding ListRangeSize="10"
+        ListVOName="CrsIncomingDocumentsIncomingDocumentsFk"
+        MRUCount="0" Name="LOV_IncomingDocumentsFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="IncomingDocumentsFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="IncomingDocumentsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="IncomingDocumentsPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute"/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_DisplayBeneficiariesFk"
+        ListVOName="CrsBeneficiariesBeneficiariesFk"
+        ComboRowCountHint="10"
+        NullValueFlag="none"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="DisplayBeneficiariesFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayBeneficiarieEmail"/>
+            <Item Value="DisplayBeneficiarieMobileNo"/>
+            <Item Value="DisplayBeneficiarieBeneficiaryId"/>
+            <Item Value="BeneficiariesFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="DisplayBeneficiaryName"/>
+            <Item Value="Email"/>
+            <Item Value="MobileNo"/>
+            <Item Value="BeneficiaryId"/>
+            <Item Value="BeneficiariesPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="DisplayBeneficiaryName"/>
+            <Item Value="BeneficiaryId"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="CrsBeneficiariesViewLOVSearch"
+            Hint="showAndExecute"/>
+    </ListBinding>
+    <EntityUsage Entity="crs.model.eo.CrsIncomingBeneficiaries" Name="CrsIncomingBeneficiaries"/>
+    <ViewAttribute AliasName="INCOMING_BENEFICIARIES_PK"
+        EntityAttrName="IncomingBeneficiariesPk"
+        EntityUsage="CrsIncomingBeneficiaries" IsNotNull="true"
+        Name="IncomingBeneficiariesPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsIncomingBeneficiaries.IncomingBeneficiariesPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="BENEFICIARIES_FK"
+        EntityAttrName="BeneficiariesFk"
+        EntityUsage="CrsIncomingBeneficiaries"
+        LOVName="LOV_BeneficiariesFk" Name="BeneficiariesFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsIncomingBeneficiaries.BeneficiariesFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="INCOMING_DOCUMENTS_FK"
+        EntityAttrName="IncomingDocumentsFk"
+        EntityUsage="CrsIncomingBeneficiaries"
+        LOVName="LOV_IncomingDocumentsFk" Name="IncomingDocumentsFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsIncomingBeneficiaries.IncomingDocumentsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="CrsIncomingBeneficiaries" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate"
+        EntityUsage="CrsIncomingBeneficiaries" Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="CrsIncomingBeneficiaries" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate"
+        EntityUsage="CrsIncomingBeneficiaries" Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk"
+        EntityUsage="CrsIncomingBeneficiaries" Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayBeneficiariesFk"
+        ColumnType="VARCHAR2"
+        Expression="GET_BENEFICIARY_NAME (BENEFICIARIES_FK,?)"
+        IsPersistent="false" Name="DisplayBeneficiariesFk"
+        SQLType="VARCHAR" Type="java.lang.String"
+        LOVName="LOV_DisplayBeneficiariesFk">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsIncomingBeneficiaries.BeneficiariesFkDesc']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayBeneficiarieBeneficiaryId"
+        ColumnType="VARCHAR2"
+        Expression="GET_BENEFICIARIE_BENEFICIARY_ID (BENEFICIARIES_FK)"
+        IsPersistent="false" Name="DisplayBeneficiarieBeneficiaryId"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsBeneficiaries.BeneficiaryId']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayBeneficiarieEmail"
+        ColumnType="VARCHAR2"
+        Expression="GET_BENEFICIARIE_EMAIL (BENEFICIARIES_FK)"
+        IsPersistent="false" Name="DisplayBeneficiarieEmail"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsBeneficiaries.Email']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayBeneficiarieMobileNo"
+        ColumnType="VARCHAR2"
+        Expression="GET_BENEFICIARIE_MOBILE_NO (BENEFICIARIES_FK)"
+        IsPersistent="false" Name="DisplayBeneficiarieMobileNo"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsBeneficiaries.MobileNo']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="BeneficiariesFkSearch" ColumnType="BIGINT"
+        IsPersistent="false" IsSelected="false"
+        Name="BeneficiariesFkSearch" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="DisplayBeneficiariesFkSearch" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplayBeneficiariesFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+    <SortCriteria>
+        <Sort
+            Attribute="IncomingBeneficiariesPk"
+            Ascending="false"/>
+    </SortCriteria>
+    <SortCriteria>
+        <Sort
+            Attribute="IncomingBeneficiariesPk"
+            Ascending="false"/>
+    </SortCriteria>
+</ViewObject>
+<!---->

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CrsOutgoingCommentsFk2Assoc"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="CrsOutgoingDocPreparation"
+    Cardinality="1"
+    Source="true"
+    Owner="crs.model.eo.CrsOutgoingDocPreparation"
+    LockLevel="NONE">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CrsOutgoingDocPreparation"/>
+      <Attr Name="_foreignKey" Value="crs.model.eo.CrsOutgoingDocPreparation.CrsOutgoingDocPreparatiPk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingDocPreparation.OutgoingDocPreparationPk"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="CrsOutgoingComments"
+    Cardinality="-1"
+    Owner="crs.model.eo.CrsOutgoingComments">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CrsOutgoingComments"/>
+      <Attr Name="_foreignKey" Value="crs.model.eo.CrsOutgoingComments.fk_CrsOutgoingComments"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsOutgoingComments.OutgoingDocPreparationFk"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

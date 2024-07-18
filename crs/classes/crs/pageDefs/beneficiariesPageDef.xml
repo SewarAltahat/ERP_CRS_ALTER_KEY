@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.52.5" id="beneficiariesPageDef"
+                Package="crs.pageDefs">
+  <executables>
+    <iterator Binds="CrsBeneficiariesView1" RangeSize="10" DataControl="AppModuleDataControl" id="CrsBeneficiariesView1Iterator"/>
+    <searchRegion Criteria="" Binds="CrsBeneficiariesView1Iterator" id="CrsBeneficiariesView1CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="CrsBeneficiariesTlView2" RangeSize="10" DataControl="AppModuleDataControl" id="CrsBeneficiariesTlView1Iterator"/>
+    <searchRegion Criteria="" Binds="CrsBeneficiariesTlView1Iterator" id="CrsBeneficiariesTlView1CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <invokeAction id="invokeRollBack" Binds="Rollback" Refresh="prepareModel" RefreshCondition="#{!adfFacesContext.postback}"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="CrsBeneficiariesView1Iterator" id="CrsBeneficiariesView1">
+      <nodeDefinition DefName="crs.model.vo.CrsBeneficiariesView" Name="CrsBeneficiariesView10">
+        <AttrNames>
+          <Item Value="BeneficiariesPk"/>
+          <Item Value="DisplayBeneficiaryName"/>
+          <Item Value="BeneficiaryId"/>
+          <Item Value="MobileNo"/>
+          <Item Value="Email"/>
+          <Item Value="DisplayNotes"/>
+          <Item Value="DisplayBeneficiaryNameSearch"/>
+          <Item Value="DisplayNotesSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CrsBeneficiariesTlView1Iterator" id="CrsBeneficiariesTlView1">
+      <nodeDefinition DefName="crs.model.vo.CrsBeneficiariesTlView" Name="CrsBeneficiariesTlView10">
+        <AttrNames>
+          <Item Value="BeneficiariesTlPk"/>
+          <Item Value="BeneficiaryName"/>
+          <Item Value="Notes"/>
+          <Item Value="BeneficiariesFk"/>
+          <Item Value="BeneficiariesFkDesc"/>
+          <Item Value="LanguagesFk"/>
+          <Item Value="LanguagesFkDesc"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <action id="DeleteCrsBeneficiariesView1" RequiresUpdateModel="false" Action="removeCurrentRow" IterBinding="CrsBeneficiariesView1Iterator"/>
+    <action id="CreateInsertCrsBeneficiariesView1" RequiresUpdateModel="true" Action="createInsertRow" IterBinding="CrsBeneficiariesView1Iterator"/>
+    <tree IterBinding="CrsBeneficiariesTlView1Iterator" id="CrsBeneficiariesTlView2">
+      <nodeDefinition DefName="crs.model.vo.CrsBeneficiariesTlView" Name="CrsBeneficiariesTlView20">
+        <AttrNames>
+          <Item Value="BeneficiaryName"/>
+          <Item Value="LanguagesFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CrsBeneficiariesTlView1Iterator" id="CrsBeneficiariesTlView21">
+      <nodeDefinition DefName="crs.model.vo.CrsBeneficiariesTlView" Name="CrsBeneficiariesTlView210">
+        <AttrNames>
+          <Item Value="BeneficiaryName"/>
+          <Item Value="LanguagesFk"/>
+          <Item Value="Notes"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="CrsBeneficiariesView1Iterator" id="BeneficiariesPk">
+      <AttrNames>
+        <Item Value="BeneficiariesPk"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

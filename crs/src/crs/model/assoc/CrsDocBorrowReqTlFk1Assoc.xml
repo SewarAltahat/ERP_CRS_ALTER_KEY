@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CrsDocBorrowReqTlFk1Assoc"
+  Version="12.2.1.16.48"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="CrsBorrowRequests"
+    Cardinality="1"
+    Source="true"
+    Owner="crs.model.eo.CrsBorrowRequests">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CrsBorrowRequests"/>
+      <Attr Name="_foreignKey" Value="crs.model.eo.CrsBorrowRequests.CrsDocBorrowRequestPk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsBorrowRequests.BorrowRequestsPk"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="CrsBorrowRequestsTl"
+    Cardinality="-1"
+    Owner="crs.model.eo.CrsBorrowRequestsTl">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CrsBorrowRequestsTl"/>
+      <Attr Name="_foreignKey" Value="crs.model.eo.CrsBorrowRequestsTl.CrsDocBorrowReqTlFk1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsBorrowRequestsTl.BorrowRequestsFk"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="beneficiariesPageDef1"
+                Package="crs.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CrsBeneficiariesView1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CrsBeneficiariesView1Iterator"/>
+                 <invokeAction Binds="CreateInsertCrsBeneficiariesView" id="ci1" Refresh="ifNeeded"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="CrsBeneficiariesView1Iterator" id="BeneficiariesPk">
+      <AttrNames>
+        <Item Value="BeneficiariesPk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsBeneficiariesView1Iterator" id="BeneficiaryId">
+      <AttrNames>
+        <Item Value="BeneficiaryId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsBeneficiariesView1Iterator" id="MobileNo">
+      <AttrNames>
+        <Item Value="MobileNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsBeneficiariesView1Iterator" id="Email">
+      <AttrNames>
+        <Item Value="Email"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <attributeValues IterBinding="CrsBeneficiariesView1Iterator" id="DisplayBeneficiaryName">
+      <AttrNames>
+        <Item Value="DisplayBeneficiaryName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsBeneficiariesView1Iterator" id="DisplayNotes">
+      <AttrNames>
+        <Item Value="DisplayNotes"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="CrsBeneficiariesView1Iterator" id="CreateInsertCrsBeneficiariesView" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

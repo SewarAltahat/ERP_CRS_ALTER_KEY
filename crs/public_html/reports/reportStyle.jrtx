@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperTemplate PUBLIC "-//JasperReports//DTD Template//EN" "http://jasperreports.sourceforge.net/dtds/jaspertemplate.dtd">
+
+<jasperTemplate>
+	<style name="reportHeaderStyle" mode="Opaque" forecolor="#FFFFFF" backcolor="#1786A3" hAlign="Center" fontName="SdArial" fontSize="20" isBold="true"/>
+	<style name="labelStyle" mode="Opaque" forecolor="#000000" backcolor="#F7F4E9" hAlign="Center" fontName="SdArial" fontSize="20" isBold="true"/>
+	<style name="reportContentsStyle" forecolor="#000000" hAlign="Justified" fontName="SdArial" fontSize="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<paragraph leftIndent="5" rightIndent="5"/>
+	</style>
+	<style name="subTitleStyle" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<pen lineWidth="1.0" lineColor="#000000"/>
+	</style>
+	<style name="footerLabelStyle" forecolor="#FFFFFF" backcolor="#13323D" hAlign="Center" vAlign="Middle" fontName="Arial" fontSize="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="footerFieldStyle" forecolor="#EF9530" backcolor="#13323D"/>
+</jasperTemplate>

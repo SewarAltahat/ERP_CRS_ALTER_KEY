@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject ComponentClass="gen.common.BaseViewObjectImpl" BindingStyle="JDBC" CustomQuery="true"
+    FetchMode="FETCH_AS_NEEDED" InheritPersonalization="merge"
+    Name="RelatedLettersVwView" PageIterMode="Full"
+    Version="12.2.1.12.24" xmlns="http://xmlns.oracle.com/bc4j"
+    RowClass="crs.model.ro.RelatedLettersVwViewRowImpl">
+    <DesignTime>
+        <Attr Name="_isExpertMode" Value="true"/>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Variable
+      Name="p_lang"
+      Kind="where"
+      Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+            <Item Value="1"/>
+            <Item Value="2"/>
+            <Item Value="3"/>
+            <Item Value="4"/>
+            <Item Value="5"/>
+            <Item Value="6"/>
+        </AttrArray>
+        <TransientExpression
+            Name="expression"><![CDATA[gen.common.GenLib.getLanguageNo()]]></TransientExpression>
+        <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+            Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+    
+    <SQLQuery><![CDATA[SELECT RelatedLettersVw.DOC_TYPE_FK,                          
+       RelatedLettersVw.INCOMING_RELATED_LETTERS_PK,                          
+       RelatedLettersVw.RELATED_DOCUMENT_TYPE_FK,                          
+       RelatedLettersVw.INCOMING_DOCUMENTS_FK,                          
+       RelatedLettersVw.CREATED_BY,                          
+       RelatedLettersVw.CREATION_DATE,                          
+       RelatedLettersVw.MODIFIED_BY,                          
+       RelatedLettersVw.MODIFIED_DATE,                       
+       RelatedLettersVw.RELATED_OUTGOING_DOCUMENTS_FK,                                         
+       GET_LOOKUP_DESC(DOC_TYPE_FK,  ?) as Display_Doc_Type_Fk,   
+       GET_LOOKUP_DESC(RELATED_DOCUMENT_TYPE_FK,  ?) as Display_Related_Doc_Type_Fk,  
+       GET_USER_FULL_NAME(CREATED_BY, ?) as Display_Created_By,                          
+       GET_USER_FULL_NAME(MODIFIED_BY, ?) as Display_Modified_By,        
+        GET_IN_SUBJECT(RELATED_INCOMING_DOCUMENT_FK, ?) AS Display_RelIn_Doc_Fk,                      
+       GET_OUT_SUBJECT(RELATED_OUTGOING_DOCUMENTS_FK, ?) AS Display_RelOut_Fk,                      
+       GET_LOOKUP_DESC(RELATED_DOCUMENT_TYPE_FK, ?) AS Display_RelDoc_Fk,                     
+       GET_IN_DOC_DATE_G(RELATED_INCOMING_DOCUMENT_FK) AS DisplayIn_Doc_Date_G,                    
+       GET_IN_DOC_DATE_H(RELATED_INCOMING_DOCUMENT_FK) AS DisplayIn_Doc_Date_H ,                    
+       GET_OUT_DOC_DATE_G(RELATED_OUTGOING_DOCUMENTS_FK) AS DisplayOut_Doc_Date_G,                    
+       GET_OUT_DOC_DATE_H(RELATED_OUTGOING_DOCUMENTS_FK) AS DisplayOut_Doc_Date_H,              
+       RelatedLettersVw.USER_DEPARTMENT_FK                          
+FROM RELATED_LETTERS_VW RelatedLettersVw]]></SQLQuery>
+    <ViewAttribute AliasName="DOC_TYPE_FK"
+        ColumnType="NUMBER" Expression="DOC_TYPE_FK"
+        IsPersistent="false" Name="DocTypeFk"
+        PrecisionRule="true" SQLType="NUMERIC" Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['RelatedLettersVw.DocTypeFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="INCOMING_RELATED_LETTERS_PK"
+        ColumnType="NUMBER"
+        Expression="INCOMING_RELATED_LETTERS_PK"
+        IsPersistent="false"
+        Name="IncomingRelatedLettersPk"
+        PrecisionRule="true"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['RelatedLettersVw.IncomingRelatedLettersPk']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="RelatedDocumentTypeFk"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        AliasName="RELATED_DOCUMENT_TYPE_FK"
+        Expression="RELATED_DOCUMENT_TYPE_FK"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        AliasName="INCOMING_DOCUMENTS_FK"
+        ColumnType="NUMBER"
+        Expression="INCOMING_DOCUMENTS_FK"
+        IsPersistent="false"
+        Name="IncomingDocumentsFk"
+        PrecisionRule="true"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['RelatedLettersVw.IncomingDocumentsFk']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="CREATED_BY"
+        ColumnType="NUMBER"
+        Expression="CREATED_BY"
+        IsPersistent="false"
+        Name="CreatedBy"
+        PrecisionRule="true"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="CREATION_DATE"
+        ColumnType="TIMESTAMP"
+        Expression="CREATION_DATE"
+        IsPersistent="false"
+        Name="CreationDate"
+        PrecisionRule="true"
+        SQLType="TIMESTAMP"
+        Type="java.sql.Timestamp">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="MODIFIED_BY"
+        ColumnType="NUMBER"
+        Expression="MODIFIED_BY"
+        IsPersistent="false"
+        Name="ModifiedBy"
+        PrecisionRule="true"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="MODIFIED_DATE"
+        ColumnType="TIMESTAMP"
+        Expression="MODIFIED_DATE"
+        IsPersistent="false"
+        Name="ModifiedDate"
+        PrecisionRule="true"
+        SQLType="TIMESTAMP"
+        Type="java.sql.Timestamp">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="RelatedOutgoingDocumentsFk"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        AliasName="RELATED_OUTGOING_DOCUMENTS_FK"
+        Expression="RELATED_OUTGOING_DOCUMENTS_FK"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        Name="DisplayDocTypeFk"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_DOC_TYPE_FK"
+        Expression="DISPLAY_DOC_TYPE_FK"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayRelatedDocTypeFk"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_RELATED_DOC_TYPE_FK"
+        Expression="DISPLAY_RELATED_DOC_TYPE_FK"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayCreatedBy"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_CREATED_BY"
+        Expression="DISPLAY_CREATED_BY"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayModifiedBy"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_MODIFIED_BY"
+        Expression="DISPLAY_MODIFIED_BY"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayRelinDocFk"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_RELIN_DOC_FK"
+        Expression="DISPLAY_RELIN_DOC_FK"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayReloutFk"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_RELOUT_FK"
+        Expression="DISPLAY_RELOUT_FK"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayReldocFk"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Precision="4000"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        AliasName="DISPLAY_RELDOC_FK"
+        Expression="DISPLAY_RELDOC_FK"
+        SQLType="VARCHAR">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="4000"/>
+        </DesignTime>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="DisplayinDocDateG"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.sql.Timestamp"
+        ColumnType="TIMESTAMP"
+        AliasName="DISPLAYIN_DOC_DATE_G"
+        Expression="DISPLAYIN_DOC_DATE_G"
+        SQLType="TIMESTAMP"/>
+    <ViewAttribute
+        Name="DisplayinDocDateH"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        AliasName="DISPLAYIN_DOC_DATE_H"
+        Expression="DISPLAYIN_DOC_DATE_H"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        Name="DisplayoutDocDateG"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.sql.Timestamp"
+        ColumnType="TIMESTAMP"
+        AliasName="DISPLAYOUT_DOC_DATE_G"
+        Expression="DISPLAYOUT_DOC_DATE_G"
+        SQLType="TIMESTAMP"/>
+    <ViewAttribute
+        Name="DisplayoutDocDateH"
+        IsUpdateable="true"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        AliasName="DISPLAYOUT_DOC_DATE_H"
+        Expression="DISPLAYOUT_DOC_DATE_H"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        AliasName="USER_DEPARTMENT_FK"
+        ColumnType="NUMBER"
+        Expression="USER_DEPARTMENT_FK"
+        IsPersistent="false"
+        Name="UserDepartmentFk"
+        PrecisionRule="true"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+   
+    <ViewAttribute
+        Name="DisplayDocTypeFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.lang.String"
+        ColumnType="CHAR"
+        AliasName="DisplayDocTypeFkSearch"
+        SQLType="VARCHAR"/>
+    <ViewAttribute
+        Name="DocTypeFkSearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="BIGINT"
+        AliasName="DocTypeFkSearch"
+        SQLType="NUMERIC"/>
+    <ViewAttribute
+        Name="DisplayCreatedBySearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.lang.String"
+        ColumnType="CHAR"
+        AliasName="DisplayCreatedBySearch"
+        SQLType="VARCHAR"/>
+    <ViewAttribute
+        Name="DisplayModifiedBySearch"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.lang.String"
+        ColumnType="CHAR"
+        AliasName="DisplayModifiedBySearch"
+        SQLType="VARCHAR"/>
+    <ViewAttribute
+        Name="DisplayReldocFkSearch"
+        IsUpdateable="true"
+        IsSelected="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.lang.String"
+        ColumnType="CHAR"
+        AliasName="DisplayReldocFkSearch"
+        SQLType="VARCHAR"/>
+    <ResourceBundle>
+        <PropertiesBundle
+            PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

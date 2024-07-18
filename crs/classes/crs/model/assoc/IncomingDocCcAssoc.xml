@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="IncomingDocCcAssoc"
+  Version="12.2.1.16.48"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="CrsIncomingDocCc"
+    Cardinality="1"
+    Source="true"
+    Owner="crs.model.eo.CrsIncomingDocCc"
+    LockLevel="NONE">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CrsIncomingDocCc"/>
+      <Attr Name="_foreignKey" Value="crs.model.eo.CrsIncomingDocCc.CrsIncomingDocCcPk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsIncomingDocCc.IncomingDocCcPk"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="CrsIncomingDocCcTl"
+    Cardinality="-1"
+    Owner="crs.model.eo.CrsIncomingDocCcTl">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CrsIncomingDocCcTl"/>
+      <Attr Name="_foreignKey" Value="crs.model.eo.CrsIncomingDocCcTl.fk_CrsIncomingDocCcTl"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsIncomingDocCcTl.IncomingDocCcFk"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

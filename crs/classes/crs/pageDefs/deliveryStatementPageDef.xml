@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.1.52.5" id="deliveryStatementPageDef"
+                Package="crs.pageDefs">
+  <executables>
+    <iterator Binds="CrsDocumentsDeliveryView1" RangeSize="10" DataControl="AppModuleDataControl"
+              id="CrsDocumentsDeliveryView1Iterator"/>
+    <invokeAction id="invokeRollBack" Binds="Rollback" Refresh="prepareModel"
+                  RefreshCondition="#{!adfFacesContext.postback}"/>
+    <iterator Binds="CrsOutgoingDocumentsView1" RangeSize="10" DataControl="AppModuleDataControl"
+              id="CrsOutgoingDocumentsView1Iterator"/>
+    <searchRegion id="CrsOutgoingDocumentsView1CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="CrsOutgoingDocumentsView1Iterator"/>
+    <iterator Binds="CrsIncomingDocumentsView1" RangeSize="10" DataControl="AppModuleDataControl"
+              id="CrsIncomingDocumentsView1Iterator"/>
+    <searchRegion id="CrsIncomingDocumentsView1CriteriaQuery" Binds="CrsIncomingDocumentsView1Iterator"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="DeliverySelectedDocumentsPVO1" RangeSize="10" DataControl="AppModuleDataControl"
+              id="DeliverySelectedDocumentsPVO1Iterator"/>
+    <!--<searchRegion Binds="DeliverySelectedDocumentsPVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DeliverySelectedDocumentsPVO1Query"/>-->
+    <iterator Binds="ReportParametersRVO1" RangeSize="10" DataControl="AppModuleDataControl"
+              id="ReportParametersRVO1Iterator"/>
+    <searchRegion Binds="DeliverySelectedDocumentsPVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DeliverySelectedDocumentsPVO11Query"/>
+  </executables>
+  <bindings>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <action id="DeleteDocumentsDeliveryView" RequiresUpdateModel="false" Action="removeCurrentRow"
+            IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <action id="CreateInsertDocumentsDeliveryView" RequiresUpdateModel="true" Action="createInsertRow"
+            IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <!--<action id="Next1" RequiresUpdateModel="true" Action="next" IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <action id="Previous1" RequiresUpdateModel="true" Action="previous"
+            IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <action id="First1" RequiresUpdateModel="true" Action="first" IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <action id="Last1" RequiresUpdateModel="true" Action="last" IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <action id="Find1" RequiresUpdateModel="true" Action="iteratorFind"
+            IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <action id="Execute1" RequiresUpdateModel="true" Action="iteratorExecute"
+            IterBinding="CrsDocumentsDeliveryView1Iterator"/>-->
+    <tree IterBinding="CrsOutgoingDocumentsView1Iterator" id="CrsOutgoingDocumentsView1">
+      <nodeDefinition DefName="crs.model.vo.CrsOutgoingDocumentsView" Name="CrsOutgoingDocumentsView10">
+        <AttrNames>
+          <Item Value="OutgoingDocumentsPk"/>
+          <Item Value="AttachmentsNo"/>
+          <Item Value="Barcode"/>
+          <Item Value="ClassificationFk"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="DisplayClassificationFk"/>
+          <Item Value="DisplayFilesLocationFk"/>
+          <Item Value="DisplayFromDepartmentFk"/>
+          <Item Value="DisplayIncomingDocumentsFk"/>
+          <Item Value="DisplayKeyword"/>
+          <Item Value="DisplayNotes"/>
+          <Item Value="DisplayOutDocTypeFk"/>
+          <Item Value="DisplayOutgoingTypeFk"/>
+          <Item Value="DisplayOutSubject"/>
+          <Item Value="DisplayPriorityFk"/>
+          <Item Value="DisplaySecurityLevelFk"/>
+          <Item Value="DisplayToDepartmentFk"/>
+          <Item Value="FilesLocationFk"/>
+          <Item Value="FromDepartmentFk"/>
+          <Item Value="IncomingDocumentsFk"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="OutDocDateG"/>
+          <Item Value="OutDocDateH"/>
+          <Item Value="OutDocNo"/>
+          <Item Value="OutDocTypeFk"/>
+          <Item Value="OutDocYear"/>
+          <Item Value="OutgoingDocumentsNo"/>
+          <Item Value="OutgoingTypeFk"/>
+          <Item Value="OutText"/>
+          <Item Value="PriorityFk"/>
+          <Item Value="ReceivedDateG"/>
+          <Item Value="ReceivedDateH"/>
+          <Item Value="RespondPeriod"/>
+          <Item Value="SecurityLevelFk"/>
+          <Item Value="ToDepartmentFk"/>
+          <Item Value="ToDepartmentFkSwitcher"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="OutgoingInsertFl"/>
+          <Item Value="DisplayOutSubjectSearch"/>
+          <Item Value="DisplayFromDepartmentFkSearch"/>
+          <Item Value="DisplayToDepartmentFkSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CrsIncomingDocumentsView1Iterator" id="CrsIncomingDocumentsView1">
+      <nodeDefinition DefName="crs.model.vo.CrsIncomingDocumentsView" Name="CrsIncomingDocumentsView10">
+        <AttrNames>
+          <Item Value="IncomingDocumentsPk"/>
+          <Item Value="DisplayInSubject"/>
+          <Item Value="DisplayFromDepartmentFk"/>
+          <Item Value="DisplayToDepartmentFk"/>
+          <Item Value="InDocNo"/>
+          <Item Value="IncomingDocumentsNo"/>
+          <Item Value="DisplayFromDepartmentFkSearch"/>
+          <Item Value="DisplayInSubjectSearch"/>
+          <Item Value="DisplayToDepartmentFkSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="DeliverySelectedDocumentsPVO1Iterator" id="DeliverySelectedDocumentsPVO1">
+      <nodeDefinition DefName="crs.model.ro.DeliverySelectedDocumentsPVO" Name="DeliverySelectedDocumentsPVO10">
+        <AttrNames>
+          <Item Value="DocumentType"/>
+          <Item Value="DocumentPk"/>
+          <Item Value="DocumentNo"/>
+          <Item Value="DisplayDocumentType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="DeliverySelectedDocumentsPVO1Iterator" id="DocumentPk">
+      <AttrNames>
+        <Item Value="DocumentPk"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ReportParametersRVO1Iterator" id="ReportParametersRVO1">
+      <nodeDefinition DefName="crs.model.ro.ReportParametersRVO" Name="ReportParametersRVO10">
+        <AttrNames>
+          <Item Value="J1"/>
+          <Item Value="StatementNumber"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="DeliverySelectedDocumentsPVO1Iterator" id="DeleteDeliverySelectedDocuments"
+            InstanceName="AppModuleDataControl.DeliverySelectedDocumentsPVO1" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="DeliverySelectedDocumentsPVO1Iterator" id="DeliverySelectedDocumentsPVO11">
+      <nodeDefinition DefName="crs.model.ro.DeliverySelectedDocumentsPVO" Name="DeliverySelectedDocumentsPVO110">
+        <AttrNames>
+          <Item Value="DocumentType"/>
+          <Item Value="DocumentPk"/>
+          <Item Value="DocumentNo"/>
+          <Item Value="DisplayDocumentType"/>
+          <Item Value="StartPage"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

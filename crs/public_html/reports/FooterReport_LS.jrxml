@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FooterReport_LandScape" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" scriptletClass="gen.common.JasperScriptlet" uuid="4e4b42b9-88a5-4b80-bbe6-844388fa7909">
+	<property name="ireport.zoom" value="1.331000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<template><![CDATA[$P{SUBREPORT_DIR} + "reportStyle.jrtx"]]></template>
+	<parameter name="p_report_code" class="java.lang.String"/>
+	<parameter name="p_logged_user_name" class="java.lang.String"/>
+	<parameter name="p_lang" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_report_code_label" class="java.lang.String"/>
+	<parameter name="p_printed_by_label" class="java.lang.String"/>
+	<parameter name="p_print_date_label" class="java.lang.String"/>
+	<parameter name="p_date_time_with_seconds_format" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[".\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select 1 from sso_system_settings]]>
+	</queryString>
+	<field name="1" class="java.math.BigDecimal"/>
+	<summary>
+		<band height="20" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement style="footerLabelStyle" mode="Opaque" x="736" y="0" width="70" height="20" uuid="4fd1d427-ba67-4951-addc-a5a6b5e5c744"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_report_code_label}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement style="footerFieldStyle" mode="Opaque" x="182" y="0" width="269" height="20" uuid="0032eb76-ff69-4cab-92de-7b5265aef196"/>
+				<box rightPadding="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_logged_user_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement style="footerLabelStyle" mode="Opaque" x="116" y="0" width="66" height="20" uuid="7fc9d388-56a6-44ff-a9a5-c877d1dc6f37"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_print_date_label}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="footerLabelStyle" mode="Opaque" x="451" y="0" width="66" height="20" uuid="5567ce00-b995-4202-b969-e90bcecef51b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_printed_by_label}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="footerFieldStyle" mode="Opaque" x="517" y="0" width="219" height="20" uuid="648bd219-e956-4cb2-a1e3-51babd4043f4"/>
+				<box rightPadding="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_report_code}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement style="footerFieldStyle" mode="Opaque" x="0" y="0" width="116" height="20" uuid="57c2291c-fc02-48a8-bc64-09533bd30219"/>
+				<box rightPadding="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.formatCurrentDate($P{p_date_time_with_seconds_format})]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

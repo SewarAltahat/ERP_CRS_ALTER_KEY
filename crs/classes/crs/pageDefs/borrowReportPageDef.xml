@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.52.5" id="borrowReportPageDef"
+                Package="crs.pageDefs">
+  <executables>
+    <iterator Binds="CrsBorrowRequestsView1" RangeSize="10" DataControl="AppModuleDataControl" id="CrsBorrowRequestsView1Iterator"/>
+    <searchRegion Criteria="" Binds="CrsBorrowRequestsView1Iterator" id="CrsBorrowRequestsView1CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="CrsBorrowRequestsTlView2" RangeSize="10" DataControl="AppModuleDataControl" id="CrsBorrowRequestsTlView1Iterator"/>
+    <searchRegion Criteria="" Binds="CrsBorrowRequestsTlView1Iterator" id="CrsBorrowRequestsTlView1CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <invokeAction id="invokeRollBack" Binds="Rollback" Refresh="prepareModel" RefreshCondition="#{!adfFacesContext.postback}"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="CrsBorrowRequestsView1Iterator" id="CrsBorrowRequestsView1">
+      <nodeDefinition DefName="crs.model.vo.CrsBorrowRequestsView" Name="CrsBorrowRequestsView10">
+        <AttrNames>
+          <Item Value="BorrowRequestsPk"/>
+          <Item Value="IncomingDocumentsFk"/>
+          <Item Value="IncomingDocumentsFkDesc"/>
+          <Item Value="RequestPeriod"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="OutgoingDocumentsFk"/>
+          <Item Value="OutgoingDocumentsFkDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CrsBorrowRequestsTlView1Iterator" id="CrsBorrowRequestsTlView1">
+      <nodeDefinition DefName="crs.model.vo.CrsBorrowRequestsTlView" Name="CrsBorrowRequestsTlView10">
+        <AttrNames>
+          <Item Value="BorrowRequestsTlPk"/>
+          <Item Value="RequestReason"/>
+          <Item Value="Notes"/>
+          <Item Value="LanguagesFk"/>
+          <Item Value="LanguagesFkDesc"/>
+          <Item Value="BorrowRequestsFk"/>
+          <Item Value="BorrowRequestsFkDesc"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow" IterBinding="CrsBorrowRequestsView1Iterator"/>
+    <action id="CreateInsert1" RequiresUpdateModel="true" Action="createInsertRow" IterBinding="CrsBorrowRequestsView1Iterator"/>
+    <action id="Next1" RequiresUpdateModel="true" Action="next" IterBinding="CrsBorrowRequestsView1Iterator"/>
+    <action id="Previous1" RequiresUpdateModel="true" Action="previous" IterBinding="CrsBorrowRequestsView1Iterator"/>
+    <action id="First1" RequiresUpdateModel="true" Action="first" IterBinding="CrsBorrowRequestsView1Iterator"/>
+    <action id="Last1" RequiresUpdateModel="true" Action="last" IterBinding="CrsBorrowRequestsView1Iterator"/>
+    <action id="Find1" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="CrsBorrowRequestsView1Iterator"/>
+    <action id="Execute1" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="CrsBorrowRequestsView1Iterator"/>
+    <action id="Delete2" RequiresUpdateModel="false" Action="removeCurrentRow" IterBinding="CrsBorrowRequestsTlView1Iterator"/>
+    <action id="CreateInsert2" RequiresUpdateModel="true" Action="createInsertRow" IterBinding="CrsBorrowRequestsTlView1Iterator"/>
+    <action id="Next2" RequiresUpdateModel="true" Action="next" IterBinding="CrsBorrowRequestsTlView1Iterator"/>
+    <action id="Previous2" RequiresUpdateModel="true" Action="previous" IterBinding="CrsBorrowRequestsTlView1Iterator"/>
+    <action id="First2" RequiresUpdateModel="true" Action="first" IterBinding="CrsBorrowRequestsTlView1Iterator"/>
+    <action id="Last2" RequiresUpdateModel="true" Action="last" IterBinding="CrsBorrowRequestsTlView1Iterator"/>
+    <action id="Find2" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="CrsBorrowRequestsTlView1Iterator"/>
+    <action id="Execute2" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="CrsBorrowRequestsTlView1Iterator"/>
+  </bindings>
+</pageDefinition>

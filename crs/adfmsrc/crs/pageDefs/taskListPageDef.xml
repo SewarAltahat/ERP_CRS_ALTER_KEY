@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.52.5" id="taskListPageDef"
+                Package="crs.pageDefs">
+  <executables>
+    <iterator Binds="CrsIncomingDocumentsView1" RangeSize="10" DataControl="AppModuleDataControl" id="CrsIncomingDocumentsView1Iterator"/>
+    <iterator Binds="CrsIncomingCommentsView2" RangeSize="10" DataControl="AppModuleDataControl" id="CrsIncomingCommentsView1Iterator"/>
+    <iterator Binds="CrsIncomingArchiveView2" RangeSize="10" DataControl="AppModuleDataControl" id="CrsIncomingArchiveView1Iterator"/>
+    <iterator Binds="CrsIncomingBeneficiariesView3" RangeSize="10" DataControl="AppModuleDataControl" id="CrsIncomingBeneficiariesView1Iterator"/>
+    <iterator Binds="CrsDocumentsDeliveryView2" RangeSize="10" DataControl="AppModuleDataControl" id="CrsDocumentsDeliveryView1Iterator"/>
+    <iterator Binds="CrsBorrowRequestsView2" RangeSize="10" DataControl="AppModuleDataControl" id="CrsBorrowRequestsView1Iterator"/>
+    <iterator Binds="CrsIncomingDocumentsTlView2" RangeSize="10" DataControl="AppModuleDataControl" id="CrsIncomingDocumentsTlView1Iterator"/>
+    <iterator Binds="CrsIncomingDocAttachmentsView2" RangeSize="10" DataControl="AppModuleDataControl" id="CrsIncomingDocAttachmentsView1Iterator"/>
+    <invokeAction id="invokeRollBack" Binds="Rollback" Refresh="prepareModel" RefreshCondition="#{!adfFacesContext.postback}"/>
+    <iterator Binds="IncomingDocumentCCVwView1" RangeSize="10" DataControl="AppModuleDataControl"
+              id="IncomingDocumentCCVwView1Iterator"/>
+    <searchRegion id="IncomingDocumentCCVwView1CriteriaQuery" Binds="IncomingDocumentCCVwView1Iterator"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <taskFlow id="InDocView1" taskFlowId="/WEB-INF/InDocView.xml#InDocView" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <iterator Binds="CrsIncomingDocCcView3" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CrsIncomingDocCcView3Iterator"/>
+    <iterator id="CrsIncomingDocCcTlView2Iterator" Binds="CrsIncomingDocCcTlView2" DataControl="AppModuleDataControl"
+              RangeSize="25"/>
+                  <iterator Binds="SsoActiveLookupValuesVwView1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="SsoActiveLookupValuesVwView1Iterator"/>
+    <searchRegion Binds="SsoActiveLookupValuesVwView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SsoActiveLookupValuesVwView1Query"/>
+  </executables>
+  <bindings>
+    <button IterBinding="CrsIncomingDocumentsView1Iterator" id="ReplyFl" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="ReplyFl"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Next1" RequiresUpdateModel="true" Action="next" IterBinding="CrsIncomingDocumentsView1Iterator"/>
+    <action id="Previous1" RequiresUpdateModel="true" Action="previous" IterBinding="CrsIncomingDocumentsView1Iterator"/>
+    <action id="First1" RequiresUpdateModel="true" Action="first" IterBinding="CrsIncomingDocumentsView1Iterator"/>
+    <action id="Last1" RequiresUpdateModel="true" Action="last" IterBinding="CrsIncomingDocumentsView1Iterator"/>
+    <action id="Find1" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="CrsIncomingDocumentsView1Iterator"/>
+    <action id="Execute1" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="CrsIncomingDocumentsView1Iterator"/>
+    <action id="Next2" RequiresUpdateModel="true" Action="next" IterBinding="CrsIncomingCommentsView1Iterator"/>
+    <action id="Previous2" RequiresUpdateModel="true" Action="previous" IterBinding="CrsIncomingCommentsView1Iterator"/>
+    <action id="First2" RequiresUpdateModel="true" Action="first" IterBinding="CrsIncomingCommentsView1Iterator"/>
+    <action id="Last2" RequiresUpdateModel="true" Action="last" IterBinding="CrsIncomingCommentsView1Iterator"/>
+    <action id="Find2" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="CrsIncomingCommentsView1Iterator"/>
+    <action id="Execute2" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="CrsIncomingCommentsView1Iterator"/>
+    <action id="Next3" RequiresUpdateModel="true" Action="next" IterBinding="CrsIncomingArchiveView1Iterator"/>
+    <action id="Previous3" RequiresUpdateModel="true" Action="previous" IterBinding="CrsIncomingArchiveView1Iterator"/>
+    <action id="First3" RequiresUpdateModel="true" Action="first" IterBinding="CrsIncomingArchiveView1Iterator"/>
+    <action id="Last3" RequiresUpdateModel="true" Action="last" IterBinding="CrsIncomingArchiveView1Iterator"/>
+    <action id="Find3" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="CrsIncomingArchiveView1Iterator"/>
+    <action id="Execute3" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="CrsIncomingArchiveView1Iterator"/>
+    <action id="Next4" RequiresUpdateModel="true" Action="next" IterBinding="CrsIncomingBeneficiariesView1Iterator"/>
+    <action id="Previous4" RequiresUpdateModel="true" Action="previous" IterBinding="CrsIncomingBeneficiariesView1Iterator"/>
+    <action id="First4" RequiresUpdateModel="true" Action="first" IterBinding="CrsIncomingBeneficiariesView1Iterator"/>
+    <action id="Last4" RequiresUpdateModel="true" Action="last" IterBinding="CrsIncomingBeneficiariesView1Iterator"/>
+    <action id="Find4" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="CrsIncomingBeneficiariesView1Iterator"/>
+    <action id="Execute4" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="CrsIncomingBeneficiariesView1Iterator"/>
+    <action id="Next5" RequiresUpdateModel="true" Action="next" IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <action id="Previous5" RequiresUpdateModel="true" Action="previous" IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <action id="First5" RequiresUpdateModel="true" Action="first" IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <action id="Last5" RequiresUpdateModel="true" Action="last" IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <action id="Find5" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <action id="Execute5" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="CrsDocumentsDeliveryView1Iterator"/>
+    <action id="Next6" RequiresUpdateModel="true" Action="next" IterBinding="CrsBorrowRequestsView1Iterator"/>
+    <action id="Previous6" RequiresUpdateModel="true" Action="previous" IterBinding="CrsBorrowRequestsView1Iterator"/>
+    <action id="First6" RequiresUpdateModel="true" Action="first" IterBinding="CrsBorrowRequestsView1Iterator"/>
+    <action id="Last6" RequiresUpdateModel="true" Action="last" IterBinding="CrsBorrowRequestsView1Iterator"/>
+    <action id="Find6" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="CrsBorrowRequestsView1Iterator"/>
+    <action id="Execute6" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="CrsBorrowRequestsView1Iterator"/>
+    <action id="Next7" RequiresUpdateModel="true" Action="next" IterBinding="CrsIncomingDocumentsTlView1Iterator"/>
+    <action id="Previous7" RequiresUpdateModel="true" Action="previous" IterBinding="CrsIncomingDocumentsTlView1Iterator"/>
+    <action id="First7" RequiresUpdateModel="true" Action="first" IterBinding="CrsIncomingDocumentsTlView1Iterator"/>
+    <action id="Last7" RequiresUpdateModel="true" Action="last" IterBinding="CrsIncomingDocumentsTlView1Iterator"/>
+    <action id="Find7" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="CrsIncomingDocumentsTlView1Iterator"/>
+    <action id="Execute7" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="CrsIncomingDocumentsTlView1Iterator"/>
+    <action id="Next8" RequiresUpdateModel="true" Action="next" IterBinding="CrsIncomingDocAttachmentsView1Iterator"/>
+    <action id="Previous8" RequiresUpdateModel="true" Action="previous" IterBinding="CrsIncomingDocAttachmentsView1Iterator"/>
+    <action id="First8" RequiresUpdateModel="true" Action="first" IterBinding="CrsIncomingDocAttachmentsView1Iterator"/>
+    <action id="Last8" RequiresUpdateModel="true" Action="last" IterBinding="CrsIncomingDocAttachmentsView1Iterator"/>
+    <action id="Find8" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="CrsIncomingDocAttachmentsView1Iterator"/>
+    <action id="Execute8" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="CrsIncomingDocAttachmentsView1Iterator"/>
+    <tree IterBinding="IncomingDocumentCCVwView1Iterator" id="IncomingDocumentCCVwView1">
+      <nodeDefinition DefName="crs.model.ro.IncomingDocumentCCVwView" Name="IncomingDocumentCCVwView10">
+        <AttrNames>
+          <Item Value="IncomingDocCcPk"/>
+          <Item Value="CcDepartmentsFk"/>
+          <Item Value="CcDepartmentsName"/>
+          <Item Value="ActionFk"/>
+          <Item Value="DisplayActionFk"/>
+          <Item Value="EmployeeFk"/>
+          <Item Value="DisplayEmployeeFk"/>
+          <Item Value="ExecutionDateG"/>
+          <Item Value="ExecutionDateH"/>
+          <Item Value="IncomingDocumentsPk"/>
+          <Item Value="DisplayInSubject"/>
+          <Item Value="InDocDateG"/>
+          <Item Value="ConfirmAssignmentFl"/>
+          <Item Value="IncomingDocStsFk"/>
+          <Item Value="CcDepartmentsNameSearch"/>
+          <Item Value="DisplayActionFkSearch"/>
+          <Item Value="DisplayEmployeeFkSearch"/>
+          <Item Value="DisplayInSubjectSearch"/>
+          <Item Value="CcDepartmentsFkSearch"/>
+          <Item Value="FromDepartmentsName"/>
+          <Item Value="InDocDateH"/>
+          <Item Value="FromDepartmentsNameSearch"/>
+          <Item Value="FromDepartmentFk"/>
+           <Item Value="SecurityLevelFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="IncomingDocumentCCVwView1Iterator" id="IncomingDocCcPk">
+      <AttrNames>
+        <Item Value="IncomingDocCcPk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsIncomingDocCcView3Iterator" id="DisplayRejectReason">
+      <AttrNames>
+        <Item Value="DisplayRejectReason"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="CrsIncomingDocCcView3Iterator" StaticList="false" Uses="LOV_DepartmentsFk"
+                  id="DepartmentsFk"/>
+    <attributeValues IterBinding="CrsIncomingDocCcView3Iterator" id="DisplayDepartmentsFk">
+      <AttrNames>
+        <Item Value="DisplayDepartmentsFk"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="CrsIncomingDocCcView3Iterator" StaticList="false" Uses="LOV_ActionFk" id="ActionFk"/>
+    <attributeValues IterBinding="CrsIncomingDocCcView3Iterator" id="DisplayActionFk">
+      <AttrNames>
+        <Item Value="DisplayActionFk"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="CrsIncomingDocCcView3Iterator" StaticList="false" Uses="LOV_EmployeeFk" id="EmployeeFk"/>
+    <attributeValues IterBinding="CrsIncomingDocCcView3Iterator" id="DisplayEmployeeFk">
+      <AttrNames>
+        <Item Value="DisplayEmployeeFk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsIncomingDocCcView3Iterator" id="ExecutionDateG">
+      <AttrNames>
+        <Item Value="ExecutionDateG"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsIncomingDocCcView3Iterator" id="ExecutionDateH">
+      <AttrNames>
+        <Item Value="ExecutionDateH"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsIncomingDocCcView3Iterator" id="DisplayNotes">
+      <AttrNames>
+        <Item Value="DisplayNotes"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CrsIncomingDocCcView3Iterator" id="DisplayIncomingDocGuidance">
+      <AttrNames>
+        <Item Value="DisplayIncomingDocGuidance"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="CrsIncomingDocCcView3Iterator" id="CreateInsertCrsIncomingDocCcView3"
+            InstanceName="AppModuleDataControl.CrsIncomingDocCcView3" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <tree IterBinding="CrsIncomingDocCcView3Iterator" id="CrsIncomingDocCcView3">
+      <nodeDefinition DefName="crs.model.vo.CrsIncomingDocCcView" Name="CrsIncomingDocCcView30">
+        <AttrNames>
+          <Item Value="IncomingDocCcPk"/>
+          <Item Value="IncomingDocumentsFk"/>
+          <Item Value="DepartmentsFk"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="ActionFk"/>
+          <Item Value="ExecutionDateG"/>
+          <Item Value="ExecutionDateH"/>
+          <Item Value="DisplayDepartmentsFk"/>
+          <Item Value="DisplayActionFk"/>
+          <Item Value="DisplayNotes"/>
+          <Item Value="EmployeeFk"/>
+          <Item Value="DisplayEmployeeFk"/>
+          <Item Value="ActionFkSearch"/>
+          <Item Value="DepartmentsFkSearch"/>
+          <Item Value="DisplayDepartmentsFkSearch"/>
+          <Item Value="DisplayActionFkSearch"/>
+          <Item Value="DisplayNotesSearch"/>
+          <Item Value="EmployeeFkSearch"/>
+          <Item Value="DisplayEmployeeFkSearch"/>
+          <Item Value="DisplayRejectReason"/>
+          <Item Value="DisplayIncomingDocGuidance"/>
+          <Item Value="IncomingDocStsFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="IncomingDocumentCCVwView1Iterator" id="IncomingDocumentsPk">
+      <AttrNames>
+        <Item Value="IncomingDocumentsPk"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SsoActiveLookupValuesVwView1Iterator" id="SsoActiveLookupValuesVwView1">
+      <nodeDefinition DefName="crs.model.ro.SsoActiveLookupValuesVwView" Name="SsoActiveLookupValuesVwView10">
+        <AttrNames>
+          <Item Value="SystemLookupValuesPk"/>
+          <Item Value="SystemLookupsFk"/>
+          <Item Value="ItemId"/>
+          <Item Value="ItemSeqNumber"/>
+          <Item Value="LookupValStatusFl"/>
+          <Item Value="DisplaySystemLookupsFk"/>
+          <Item Value="LanguagesFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

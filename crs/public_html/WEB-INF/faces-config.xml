@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="windows-1256" standalone="no"?><faces-config xmlns="http://java.sun.com/xml/ns/javaee" version="2.1">
+  <application>
+    <default-render-kit-id>oracle.adf.rich</default-render-kit-id>
+    <resource-bundle>
+      <base-name>crs.view.scrlabels</base-name>
+      <var>scrlabels</var>
+    </resource-bundle>
+    <view-handler>gen.common.CustomViewHandler</view-handler>
+    <locale-config>
+      <default-locale>ar</default-locale>
+    </locale-config>
+  </application>
+  <managed-bean>
+    <managed-bean-name>beneficiaries</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.BeneficiariesBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>departmentReference</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.DepartmentReferenceBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  
+  
+  <managed-bean>
+    <managed-bean-name>menu</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.MenuBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>internalDoc</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.InternalDocBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>indoc</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.IndocBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>outDocPreparation</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.OutDocPreparationBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>outDoc</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.OutDocBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>borrow</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.BorrowBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>deliveryStatement</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.DeliveryStatementBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  
+  <managed-bean>
+    <managed-bean-name>deliveryStatementScan</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.DeliveryStatementScanBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>taskList</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.TaskListBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>entryCountReport</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.EntryCountReportBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>inDocReport</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.InDocReportBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>outDocReport</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.OutDocReportBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>outDocPreparationReport</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.OutDocPreparationReportBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>borrowReport</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.BorrowReportBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>searchDoc</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.SearchDocBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>generalSearch</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.GeneralSearchBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>searchBeneficiaryDocument</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.SearchBeneficiaryDocumentBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>mainPage</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.MainPageBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <validator>
+    <validator-id>EmailValidator</validator-id>
+    <validator-class>gen.validator.EmailValidator</validator-class>
+  </validator>
+  <validator>
+    <validator-id>MobileNumberValidator</validator-id>
+    <validator-class>gen.validator.MobileNumberValidator</validator-class>
+  </validator>
+  <converter>
+    <converter-id>hijriDateConverter</converter-id>
+    <converter-class>com.sd.hijri.converter.HijriBigDecimalDateOnlyConverterRTL</converter-class>
+  </converter>
+  <converter>
+    <converter-id>hijriDateTimeWithoutSecondsConverter</converter-id>
+    <converter-class>com.sd.hijri.converter.HijriBigDecimalDateHourMinuteConverterRTL</converter-class>
+  </converter>
+  <converter>
+    <converter-id>hijriDateTimeWithSecondsConverter</converter-id>
+    <converter-class>com.sd.hijri.converter.HijriBigDecimalDateHourMinuteSecondConverterRTL</converter-class>
+  </converter>
+  
+  <managed-bean>
+    <managed-bean-name>docClass</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.DocClassBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>departmentGroups</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.DepartmentGroupsBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>crsTaskList</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.CrsTaskListBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+    <managed-bean>
+    <managed-bean-name>docCcDept</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.DocCcDeptBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+      <managed-bean>
+    <managed-bean-name>docCc</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.DocCcBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  
+  <!--<managed-bean>
+    <managed-bean-name>docAssignment</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.DocAssignmentBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>-->
+  
+  <managed-bean>
+    <managed-bean-name>returnedDoc</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.ReturnedDocBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>beneficiaries</from-outcome>
+      <to-view-id>/beneficiaries.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>departmentReference</from-outcome>
+      <to-view-id>/departmentReference.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>internalDoc</from-outcome>
+      <to-view-id>/internalDoc.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>indoc</from-outcome>
+      <to-view-id>/indoc.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>outDocPreparation</from-outcome>
+      <to-view-id>/outDocPreparation.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>outDoc</from-outcome>
+      <to-view-id>/outDoc.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>borrow</from-outcome>
+      <to-view-id>/borrow.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>deliveryStatement</from-outcome>
+      <to-view-id>/deliveryStatement.jspx</to-view-id>
+    </navigation-case>
+  
+  
+    <navigation-case>
+      <from-outcome>deliveryStatementScan</from-outcome>
+      <to-view-id>/deliveryStatementScan.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>taskList</from-outcome>
+      <to-view-id>/taskList.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>entryCountReport</from-outcome>
+      <to-view-id>/entryCountReport.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>inDocReport</from-outcome>
+      <to-view-id>/inDocReport.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>outDocReport</from-outcome>
+      <to-view-id>/outDocReport.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>outDocPreparationReport</from-outcome>
+      <to-view-id>/outDocPreparationReport.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>borrowReport</from-outcome>
+      <to-view-id>/borrowReport.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>searchDoc</from-outcome>
+      <to-view-id>/searchDoc.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>generalSearch</from-outcome>
+      <to-view-id>/generalSearch.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>searchBeneficiaryDocument</from-outcome>
+      <to-view-id>/searchBeneficiaryDocument.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>docClass</from-outcome>
+      <to-view-id>/docClass.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>departmentGroups</from-outcome>
+      <to-view-id>/departmentGroups.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>crsTaskList</from-outcome>
+      <to-view-id>/crsTaskList.jspx</to-view-id>
+    </navigation-case>
+  
+  
+    <navigation-case>
+      <from-outcome>docAssignment</from-outcome>
+      <to-view-id>/docAssignment.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>returnedDoc</from-outcome>
+      <to-view-id>/returnedDoc.jspx</to-view-id>
+    </navigation-case>
+  
+    <navigation-case>
+      <from-outcome>closedDoc</from-outcome>
+      <to-view-id>/closedDoc.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>closedDoc</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.ClosedDocBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+    <managed-bean>
+    <managed-bean-name>paginationManaged</managed-bean-name>
+    <managed-bean-class>crs.controller.bean.PaginationManaged</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+</faces-config>

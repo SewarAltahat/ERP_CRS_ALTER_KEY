@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject ComponentClass="gen.common.BaseViewObjectImpl" BindingStyle="JDBC"
+     CustomQuery="false"
+    FetchMode="FETCH_AS_NEEDED" FromListFlags="1"
+    InheritPersonalization="merge" Name="CrsBorrowRequestsTlView"
+    PageIterMode="Full" SelectAllAttributes="false" SelectListFlags="1"
+    Version="12.2.1.16.48" WhereFlags="1" xmlns="http://xmlns.oracle.com/bc4j">
+    <EntityUsage Entity="crs.model.eo.CrsBorrowRequestsTl" Name="CrsBorrowRequestsTl"/>
+    <ViewAttribute AliasName="BORROW_REQUESTS_TL_PK"
+        EntityAttrName="BorrowRequestsTlPk"
+        EntityUsage="CrsBorrowRequestsTl" IsNotNull="true"
+        Name="BorrowRequestsTlPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsBorrowRequestsTl.BorrowRequestsTlPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="REQUEST_REASON"
+        EntityAttrName="RequestReason" EntityUsage="CrsBorrowRequestsTl"
+        Name="RequestReason" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsBorrowRequestsTl.RequestReason']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="NOTES" EntityAttrName="Notes"
+        EntityUsage="CrsBorrowRequestsTl" Name="Notes" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsBorrowRequestsTl.Notes']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="LANGUAGES_FK" EntityAttrName="LanguagesFk"
+        EntityUsage="CrsBorrowRequestsTl" LOVName="LOV_LanguagesFk"
+        Name="LanguagesFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE Value="input_text_lov"/>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsBorrowRequestsTl.LanguagesFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="BORROW_REQUESTS_FK"
+        EntityAttrName="BorrowRequestsFk"
+        EntityUsage="CrsBorrowRequestsTl" LOVName="LOV_BorrowRequestsFk"
+        Name="BorrowRequestsFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE Value="input_text_lov"/>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsBorrowRequestsTl.BorrowRequestsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="CrsBorrowRequestsTl" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate" EntityUsage="CrsBorrowRequestsTl"
+        Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="CrsBorrowRequestsTl" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate" EntityUsage="CrsBorrowRequestsTl"
+        Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk"
+        EntityUsage="CrsBorrowRequestsTl" Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAccessor Name="CrsBorrowRequestsBorrowRequestsFk" ViewObjectName="crs.model.vo.CrsBorrowRequestsView"/>
+    <ListBinding ListRangeSize="10"
+        ListVOName="CrsBorrowRequestsBorrowRequestsFk" MRUCount="0"
+        Name="LOV_BorrowRequestsFk" NullValueFlag="none" NullValueId="LOV_BorrowRequestsFk_LOVUIHints_NullValueId">
+        <AttrArray Name="AttrNames">
+            <Item Value="BorrowRequestsFk"/>
+        </AttrArray>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="BorrowRequestsFkDesc"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="BorrowRequestsPk"/>
+            <Item Value="BorrowRequestsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="BorrowRequestsPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute"/>
+    </ListBinding>
+    <ViewAttribute AliasName="BorrowRequestsFkDesc"
+        ColumnType="VARCHAR2"
+        Expression="select a.BORROW_REQUESTS_PK from CRS_BORROW_REQUESTS a where a.BORROW_REQUESTS_PK=CrsBorrowRequestsTl.BORROW_REQUESTS_FK"
+        IsPersistent="false" Name="BorrowRequestsFkDesc"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['CrsBorrowRequests.BorrowRequestsPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAccessor Name="SsoLanguagesLanguagesFk" ViewObjectName="crs.model.ro.SsoLanguagesVwView"/>
+    <ListBinding ListRangeSize="10" ListVOName="SsoLanguagesLanguagesFk"
+        MRUCount="0" Name="LOV_LanguagesFk" NullValueFlag="none" NullValueId="LOV_LanguagesFk_LOVUIHints_NullValueId">
+        <AttrArray Name="AttrNames">
+            <Item Value="LanguagesFk"/>
+        </AttrArray>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="LanguagesFkDesc"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="LanguagesPk"/>
+            <Item Value="LanguagesPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="LanguagesPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute"/>
+    </ListBinding>
+    <ViewAttribute AliasName="LanguagesFkDesc" ColumnType="VARCHAR2"
+        Expression="select a.LANGUAGES_PK from SSO_LANGUAGES_VW a where a.LANGUAGES_PK=CrsBorrowRequestsTl.LANGUAGES_FK"
+        IsPersistent="false" Name="LanguagesFkDesc" SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['SsoLanguages.LanguagesPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" version="2.1">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="Doc1" title="#{menu.resourceLabelMap['menu.docClass']}" uncommittedDataWarning="on">
+      <af:messages id="m1"/>
+      <af:form id="form1">
+        <af:pageTemplate id="page1" viewId="/templateDef.jspx">
+          <f:attribute name="pageTitle" value="#{menu.resourceLabelMap['menu.docClass']}"/>
+          <f:facet name="main">
+            <af:panelGroupLayout id="pg1" layout="scroll">
+              <af:panelBox styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['menu.docClass']}">
+                <af:panelGroupLayout id="pgl12">
+                  <af:panelStretchLayout dimensionsFrom="children" id="psl13" styleClass="AFStretchWidth">
+                    <f:facet name="center">
+                      <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem" id="pc1" styleClass="AFStretchWidth">
+                        <f:facet name="secondaryToolbar">
+                          <af:toolbar id="tb1">
+                            <af:commandButton action="#{menu.genericDeleteAction}"
+                                              disabled="#{!menu.deleteAllowed or !bindings.DeleteCrsDocClassView1.enabled}" icon="#{menu.deleteIcon}" id="Del1" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.delete']}" styleClass="deleteButton">
+                              <af:setPropertyListener from="DeleteCrsDocClassView1" to="#{sessionScope.deleteParam}" type="action"/>
+                              <af:setPropertyListener from="CrsDocClass1 pb1" to="#{sessionScope.refreshParam}" type="action"/>
+                              <af:setPropertyListener from="CrsDocClassView1" to="#{sessionScope.viewParam}" type="action"/>
+                            </af:commandButton>
+                            <af:spacer width="5"/>
+                            <af:commandButton actionListener="#{bindings.CreateInsertCrsDocClassView1.execute}" disabled="#{!menu.insertAllowed}" icon="#{menu.createInsertIcon}" id="ci1" partialSubmit="true" text="#{menu.resourceLabelMap['label.createInsert']}" styleClass="insertButton"/>
+                            <af:spacer width="5"/>
+                            <af:commandButton actionListener="#{bindings.Commit.execute}" disabled="#{!menu.updateAllowed}" icon="#{menu.commitIcon}" id="Commit1" partialSubmit="true" text="#{menu.resourceLabelMap['label.commit']}" styleClass="commitButton"/>
+                            <af:spacer width="5"/>
+                            <af:commandButton actionListener="#{bindings.Rollback.execute}" icon="#{menu.rollbackIcon}" id="rb1" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.rollback']}" styleClass="rollbackButton" visible="#{menu.rollbackVisible}">
+                              <af:resetActionListener/>
+                            </af:commandButton>
+                            <af:spacer width="5"/>
+                            <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print1" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.print']}" styleClass="printButton" visible="#{menu.printVisible}">
+                              <af:showPrintablePageBehavior/>
+                            </af:commandButton>
+                            <af:spacer width="5"/>
+                            <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel1" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.excel']}" styleClass="excelButton" visible="#{menu.excelVisible}">
+                              <af:setPropertyListener from="CrsDocClass1" to="#{sessionScope.tableId}" type="action"/>
+                              <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                            </af:commandButton>
+                            <af:spacer width="5"/>
+                            <af:commandButton disabled="#{!bindings.DeleteCrsDocClassView1.enabled  or bindings.DocClassPk.inputValue == null}" icon="#{menu.translationIcon}" id="translation1" immediate="true" partialSubmit="true" partialTriggers="Commit1 rb1" text="#{menu.resourceLabelMap['label.translation']}" styleClass="printButton">
+                              <af:showPopupBehavior popupId="::CrsDocClassTlPopup" triggerType="action"/>
+                            </af:commandButton>
+                            <af:spacer width="5"/>
+                          </af:toolbar>
+                        </f:facet>
+                        <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple" columnStretching="column:DisplayDocClassC11" displayRow="selected" editingMode="editAll" emptyText="#{bindings.CrsDocClassView1.viewable ? menu.emptyText : menu.accessDeniedText}" fetchSize="#{bindings.CrsDocClassView1.rangeSize}" filterModel="#{bindings.CrsDocClassView1CriteriaQuery.queryDescriptor}" filterVisible="false" id="CrsDocClass1" partialTriggers="::ci1 :::CrsDocClassTlDialog  ::Commit1 " queryListener="#{bindings.CrsDocClassView1CriteriaQuery.processQuery}" rowBandingInterval="1" rowSelection="single" rows="#{bindings.CrsDocClassView1.rangeSize}" scrollPolicy="page" selectedRowKeys="#{bindings.CrsDocClassView1.collectionModel.selectedRow}" selectionListener="#{bindings.CrsDocClassView1.collectionModel.makeCurrent}" styleClass="AFStretchWidth t50" value="#{bindings.CrsDocClassView1.collectionModel}" var="row" varStatus="vs" verticalGridVisible="false">
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsDocClass.DocClassPk']}" id="DocClassPkC3" sortProperty="DocClassPk" sortable="true"
+                                     width="150">
+                            <af:inputText columns="#{bindings.CrsDocClassView1.hints.DocClassPk.displayWidth}" id="crsDocClassDocclasspk" label="#{menu.resourceLabelMap['CrsDocClass.DocClassPk']}" maximumLength="#{bindings.CrsDocClassView1.hints.DocClassPk.precision}" readOnly="true" required="#{bindings.CrsDocClassView1.hints.DocClassPk.mandatory}" value="#{row.bindings.DocClassPk.inputValue}">
+                              <af:convertNumber groupingUsed="false" pattern="#{row.bindings.DocClassPk.format}"/>
+                              <f:validator binding="#{row.bindings.DocClassPk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsDocClassTl.DocClass']}" id="DisplayDocClassC11" showRequired="true" sortProperty="DisplayDocClassSearch" sortable="true"
+                                     width="200">
+                            <af:inputText autoSubmit="true" columns="#{bindings.CrsDocClassView1.hints.DisplayDocClass.displayWidth}" id="crsDocClassDisplaydocclass" label="#{menu.resourceLabelMap['CrsDocClassTl.DocClass']}" maximumLength="#{bindings.CrsDocClassView1.hints.DisplayDocClass.precision}" required="true" value="#{row.bindings.DisplayDocClass.inputValue}" valueChangeListener="#{docClass.displayDocClassChanged}">
+                              <f:validator binding="#{row.bindings.DisplayDocClass.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsDocClass.DistributionTypeFk']}" id="c1" showRequired="true" sortProperty="DistributionTypeFkSearch" sortable="true"
+                                     width="150">
+                            <af:inputListOfValues autoSubmit="true" columns="#{bindings.CrsDocClassView1.hints.DistributionTypeFk.displayWidth}" id="distributionTypeFkId" label="#{menu.resourceLabelMap['CrsDocClass.DistributionTypeFk']}" model="#{row.bindings.DistributionTypeFk.listOfValuesModel}" popupTitle="#{menu.resourceLabelMap['CrsDocClass.DistributionTypeFk']}" required="true" value="#{row.bindings.DistributionTypeFk.inputValue}">
+                              <f:validator binding="#{row.bindings.DistributionTypeFk.validator}"/>
+                              <af:convertNumber groupingUsed="false" pattern="#{bindings.CrsDocClassView1.hints.DistributionTypeFk.format}"/>
+                            </af:inputListOfValues>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsDocClass.DisplayDistributionTypeFk']}" id="DisplayDistributionTypeFkC10" sortProperty="DisplayDistributionTypeFkSearch" sortable="true"
+                                     width="200">
+                            <af:inputText autoSubmit="true" columns="#{bindings.CrsDocClassView1.hints.DisplayDistributionTypeFk.displayWidth}" id="crsDocClassDisplaydistributiontypefk" label="#{menu.resourceLabelMap['CrsDocClass.DisplayDistributionTypeFk']}" maximumLength="#{bindings.CrsDocClassView1.hints.DisplayDistributionTypeFk.precision}" partialTriggers="distributionTypeFkId" readOnly="true" required="#{bindings.CrsDocClassView1.hints.DisplayDistributionTypeFk.mandatory}" value="#{row.bindings.DisplayDistributionTypeFk.inputValue}">
+                              <f:validator binding="#{row.bindings.DisplayDistributionTypeFk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </f:facet>
+                  </af:panelStretchLayout>
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <af:spacer width="5" rendered="false"/>
+              
+              <af:panelBox id="pb1" partialTriggers="pc1:Commit1 pc1:CrsDocClass1 " styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['label.GroupDepartmentDetails']}" visible="#{bindings.DistributionTypeFk.inputValue==244}">
+                <af:panelGroupLayout id="pgl29">
+                  <af:panelStretchLayout dimensionsFrom="children" id="psl30" styleClass="AFStretchWidth">
+                    <f:facet name="center">
+                      <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem" id="pc14" styleClass="AFStretchWidth">
+                        <f:facet name="secondaryToolbar">
+                          <af:toolbar id="tb2">
+                            <af:commandButton action="#{menu.genericDeleteAction}"
+                                              disabled="#{!menu.deleteAllowed or !bindings.DeleteCrsDocClassCcView2.enabled}" icon="#{menu.deleteIcon}" id="Del2" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.delete']}" styleClass="deleteButton">
+                              <af:setPropertyListener from="DeleteCrsDocClassCcView2" to="#{sessionScope.deleteParam}" type="action"/>
+                              <af:setPropertyListener from="CrsDocClassCc1" to="#{sessionScope.refreshParam}" type="action"/>
+                              <af:setPropertyListener from="CrsDocClassCcView2" to="#{sessionScope.viewParam}" type="action"/>
+                            </af:commandButton>
+                            <af:spacer id="s13" width="5"/>
+                            <af:commandButton actionListener="#{bindings.CreateInsertCrsDocClassCcView2.execute}"
+                                              disabled="#{!menu.insertAllowed or !bindings.DeleteCrsDocClassView1.enabled or bindings.DocClassPk.inputValue==null}" icon="#{menu.createInsertIcon}" id="ci2" partialSubmit="true" text="#{menu.resourceLabelMap['label.createInsert']}" styleClass="insertButton"/>
+                            <af:spacer id="s14" width="5"/>
+                            <af:commandButton actionListener="#{bindings.Commit.execute}" disabled="#{!menu.updateAllowed}" icon="#{menu.commitIcon}" id="Commit2" partialSubmit="true" text="#{menu.resourceLabelMap['label.commit']}" styleClass="commitButton"/>
+                            <af:spacer id="s15" width="5"/>
+                            <af:commandButton actionListener="#{bindings.Rollback.execute}" icon="#{menu.rollbackIcon}" id="rb2" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.rollback']}" styleClass="rollbackButton" visible="#{menu.rollbackVisible}">
+                              <af:resetActionListener/>
+                            </af:commandButton>
+                            <af:spacer id="s16" width="5"/>
+                            <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print2" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.print']}" styleClass="printButton" visible="#{menu.printVisible}">
+                              <af:showPrintablePageBehavior/>
+                            </af:commandButton>
+                            <af:spacer id="s17" width="5"/>
+                            <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel2" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.excel']}" styleClass="excelButton" visible="#{menu.excelVisible}">
+                              <af:setPropertyListener from="CrsDocClassCc1" to="#{sessionScope.tableId}" type="action"/>
+                              <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                            </af:commandButton>
+                            <af:spacer id="s18" width="5"/>
+                            <af:commandButton disabled="#{!bindings.DeleteCrsDocClassCcView2.enabled  or bindings.DocClassCcPk.inputValue == null}" icon="#{menu.translationIcon}" id="translation2" immediate="true" partialSubmit="true" partialTriggers="Commit2 rb2" text="#{menu.resourceLabelMap['label.translation']}" styleClass="printButton">
+                              <af:showPopupBehavior popupId="::CrsDocClassCcTlPopup" triggerType="action"/>
+                            </af:commandButton>
+                            <af:spacer id="s19" width="5"/>
+                          </af:toolbar>
+                        </f:facet>
+                        <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple" columnStretching="last" displayRow="selected" editingMode="editAll" emptyText="#{bindings.CrsDocClassCcView1.viewable ? menu.emptyText : menu.accessDeniedText}" fetchSize="#{bindings.CrsDocClassCcView1.rangeSize}" filterModel="#{bindings.CrsDocClassCcView1CriteriaQuery.queryDescriptor}" filterVisible="false" id="CrsDocClassCc1"
+                                  partialTriggers=":::pc1:ci1 :::pc1:CrsDocClass1  ::ci2 ::Commit2  :::CrsDocClassCcTlDialog " queryListener="#{bindings.CrsDocClassCcView1CriteriaQuery.processQuery}" rowBandingInterval="1" rowSelection="single" rows="#{bindings.CrsDocClassCcView1.rangeSize}" scrollPolicy="page" selectedRowKeys="#{bindings.CrsDocClassCcView1.collectionModel.selectedRow}" selectionListener="#{bindings.CrsDocClassCcView1.collectionModel.makeCurrent}"
+                                  styleClass="AFStretchWidth t50" value="#{bindings.CrsDocClassCcView1.collectionModel}" var="row" varStatus="vs" verticalGridVisible="false">
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsDocClassCc.DocClassCcPk']}" id="DocClassCcPkC16" sortProperty="DocClassCcPk" sortable="true"
+                                     width="200">
+                            <af:inputText columns="#{bindings.CrsDocClassCcView1.hints.DocClassCcPk.displayWidth}" id="crsDocClassCcDocclassccpk" label="#{menu.resourceLabelMap['CrsDocClassCc.DocClassCcPk']}" maximumLength="#{bindings.CrsDocClassCcView1.hints.DocClassCcPk.precision}" readOnly="true" required="#{bindings.CrsDocClassCcView1.hints.DocClassCcPk.mandatory}" value="#{row.bindings.DocClassCcPk.inputValue}">
+                              <af:convertNumber groupingUsed="false" pattern="#{row.bindings.DocClassCcPk.format}"/>
+                              <f:validator binding="#{row.bindings.DocClassCcPk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsDocClassCc.DepartmentsFk']}" id="c2" showRequired="true" sortProperty="DepartmentsFkSearch" sortable="true"
+                                     width="150">
+                            <af:inputListOfValues autoSubmit="true" columns="#{bindings.CrsDocClassCcView1.hints.DepartmentsFk.displayWidth}" id="departmentsFkId" label="#{menu.resourceLabelMap['CrsDocClassCc.DepartmentsFk']}" model="#{row.bindings.DepartmentsFk.listOfValuesModel}" popupTitle="#{menu.resourceLabelMap['CrsDocClassCc.DepartmentsFk']}" required="true" value="#{row.bindings.DepartmentsFk.inputValue}">
+                              <f:validator binding="#{row.bindings.DepartmentsFk.validator}"/>
+                              <af:convertNumber groupingUsed="false" pattern="#{bindings.CrsDocClassCcView1.hints.DepartmentsFk.format}"/>
+                            </af:inputListOfValues>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsDocClassCc.DisplayDepartmentsFk']}" id="DisplayDepartmentsFkC26" sortProperty="DisplayDepartmentsFkSearch" sortable="true"
+                                     width="200">
+                            <af:inputText autoSubmit="true" columns="#{bindings.CrsDocClassCcView1.hints.DisplayDepartmentsFk.displayWidth}" id="crsDocClassCcDisplaydepartmentsfk" label="#{menu.resourceLabelMap['CrsDocClassCc.DepartmentsFk']}" maximumLength="#{bindings.CrsDocClassCcView1.hints.DisplayDepartmentsFk.precision}" partialTriggers="departmentsFkId" readOnly="true" required="#{bindings.CrsDocClassCcView1.hints.DisplayDepartmentsFk.mandatory}" value="#{row.bindings.DisplayDepartmentsFk.inputValue}">
+                              <f:validator binding="#{row.bindings.DisplayDepartmentsFk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsDocClassCc.ActionFk']}" id="ActionFkC19" sortProperty="ActionFkSearch" sortable="true"
+                                     width="150">
+                            <af:inputListOfValues autoSubmit="true" columns="#{bindings.CrsDocClassCcView1.hints.ActionFk.displayWidth}" id="actionFkId" model="#{row.bindings.ActionFk.listOfValuesModel}" popupTitle="#{menu.resourceLabelMap['CrsDocClassCc.ActionFk']}" required="#{bindings.CrsDocClassCcView1.hints.ActionFk.mandatory}" value="#{row.bindings.ActionFk.inputValue}">
+                              <f:validator binding="#{row.bindings.ActionFk.validator}"/>
+                              <af:convertNumber groupingUsed="false" pattern="#{bindings.CrsDocClassCcView1.hints.ActionFk.format}"/>
+                            </af:inputListOfValues>
+                          </af:column>
+                         
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsDocClassCc.ActionFk']}" id="DisplayActionFkC27" sortProperty="DisplayActionFkSearch" sortable="true"
+                                     width="150">
+                            <af:inputText autoSubmit="true" columns="#{bindings.CrsDocClassCcView1.hints.DisplayActionFk.displayWidth}" id="crsDocClassCcDisplayactionfk" label="#{menu.resourceLabelMap['CrsDocClassCc.ActionFk']}" maximumLength="#{bindings.CrsDocClassCcView1.hints.DisplayActionFk.precision}" partialTriggers="actionFkId" readOnly="true" required="#{bindings.CrsDocClassCcView1.hints.DisplayActionFk.mandatory}" value="#{row.bindings.DisplayActionFk.inputValue}">
+                              <f:validator binding="#{row.bindings.DisplayActionFk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsDocClassCcTl.Notes']}" id="DisplayNotesC28" sortProperty="DisplayNotesSearch" sortable="true"
+                                     width="200">
+                            <af:inputText autoSubmit="true" columns="#{bindings.CrsDocClassCcView1.hints.DisplayNotes.displayWidth}" id="crsDocClassCcDisplaynotes" label="#{menu.resourceLabelMap['CrsDocClassCcTl.Notes']}" maximumLength="#{bindings.CrsDocClassCcView1.hints.DisplayNotes.precision}" required="#{bindings.CrsDocClassCcView1.hints.DisplayNotes.mandatory}" value="#{row.bindings.DisplayNotes.inputValue}" valueChangeListener="#{docClass.displayNotesChanged}">
+                              <f:validator binding="#{row.bindings.DisplayNotes.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          
+                        </af:table>
+                      </af:panelCollection>
+                    </f:facet>
+                  </af:panelStretchLayout>
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <af:popup contentDelivery="lazyUncached" id="CrsDocClassTlPopup" popupCanceledListener="#{docClass.cancelCrsDocClassTlTranslation}">
+                <af:dialog dialogListener="#{docClass.commitCrsDocClassTlTranslation}" id="CrsDocClassTlDialog" type="okCancel">
+                  <af:panelTabbed dimensionsFrom="disclosedChild" id="pt1" styleClass="AFStretchWidth">
+                    <af:showDetailItem id="sdi1" styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['label.translation']}">
+                      <af:panelStretchLayout dimensionsFrom="children" id="psl43" styleClass="AFStretchWidth">
+                        <f:facet name="center">
+                          <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem" id="pc31" styleClass="AFStretchWidth">
+                            <f:facet name="secondaryToolbar">
+                              <af:toolbar id="tb3">
+                                <af:commandButton actionListener="#{bindings.Commit.execute}" disabled="#{!menu.updateAllowed}" icon="#{menu.commitIcon}" id="Commit3" partialSubmit="true" rendered="false" text="#{menu.resourceLabelMap['label.commit']}" styleClass="commitButton"/>
+                                <af:spacer id="s3" width="5"/>
+                                <af:commandButton actionListener="#{bindings.Rollback.execute}" icon="#{menu.rollbackIcon}" id="rb3" immediate="true" partialSubmit="true" rendered="false" text="#{menu.resourceLabelMap['label.rollback']}" styleClass="rollbackButton" visible="#{menu.rollbackVisible}">
+                                  <af:resetActionListener/>
+                                </af:commandButton>
+                                <af:spacer id="s4" width="5"/>
+                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print3" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.print']}" styleClass="printButton" visible="#{menu.printVisible}">
+                                  <af:showPrintablePageBehavior/>
+                                </af:commandButton>
+                                <af:spacer id="s5" width="5"/>
+                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel3" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.excel']}" styleClass="excelButton" visible="#{menu.excelVisible}">
+                                  <af:setPropertyListener from="CrsDocClassTl1" to="#{sessionScope.tableId}" type="action"/>
+                                  <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                                </af:commandButton>
+                                <af:spacer id="s6" width="5"/>
+                              </af:toolbar>
+                            </f:facet>
+                            <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple" columnStretching="last" displayRow="selected" editingMode="editAll" emptyText="#{bindings.CrsDocClassTlView1.viewable ? menu.emptyText : menu.accessDeniedText}" fetchSize="#{bindings.CrsDocClassTlView1.rangeSize}" filterModel="#{bindings.CrsDocClassTlView1CriteriaQuery.queryDescriptor}" filterVisible="false" id="CrsDocClassTl1"
+                                      partialTriggers=":::pc1:ci1 :::pc1:CrsDocClass1" queryListener="#{bindings.CrsDocClassTlView1CriteriaQuery.processQuery}" rowBandingInterval="1" rowSelection="single" rows="#{bindings.CrsDocClassTlView1.rangeSize}" scrollPolicy="page" selectedRowKeys="#{bindings.CrsDocClassTlView1.collectionModel.selectedRow}" selectionListener="#{bindings.CrsDocClassTlView1.collectionModel.makeCurrent}" styleClass="AFStretchWidth" value="#{bindings.CrsDocClassTlView1.collectionModel}" var="row" varStatus="vs" verticalGridVisible="false">
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsDocClassTl.LanguagesFk']}" id="LanguagesFkC35" sortProperty="LanguagesFk" sortable="true" width="150">
+                                <af:selectOneChoice autoSubmit="false" id="crsDocClassTlLanguagesfk" label="#{menu.resourceLabelMap['CrsDocClassTl.LanguagesFk']}" readOnly="true" required="#{bindings.CrsDocClassTlView1.hints.LanguagesFk.mandatory}" value="#{row.bindings.LanguagesFk.inputValue}">
+                                  <f:selectItems id="LanguagesFk1" value="#{row.bindings.LanguagesFk.items}"/>
+                                </af:selectOneChoice>
+                              </af:column>
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsDocClassTl.DocClass']}" id="DocClassC36" showRequired="true" sortProperty="DocClassSearch" sortable="true">
+                                <af:inputText autoSubmit="true" columns="#{bindings.CrsDocClassTlView1.hints.DocClass.displayWidth}" id="crsDocClassTlDocclass" label="#{menu.resourceLabelMap['CrsDocClassTl.DocClass']}" maximumLength="#{bindings.CrsDocClassTlView1.hints.DocClass.precision}" required="true" value="#{row.bindings.DocClass.inputValue}">
+                                  <f:validator binding="#{row.bindings.DocClass.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                            
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:showDetailItem>
+                  </af:panelTabbed>
+                </af:dialog>
+              </af:popup>
+              <af:popup contentDelivery="lazyUncached" id="CrsDocClassCcTlPopup" popupCanceledListener="#{docClass.cancelCrsDocClassCcTlTranslation}">
+                <af:dialog dialogListener="#{docClass.commitCrsDocClassCcTlTranslation}" id="CrsDocClassCcTlDialog" type="okCancel">
+                  <af:panelTabbed dimensionsFrom="disclosedChild" id="pt2" styleClass="AFStretchWidth">
+                    <af:showDetailItem id="sdi2" styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['label.translation']}">
+                      <af:panelStretchLayout dimensionsFrom="children" id="psl56" styleClass="AFStretchWidth">
+                        <f:facet name="center">
+                          <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem" id="pc44" styleClass="AFStretchWidth">
+                            <f:facet name="secondaryToolbar">
+                              <af:toolbar id="tb4">
+                                <af:commandButton actionListener="#{bindings.Commit.execute}" disabled="#{!menu.updateAllowed}" icon="#{menu.commitIcon}" id="Commit4" partialSubmit="true" rendered="false" text="#{menu.resourceLabelMap['label.commit']}" styleClass="commitButton"/>
+                                <af:spacer id="s9" width="5"/>
+                                <af:commandButton actionListener="#{bindings.Rollback.execute}" icon="#{menu.rollbackIcon}" id="rb4" immediate="true" partialSubmit="true" rendered="false" text="#{menu.resourceLabelMap['label.rollback']}" styleClass="rollbackButton" visible="#{menu.rollbackVisible}">
+                                  <af:resetActionListener/>
+                                </af:commandButton>
+                                <af:spacer id="s10" width="5"/>
+                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print4" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.print']}" styleClass="printButton" visible="#{menu.printVisible}">
+                                  <af:showPrintablePageBehavior/>
+                                </af:commandButton>
+                                <af:spacer id="s11" width="5"/>
+                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel4" immediate="true" partialSubmit="true" text="#{menu.resourceLabelMap['label.excel']}" styleClass="excelButton" visible="#{menu.excelVisible}">
+                                  <af:setPropertyListener from="CrsDocClassCcTl1" to="#{sessionScope.tableId}" type="action"/>
+                                  <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                                </af:commandButton>
+                                <af:spacer id="s12" width="5"/>
+                              </af:toolbar>
+                            </f:facet>
+                            <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple" columnStretching="last" displayRow="selected" editingMode="editAll" emptyText="#{bindings.CrsDocClassCcTlView1.viewable ? menu.emptyText : menu.accessDeniedText}" fetchSize="#{bindings.CrsDocClassCcTlView1.rangeSize}" filterModel="#{bindings.CrsDocClassCcTlView1CriteriaQuery.queryDescriptor}" filterVisible="false" id="CrsDocClassCcTl1"  queryListener="#{bindings.CrsDocClassCcTlView1CriteriaQuery.processQuery}" rowBandingInterval="1" rowSelection="single" rows="#{bindings.CrsDocClassCcTlView1.rangeSize}" scrollPolicy="page" selectedRowKeys="#{bindings.CrsDocClassCcTlView1.collectionModel.selectedRow}" selectionListener="#{bindings.CrsDocClassCcTlView1.collectionModel.makeCurrent}" styleClass="AFStretchWidth" value="#{bindings.CrsDocClassCcTlView1.collectionModel}" var="row" varStatus="vs" verticalGridVisible="false">
+                            
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsDocClassCcTl.LanguagesFk']}" id="LanguagesFkC48" sortProperty="LanguagesFk" sortable="true" width="150">
+                                <af:selectOneChoice autoSubmit="false" id="crsDocClassCcTlLanguagesfk" label="#{menu.resourceLabelMap['CrsDocClassCcTl.LanguagesFk']}" readOnly="true" required="#{bindings.CrsDocClassCcTlView1.hints.LanguagesFk.mandatory}" value="#{row.bindings.LanguagesFk.inputValue}">
+                                  <f:selectItems id="LanguagesFk2" value="#{row.bindings.LanguagesFk.items}"/>
+                                </af:selectOneChoice>
+                              </af:column>
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true" headerText="#{menu.resourceLabelMap['CrsDocClassCcTl.Notes']}" id="NotesC49" sortProperty="NotesSearch" sortable="true">
+                                <af:inputText columns="#{bindings.CrsDocClassCcTlView1.hints.Notes.displayWidth}" id="crsDocClassCcTlNotes" label="#{menu.resourceLabelMap['CrsDocClassCcTl.Notes']}" maximumLength="#{bindings.CrsDocClassCcTlView1.hints.Notes.precision}" required="#{bindings.CrsDocClassCcTlView1.hints.Notes.mandatory}" value="#{row.bindings.Notes.inputValue}">
+                                  <f:validator binding="#{row.bindings.Notes.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:showDetailItem>
+                  </af:panelTabbed>
+                </af:dialog>
+              </af:popup>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

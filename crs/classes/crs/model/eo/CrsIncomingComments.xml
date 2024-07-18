@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity AliasName="CrsIncomingComments" BindingStyle="JDBC"
+    DBObjectName="CRS_INCOMING_COMMENTS" DBObjectType="table"
+    InheritPersonalization="merge" Name="CrsIncomingComments"
+    RowClass="crs.model.eo.CrsIncomingCommentsImpl"
+    Version="12.2.1.12.24" xmlns="http://xmlns.oracle.com/bc4j">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Attribute ColumnName="INCOMING_COMMENTS_PK" ColumnType="NUMBER" Name="IncomingCommentsPk" PrimaryKey="true"
+        SQLType="NUMERIC" TableName="CRS_INCOMING_COMMENTS" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="INCOMING_DOCUMENTS_FK" ColumnType="NUMBER"
+        Name="IncomingDocumentsFk" SQLType="NUMERIC"
+        TableName="CRS_INCOMING_COMMENTS" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATED_BY" ColumnType="NUMBER"
+        Name="CreatedBy" SQLType="NUMERIC"
+        TableName="CRS_INCOMING_COMMENTS" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATION_DATE" ColumnType="TIMESTAMP"
+        Name="CreationDate" SQLType="TIMESTAMP"
+        TableName="CRS_INCOMING_COMMENTS" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="MODIFIED_BY" ColumnType="NUMBER"
+        Name="ModifiedBy" SQLType="NUMERIC"
+        TableName="CRS_INCOMING_COMMENTS" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="MODIFIED_DATE" ColumnType="TIMESTAMP"
+        Name="ModifiedDate" SQLType="TIMESTAMP"
+        TableName="CRS_INCOMING_COMMENTS" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="USER_DEPARTMENT_FK" ColumnType="NUMBER"
+        Name="UserDepartmentFk" SQLType="NUMERIC"
+        TableName="CRS_INCOMING_COMMENTS" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="$none$" ColumnType="CHAR"
+        IsPersistent="false" Name="DisplayCommentValue" Precision="500"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <AccessorAttribute
+        Association="crs.model.assoc.CrsIncomingCommentsTlFk1Assoc"
+        AssociationEnd="crs.model.assoc.CrsIncomingCommentsTlFk1Assoc.CrsIncomingCommentsTl"
+        AssociationOtherEnd="crs.model.assoc.CrsIncomingCommentsTlFk1Assoc.CrsIncomingComments"
+        IsUpdateable="true" Name="CrsIncomingCommentsTl" Type="oracle.jbo.RowIterator"/>
+    <AccessorAttribute
+        Association="crs.model.assoc.CrsIncomingCommentsFk1Assoc"
+        AssociationEnd="crs.model.assoc.CrsIncomingCommentsFk1Assoc.CrsIncomingDocuments"
+        AssociationOtherEnd="crs.model.assoc.CrsIncomingCommentsFk1Assoc.CrsIncomingComments"
+        IsUpdateable="true" Name="CrsIncomingDocuments" Type="crs.model.eo.CrsIncomingDocumentsImpl"/>
+    <Key Name="CrsIncomingCommentsPk" PrimaryKey="true">
+        <DesignTime>
+            <Attr Name="_DBObjectName" Value="CRS_INCOMING_COMMENTS_PK"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsIncomingComments.IncomingCommentsPk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsIncomingCommentsFk1">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="CRS_INCOMING_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_INCOMING_COMMENTS_FK1"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsIncomingComments.IncomingDocumentsFk"/>
+        </AttrArray>
+    </Key>
+</Entity>
+<!---->

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity AliasName="CrsFilesLocation" BindingStyle="JDBC"
+    DBObjectName="CRS_FILES_LOCATION" DBObjectType="table"
+    InheritPersonalization="merge" Name="CrsFilesLocation"
+    Version="12.2.1.12.24"
+    xmlns="http://xmlns.oracle.com/bc4j" xmlns:validation="http://xmlns.oracle.com/adfm/validation"
+    RowClass="crs.model.eo.CrsFilesLocationImpl">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access|DML"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Attribute ColumnName="FILES_LOCATION_PK" ColumnType="NUMBER"
+        Name="FilesLocationPk" PrimaryKey="true" SQLType="NUMERIC"
+        TableName="CRS_FILES_LOCATION" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="MAIN_LOCATION_FK" ColumnType="NUMBER"
+        Name="MainLocationFk" SQLType="NUMERIC"
+        TableName="CRS_FILES_LOCATION" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="DEPARTMENTS_FK" ColumnType="NUMBER"
+        Name="DepartmentsFk" SQLType="NUMERIC"
+        TableName="CRS_FILES_LOCATION" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATED_BY" ColumnType="NUMBER"
+        Name="CreatedBy" SQLType="NUMERIC"
+        TableName="CRS_FILES_LOCATION" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATION_DATE" ColumnType="TIMESTAMP"
+        Name="CreationDate" SQLType="TIMESTAMP"
+        TableName="CRS_FILES_LOCATION" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="MODIFIED_BY" ColumnType="NUMBER"
+        Name="ModifiedBy" SQLType="NUMERIC"
+        TableName="CRS_FILES_LOCATION" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="MODIFIED_DATE" ColumnType="TIMESTAMP"
+        Name="ModifiedDate" SQLType="TIMESTAMP"
+        TableName="CRS_FILES_LOCATION" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="USER_DEPARTMENT_FK" ColumnType="NUMBER"
+        Name="UserDepartmentFk" SQLType="NUMERIC"
+        TableName="CRS_FILES_LOCATION" Type="java.math.BigDecimal"/>
+    <Attribute
+        ColumnType="CHAR"
+        IsPersistent="false"
+        Name="DisplayFileLocationDesc"
+        Precision="200"
+        SQLType="VARCHAR"
+        Type="java.lang.String"
+        ColumnName="$none$"/>
+    <AccessorAttribute
+        Association="crs.model.assoc.CrsFilesLocationFk1Assoc"
+        AssociationEnd="crs.model.assoc.CrsFilesLocationFk1Assoc.CrsFilesLocation"
+        AssociationOtherEnd="crs.model.assoc.CrsFilesLocationFk1Assoc.MainLocationFkCrsFilesLocation"
+        IsUpdateable="false" Name="CrsFilesLocation" Type="oracle.jbo.RowIterator"/>
+    <AccessorAttribute
+        Association="crs.model.assoc.CrsFilesLocationFk1Assoc"
+        AssociationEnd="crs.model.assoc.CrsFilesLocationFk1Assoc.MainLocationFkCrsFilesLocation"
+        AssociationOtherEnd="crs.model.assoc.CrsFilesLocationFk1Assoc.CrsFilesLocation"
+        IsUpdateable="true" Name="MainLocationFkCrsFilesLocation" Type="crs.model.eo.CrsFilesLocationImpl"/>
+    <AccessorAttribute
+        Association="crs.model.assoc.CrsFilesLocationTlFk1Assoc"
+        AssociationEnd="crs.model.assoc.CrsFilesLocationTlFk1Assoc.CrsFilesLocationTl"
+        AssociationOtherEnd="crs.model.assoc.CrsFilesLocationTlFk1Assoc.CrsFilesLocation"
+        IsUpdateable="false" Name="CrsFilesLocationTl" Type="oracle.jbo.RowIterator"/>
+    <AccessorAttribute
+        Association="crs.model.assoc.CrsIncomingDocumentsFk3Assoc"
+        AssociationEnd="crs.model.assoc.CrsIncomingDocumentsFk3Assoc.CrsIncomingDocuments"
+        AssociationOtherEnd="crs.model.assoc.CrsIncomingDocumentsFk3Assoc.CrsFilesLocation"
+        IsUpdateable="false" Name="CrsIncomingDocuments" Type="oracle.jbo.RowIterator"/>
+    <AccessorAttribute
+        Association="crs.model.assoc.CrsOutgoingDocumentsFk8Assoc"
+        AssociationEnd="crs.model.assoc.CrsOutgoingDocumentsFk8Assoc.CrsOutgoingDocuments"
+        AssociationOtherEnd="crs.model.assoc.CrsOutgoingDocumentsFk8Assoc.CrsFilesLocation"
+        IsUpdateable="false" Name="CrsOutgoingDocuments" Type="oracle.jbo.RowIterator"/>
+    <AccessorAttribute
+        Association="crs.model.assoc.CrsOutgoingDocPreparatFk2Assoc"
+        AssociationEnd="crs.model.assoc.CrsOutgoingDocPreparatFk2Assoc.CrsOutgoingDocPreparation"
+        AssociationOtherEnd="crs.model.assoc.CrsOutgoingDocPreparatFk2Assoc.CrsFilesLocation"
+        IsUpdateable="false" Name="CrsOutgoingDocPreparation" Type="oracle.jbo.RowIterator"/>
+    <AccessorAttribute
+        Name="HcmDepartments"
+        Association="crs.model.eo.CrsFileLocationFkAssoc"
+        AssociationEnd="crs.model.eo.CrsFileLocationFkAssoc.HcmDepartments"
+        AssociationOtherEnd="crs.model.eo.CrsFileLocationFkAssoc.CrsFilesLocation"
+        Type="crs.model.eo.HcmDepartmentsImpl"
+        IsUpdateable="true"/>
+    <Key Name="CrsFileLocationPk" PrimaryKey="true">
+        <DesignTime>
+            <Attr Name="_DBObjectName" Value="CRS_FILE_LOCATION_PK"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsFilesLocation.FilesLocationPk"/>
+        </AttrArray>
+    </Key>
+    <Key AltKey="true" Name="FileDescriptionWithinDepartmentUniqueKey">
+        <DesignTime>
+            <Attr Name="_isUnique" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_FILES_LOCATION"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsFilesLocation.DepartmentsFk"/>
+            <Item Value="crs.model.eo.CrsFilesLocation.DisplayFileLocationDesc"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsFileLocationFk">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="HCM_DEPARTMENTS_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_FILE_LOCATION_FK"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsFilesLocation.DepartmentsFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsFilesLocationFk1">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="CRS_FILE_LOCATION_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_FILES_LOCATION_FK1"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsFilesLocation.MainLocationFk"/>
+        </AttrArray>
+    </Key>
+    <validation:CompareValidationBean
+        CompareType="EQUALTO"
+        CompareValue="MainLocationFk"
+        Inverse="true"
+        Name="CrsFilesLocationRule1"
+        OnAttribute="FilesLocationPk"
+        OperandType="ATTR"
+        ResId="#{menu.resourceLabelMap['error.FilesLocationPkEqualToSelfReferenceFk']}">
+        <validation:OnAttributes>
+            <validation:Item
+                Value="FilesLocationPk"/>
+            <validation:Item
+                Value="MainLocationFk"/>
+        </validation:OnAttributes>
+    </validation:CompareValidationBean>
+    <validation:UniqueKeyValidationBean
+        KeyName="FileDescriptionWithinDepartmentUniqueKey"
+        Name="CrsFilesLocationRule0" ResId="#{menu.resourceLabelMap['error.DuplicateCode']}">
+        <validation:OnAttributes>
+            <validation:Item Value="DepartmentsFk"/>
+            <validation:Item
+                Value="DisplayFileLocationDesc"/>
+        </validation:OnAttributes>
+    </validation:UniqueKeyValidationBean>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</Entity>
+<!---->

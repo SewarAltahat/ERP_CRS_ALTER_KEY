@@ -1,0 +1,1510 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+          <af:panelGroupLayout id="pg1" layout="scroll"
+                                 partialTriggers="Commit1 print1 translation1 indocPopupDialog deleteDocDialog">
+    <af:panelBox text=" " id="pb3" showDisclosure="false">
+      <f:facet name="toolbar">
+        <af:panelGroupLayout id="pgl10" layout="horizontal">
+          <af:outputText value="#{bindings.CrsIncomingDocumentsSecurityLevelFkDesc.inputValue}" id="ot1"
+                         inlineStyle="font-size:x-small;#{bindings.CrsIncomingDocumentsSecurityLevelFk.inputValue == '396' ? 'color: #e52d45;' : bindings.CrsIncomingDocumentsSecurityLevelFk.inputValue == '397' ? 'color: #ff6f82;' : bindings.CrsIncomingDocumentsSecurityLevelFk.inputValue == '398' ? 'color: #008e18;' : bindings.CrsIncomingDocumentsSecurityLevelFk.inputValue == '399' ? 'color: #fed453;' : bindings.CrsIncomingDocumentsSecurityLevelFk.inputValue == '400' ? 'color: #000000;' : ''}"/>
+          <af:spacer width="10" height="10" id="s2"/>
+          <af:panelGroupLayout id="pgl9" layout="horizontal">
+            <af:panelGroupLayout id="pgl11" layout="horizontal"
+                                 inlineStyle=" border-top-left-radius:10px 10px; border-top-right-radius:10px 10px; border-bottom-left-radius:10px 10px;   border-bottom-right-radius:10px 10px; width:13px; height:13px; #{bindings.CrsIncomingDocumentsSecurityLevelFk.inputValue == '396' ? 'background-color: #e52d45;' : bindings.CrsIncomingDocumentsSecurityLevelFk.inputValue == '397' ? 'background-color: #ff6f82;' : bindings.CrsIncomingDocumentsSecurityLevelFk.inputValue == '398' ? 'background-color: #008e18;' : bindings.CrsIncomingDocumentsSecurityLevelFk.inputValue == '399' ? 'background-color: #fed453;' : bindings.CrsIncomingDocumentsSecurityLevelFk.inputValue == '400' ? 'background-color: #000000;' : ''}"/>
+          </af:panelGroupLayout>
+        </af:panelGroupLayout>
+      </f:facet>
+      <af:panelGroupLayout id="tb1" layout="horizontal" halign="center" rendered="false">
+        <af:spacer width="5" id="s8" rendered="false"/>
+        <af:commandButton text="#{menu.resourceLabelMap['label.commit']}" id="Commit1" styleClass="commitButton"
+                          actionListener="#{bindings.Commit.execute}" disabled="#{!menu.updateAllowed}"
+                          partialSubmit="true" icon="#{menu.commitIcon}" rendered="false"/>
+        <af:spacer width="5" id="s9" rendered="false"/>
+        <af:spacer width="5" id="s10" rendered="false"/>
+        <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="print1" styleClass="printButton"
+                          immediate="true" disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                          icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+          <af:showPrintablePageBehavior/>
+        </af:commandButton>
+        <af:spacer width="5" id="s11"/>
+        <af:commandButton text="#{menu.resourceLabelMap['label.translation']}" id="translation1"
+                          styleClass="printButton" immediate="true"
+                          disabled="#{!bindings.Delete1.enabled or bindings.CrsIncomingDocumentsIncomingDocumentsPk.inputValue == null}"
+                          partialSubmit="true" icon="#{menu.translationIcon}">
+          <af:showPopupBehavior popupId="indocPopup" triggerType="action"/>
+        </af:commandButton>
+        <af:spacer width="5" id="s112"/>
+        <af:spacer width="5" id="s43" rendered="false"/>
+        <af:spacer width="5" id="s41" rendered="false"/>
+        <af:commandButton text="#{menu.resourceLabelMap['label.ticket']}" id="print0" styleClass="printButton"
+                          icon="#{menu.printIcon}" partialSubmit="true"
+                          disabled="#{!bindings.Delete1.enabled or bindings.CrsIncomingDocumentsIncomingDocumentsPk.inputValue == null}"
+                          rendered="false">
+          <af:showPopupBehavior popupId="printreportpopup" triggerType="action"/>
+        </af:commandButton>
+        <af:spacer width="5" id="s40"/>
+      </af:panelGroupLayout>
+      <af:spacer width="10" height="10" id="s45" rendered="false"/>
+      <af:panelSplitter id="ps1" splitterPosition="1000">
+        <f:facet name="first">
+          <af:panelBox text="#{menu.resourceLabelMap['CrsDeptGroupDepts.BasicInfo']}" id="pb1">
+            <f:facet name="toolbar"/>
+            <af:panelGroupLayout id="pgl1">
+              <div class="card-body">
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    <label class="col-form-label">
+                      <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.IncomingDocumentsNo']}"
+                                      id="crsIncomingDocumentsIncomingDocumentsNo"/>
+                    </label>
+                     
+                    <af:inputText value="#{bindings.IncomingDocumentsNo.inputValue}"
+                                  required="#{bindings.IncomingDocumentsNo.hints.mandatory}"
+                                  columns="#{bindings.IncomingDocumentsNo.hints.displayWidth}"
+                                  maximumLength="#{bindings.IncomingDocumentsNo.hints.precision}"
+                                  id="IncomingDocumentsNoit3" simple="true" disabled="true" styleClass="form-control">
+                      <f:validator binding="#{bindings.IncomingDocumentsNo.validator}"/>
+                      <af:convertNumber groupingUsed="false" pattern="#{bindings.IncomingDocumentsNo.format}"/>
+                    </af:inputText>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="col-form-label">
+                      <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocDateH']}"
+                                      id="crsIncomingDocumentsIndocdatehL" showRequired="true"/>
+                    </label>
+                     
+                    <af:inputText value="#{bindings.CrsIncomingDocumentsInDocDateH.inputValue}"
+                                  label="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocDateH']}" required="true"
+                                  partialTriggers="crsIncomingDocumentsIndocdateg"
+                                  maximumLength="#{bindings.CrsIncomingDocumentsInDocDateH.hints.precision}"
+                                  id="crsIncomingDocumentsIndocdateh" simple="true" styleClass="form-control"
+                                  autoSubmit="true"
+                                  columns="#{bindings.CrsIncomingDocumentsInDocDateH.hints.displayWidth}"
+                                  disabled="true">
+                      <f:converter converterId="hijriDateConverter"/>
+                    </af:inputText>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="col-form-label ">
+                      <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.DisplayInSubject']}"
+                                      id="crsIncomingDocumentsDisplayInSubjectL" showRequired="true"/>
+                    </label>
+                     
+                    <af:inputText value="#{bindings.DisplayInSubject.inputValue}" simple="true"
+                                  styleClass="form-control" required="true" autoSubmit="true"
+                                  label="#{menu.resourceLabelMap['CrsIncomingDocuments.DisplayInSubject']}"
+                                  maximumLength="#{bindings.DisplayInSubject.hints.precision}"
+                                  id="crsIncomingDocumentsDisplayInSubject" disabled="true">
+                      <f:validator binding="#{bindings.DisplayInSubject.validator}"/>
+                    </af:inputText>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="col-form-label">
+                      <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFkDesc']}"
+                                      id="pgl6FromDepartmentFkL1" showRequired="true"/>
+                    </label>
+                     
+                    <af:inputText value="#{bindings.CrsIncomingDocumentsFromDepartmentFkDesc.inputValue}"
+                                  label="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFkDesc']}"
+                                  required="#{bindings.CrsIncomingDocumentsFromDepartmentFkDesc.hints.mandatory}"
+                                  maximumLength="#{bindings.CrsIncomingDocumentsFromDepartmentFkDesc.hints.precision}"
+                                  id="crsIncomingDocumentsFromdepartmentfkdesc" disabled="true"
+                                  styleClass="form-control" simple="true"
+                                  partialTriggers="crsIncomingDocumentsFromdepartmentfk">
+                      <f:validator binding="#{bindings.CrsIncomingDocumentsFromDepartmentFkDesc.validator}"/>
+                    </af:inputText>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="col-form-label">
+                      <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.SecurityLevelFkDesc']}"
+                                      id="pgl9SecurityLevelFkL1" showRequired="true"/>
+                    </label>
+                     
+                    <af:inputText value="#{bindings.CrsIncomingDocumentsSecurityLevelFkDesc.inputValue}"
+                                  label="#{menu.resourceLabelMap['CrsIncomingDocuments.SecurityLevelFkDesc']}"
+                                  required="#{bindings.CrsIncomingDocumentsSecurityLevelFkDesc.hints.mandatory}"
+                                  maximumLength="#{bindings.CrsIncomingDocumentsSecurityLevelFkDesc.hints.precision}"
+                                  id="crsIncomingDocumentsSecuritylevelfkdesc" disabled="true" styleClass="form-control"
+                                  simple="true" partialTriggers="crsIncomingDocumentsSecuritylevelfk">
+                      <f:validator binding="#{bindings.CrsIncomingDocumentsSecurityLevelFkDesc.validator}"/>
+                    </af:inputText>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="col-form-label">
+                      <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocNo']}"
+                                      id="crsIncomingDocumentsIndocnoL" showRequired="true"/>
+                    </label>
+                     
+                    <af:inputText value="#{bindings.CrsIncomingDocumentsInDocNo.inputValue}"
+                                  label="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocNo']}" required="true"
+                                  maximumLength="#{bindings.CrsIncomingDocumentsInDocNo.hints.precision}"
+                                  id="crsIncomingDocumentsIndocno" simple="true" styleClass="form-control"
+                                  autoSubmit="true" disabled="true">
+                      <f:validator binding="#{bindings.CrsIncomingDocumentsInDocNo.validator}"/>
+                    </af:inputText>
+                  </div>
+                </div>
+              </div>
+            </af:panelGroupLayout>
+            <af:spacer width="10" height="10" id="s7"/>
+          </af:panelBox>
+        </f:facet>
+        <f:facet name="second">
+          <af:panelTabbed position="above" id="pt1">
+            <af:showDetailItem id="tab1"
+                               text="#{menu.resourceLabelMap['CrsIncomingDocAttachments.sdi_CrsIncomingDocuments143']}">
+              <af:panelGroupLayout id="pglCrsIncomingDocAttachments144" layout="vertical" halign="center">
+                <af:panelGroupLayout id="pgl141" partialTriggers="CrsIncomingDocAttachDialog">
+                  <af:panelStretchLayout id="psl142" styleClass="AFStretchWidth" dimensionsFrom="children"
+                                         partialTriggers="CrsIncomingDocAttachDialog">
+                    <f:facet name="center">
+                      <af:panelCollection id="pc127" styleClass="AFStretchWidth"
+                                          featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem">
+                        <f:facet name="secondaryToolbar">
+                          <af:toolbar id="tb8">
+                            <af:commandButton text="#{menu.resourceLabelMap['label.delete']}" id="Del8"
+                                              styleClass="deleteButton" action="#{menu.genericDeleteAction}"
+                                              immediate="true"
+                                              disabled="#{!menu.deleteAllowed or !bindings.Delete8.enabled}"
+                                              partialSubmit="true" icon="#{menu.deleteIcon}" rendered="false">
+                              <af:setPropertyListener to="#{sessionScope.deleteParam}" from="Delete8" type="action"/>
+                              <af:setPropertyListener to="#{sessionScope.refreshParam}"
+                                                      from="CrsIncomingDocAttachments1 CrsIncomingDocAttachTlt2"
+                                                      type="action"/>
+                              <af:setPropertyListener to="#{sessionScope.viewParam}"
+                                                      from="CrsIncomingDocAttachmentsView2" type="action"/>
+                            </af:commandButton>
+                            <af:spacer width="5" id="s1" rendered="false"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.createInsert']}" id="ci8"
+                                              styleClass="insertButton"
+                                              actionListener="#{bindings.CreateInsert8.execute}"
+                                              disabled="#{!menu.insertAllowed or !bindings.Delete1.enabled or bindings.CrsIncomingDocumentsIncomingDocumentsPk.inputValue == null}"
+                                              partialSubmit="true" icon="#{menu.createInsertIcon}" rendered="false"/>
+                            <af:spacer width="5" id="s46" rendered="false"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.commit']}" id="Commit8"
+                                              styleClass="commitButton" actionListener="#{bindings.Commit.execute}"
+                                              disabled="#{!menu.updateAllowed}" partialSubmit="true"
+                                              icon="#{menu.commitIcon}" rendered="false"/>
+                            <af:spacer width="5" id="s3" rendered="false"/>
+                            <af:spacer width="5" id="s4"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="print8"
+                                              styleClass="printButton" immediate="true"
+                                              disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                              icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+                              <af:showPrintablePageBehavior/>
+                            </af:commandButton>
+                            <af:spacer width="5" id="s5"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.excel']}" id="excel8"
+                                              styleClass="excelButton" immediate="true"
+                                              disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                              icon="#{menu.excelIcon}" visible="#{menu.excelVisible}">
+                              <af:setPropertyListener to="#{sessionScope.tableId}" from="CrsIncomingDocAttachments1"
+                                                      type="action"/>
+                              <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                            </af:commandButton>
+                            <af:spacer width="5" id="s6"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.translation']}" id="translation3"
+                                              styleClass="printButton" immediate="true"
+                                              disabled="#{!bindings.Delete8.enabled or bindings.IncomingDocAttachmentsPk.inputValue== null}"
+                                              partialSubmit="true" icon="#{menu.translationIcon}"
+                                              partialTriggers="Commit8 Del8">
+                              <af:showPopupBehavior popupId="::CrsIncomingDocAttachPopup" triggerType="action"/>
+                            </af:commandButton>
+                          </af:toolbar>
+                        </f:facet>
+                        <af:table value="#{bindings.CrsIncomingDocAttachmentsView1.collectionModel}"
+                                  id="CrsIncomingDocAttachments1" styleClass="AFStretchWidth" var="row" varStatus="vs"
+                                  rows="#{bindings.CrsIncomingDocAttachmentsView1.rangeSize}"
+                                  selectionListener="#{bindings.CrsIncomingDocAttachmentsView1.collectionModel.makeCurrent}"
+                                  selectedRowKeys="#{bindings.CrsIncomingDocAttachmentsView1.collectionModel.selectedRow}"
+                                  filterModel="#{bindings.CrsIncomingDocAttachmentsView1CriteriaQuery.queryDescriptor}"
+                                  queryListener="#{bindings.CrsIncomingDocAttachmentsView1CriteriaQuery.processQuery}"
+                                  columnSelection="multiple" columnStretching="last" verticalGridVisible="false"
+                                  partialTriggers="::Del8 ::ci8 ::Commit8 ::print8 ::excel8 :::CrsIncomingDocAttachDialog"
+                                  emptyText="#{bindings.CrsIncomingDocAttachmentsView1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                  rowSelection="single" fetchSize="#{bindings.CrsIncomingDocAttachmentsView1.rangeSize}"
+                                  displayRow="selected" editingMode="editAll" filterVisible="false" autoHeightRows="5"
+                                  blockRowNavigationOnError="always" rowBandingInterval="1" scrollPolicy="page">
+                          <af:column id="IncomingDocAttachmentsPkC129" sortProperty="IncomingDocAttachmentsPk"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingDocAttachments.IncomingDocAttachmentsPk']}"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive" width="300"
+                                     align="center" visible="false">
+                            <af:inputText value="#{row.bindings.IncomingDocAttachmentsPk.inputValue}"
+                                          label="#{menu.resourceLabelMap['CrsIncomingDocAttachments.IncomingDocAttachmentsPk']}"
+                                          required="#{bindings.CrsIncomingDocAttachmentsView1.hints.IncomingDocAttachmentsPk.mandatory}"
+                                          columns="#{bindings.CrsIncomingDocAttachmentsView1.hints.IncomingDocAttachmentsPk.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingDocAttachmentsView1.hints.IncomingDocAttachmentsPk.precision}"
+                                          id="crsIncomingDocAttachmentsIncomingdocattachmentspk" readOnly="true"
+                                          partialTriggers="::Commit8">
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{row.bindings.IncomingDocAttachmentsPk.format}"/>
+                              <f:validator binding="#{row.bindings.IncomingDocAttachmentsPk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column id="AttachmentTypeFkC131" sortProperty="AttachmentTypeFkSearch"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingDocAttachments.AttachmentTypeFk']}"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive" width="200"
+                                     showRequired="false">
+                            <af:panelGroupLayout id="pgl130AttachmentTypeFk" layout="horizontal">
+                              <af:inputListOfValues value="#{row.bindings.AttachmentTypeFk.inputValue}"
+                                                    label="#{menu.resourceLabelMap['CrsIncomingDocAttachments.AttachmentTypeFk']}"
+                                                    columns="#{bindings.CrsIncomingDocAttachmentsView1.hints.AttachmentTypeFk.displayWidth}"
+                                                    id="crsIncomingDocAttachmentsAttachmenttypefk" required="true"
+                                                    model="#{row.bindings.AttachmentTypeFk.listOfValuesModel}"
+                                                    autoSubmit="true" simple="true"
+                                                    popupTitle="#{bindings.CrsIncomingDocAttachmentsView1.hints.AttachmentTypeFk.label}"
+                                                    readOnly="true">
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{row.bindings.AttachmentTypeFk.format}"/>
+                                <f:validator binding="#{row.bindings.AttachmentTypeFk.validator}"/>
+                              </af:inputListOfValues>
+                            </af:panelGroupLayout>
+                          </af:column>
+                          <af:column headerText="#{menu.resourceLabelMap['CrsIncomingDocAttachments.AttachmentTypeFkDesc']}"
+                                     id="AttachmentTypeFkDescC132" sortProperty="DisplayAttachmentTypeFkSearch"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive" width="300">
+                            <af:inputText value="#{row.bindings.DisplayAttachmentTypeFk.inputValue}"
+                                          label="#{bindings.CrsIncomingDocAttachmentsView1.hints.DisplayAttachmentTypeFk.label}"
+                                          required="#{bindings.CrsIncomingDocAttachmentsView1.hints.DisplayAttachmentTypeFk.mandatory}"
+                                          columns="#{bindings.CrsIncomingDocAttachmentsView1.hints.DisplayAttachmentTypeFk.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingDocAttachmentsView1.hints.DisplayAttachmentTypeFk.precision}"
+                                          id="crsIncomingDocAttachmentsAttachmenttypefkdesc" readOnly="true"
+                                          partialTriggers="crsIncomingDocAttachmentsAttachmenttypefk" disabled="false">
+                              <f:validator binding="#{row.bindings.DisplayAttachmentTypeFk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column headerText="#{menu.resourceLabelMap['CrsIncomingDocAttachTl.InAttachDesc']}"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                     sortProperty="DisplayInAttachDescSearch" id="InAttachDescc7">
+                            <af:inputText value="#{row.bindings.DisplayInAttachDesc.inputValue}"
+                                          label="#{bindings.CrsIncomingDocAttachmentsView1.hints.DisplayInAttachDesc.label}"
+                                          required="#{bindings.CrsIncomingDocAttachmentsView1.hints.DisplayInAttachDesc.mandatory}"
+                                          columns="#{bindings.CrsIncomingDocAttachmentsView1.hints.DisplayInAttachDesc.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingDocAttachmentsView1.hints.DisplayInAttachDesc.precision}"
+                                          id="DisplayInAttachDescit1" disabled="false" readOnly="true">
+                              <f:validator binding="#{row.bindings.DisplayInAttachDesc.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </f:facet>
+                  </af:panelStretchLayout>
+                </af:panelGroupLayout>
+              </af:panelGroupLayout>
+            </af:showDetailItem>
+          </af:panelTabbed>
+        </f:facet>
+      </af:panelSplitter>
+      <af:spacer width="30" id="s49"/>
+      <af:panelSplitter id="ps2" splitterPosition="1000">
+        <f:facet name="first">
+          <af:panelBox styleClass="AFStretchWidth" id="pb2"
+                       partialTriggers="Commit1 print1 translation1 indocPopupDialog deleteDocDialog"
+                       text="#{menu.resourceLabelMap['CrsDeptGroupDepts.OtherDetails']} " disclosed="false">
+            <af:panelGroupLayout id="pgl12">
+              <div class="card-body">
+                <div class="form-group row">
+                  <div class="col-md-3">
+                    <label class="col-form-label">
+                      <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.IncomingDocumentsPk']}"
+                                      id="crsIncomingDocumentsIncomingdocumentspkL"/>
+                    </label>
+                     
+                    <af:inputText value="#{bindings.CrsIncomingDocumentsIncomingDocumentsPk.inputValue}"
+                                  label="#{menu.resourceLabelMap['CrsIncomingDocuments.IncomingDocumentsPk']}"
+                                  required="#{bindings.CrsIncomingDocumentsIncomingDocumentsPk.hints.mandatory}"
+                                  maximumLength="#{bindings.CrsIncomingDocumentsIncomingDocumentsPk.hints.precision}"
+                                  id="crsIncomingDocumentsIncomingdocumentspk" simple="true" disabled="true"
+                                  styleClass="form-control" readOnly="false">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.CrsIncomingDocumentsIncomingDocumentsPk.format}"/>
+                      <f:validator binding="#{bindings.CrsIncomingDocumentsIncomingDocumentsPk.validator}"/>
+                    </af:inputText>
+                  </div>
+                  <div class="col-md-3 ">
+                    <label class="col-form-label">
+                      <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocYear']}"
+                                      id="crsIncomingDocumentsIndocyearL" showRequired="true"/>
+                    </label>
+                     
+                    <af:inputText value="#{bindings.CrsIncomingDocumentsInDocYear.inputValue}"
+                                  label="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocYear']}" required="true"
+                                  maximumLength="#{bindings.CrsIncomingDocumentsInDocYear.hints.precision}"
+                                  id="crsIncomingDocumentsIndocyear" simple="true" autoSubmit="true" disabled="true"
+                                  styleClass="form-control">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.CrsIncomingDocumentsInDocYear.format}"/>
+                      <f:validator binding="#{bindings.CrsIncomingDocumentsInDocYear.validator}"/>
+                    </af:inputText>
+                  </div>
+                  <!--<div class="col-md-3 ">
+                  <label class="col-form-label">
+                    <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocDateG']}"
+                                    id="crsIncomingDocumentsIndocdategL" showRequired="true"/>
+                  </label>
+                   
+                  <af:inputDate value="#{bindings.CrsIncomingDocumentsInDocDateG.inputValue}" required="true"
+                                autoSubmit="true" id="crsIncomingDocumentsIndocdateg" simple="true"
+                                styleClass="form-control"
+                                label="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocDateG']}"
+                                partialTriggers="crsIncomingDocumentsIndocdateh" disabled="true">
+                    <f:validator binding="#{bindings.CrsIncomingDocumentsInDocDateG.validator}"/>
+                    <af:convertDateTime pattern="#{menu.dateFormat}"/>
+                  </af:inputDate>
+                </div>-->
+                  <div class="col-md-3">
+                    <label class="col-form-label">
+                      <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.DisplayKeyword']}"
+                                      id="crsIncomingDocumentsDisplayKeywordL"/>
+                    </label>
+                     
+                    <af:inputText value="#{bindings.DisplayKeyword.inputValue}" simple="true" styleClass="form-control"
+                                  required="#{bindings.DisplayKeyword.hints.mandatory}" autoSubmit="true"
+                                  maximumLength="#{bindings.DisplayKeyword.hints.precision}"
+                                  id="crsIncomingDocumentsDisplayKeyword" disabled="true">
+                      <f:validator binding="#{bindings.DisplayKeyword.validator}"/>
+                    </af:inputText>
+                  </div>
+                  <!--<div class="col-md-3 ">
+                  <label class="col-form-label">
+                    <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocTypeFk']}"
+                                    id="pgl4InDocTypeFkL" showRequired="true"/>
+                  </label>
+                   
+                  <af:inputListOfValues value="#{bindings.CrsIncomingDocumentsInDocTypeFk.inputValue}"
+                                        label="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocTypeFk']}"
+                                        required="true" id="crsIncomingDocumentsIndoctypefk"
+                                        model="#{bindings.CrsIncomingDocumentsInDocTypeFk.listOfValuesModel}"
+                                        autoSubmit="true" simple="true"
+                                        popupTitle="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocTypeFk']}"
+                                        styleClass="form-control" disabled="true">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.CrsIncomingDocumentsInDocTypeFk.format}"/>
+                    <f:validator binding="#{bindings.CrsIncomingDocumentsInDocTypeFk.validator}"/>
+                  </af:inputListOfValues>
+                </div>-->
+                  <div class="col-md-3">
+                    <label class="col-form-label">
+                      <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocTypeFkDesc']}"
+                                      id="pgl4InDocTypeFkL1" showRequired="true"/>
+                    </label>
+                     
+                    <af:inputText value="#{bindings.CrsIncomingDocumentsInDocTypeFkDesc.inputValue}"
+                                  label="#{menu.resourceLabelMap['CrsIncomingDocuments.InDocTypeFkDesc']}"
+                                  required="#{bindings.CrsIncomingDocumentsInDocTypeFkDesc.hints.mandatory}"
+                                  maximumLength="#{bindings.CrsIncomingDocumentsInDocTypeFkDesc.hints.precision}"
+                                  id="crsIncomingDocumentsIndoctypefkdesc" disabled="true" styleClass="form-control"
+                                  simple="true" partialTriggers="crsIncomingDocumentsIndoctypefk">
+                      <f:validator binding="#{bindings.CrsIncomingDocumentsInDocTypeFkDesc.validator}"/>
+                    </af:inputText>
+                  </div>
+                  <!--<div class="col-md-3 ">
+                  <label class="col-form-label">
+                    <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFk']}"
+                                    id="pgl6FromDepartmentFkL" showRequired="true"/>
+                  </label>
+                   
+                  <af:inputListOfValues value="#{bindings.CrsIncomingDocumentsFromDepartmentFk.inputValue}"
+                                        label="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFk']}"
+                                        required="true" id="crsIncomingDocumentsFromdepartmentfk"
+                                        model="#{bindings.CrsIncomingDocumentsFromDepartmentFk.listOfValuesModel}"
+                                        autoSubmit="true" simple="true"
+                                        popupTitle="#{menu.resourceLabelMap['CrsIncomingDocuments.FromDepartmentFk']}"
+                                        styleClass="form-control" disabled="true">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.CrsIncomingDocumentsFromDepartmentFk.format}"/>
+                    <f:validator binding="#{bindings.CrsIncomingDocumentsFromDepartmentFk.validator}"/>
+                  </af:inputListOfValues>
+                </div>-->
+                  <!--<div class="col-md-3">
+                  <label class="col-form-label">
+                    <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.FilesLocationFk']}"
+                                    id="pgl10FilesLocationFkL"/>
+                  </label>
+                   
+                  <af:inputListOfValues value="#{bindings.CrsIncomingDocumentsFilesLocationFk.inputValue}"
+                                        label="#{menu.resourceLabelMap['CrsIncomingDocuments.FilesLocationFk']}"
+                                        required="#{bindings.CrsIncomingDocumentsFilesLocationFk.hints.mandatory}"
+                                        id="crsIncomingDocumentsFileslocationfk"
+                                        model="#{bindings.CrsIncomingDocumentsFilesLocationFk.listOfValuesModel}"
+                                        autoSubmit="true" simple="true" styleClass="form-control"
+                                        popupTitle="#{menu.resourceLabelMap['CrsIncomingDocuments.FilesLocationFk']}"
+                                        disabled="true">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.CrsIncomingDocumentsFilesLocationFk.format}"/>
+                    <f:validator binding="#{bindings.CrsIncomingDocumentsFilesLocationFk.validator}"/>
+                  </af:inputListOfValues>
+                </div>-->
+                  <div class="col-md-3">
+                    <label class="col-form-label">
+                      <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.FilesLocationFkDesc']}"
+                                      id="pgl10FilesLocationFkL2"/>
+                    </label>
+                     
+                    <af:inputText value="#{bindings.CrsIncomingDocumentsFilesLocationFkDesc.inputValue}"
+                                  label="#{menu.resourceLabelMap['CrsIncomingDocuments.FilesLocationFkDesc']}"
+                                  required="#{bindings.CrsIncomingDocumentsFilesLocationFkDesc.hints.mandatory}"
+                                  maximumLength="#{bindings.CrsIncomingDocumentsFilesLocationFkDesc.hints.precision}"
+                                  id="crsIncomingDocumentsFileslocationfkdesc" disabled="true" styleClass="form-control"
+                                  simple="true" partialTriggers="crsIncomingDocumentsFileslocationfk">
+                      <f:validator binding="#{bindings.CrsIncomingDocumentsFilesLocationFkDesc.validator}"/>
+                    </af:inputText>
+                  </div>
+                  <!--<div class="col-md-3">
+                  <label class="col-form-label">
+                    <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.PriorityFk']}"
+                                    id="pgl8PriorityFkL"/>
+                  </label>
+                   
+                  <af:inputListOfValues value="#{bindings.CrsIncomingDocumentsPriorityFk.inputValue}"
+                                        styleClass="form-control"
+                                        label="#{menu.resourceLabelMap['CrsIncomingDocuments.PriorityFk']}"
+                                        required="#{bindings.CrsIncomingDocumentsPriorityFk.hints.mandatory}"
+                                        id="crsIncomingDocumentsPriorityfk"
+                                        model="#{bindings.CrsIncomingDocumentsPriorityFk.listOfValuesModel}"
+                                        autoSubmit="true" simple="true"
+                                        popupTitle="#{menu.resourceLabelMap['CrsIncomingDocuments.PriorityFk']}"
+                                        disabled="true">
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.CrsIncomingDocumentsPriorityFk.format}"/>
+                    <f:validator binding="#{bindings.CrsIncomingDocumentsPriorityFk.validator}"/>
+                  </af:inputListOfValues>
+                </div>-->
+                  <div class="col-md-3">
+                    <label class="col-form-label">
+                      <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.PriorityFkDesc']}"
+                                      id="pgl8PriorityFkL1"/>
+                    </label>
+                     
+                    <af:inputText value="#{bindings.CrsIncomingDocumentsPriorityFkDesc.inputValue}"
+                                  label="#{menu.resourceLabelMap['CrsIncomingDocuments.PriorityFkDesc']}"
+                                  required="#{bindings.CrsIncomingDocumentsPriorityFkDesc.hints.mandatory}"
+                                  maximumLength="#{bindings.CrsIncomingDocumentsPriorityFkDesc.hints.precision}"
+                                  id="crsIncomingDocumentsPriorityfkdesc" disabled="true" styleClass="form-control"
+                                  simple="true" partialTriggers="crsIncomingDocumentsPriorityfk">
+                      <f:validator binding="#{bindings.CrsIncomingDocumentsPriorityFkDesc.validator}"/>
+                    </af:inputText>
+                  </div>
+                  <!--<div class="col-md-3 ">
+                  <label class="col-form-label">
+                    <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.SecurityLevelFk']}"
+                                    id="pgl9SecurityLevelFkL" showRequired="true"/>
+                  </label>
+                   
+                  <af:inputListOfValues value="#{bindings.CrsIncomingDocumentsSecurityLevelFk.inputValue}"
+                                        label="#{menu.resourceLabelMap['CrsIncomingDocuments.SecurityLevelFk']}"
+                                        required="true" id="crsIncomingDocumentsSecuritylevelfk"
+                                        model="#{bindings.CrsIncomingDocumentsSecurityLevelFk.listOfValuesModel}"
+                                        autoSubmit="true" simple="true"
+                                        popupTitle="#{menu.resourceLabelMap['CrsIncomingDocuments.SecurityLevelFk']}"
+                                        styleClass="form-control" disabled="true">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.CrsIncomingDocumentsSecurityLevelFk.format}"/>
+                    <f:validator binding="#{bindings.CrsIncomingDocumentsSecurityLevelFk.validator}"/>
+                  </af:inputListOfValues>
+                </div>-->
+                  <!--<div class="col-md-3">
+                  <label class="col-form-label">
+                    <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.ClassificationFk']}"
+                                    id="pgl11ClassificationFkFkL"/>
+                  </label>
+                   
+                  <af:inputListOfValues id="classificationFk1Id"
+                                        popupTitle="#{menu.resourceLabelMap['CrsIncomingDocuments.ClassificationFk']}"
+                                        value="#{bindings.ClassificationFk1.inputValue}" autoSubmit="true" simple="true"
+                                        label="#{menu.resourceLabelMap['CrsIncomingDocuments.ClassificationFk']}"
+                                        model="#{bindings.ClassificationFk1.listOfValuesModel}"
+                                        styleClass="form-control"
+                                        required="#{bindings.ClassificationFk1.hints.mandatory}" disabled="true">
+                    <f:validator binding="#{bindings.ClassificationFk1.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.ClassificationFk1.format}"/>
+                  </af:inputListOfValues>
+                </div>-->
+                  <div class="col-md-3">
+                    <label class="col-form-label">
+                      <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.ClassificationFkdesc']}"
+                                      id="pgl11ClassificationFkFkL1"/>
+                    </label>
+                     
+                    <af:inputText value="#{bindings.DisplayClassificationFk.inputValue}" simple="true"
+                                  required="#{bindings.DisplayClassificationFk.hints.mandatory}"
+                                  label="#{menu.resourceLabelMap['CrsIncomingDocuments.ClassificationFkdesc']}"
+                                  disabled="true" styleClass="form-control" partialTriggers="classificationFk1Id"
+                                  maximumLength="#{bindings.DisplayClassificationFk.hints.precision}" id="it5">
+                      <f:validator binding="#{bindings.DisplayClassificationFk.validator}"/>
+                    </af:inputText>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="col-form-label">
+                      <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.Barcode']}"
+                                      id="crsIncomingDocumentsBarcodeL"/>
+                    </label>
+                     
+                    <af:inputText value="#{bindings.CrsIncomingDocumentsBarcode.inputValue}"
+                                  label="#{menu.resourceLabelMap['CrsIncomingDocuments.Barcode']}"
+                                  required="#{bindings.CrsIncomingDocumentsBarcode.hints.mandatory}"
+                                  maximumLength="#{bindings.CrsIncomingDocumentsBarcode.hints.precision}"
+                                  id="crsIncomingDocumentsBarcode" simple="true" disabled="true"
+                                  styleClass="form-control">
+                      <af:convertNumber groupingUsed="false" pattern="#{bindings.CrsIncomingDocumentsBarcode.format}"/>
+                      <f:validator binding="#{bindings.CrsIncomingDocumentsBarcode.validator}"/>
+                    </af:inputText>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="col-form-label">
+                      <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.RespondPeriod']}"
+                                      id="crsIncomingDocumentsRespondperiodL"/>
+                    </label>
+                     
+                    <af:inputText value="#{bindings.CrsIncomingDocumentsRespondPeriod.inputValue}"
+                                  styleClass="form-control"
+                                  label="#{menu.resourceLabelMap['CrsIncomingDocuments.RespondPeriod']}"
+                                  required="#{bindings.CrsIncomingDocumentsRespondPeriod.hints.mandatory}"
+                                  maximumLength="#{bindings.CrsIncomingDocumentsRespondPeriod.hints.precision}"
+                                  id="crsIncomingDocumentsRespondperiod" simple="true" disabled="true">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.CrsIncomingDocumentsRespondPeriod.format}"/>
+                      <f:validator binding="#{bindings.CrsIncomingDocumentsRespondPeriod.validator}"/>
+                    </af:inputText>
+                  </div>
+                  <div class="col-md-3 ">
+                    <label class="col-form-label">
+                      <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.AttachmentsNo']}"
+                                      id="crsIncomingDocumentsAttachmentsnoL" showRequired="true"/>
+                    </label>
+                     
+                    <af:inputText value="#{bindings.CrsIncomingDocumentsAttachmentsNo.inputValue}"
+                                  label="#{menu.resourceLabelMap['CrsIncomingDocuments.AttachmentsNo']}" required="true"
+                                  maximumLength="#{bindings.CrsIncomingDocumentsAttachmentsNo.hints.precision}"
+                                  id="crsIncomingDocumentsAttachmentsno" simple="true" styleClass="form-control"
+                                  autoSubmit="true" disabled="true">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.CrsIncomingDocumentsAttachmentsNo.format}"/>
+                      <f:validator binding="#{bindings.CrsIncomingDocumentsAttachmentsNo.validator}"/>
+                    </af:inputText>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="col-form-label">
+                      <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.RecievedDateG']}"
+                                      id="crsIncomingDocumentsRecieveddategL"/>
+                    </label>
+                     
+                    <af:inputDate value="#{bindings.CrsIncomingDocumentsReceivedDateG.inputValue}"
+                                  label="#{menu.resourceLabelMap['CrsIncomingDocuments.RecievedDateG']}"
+                                  required="#{bindings.CrsIncomingDocumentsReceivedDateG.hints.mandatory}"
+                                  shortDesc="#{bindings.CrsIncomingDocumentsReceivedDateG.hints.tooltip}"
+                                  id="crsIncomingDocumentsRecieveddateg" simple="true" disabled="true"
+                                  styleClass="form-control">
+                      <f:validator binding="#{bindings.CrsIncomingDocumentsReceivedDateG.validator}"/>
+                      <af:convertDateTime pattern="#{menu.dateTimeWithSecondsFormat}"/>
+                    </af:inputDate>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="col-form-label">
+                      <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.RecievedDateH']}"
+                                      id="crsIncomingDocumentsRecieveddatehL"/>
+                    </label>
+                     
+                    <af:inputText value="#{bindings.CrsIncomingDocumentsReceivedDateH.inputValue}"
+                                  required="#{bindings.CrsIncomingDocumentsReceivedDateH.hints.mandatory}"
+                                  maximumLength="#{bindings.CrsIncomingDocumentsReceivedDateH.hints.precision}"
+                                  id="crsIncomingDocumentsRecieveddateh" simple="true" disabled="true"
+                                  styleClass="form-control">
+                      <f:converter converterId="hijriDateConverter"/>
+                    </af:inputText>
+                  </div>
+                  <!--<div class="col-md-3">
+                  <label class="col-form-label">
+                    <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.ReplyFl']}"
+                                    id="crsIncomingDocumentsReplyflL"/>
+                  </label>
+                   
+                  <af:commandImageLink actionListener="#{indoc.untick}"
+                                       icon="#{resource['images:checked-checkbox.png']}" id="check2"
+                                       partialSubmit="true" partialTriggers="check2 uncheck2"
+                                       visible="#{bindings.ReplyFl.inputValue == '1'}" styleClass="form-control"
+                                       disabled="true">
+                    <f:attribute name="iteratorName" value="CrsIncomingDocumentsView1Iterator"/>
+                    <f:attribute name="attributeName" value="ReplyFl"/>
+                  </af:commandImageLink>
+                   
+                  <af:commandImageLink actionListener="#{indoc.tick}"
+                                       icon="#{resource['images:unchecked-checkbox.png']}" id="uncheck2"
+                                       partialSubmit="true" partialTriggers="check2 uncheck2"
+                                       visible="#{bindings.ReplyFl.inputValue == null or bindings.ReplyFl.inputValue == '0'}"
+                                       styleClass="form-control" disabled="true">
+                    <f:attribute name="iteratorName" value="CrsIncomingDocumentsView1Iterator"/>
+                    <f:attribute name="attributeName" value="ReplyFl"/>
+                  </af:commandImageLink>
+                </div>-->
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-10">
+                  <label class="col-form-label">
+                    <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocuments.DisplayNotes']}"
+                                    id="crsIncomingDocumentsDisplayNotesL"/>
+                  </label>
+                   
+                  <af:inputText value="#{bindings.DisplayNotes.inputValue}" simple="true" styleClass="form-control"
+                                required="#{bindings.DisplayNotes.hints.mandatory}" autoSubmit="true"
+                                maximumLength="#{bindings.DisplayNotes.hints.precision}"
+                                id="crsIncomingDocumentsDisplayNotes" disabled="true" rows="2">
+                    <f:validator binding="#{bindings.DisplayNotes.validator}"/>
+                  </af:inputText>
+                </div>
+              </div>
+            </af:panelGroupLayout>
+          </af:panelBox>
+        </f:facet>
+        <f:facet name="second">
+          <af:panelTabbed id="PTCrsIncomingDocuments13" styleClass="AFStretchWidth" dimensionsFrom="disclosedChild">
+            <af:showDetailItem id="sdi_CrsIncomingDocuments64" styleClass="AFStretchWidth" immediate="true"
+                               text="#{menu.resourceLabelMap['CrsIncomingBeneficiaries.sdi_CrsIncomingDocuments64']}">
+              <af:panelGroupLayout id="pglCrsIncomingBeneficiaries65" layout="vertical" halign="center">
+                <af:panelGroupLayout id="pgl62">
+                  <af:panelStretchLayout id="psl63" styleClass="AFStretchWidth" dimensionsFrom="children">
+                    <f:facet name="center">
+                      <af:panelCollection id="pc48" styleClass="AFStretchWidth"
+                                          featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem">
+                        <f:facet name="secondaryToolbar">
+                          <af:toolbar id="tb4">
+                            <af:commandButton text="#{menu.resourceLabelMap['label.delete']}" id="Del4"
+                                              styleClass="deleteButton" action="#{menu.genericDeleteAction}"
+                                              immediate="true"
+                                              disabled="#{!menu.deleteAllowed or !bindings.Delete4.enabled}"
+                                              partialSubmit="true" icon="#{menu.deleteIcon}" rendered="false">
+                              <af:setPropertyListener to="#{sessionScope.deleteParam}" from="Delete4" type="action"/>
+                              <af:setPropertyListener to="#{sessionScope.refreshParam}" from="CrsIncomingBeneficiaries1"
+                                                      type="action"/>
+                              <af:setPropertyListener to="#{sessionScope.viewParam}"
+                                                      from="CrsIncomingBeneficiariesView3" type="action"/>
+                            </af:commandButton>
+                            <af:spacer width="5" id="s18" rendered="false"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.createInsert']}" id="ci4"
+                                              styleClass="insertButton"
+                                              actionListener="#{bindings.CreateInsert4.execute}"
+                                              disabled="#{!menu.insertAllowed or !bindings.Delete1.enabled or bindings.CrsIncomingDocumentsIncomingDocumentsPk.inputValue == null}"
+                                              partialSubmit="true" icon="#{menu.createInsertIcon}" rendered="false"/>
+                            <af:spacer width="5" id="s19" rendered="false"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.commit']}" id="Commit4"
+                                              styleClass="commitButton" actionListener="#{bindings.Commit.execute}"
+                                              disabled="#{!menu.updateAllowed}" partialSubmit="true"
+                                              icon="#{menu.commitIcon}" rendered="false"/>
+                            <af:spacer width="5" id="s20" rendered="false"/>
+                            <af:spacer width="5" id="s21" rendered="false"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="print4"
+                                              styleClass="printButton" immediate="true"
+                                              disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                              icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+                              <af:showPrintablePageBehavior/>
+                            </af:commandButton>
+                            <af:spacer width="5" id="s22"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.excel']}" id="excel4"
+                                              styleClass="excelButton" immediate="true"
+                                              disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                              icon="#{menu.excelIcon}" visible="#{menu.excelVisible}">
+                              <af:setPropertyListener to="#{sessionScope.tableId}" from="CrsIncomingBeneficiaries1"
+                                                      type="action"/>
+                              <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                            </af:commandButton>
+                            <af:spacer width="5" id="s23"/>
+                          </af:toolbar>
+                        </f:facet>
+                        <af:table value="#{bindings.CrsIncomingBeneficiariesView1.collectionModel}"
+                                  id="CrsIncomingBeneficiaries1" styleClass="AFStretchWidth" var="row" varStatus="vs"
+                                  rows="#{bindings.CrsIncomingBeneficiariesView1.rangeSize}"
+                                  selectionListener="#{bindings.CrsIncomingBeneficiariesView1.collectionModel.makeCurrent}"
+                                  selectedRowKeys="#{bindings.CrsIncomingBeneficiariesView1.collectionModel.selectedRow}"
+                                  filterModel="#{bindings.CrsIncomingBeneficiariesView1CriteriaQuery.queryDescriptor}"
+                                  queryListener="#{bindings.CrsIncomingBeneficiariesView1CriteriaQuery.processQuery}"
+                                  columnSelection="multiple" columnStretching="column:c4" verticalGridVisible="false"
+                                  emptyText="#{bindings.CrsIncomingBeneficiariesView1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                  rowSelection="single" fetchSize="#{bindings.CrsIncomingBeneficiariesView1.rangeSize}"
+                                  displayRow="selected" editingMode="editAll" filterVisible="false" autoHeightRows="5"
+                                  blockRowNavigationOnError="always" rowBandingInterval="1" scrollPolicy="page"
+                                  partialTriggers="::Del4 ::ci4 ::Commit4 ::print4 ::excel4 :::Beneficiariesd1">
+                          <af:column id="IncomingBeneficiariesPkC50" sortProperty="IncomingBeneficiariesPk"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingBeneficiaries.IncomingBeneficiariesPk']}"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive" align="center"
+                                     width="300" visible="false">
+                            <af:inputText value="#{row.bindings.IncomingBeneficiariesPk.inputValue}"
+                                          label="#{menu.resourceLabelMap['CrsIncomingBeneficiaries.IncomingBeneficiariesPk']}"
+                                          required="#{bindings.CrsIncomingBeneficiariesView1.hints.IncomingBeneficiariesPk.mandatory}"
+                                          columns="#{bindings.CrsIncomingBeneficiariesView1.hints.IncomingBeneficiariesPk.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingBeneficiariesView1.hints.IncomingBeneficiariesPk.precision}"
+                                          id="crsIncomingBeneficiariesIncomingbeneficiariespk"
+                                          partialTriggers="::Commit4" disabled="false" readOnly="true">
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{row.bindings.IncomingBeneficiariesPk.format}"/>
+                              <f:validator binding="#{row.bindings.IncomingBeneficiariesPk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column id="BeneficiariesFkC52" sortProperty="BeneficiariesFkSearch"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingBeneficiaries.BeneficiariesFk']}"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive" width="200"
+                                     visible="false">
+                            <af:panelGroupLayout id="pgl51BeneficiariesFk" layout="horizontal">
+                              <af:inputListOfValues value="#{row.bindings.BeneficiariesFk.inputValue}"
+                                                    label="#{menu.resourceLabelMap['CrsIncomingBeneficiaries.BeneficiariesFk']}"
+                                                    required="true"
+                                                    columns="#{bindings.CrsIncomingBeneficiariesView1.hints.BeneficiariesFk.displayWidth}"
+                                                    id="crsIncomingBeneficiariesBeneficiariesfk"
+                                                    model="#{row.bindings.BeneficiariesFk.listOfValuesModel}"
+                                                    autoSubmit="true" simple="true"
+                                                    popupTitle="#{bindings.CrsIncomingBeneficiariesView1.hints.BeneficiariesFk.label}"
+                                                    disabled="false" readOnly="true">
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{row.bindings.BeneficiariesFk.format}"/>
+                                <f:validator binding="#{row.bindings.BeneficiariesFk.validator}"/>
+                              </af:inputListOfValues>
+                            </af:panelGroupLayout>
+                          </af:column>
+                          <af:column headerText="#{menu.resourceLabelMap['CrsIncomingBeneficiaries.BeneficiariesFkDesc']}"
+                                     id="c4" sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                     sortProperty="DisplayBeneficiariesFkSearch" width="200">
+                            <af:inputText value="#{row.bindings.DisplayBeneficiariesFk.inputValue}"
+                                          label="#{bindings.CrsIncomingBeneficiariesView1.hints.DisplayBeneficiariesFk.label}"
+                                          required="#{bindings.CrsIncomingBeneficiariesView1.hints.DisplayBeneficiariesFk.mandatory}"
+                                          columns="#{bindings.CrsIncomingBeneficiariesView1.hints.DisplayBeneficiariesFk.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingBeneficiariesView1.hints.DisplayBeneficiariesFk.precision}"
+                                          id="DisplayBeneficiariesFkit4"
+                                          partialTriggers="crsIncomingBeneficiariesBeneficiariesfk" disabled="false"
+                                          readOnly="true">
+                              <f:validator binding="#{row.bindings.DisplayBeneficiariesFk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column headerText="#{menu.resourceLabelMap['CrsBeneficiaries.BeneficiaryId']}" id="c1"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                     sortProperty="DisplayBeneficiarieBeneficiaryId" width="200">
+                            <af:inputText value="#{row.bindings.DisplayBeneficiarieBeneficiaryId.inputValue}"
+                                          label="#{bindings.CrsIncomingBeneficiariesView1.hints.DisplayBeneficiarieBeneficiaryId.label}"
+                                          required="#{bindings.CrsIncomingBeneficiariesView1.hints.DisplayBeneficiarieBeneficiaryId.mandatory}"
+                                          columns="#{bindings.CrsIncomingBeneficiariesView1.hints.DisplayBeneficiarieBeneficiaryId.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingBeneficiariesView1.hints.DisplayBeneficiarieBeneficiaryId.precision}"
+                                          id="DisplayBeneficiarieBeneficiaryIdit1" readOnly="true"
+                                          partialTriggers="crsIncomingBeneficiariesBeneficiariesfk">
+                              <f:validator binding="#{row.bindings.DisplayBeneficiarieBeneficiaryId.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column headerText="#{menu.resourceLabelMap['CrsBeneficiaries.MobileNo']}" id="c3"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                     sortProperty="DisplayBeneficiarieMobileNo" width="200">
+                            <af:inputText value="#{row.bindings.DisplayBeneficiarieMobileNo.inputValue}"
+                                          label="#{bindings.CrsIncomingBeneficiariesView1.hints.DisplayBeneficiarieMobileNo.label}"
+                                          required="#{bindings.CrsIncomingBeneficiariesView1.hints.DisplayBeneficiarieMobileNo.mandatory}"
+                                          columns="#{bindings.CrsIncomingBeneficiariesView1.hints.DisplayBeneficiarieMobileNo.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingBeneficiariesView1.hints.DisplayBeneficiarieMobileNo.precision}"
+                                          id="DisplayBeneficiarieMobileNoit3"
+                                          partialTriggers="crsIncomingBeneficiariesBeneficiariesfk" readOnly="true">
+                              <f:validator binding="#{row.bindings.DisplayBeneficiarieMobileNo.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column headerText="#{menu.resourceLabelMap['CrsBeneficiaries.Email']}" id="c2"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                     sortProperty="DisplayBeneficiarieEmail" width="300" rendered="true"
+                                     visible="false">
+                            <af:inputText value="#{row.bindings.DisplayBeneficiarieEmail.inputValue}"
+                                          label="#{bindings.CrsIncomingBeneficiariesView1.hints.DisplayBeneficiarieEmail.label}"
+                                          required="#{bindings.CrsIncomingBeneficiariesView1.hints.DisplayBeneficiarieEmail.mandatory}"
+                                          columns="#{bindings.CrsIncomingBeneficiariesView1.hints.DisplayBeneficiarieEmail.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingBeneficiariesView1.hints.DisplayBeneficiarieEmail.precision}"
+                                          id="DisplayBeneficiarieEmailit2"
+                                          partialTriggers="crsIncomingBeneficiariesBeneficiariesfk" readOnly="true">
+                              <f:validator binding="#{row.bindings.DisplayBeneficiarieEmail.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </f:facet>
+                  </af:panelStretchLayout>
+                </af:panelGroupLayout>
+              </af:panelGroupLayout>
+            </af:showDetailItem>
+            <af:showDetailItem id="sdi_CrsIncomingDocuments46" styleClass="AFStretchWidth" immediate="true"
+                               text="#{menu.resourceLabelMap['CrsIncomingArchive.sdi_CrsIncomingDocuments46']}">
+              <af:panelGroupLayout id="pglCrsIncomingArchive47" layout="vertical" halign="center">
+                <af:panelGroupLayout id="pgl44" partialTriggers="CrsIncomingArchiveDialog">
+                  <af:panelStretchLayout id="psl45" styleClass="AFStretchWidth" dimensionsFrom="children">
+                    <f:facet name="center">
+                      <af:panelCollection id="pc29" styleClass="AFStretchWidth"
+                                          featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem">
+                        <f:facet name="secondaryToolbar">
+                          <af:toolbar id="tb3">
+                            <af:commandButton text="#{menu.resourceLabelMap['label.delete']}" id="Del3"
+                                              styleClass="deleteButton" action="#{menu.genericDeleteAction}"
+                                              immediate="true"
+                                              disabled="#{!menu.deleteAllowed or !bindings.Delete3.enabled}"
+                                              partialSubmit="true" icon="#{menu.deleteIcon}" rendered="false">
+                              <af:setPropertyListener to="#{sessionScope.deleteParam}" from="Delete3" type="action"/>
+                              <af:setPropertyListener to="#{sessionScope.refreshParam}"
+                                                      from="CrsIncomingArchive1 CrsIncomingArchiveTlView2t"
+                                                      type="action"/>
+                              <af:setPropertyListener to="#{sessionScope.viewParam}" from="CrsIncomingArchiveView2"
+                                                      type="action"/>
+                            </af:commandButton>
+                            <af:spacer width="5" id="s12" rendered="true"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.createInsert']}" id="ci3"
+                                              styleClass="insertButton"
+                                              actionListener="#{bindings.CreateInsert3.execute}"
+                                              disabled="#{!menu.insertAllowed or !bindings.Delete1.enabled or bindings.CrsIncomingDocumentsIncomingDocumentsPk.inputValue == null}"
+                                              partialSubmit="true" icon="#{menu.createInsertIcon}" rendered="false"/>
+                            <af:spacer width="5" id="s13" rendered="false"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.commit']}" id="Commit3"
+                                              styleClass="commitButton" actionListener="#{bindings.Commit.execute}"
+                                              disabled="#{!menu.updateAllowed}" partialSubmit="true"
+                                              icon="#{menu.commitIcon}" rendered="false"/>
+                            <af:spacer width="5" id="s14" rendered="false"/>
+                            <af:spacer width="5" id="s15"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="print3"
+                                              styleClass="printButton" immediate="true"
+                                              disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                              icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+                              <af:showPrintablePageBehavior/>
+                            </af:commandButton>
+                            <af:spacer width="5" id="s16"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.excel']}" id="excel3"
+                                              styleClass="excelButton" immediate="true"
+                                              disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                              icon="#{menu.excelIcon}" visible="#{menu.excelVisible}">
+                              <af:setPropertyListener to="#{sessionScope.tableId}" from="CrsIncomingArchive1"
+                                                      type="action"/>
+                              <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                            </af:commandButton>
+                            <af:spacer width="5" id="s17"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.translation']}" id="translation2"
+                                              styleClass="printButton" immediate="true"
+                                              disabled="#{!bindings.Delete3.enabled or bindings.IncomingArchivePk.inputValue==null}"
+                                              partialSubmit="true" icon="#{menu.translationIcon}"
+                                              partialTriggers="Del3 Commit3">
+                              <af:showPopupBehavior popupId="::CrsIncomingArchivePopup1" triggerType="action"/>
+                            </af:commandButton>
+                          </af:toolbar>
+                        </f:facet>
+                        <af:table value="#{bindings.CrsIncomingArchiveView1.collectionModel}" id="CrsIncomingArchive1"
+                                  styleClass="AFStretchWidth" var="row" varStatus="vs"
+                                  rows="#{bindings.CrsIncomingArchiveView1.rangeSize}"
+                                  selectionListener="#{bindings.CrsIncomingArchiveView1.collectionModel.makeCurrent}"
+                                  selectedRowKeys="#{bindings.CrsIncomingArchiveView1.collectionModel.selectedRow}"
+                                  filterModel="#{bindings.CrsIncomingArchiveView1CriteriaQuery.queryDescriptor}"
+                                  queryListener="#{bindings.CrsIncomingArchiveView1CriteriaQuery.processQuery}"
+                                  columnSelection="multiple" columnStretching="column:DisplayArcDocDescC37"
+                                  verticalGridVisible="false"
+                                  emptyText="#{bindings.CrsIncomingArchiveView1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                  rowSelection="single" fetchSize="#{bindings.CrsIncomingArchiveView1.rangeSize}"
+                                  displayRow="selected" editingMode="editAll" filterVisible="false" autoHeightRows="5"
+                                  blockRowNavigationOnError="always" rowBandingInterval="1" scrollPolicy="page"
+                                  partialTriggers="::Del3 ::ci3 ::Commit3 ::print3 ::excel3 ::translation2 :::CrsIncomingArchiveDialog">
+                          <af:column id="IncomingArchivePkC31" sortProperty="IncomingArchivePk"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingArchive.IncomingArchivePk']}"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive" align="center"
+                                     width="200" visible="false">
+                            <af:inputText value="#{row.bindings.IncomingArchivePk.inputValue}"
+                                          label="#{menu.resourceLabelMap['CrsIncomingArchive.IncomingArchivePk']}"
+                                          required="#{bindings.CrsIncomingArchiveView1.hints.IncomingArchivePk.mandatory}"
+                                          columns="#{bindings.CrsIncomingArchiveView1.hints.IncomingArchivePk.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingArchiveView1.hints.IncomingArchivePk.precision}"
+                                          id="crsIncomingArchiveIncomingarchivepk" readOnly="true">
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{row.bindings.IncomingArchivePk.format}"/>
+                              <f:validator binding="#{row.bindings.IncomingArchivePk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column id="SecurityLevelFkC37" sortProperty="SecurityLevelFkSearch"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingArchive.SecurityLevelFk']}"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive" width="150"
+                                     showRequired="false" visible="false">
+                            <af:panelGroupLayout id="pgl36SecurityLevelFk" layout="horizontal">
+                              <af:inputListOfValues value="#{row.bindings.SecurityLevelFk.inputValue}"
+                                                    label="#{menu.resourceLabelMap['CrsIncomingArchive.SecurityLevelFk']}"
+                                                    required="true"
+                                                    columns="#{bindings.CrsIncomingArchiveView1.hints.SecurityLevelFk.displayWidth}"
+                                                    id="crsIncomingArchiveSecuritylevelfk"
+                                                    model="#{row.bindings.SecurityLevelFk.listOfValuesModel}"
+                                                    autoSubmit="false" simple="true"
+                                                    popupTitle="#{bindings.CrsIncomingArchiveView1.hints.SecurityLevelFk.label}"
+                                                    disabled="true" readOnly="true">
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{row.bindings.SecurityLevelFk.format}"/>
+                                <f:validator binding="#{row.bindings.SecurityLevelFk.validator}"/>
+                              </af:inputListOfValues>
+                            </af:panelGroupLayout>
+                          </af:column>
+                          <af:column id="DisplaySecurityLevelFkC37" sortProperty="DisplaySecurityLevelFkSearch"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingArchive.SecurityLevelFkDesc']}"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive" width="300">
+                            <af:inputText value="#{row.bindings.DisplaySecurityLevelFk.inputValue}"
+                                          label="#{menu.resourceLabelMap['CrsIncomingArchive.SecurityLevelFkDesc']}"
+                                          required="#{bindings.CrsIncomingArchiveView1.hints.DisplaySecurityLevelFk.mandatory}"
+                                          columns="#{bindings.CrsIncomingArchiveView1.hints.DisplaySecurityLevelFk.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingArchiveView1.hints.DisplaySecurityLevelFk.precision}"
+                                          id="DisplaySecurityLevelFkit1"
+                                          partialTriggers="crsIncomingArchiveSecuritylevelfk" disabled="false"
+                                          readOnly="true">
+                              <f:validator binding="#{row.bindings.DisplaySecurityLevelFk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column id="DisplayArcDocNameC37" sortProperty="DisplayArcDocName"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingArchive.DisplayArcDocName']}"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive" width="300"
+                                     showRequired="false">
+                            <af:inputText value="#{row.bindings.DisplayArcDocName.inputValue}"
+                                          label="#{bindings.CrsIncomingArchiveView1.hints.DisplayArcDocName.label}"
+                                          required="true" autoSubmit="true"
+                                          columns="#{bindings.CrsIncomingArchiveView1.hints.DisplayArcDocName.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingArchiveView1.hints.DisplayArcDocName.precision}"
+                                          id="DisplayArcDocNameit2" disabled="false" readOnly="true">
+                              <f:validator binding="#{row.bindings.DisplayArcDocName.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column id="DisplayArcDocDescC37" sortProperty="DisplayArcDocDesc"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingArchive.DisplayArcDocDesc']}"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive">
+                            <af:inputText value="#{row.bindings.DisplayArcDocDesc.inputValue}"
+                                          label="#{bindings.CrsIncomingArchiveView1.hints.DisplayArcDocDesc.label}"
+                                          columns="#{bindings.CrsIncomingArchiveView1.hints.DisplayArcDocDesc.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingArchiveView1.hints.DisplayArcDocDesc.precision}"
+                                          autoSubmit="true" id="DisplayArcDocDescit1"
+                                          required="#{bindings.CrsIncomingArchiveView1.hints.DisplayArcDocDesc.mandatory}"
+                                          readOnly="true">
+                              <f:validator binding="#{row.bindings.DisplayArcDocDesc.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column id="ArcFilePathC17" sortProperty="ArcFilePath"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingArchive.ArcFilePath']}"
+                                     sortable="false" filterable="false" filterFeatures="caseInsensitive" width="300"
+                                     showRequired="false" rendered="false">
+                            <af:inputFile label="#{menu.resourceLabelMap['CrsIncomingArchive.ArcFilePath']}" id="if1"
+                                          required="#{bindings.CrsIncomingArchiveView1.hints.ArcFilePath.mandatory}"
+                                          autoSubmit="true" disabled="true" rendered="false"/>
+                          </af:column>
+                          <af:column id="downloadC17" headerText="#{menu.resourceLabelMap['label.download']}"
+                                     sortable="false" filterFeatures="caseInsensitive" width="100" align="center"
+                                     rendered="false">
+                            <af:commandButton shortDesc="#{menu.resourceLabelMap['label.download']}" id="cb4"
+                                              partialSubmit="true" icon="/images/get_down.png"
+                                              disabled="#{row.bindings.ArcFilePath.inputValue == null}"
+                                              partialTriggers="if1">
+                              <af:fileDownloadActionListener method="#{indoc.downloadIncomingArchiveAttachment}"/>
+                            </af:commandButton>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </f:facet>
+                  </af:panelStretchLayout>
+                </af:panelGroupLayout>
+                <af:spacer height="30" id="s366"/>
+              </af:panelGroupLayout>
+            </af:showDetailItem>
+            <af:showDetailItem id="sdi_CrsIncomingDocuments143" styleClass="AFStretchWidth" immediate="true"
+                               text="#{menu.resourceLabelMap['CrsIncomingDocAttachments.sdi_CrsIncomingDocuments143']}"
+                               rendered="false"/>
+            <af:showDetailItem id="sdi_CrsIncomingDocuments166" styleClass="AFStretchWidth" immediate="true"
+                               text="#{menu.resourceLabelMap['CrsIncomingDocCc.sdi_CrsIncomingDocuments166']}">
+              <af:panelGroupLayout id="pglCrsIncomingDocCc167" layout="vertical" halign="center">
+                <af:panelGroupLayout id="pgl164">
+                  <af:panelStretchLayout id="psl165" styleClass="AFStretchWidth" dimensionsFrom="children">
+                    <f:facet name="center">
+                      <af:panelCollection id="pc145" styleClass="AFStretchWidth"
+                                          featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem">
+                        <f:facet name="secondaryToolbar">
+                          <af:toolbar id="tb9">
+                            <af:commandButton text="#{menu.resourceLabelMap['label.delete']}" id="Del9"
+                                              styleClass="deleteButton" action="#{menu.genericDeleteAction}"
+                                              immediate="true"
+                                              disabled="#{!menu.deleteAllowed or !bindings.Delete9.enabled}"
+                                              partialSubmit="true" icon="#{menu.deleteIcon}" rendered="false">
+                              <af:setPropertyListener to="#{sessionScope.deleteParam}" from="Delete9" type="action"/>
+                              <af:setPropertyListener to="#{sessionScope.refreshParam}" from="CrsIncomingDocCc1"
+                                                      type="action"/>
+                              <af:setPropertyListener to="#{sessionScope.viewParam}" from="CrsIncomingDocCcView2"
+                                                      type="action"/>
+                            </af:commandButton>
+                            <af:spacer width="5" id="s24" rendered="false"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.createInsert']}" id="ci9"
+                                              styleClass="insertButton"
+                                              actionListener="#{bindings.CreateInsert9.execute}"
+                                              disabled="#{!menu.insertAllowed or !bindings.Delete1.enabled or bindings.CrsIncomingDocumentsIncomingDocumentsPk.inputValue == null}"
+                                              partialSubmit="true" icon="#{menu.createInsertIcon}" rendered="false"/>
+                            <af:spacer width="5" id="s25" rendered="false"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.commit']}" id="Commit9"
+                                              styleClass="commitButton" actionListener="#{bindings.Commit.execute}"
+                                              disabled="#{!menu.updateAllowed}" partialSubmit="true"
+                                              icon="#{menu.commitIcon}" rendered="false"/>
+                            <af:spacer width="5" id="s26" rendered="false"/>
+                            <af:spacer width="5" id="s27"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="print9"
+                                              styleClass="printButton" immediate="true"
+                                              disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                              icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+                              <af:showPrintablePageBehavior/>
+                            </af:commandButton>
+                            <af:spacer width="5" id="s28"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.excel']}" id="excel9"
+                                              styleClass="excelButton" immediate="true"
+                                              disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                              icon="#{menu.excelIcon}" visible="#{menu.excelVisible}">
+                              <af:setPropertyListener to="#{sessionScope.tableId}" from="CrsIncomingDocCc1"
+                                                      type="action"/>
+                              <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                            </af:commandButton>
+                            <af:spacer width="5" id="s29"/>
+                          </af:toolbar>
+                        </f:facet>
+                        <af:table value="#{bindings.CrsIncomingDocCcView1.collectionModel}" id="CrsIncomingDocCc1"
+                                  styleClass="AFStretchWidth" var="row" varStatus="vs"
+                                  rows="#{bindings.CrsIncomingDocCcView1.rangeSize}"
+                                  selectionListener="#{bindings.CrsIncomingDocCcView1.collectionModel.makeCurrent}"
+                                  selectedRowKeys="#{bindings.CrsIncomingDocCcView1.collectionModel.selectedRow}"
+                                  filterModel="#{bindings.CrsIncomingDocCcView1CriteriaQuery.queryDescriptor}"
+                                  queryListener="#{bindings.CrsIncomingDocCcView1CriteriaQuery.processQuery}"
+                                  columnSelection="multiple" columnStretching="column:c5" verticalGridVisible="false"
+                                  emptyText="#{bindings.CrsIncomingDocCcView1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                  rowSelection="single" fetchSize="#{bindings.CrsIncomingDocCcView1.rangeSize}"
+                                  displayRow="selected" editingMode="editAll" filterVisible="false" autoHeightRows="5"
+                                  blockRowNavigationOnError="always" rowBandingInterval="1" scrollPolicy="page"
+                                  partialTriggers="::Del9 ::ci9 ::Commit9 ::print9 ::excel9">
+                          <af:column id="IncomingDocCcPkC147" sortProperty="IncomingDocCcPk"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.IncomingDocCcPk']}"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive" align="center"
+                                     width="300">
+                            <af:inputText value="#{row.bindings.IncomingDocCcPk.inputValue}"
+                                          label="#{menu.resourceLabelMap['CrsIncomingDocCc.IncomingDocCcPk']}"
+                                          required="#{bindings.CrsIncomingDocCcView1.hints.IncomingDocCcPk.mandatory}"
+                                          columns="#{bindings.CrsIncomingDocCcView1.hints.IncomingDocCcPk.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingDocCcView1.hints.IncomingDocCcPk.precision}"
+                                          id="crsIncomingDocCcIncomingdocccpk" readOnly="true">
+                              <af:convertNumber groupingUsed="false" pattern="#{row.bindings.IncomingDocCcPk.format}"/>
+                              <f:validator binding="#{row.bindings.IncomingDocCcPk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column id="DepartmentsFkC152" sortProperty="DepartmentsFkSearch"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.DepartmentsFk']}"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive" width="200"
+                                     showRequired="false">
+                            <af:panelGroupLayout id="pgl151DepartmentsFk" layout="horizontal">
+                              <af:inputListOfValues value="#{row.bindings.DepartmentsFk.inputValue}"
+                                                    label="#{menu.resourceLabelMap['CrsIncomingDocCc.DepartmentsFk']}"
+                                                    required="true"
+                                                    columns="#{bindings.CrsIncomingDocCcView1.hints.DepartmentsFk.displayWidth}"
+                                                    id="crsIncomingDocCcDepartmentsfk"
+                                                    model="#{row.bindings.DepartmentsFk.listOfValuesModel}"
+                                                    autoSubmit="true" simple="true"
+                                                    popupTitle="#{bindings.CrsIncomingDocCcView1.hints.DepartmentsFk.label}"
+                                                    disabled="false" readOnly="true">
+                                <af:convertNumber groupingUsed="false" pattern="#{row.bindings.DepartmentsFk.format}"/>
+                                <f:validator binding="#{row.bindings.DepartmentsFk.validator}"/>
+                              </af:inputListOfValues>
+                            </af:panelGroupLayout>
+                          </af:column>
+                          <af:column headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.DepartmentsFkDesc']}" id="c5"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                     sortProperty="DisplayDepartmentsFkSearch">
+                            <af:inputText value="#{row.bindings.DisplayDepartmentsFk.inputValue}"
+                                          label="#{bindings.CrsIncomingDocCcView1.hints.DisplayDepartmentsFk.label}"
+                                          required="#{bindings.CrsIncomingDocCcView1.hints.DisplayDepartmentsFk.mandatory}"
+                                          columns="#{bindings.CrsIncomingDocCcView1.hints.DisplayDepartmentsFk.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingDocCcView1.hints.DisplayDepartmentsFk.precision}"
+                                          id="DisplayDepartmentsFkit1" partialTriggers="crsIncomingDocCcDepartmentsfk"
+                                          readOnly="true" disabled="false">
+                              <f:validator binding="#{row.bindings.DisplayDepartmentsFk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column id="ActionFkC160" sortProperty="ActionFkSearch"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFk']}" sortable="true"
+                                     filterable="true" filterFeatures="caseInsensitive" width="150"
+                                     showRequired="false">
+                            <af:panelGroupLayout id="pgl159ActionFk" layout="horizontal">
+                              <af:inputListOfValues value="#{row.bindings.ActionFk.inputValue}"
+                                                    label="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFk']}"
+                                                    required="true"
+                                                    columns="#{bindings.CrsIncomingDocCcView1.hints.ActionFk.displayWidth}"
+                                                    id="crsIncomingDocCcActionfk"
+                                                    model="#{row.bindings.ActionFk.listOfValuesModel}" autoSubmit="true"
+                                                    simple="true"
+                                                    popupTitle="#{bindings.CrsIncomingDocCcView1.hints.ActionFk.label}"
+                                                    readOnly="true">
+                                <af:convertNumber groupingUsed="false" pattern="#{row.bindings.ActionFk.format}"/>
+                                <f:validator binding="#{row.bindings.ActionFk.validator}"/>
+                              </af:inputListOfValues>
+                            </af:panelGroupLayout>
+                          </af:column>
+                          <af:column id="c6" sortProperty="DisplayActionFkSearch"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFkDesc']}"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive" width="200">
+                            <af:inputText value="#{row.bindings.DisplayActionFk.inputValue}"
+                                          label="#{bindings.CrsIncomingDocCcView1.hints.DisplayActionFk.label}"
+                                          required="#{bindings.CrsIncomingDocCcView1.hints.DisplayActionFk.mandatory}"
+                                          columns="#{bindings.CrsIncomingDocCcView1.hints.DisplayActionFk.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingDocCcView1.hints.DisplayActionFk.precision}"
+                                          id="DisplayActionFkit1" partialTriggers="crsIncomingDocCcActionfk"
+                                          readOnly="true">
+                              <f:validator binding="#{row.bindings.DisplayActionFk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column id="ExecutionDateGC162"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.ExecutionDateG']}"
+                                     sortable="true" sortProperty="ExecutionDateG" width="300" align="center"
+                                     filterable="true" filterFeatures="caseInsensitive">
+                            <af:inputDate value="#{row.bindings.ExecutionDateG.inputValue}"
+                                          required="#{bindings.CrsIncomingDocCcView1.hints.ExecutionDateG.mandatory}"
+                                          columns="#{bindings.CrsIncomingDocCcView1.hints.ExecutionDateG.displayWidth}"
+                                          id="crsIncomingDocCcExecutiondateg"
+                                          partialTriggers="crsIncomingDocCcExecutiondateh" autoSubmit="true"
+                                          disabled="false" readOnly="true">
+                              <f:validator binding="#{row.bindings.ExecutionDateG.validator}"/>
+                              <af:convertDateTime pattern="#{menu.dateFormat}"/>
+                            </af:inputDate>
+                          </af:column>
+                          <af:column id="ExecutionDateHC163"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.ExecutionDateH']}"
+                                     partialTriggers="ExecutionDateGC162" sortable="true" sortProperty="ExecutionDateH"
+                                     width="300" align="center">
+                            <af:inputText value="#{row.bindings.ExecutionDateH.inputValue}"
+                                          label="#{menu.resourceLabelMap['CrsIncomingDocCc.ExecutionDateH']}"
+                                          required="#{bindings.CrsIncomingDocCcView1.hints.ExecutionDateH.mandatory}"
+                                          columns="#{bindings.CrsIncomingDocCcView1.hints.ExecutionDateH.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingDocCcView1.hints.ExecutionDateH.precision}"
+                                          id="crsIncomingDocCcExecutiondateh" simple="true" autoSubmit="true"
+                                          partialTriggers="crsIncomingDocCcExecutiondateg" disabled="false"
+                                          readOnly="true">
+                              <f:converter converterId="hijriDateConverter"/>
+                            </af:inputText>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </f:facet>
+                  </af:panelStretchLayout>
+                </af:panelGroupLayout>
+              </af:panelGroupLayout>
+            </af:showDetailItem>
+            <af:showDetailItem id="sdi_CrsIncomingDocuments27" styleClass="AFStretchWidth" immediate="true"
+                               text="#{menu.resourceLabelMap['CrsIncomingComments.sdi_CrsIncomingDocuments27']}">
+              <af:panelGroupLayout id="pglCrsIncomingComments28" layout="vertical" halign="center">
+                <af:panelGroupLayout id="pgl25">
+                  <af:panelStretchLayout id="psl26" styleClass="AFStretchWidth" dimensionsFrom="children">
+                    <f:facet name="center">
+                      <af:panelCollection id="pc14" styleClass="AFStretchWidth"
+                                          featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem">
+                        <f:facet name="secondaryToolbar">
+                          <af:toolbar id="tb22">
+                            <af:commandButton text="#{menu.resourceLabelMap['label.delete']}" id="Del2"
+                                              styleClass="deleteButton" action="#{menu.genericDeleteAction}"
+                                              immediate="true"
+                                              disabled="#{!menu.deleteAllowed or !bindings.Delete2.enabled}"
+                                              partialSubmit="true" icon="#{menu.deleteIcon}" rendered="false">
+                              <af:setPropertyListener to="#{sessionScope.deleteParam}" from="Delete2" type="action"/>
+                              <af:setPropertyListener to="#{sessionScope.refreshParam}"
+                                                      from="CrsIncomingComments1 CrsIncomingCommentsTl" type="action"/>
+                              <af:setPropertyListener to="#{sessionScope.viewParam}" from="CrsIncomingCommentsView2"
+                                                      type="action"/>
+                            </af:commandButton>
+                            <af:spacer width="5" rendered="false" id="s36"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.createInsert']}" id="ci2"
+                                              styleClass="insertButton"
+                                              actionListener="#{bindings.CreateInsert2.execute}"
+                                              disabled="#{!menu.insertAllowed or !bindings.Delete1.enabled or bindings.CrsIncomingDocumentsIncomingDocumentsPk.inputValue == null}"
+                                              partialSubmit="true" icon="#{menu.createInsertIcon}" rendered="false"/>
+                            <af:spacer width="5" rendered="false" id="s37"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.commit']}" id="Commit2"
+                                              styleClass="commitButton" actionListener="#{bindings.Commit.execute}"
+                                              disabled="#{!menu.updateAllowed}" partialSubmit="true"
+                                              icon="#{menu.commitIcon}" rendered="false"/>
+                            <af:spacer width="5" rendered="false" id="s38"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.rollback']}" id="rb2"
+                                              styleClass="rollbackButton" immediate="true" partialSubmit="true"
+                                              icon="#{menu.rollbackIcon}" visible="#{menu.rollbackVisible}"
+                                              rendered="false">
+                              <af:resetActionListener/>
+                            </af:commandButton>
+                            <af:spacer width="5" id="s39"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="print2"
+                                              styleClass="printButton" immediate="true"
+                                              disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                              icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+                              <af:showPrintablePageBehavior/>
+                            </af:commandButton>
+                            <af:spacer width="5" id="s42"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.excel']}" id="excel2"
+                                              styleClass="excelButton" immediate="true"
+                                              disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                              icon="#{menu.excelIcon}" visible="#{menu.excelVisible}">
+                              <af:setPropertyListener to="#{sessionScope.tableId}" from="CrsIncomingComments1"
+                                                      type="action"/>
+                              <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                            </af:commandButton>
+                            <af:spacer width="5" id="s44"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.translation']}" id="translation5"
+                                              styleClass="printButton" immediate="true"
+                                              disabled="#{!bindings.Delete2.enabled or bindings.IncomingCommentsPk.inputValue== null}"
+                                              partialSubmit="true" icon="#{menu.translationIcon}"
+                                              partialTriggers="Del2 Commit2">
+                              <af:showPopupBehavior popupId="::CrsIncomingCommentsPopup" triggerType="action"/>
+                            </af:commandButton>
+                          </af:toolbar>
+                        </f:facet>
+                        <af:table value="#{bindings.CrsIncomingCommentsView2.collectionModel}" var="row"
+                                  rows="#{bindings.CrsIncomingCommentsView2.rangeSize}"
+                                  emptyText="#{bindings.CrsIncomingCommentsView2.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                  rowBandingInterval="1"
+                                  selectedRowKeys="#{bindings.CrsIncomingCommentsView2.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.CrsIncomingCommentsView2.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.CrsIncomingCommentsView2.rangeSize}"
+                                  filterModel="#{bindings.CrsIncomingCommentsView2Query.queryDescriptor}"
+                                  filterVisible="false"
+                                  queryListener="#{bindings.CrsIncomingCommentsView2Query.processQuery}" varStatus="vs"
+                                  id="CrsIncomingComments1" styleClass="AFStretchWidth" columnSelection="multiple"
+                                  columnStretching="last" verticalGridVisible="false" displayRow="selected"
+                                  editingMode="editAll" autoHeightRows="5" blockRowNavigationOnError="always"
+                                  scrollPolicy="page"
+                                  partialTriggers=":::CrsIncomingCommentsDialog ::Del2 ::ci2 ::Commit2 ::rb2 ::print2 ::excel2 ::translation5">
+                          <af:column sortProperty="IncomingCommentsPk" filterable="true" sortable="true"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingComments.IncomingCommentsPk']}"
+                                     id="IncomingCommentsPkc7" filterFeatures="caseInsensitive" width="150"
+                                     align="center">
+                            <af:inputText value="#{row.bindings.IncomingCommentsPk.inputValue}"
+                                          label="#{bindings.CrsIncomingCommentsView2.hints.IncomingCommentsPk.label}"
+                                          required="#{bindings.CrsIncomingCommentsView2.hints.IncomingCommentsPk.mandatory}"
+                                          columns="#{bindings.CrsIncomingCommentsView2.hints.IncomingCommentsPk.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingCommentsView2.hints.IncomingCommentsPk.precision}"
+                                          id="it1" readOnly="true">
+                              <f:validator binding="#{row.bindings.IncomingCommentsPk.validator}"/>
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.CrsIncomingCommentsView2.hints.IncomingCommentsPk.format}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column sortProperty="DisplayCommentValue" filterable="true" sortable="true"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingComments.DisplayCommentValue']}"
+                                     id="DisplayCommentValuec8" filterFeatures="caseInsensitive" showRequired="false">
+                            <af:inputText value="#{row.bindings.DisplayCommentValue.inputValue}"
+                                          label="#{bindings.CrsIncomingCommentsView2.hints.DisplayCommentValue.label}"
+                                          required="true"
+                                          columns="#{bindings.CrsIncomingCommentsView2.hints.DisplayCommentValue.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingCommentsView2.hints.DisplayCommentValue.precision}"
+                                          id="DisplayCommentValueit2" autoSubmit="true" readOnly="true">
+                              <f:validator binding="#{row.bindings.DisplayCommentValue.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </f:facet>
+                  </af:panelStretchLayout>
+                </af:panelGroupLayout>
+              </af:panelGroupLayout>
+            </af:showDetailItem>
+            <af:showDetailItem id="sdi_CrsIncomingDocuments190" styleClass="AFStretchWidth" immediate="true"
+                               text="#{menu.resourceLabelMap['CrsIncomingRelatedLetters.sdi_CrsIncomingDocuments190']}"
+                               partialTriggers="pc168:Del10 pc168:ci10 pc168:Commit10 pc168:rb10 pc168:print10 pc168:excel10">
+              <af:panelGroupLayout id="pglCrsIncomingRelatedLetters191" layout="vertical" halign="center">
+                <af:panelGroupLayout id="pgl188">
+                  <af:panelStretchLayout id="psl189" styleClass="AFStretchWidth" dimensionsFrom="children">
+                    <f:facet name="center">
+                      <af:panelCollection id="pc168" styleClass="AFStretchWidth"
+                                          featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem">
+                        <f:facet name="secondaryToolbar">
+                          <af:toolbar id="tb10">
+                            <af:spacer width="5" id="s30" rendered="false"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.delete']}" id="Del10"
+                                              styleClass="deleteButton" action="#{menu.genericDeleteAction}"
+                                              immediate="true"
+                                              disabled="#{!menu.deleteAllowed or !bindings.Delete10.enabled}"
+                                              partialSubmit="true" icon="#{menu.deleteIcon}" rendered="false">
+                              <af:setPropertyListener to="#{sessionScope.deleteParam}" from="Delete10" type="action"/>
+                              <af:setPropertyListener to="#{sessionScope.refreshParam}"
+                                                      from="CrsIncomingRelatedLetters1" type="action"/>
+                              <af:setPropertyListener to="#{sessionScope.viewParam}"
+                                                      from="CrsIncomingRelatedLettersView2" type="action"/>
+                            </af:commandButton>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.createInsert']}" id="ci10"
+                                              styleClass="insertButton"
+                                              actionListener="#{bindings.CreateInsert10.execute}"
+                                              disabled="#{!menu.insertAllowed or !bindings.Delete1.enabled or bindings.CrsIncomingDocumentsIncomingDocumentsPk.inputValue == null}"
+                                              partialSubmit="true" icon="#{menu.createInsertIcon}" rendered="false"/>
+                            <af:spacer width="5" id="s31" rendered="false"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.commit']}" id="Commit10"
+                                              styleClass="commitButton" actionListener="#{bindings.Commit.execute}"
+                                              disabled="#{!menu.updateAllowed}" partialSubmit="true"
+                                              icon="#{menu.commitIcon}" rendered="false"/>
+                            <af:spacer width="5" id="s32" rendered="false"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.rollback']}" id="rb10"
+                                              styleClass="rollbackButton" immediate="true" partialSubmit="true"
+                                              icon="#{menu.rollbackIcon}" visible="#{menu.rollbackVisible}"
+                                              rendered="false">
+                              <af:resetActionListener/>
+                            </af:commandButton>
+                            <af:spacer width="5" id="s33"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="print10"
+                                              styleClass="printButton" immediate="true"
+                                              disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                              icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+                              <af:showPrintablePageBehavior/>
+                            </af:commandButton>
+                            <af:spacer width="5" id="s34"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.excel']}" id="excel10"
+                                              styleClass="excelButton" immediate="true"
+                                              disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                              icon="#{menu.excelIcon}" visible="#{menu.excelVisible}">
+                              <af:setPropertyListener to="#{sessionScope.tableId}" from="CrsIncomingRelatedLetters1"
+                                                      type="action"/>
+                              <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                            </af:commandButton>
+                            <af:spacer width="5" id="s35"/>
+                          </af:toolbar>
+                        </f:facet>
+                        <af:table value="#{bindings.CrsIncomingRelatedLettersView1.collectionModel}"
+                                  id="CrsIncomingRelatedLetters1" styleClass="AFStretchWidth" var="row" varStatus="vs"
+                                  rows="#{bindings.CrsIncomingRelatedLettersView1.rangeSize}"
+                                  selectionListener="#{bindings.CrsIncomingRelatedLettersView1.collectionModel.makeCurrent}"
+                                  selectedRowKeys="#{bindings.CrsIncomingRelatedLettersView1.collectionModel.selectedRow}"
+                                  filterModel="#{bindings.CrsIncomingRelatedLettersView1CriteriaQuery.queryDescriptor}"
+                                  queryListener="#{bindings.CrsIncomingRelatedLettersView1CriteriaQuery.processQuery}"
+                                  partialTriggers="::Del10 ::ci10 ::Commit10 ::rb10 ::print10 ::excel10"
+                                  columnSelection="multiple" columnStretching="column:RelatedIncomingDocumentFkDescC176"
+                                  verticalGridVisible="false"
+                                  emptyText="#{bindings.CrsIncomingRelatedLettersView1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                  rowSelection="single" fetchSize="#{bindings.CrsIncomingRelatedLettersView1.rangeSize}"
+                                  displayRow="selected" editingMode="editAll" filterVisible="false" autoHeightRows="5"
+                                  blockRowNavigationOnError="always" scrollPolicy="page" rowBandingInterval="1">
+                          <af:column id="RelatedDocumentTypeFkC186"
+                                     sortProperty="#{bindings.CrsIncomingRelatedLettersView1.hints.RelatedDocumentTypeFk.name}"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingRelatedLetters.RelatedDocumentTypeFk']}"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive" width="300"
+                                     showRequired="false">
+                            <af:selectOneChoice value="#{row.bindings.RelatedDocumentTypeFk.inputValue}"
+                                                label="#{row.bindings.RelatedDocumentTypeFk.label}" required="true"
+                                                autoSubmit="true" id="crsIncomingRelatedLettersRelateddocumenttypefk"
+                                                disabled="false" readOnly="true">
+                              <f:selectItems value="#{row.bindings.RelatedDocumentTypeFk.items}" id="si6"/>
+                              <f:validator binding="#{row.bindings.RelatedDocumentTypeFk.validator}"/>
+                            </af:selectOneChoice>
+                          </af:column>
+                          <af:column id="RelatedIncomingDocumentFkC175"
+                                     sortProperty="#{bindings.CrsIncomingRelatedLettersView1.hints.RelatedIncomingDocumentFk.name}"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingRelatedLetters.IncomingDocumentsFk']}"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive" width="200"
+                                     partialTriggers="RelatedDocumentTypeFkC186" showRequired="false">
+                            <af:panelGroupLayout id="pgl174RelatedIncomingDocumentFk" layout="horizontal">
+                              <af:inputListOfValues value="#{row.bindings.RelatedIncomingDocumentFk.inputValue}"
+                                                    label="#{menu.resourceLabelMap['CrsIncomingRelatedLetters.RelatedIncomingDocumentFk']}"
+                                                    required="#{bindings.CrsIncomingRelatedLettersView1.hints.RelatedIncomingDocumentFk.mandatory}"
+                                                    columns="#{bindings.CrsIncomingRelatedLettersView1.hints.RelatedIncomingDocumentFk.displayWidth}"
+                                                    id="crsIncomingRelatedLettersRelatedincomingdocumentfk"
+                                                    model="#{row.bindings.RelatedIncomingDocumentFk.listOfValuesModel}"
+                                                    autoSubmit="true" simple="true"
+                                                    partialTriggers="crsIncomingRelatedLettersRelateddocumenttypefk c7"
+                                                    popupTitle="#{bindings.CrsIncomingRelatedLettersView1.hints.RelatedIncomingDocumentFk.label}"
+                                                    readOnly="true">
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{row.bindings.RelatedIncomingDocumentFk.format}"/>
+                                <f:validator binding="#{row.bindings.RelatedIncomingDocumentFk.validator}"/>
+                              </af:inputListOfValues>
+                            </af:panelGroupLayout>
+                          </af:column>
+                          <af:column id="RelatedOutgoingDocumentsFkC183"
+                                     sortProperty="#{bindings.CrsIncomingRelatedLettersView1.hints.RelatedOutgoingDocumentsFk.name}"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingRelatedLetters.RelatedOutgoingDocumentsFk']}"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive" width="150"
+                                     partialTriggers="RelatedDocumentTypeFkC186" showRequired="false">
+                            <af:panelGroupLayout id="pgl182RelatedOutgoingDocumentsFk" layout="horizontal">
+                              <af:inputListOfValues value="#{row.bindings.RelatedOutgoingDocumentsFk.inputValue}"
+                                                    label="#{menu.resourceLabelMap['CrsIncomingRelatedLetters.RelatedOutgoingDocumentsFk']}"
+                                                    required="#{bindings.CrsIncomingRelatedLettersView1.hints.RelatedOutgoingDocumentsFk.mandatory}"
+                                                    columns="#{bindings.CrsIncomingRelatedLettersView1.hints.RelatedOutgoingDocumentsFk.displayWidth}"
+                                                    id="crsIncomingRelatedLettersRelatedoutgoingdocumentsfk"
+                                                    model="#{row.bindings.RelatedOutgoingDocumentsFk.listOfValuesModel}"
+                                                    autoSubmit="true" simple="true"
+                                                    partialTriggers="crsIncomingRelatedLettersRelateddocumenttypefk c7"
+                                                    disabled="false"
+                                                    popupTitle="#{bindings.CrsIncomingRelatedLettersView1.hints.RelatedOutgoingDocumentsFk.label}"
+                                                    readOnly="true">
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{row.bindings.RelatedOutgoingDocumentsFk.format}"/>
+                                <f:validator binding="#{row.bindings.RelatedOutgoingDocumentsFk.validator}"/>
+                              </af:inputListOfValues>
+                            </af:panelGroupLayout>
+                          </af:column>
+                          <af:column id="RelatedIncomingDocumentFkDescC176"
+                                     sortProperty="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayRelatedIncomingOutgoingDocumentFk.name}"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingRelatedLetters.IncomingDocumentsFkDesc']}"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive">
+                            <af:inputText value="#{row.bindings.DisplayRelatedIncomingOutgoingDocumentFk.inputValue}"
+                                          label="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayRelatedIncomingOutgoingDocumentFk.label}"
+                                          required="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayRelatedIncomingOutgoingDocumentFk.mandatory}"
+                                          columns="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayRelatedIncomingOutgoingDocumentFk.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayRelatedIncomingOutgoingDocumentFk.precision}"
+                                          id="crsIncomingRelatedLettersRelatedincomingdocumentfkdesc" readOnly="true"
+                                          partialTriggers="crsIncomingRelatedLettersRelatedincomingdocumentfk   crsIncomingRelatedLettersRelatedoutgoingdocumentsfk ">
+                              <f:validator binding="#{row.bindings.DisplayRelatedIncomingOutgoingDocumentFk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column id="DisplayInDocNoc7"
+                                     sortProperty="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayDocNo.name}"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingRelatedLetters.DisplayInDocNo']}"
+                                     sortable="true" filterable="true" filterFeatures="caseInsensitive" width="200">
+                            <af:inputText value="#{row.bindings.DisplayDocNo.inputValue}"
+                                          label="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayDocNo.label}"
+                                          required="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayDocNo.mandatory}"
+                                          columns="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayDocNo.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayDocNo.precision}"
+                                          id="DisplayInDocNoit4"
+                                          partialTriggers="crsIncomingRelatedLettersRelatedincomingdocumentfk   crsIncomingRelatedLettersRelatedoutgoingdocumentsfk"
+                                          disabled="false" readOnly="true">
+                              <f:validator binding="#{row.bindings.DisplayDocNo.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column id="DisplayInDocDateGc7"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingRelatedLetters.DisplayInDocDateG']}"
+                                     width="300" sortable="true"
+                                     sortProperty="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayDocDateG.name}"
+                                     align="center">
+                            <af:inputDate value="#{row.bindings.DisplayDocDateG.inputValue}"
+                                          label="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayDocDateG.label}"
+                                          required="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayDocDateG.mandatory}"
+                                          columns="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayDocDateG.displayWidth}"
+                                          id="id1"
+                                          partialTriggers="crsIncomingRelatedLettersRelatedincomingdocumentfk   crsIncomingRelatedLettersRelatedoutgoingdocumentsfk "
+                                          disabled="false" readOnly="true">
+                              <f:validator binding="#{row.bindings.DisplayDocDateG.validator}"/>
+                              <af:convertDateTime pattern="#{menu.dateTimeWithSecondsFormat}"/>
+                            </af:inputDate>
+                          </af:column>
+                          <af:column id="DisplayInDocDateHc8"
+                                     headerText="#{menu.resourceLabelMap['CrsIncomingRelatedLetters.DisplayInDocDateH']}"
+                                     width="200" sortable="true"
+                                     sortProperty="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayDocDateH.name}"
+                                     align="center">
+                            <af:inputText value="#{row.bindings.DisplayDocDateH.inputValue}"
+                                          label="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayDocDateH.label}"
+                                          required="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayDocDateH.mandatory}"
+                                          columns="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayDocDateH.displayWidth}"
+                                          maximumLength="#{bindings.CrsIncomingRelatedLettersView1.hints.DisplayDocDateH.precision}"
+                                          id="it2"
+                                          partialTriggers="crsIncomingRelatedLettersRelatedincomingdocumentfk   crsIncomingRelatedLettersRelatedoutgoingdocumentsfk "
+                                          disabled="false" readOnly="true">
+                              <f:converter converterId="hijriDateConverter"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.CrsIncomingRelatedLettersView1.hints.RelatedDocumentTypeFk.name}"
+                                     sortable="true"
+                                     headerText="#{bindings.CrsIncomingRelatedLettersView1.hints.RelatedDocumentTypeFk.label}"
+                                     id="c7" rendered="false">
+                            <af:outputText value="#{row.RelatedDocumentTypeFk}"
+                                           shortDesc="#{bindings.CrsIncomingRelatedLettersView1.hints.RelatedDocumentTypeFk.tooltip}"
+                                           id="ot2">
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.CrsIncomingRelatedLettersView1.hints.RelatedDocumentTypeFk.format}"/>
+                            </af:outputText>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </f:facet>
+                  </af:panelStretchLayout>
+                </af:panelGroupLayout>
+              </af:panelGroupLayout>
+            </af:showDetailItem>
+          </af:panelTabbed>
+        </f:facet>
+      </af:panelSplitter>
+    </af:panelBox>
+  </af:panelGroupLayout>
+</jsp:root>

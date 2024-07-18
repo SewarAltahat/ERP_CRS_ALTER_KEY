@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CrsBeneficiariesTlFkLink"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  EntityAssociation="crs.model.assoc.CrsBeneficiariesTlFkAssoc">
+  <ViewLinkDefEnd
+    Name="CrsBeneficiariesView"
+    Cardinality="1"
+    Source="true"
+    Owner="crs.model.vo.CrsBeneficiariesView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CrsBeneficiariesView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.vo.CrsBeneficiariesView.BeneficiariesPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="CrsBeneficiariesTlView"
+    Cardinality="-1"
+    Owner="crs.model.vo.CrsBeneficiariesTlView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CrsBeneficiariesTlView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.vo.CrsBeneficiariesTlView.BeneficiariesFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

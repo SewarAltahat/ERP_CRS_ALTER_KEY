@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="scroll" styleClass="AFStretchWidth">
+    <af:panelBox styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['menu.beneficiaries']}" id="pb1">
+      <af:panelGroupLayout id="pgl12">
+       
+        <af:panelFormLayout id="pfl1" labelAlignment="top">
+          <af:inputText value="#{bindings.BeneficiaryId.inputValue}" label="#{bindings.BeneficiaryId.hints.label}"
+                        required="true"
+                        columns="70"
+                        maximumLength="#{bindings.BeneficiaryId.hints.precision}"
+                        id="it1" >
+            <f:validator binding="#{bindings.BeneficiaryId.validator}"/>
+          </af:inputText>
+            <af:inputText value="#{bindings.DisplayBeneficiaryName.inputValue}"
+                        label="#{bindings.DisplayBeneficiaryName.hints.label}"
+                        required="true" 
+                        columns="70"
+                        maximumLength="#{bindings.DisplayBeneficiaryName.hints.precision}"
+                        id="it4">
+            <f:validator binding="#{bindings.DisplayBeneficiaryName.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.MobileNo.inputValue}" label="#{bindings.MobileNo.hints.label}"
+                        required="#{bindings.MobileNo.hints.mandatory}"
+                        columns="70"
+                        maximumLength="#{bindings.MobileNo.hints.precision}"
+                        id="it2">
+              <f:validator validatorId="MobileNumberValidator"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.Email.inputValue}" label="#{bindings.Email.hints.label}"
+                        required="#{bindings.Email.hints.mandatory}" columns="70"
+                        maximumLength="#{bindings.Email.hints.precision}"
+                        id="it3">
+                <f:validator validatorId="EmailValidator"/>
+          </af:inputText>
+        
+          <af:inputText value="#{bindings.DisplayNotes.inputValue}" label="#{bindings.DisplayNotes.hints.label}"
+                        required="#{bindings.DisplayNotes.hints.mandatory}"
+                        columns="70"
+                        maximumLength="#{bindings.DisplayNotes.hints.precision}"
+                        id="it5">
+            <f:validator binding="#{bindings.DisplayNotes.validator}"/>
+          </af:inputText>
+        </af:panelFormLayout>
+      </af:panelGroupLayout>
+    </af:panelBox>
+  </af:panelGroupLayout>
+</jsp:root>

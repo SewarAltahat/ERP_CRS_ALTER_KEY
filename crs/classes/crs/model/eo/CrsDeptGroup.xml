@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity
+    AliasName="CrsDeptGroup"
+    BindingStyle="JDBC"
+    DBObjectName="CRS_DEPT_GROUP"
+    DBObjectType="table"
+    InheritPersonalization="merge"
+    Name="CrsDeptGroup"
+    RowClass="crs.model.eo.CrsDeptGroupImpl"
+  Version="12.2.1.12.24"
+    xmlns="http://xmlns.oracle.com/bc4j"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+      ColumnName="DEPT_GROUP_PK"
+      ColumnType="NUMBER"
+      Name="DeptGroupPk"
+      PrimaryKey="true"
+      SQLType="NUMERIC"
+      TableName="CRS_DEPT_GROUP"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="CREATED_BY"
+      ColumnType="NUMBER"
+      Name="CreatedBy"
+      SQLType="NUMERIC"
+      TableName="CRS_DEPT_GROUP"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="CREATION_DATE"
+      ColumnType="TIMESTAMP"
+      Name="CreationDate"
+      SQLType="TIMESTAMP"
+      TableName="CRS_DEPT_GROUP"
+      Type="java.sql.Timestamp"/>
+  <Attribute
+      ColumnName="MODIFIED_BY"
+      ColumnType="NUMBER"
+      Name="ModifiedBy"
+      SQLType="NUMERIC"
+      TableName="CRS_DEPT_GROUP"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="MODIFIED_DATE"
+      ColumnType="TIMESTAMP"
+      Name="ModifiedDate"
+      SQLType="TIMESTAMP"
+      TableName="CRS_DEPT_GROUP"
+      Type="java.sql.Timestamp"/>
+  <Attribute
+      ColumnName="USER_DEPARTMENT_FK"
+      ColumnType="NUMBER"
+      Name="UserDepartmentFk"
+      SQLType="NUMERIC"
+      TableName="CRS_DEPT_GROUP"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="ACTIVE_FL"
+      ColumnType="NUMBER"
+      Name="ActiveFl"
+      SQLType="NUMERIC"
+      TableName="CRS_DEPT_GROUP"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnType="CHAR"
+      IsPersistent="false"
+      Name="DisplayGroupName"
+      Precision="200"
+      SQLType="VARCHAR"
+      Type="java.lang.String"
+      ColumnName="$none$"/>
+  <Attribute
+    Name="StartDate"
+    ColumnName="START_DATE"
+    SQLType="DATE"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    TableName="CRS_DEPT_GROUP">
+    <validation:MethodValidationBean
+      Name="StartDateRule0"
+      MethodName="validateStartDate"/>
+  </Attribute>
+  <Attribute
+    Name="EndDate"
+    ColumnName="END_DATE"
+    SQLType="DATE"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    TableName="CRS_DEPT_GROUP">
+    <validation:MethodValidationBean
+      Name="EndDateRule0"
+      MethodName="validateEndDate"/>
+  </Attribute>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsDeptGroupDeptsFk1Assoc"
+      AssociationEnd="crs.model.assoc.CrsDeptGroupDeptsFk1Assoc.CrsDeptGroupDepts"
+      AssociationOtherEnd="crs.model.assoc.CrsDeptGroupDeptsFk1Assoc.CrsDeptGroup"
+    IsUpdateable="false"
+      Name="CrsDeptGroupDepts"
+      Type="oracle.jbo.RowIterator"/>
+  <AccessorAttribute
+      Association="crs.model.assoc.CrsDeptGroupTlFk1Assoc"
+      AssociationEnd="crs.model.assoc.CrsDeptGroupTlFk1Assoc.CrsDeptGroupTl"
+      AssociationOtherEnd="crs.model.assoc.CrsDeptGroupTlFk1Assoc.CrsDeptGroup"
+    IsUpdateable="false"
+      Name="CrsDeptGroupTl"
+      Type="oracle.jbo.RowIterator"/>
+  <Key
+    Name="AltKey"
+    AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CRS_DEPT_GROUP"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsDeptGroup.DisplayGroupName"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="CrsDeptGroupPk"
+      PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CRS_DEPT_GROUP_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="crs.model.eo.CrsDeptGroup.DeptGroupPk"/>
+    </AttrArray>
+  </Key>
+  <validation:UniqueKeyValidationBean
+    Name="CrsDeptGroupRule0"
+    KeyName="AltKey" ResId="#{menu.resourceLabelMap['error.DuplicateCode']}">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="DisplayGroupName"/>
+    </validation:OnAttributes>
+  </validation:UniqueKeyValidationBean>
+     <ResourceBundle>
+        <PropertiesBundle
+            PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</Entity>
+<!---->

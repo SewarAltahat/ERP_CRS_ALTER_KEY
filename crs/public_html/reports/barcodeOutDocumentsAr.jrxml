@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="barcodeGenerationNew" pageWidth="189" pageHeight="113" columnWidth="189" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" scriptletClass="sdcrs.view.converter.HijriConverterJasper" uuid="d110b21d-3d62-47f5-9894-dbdbb1140437">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="PbarCode" class="java.math.BigDecimal"/>
+	<queryString>
+		<![CDATA[SELECT
+ nvl(( SELECT "CRS_DEPARTMENT_REF"."SHORT_NAME" FROM "CRS_DEPARTMENT_REF" WHERE CRS_DEPARTMENT_REF.DEPARTMENT_CODE = CRS_OUT_DOCUMENTS.DEPARTMENT_CODE_TO ) ,
+     ( SELECT "CRS_DEPARTMENT_REF"."DEPARTMENT_DESC" FROM "CRS_DEPARTMENT_REF" WHERE CRS_DEPARTMENT_REF.DEPARTMENT_CODE = CRS_OUT_DOCUMENTS.DEPARTMENT_CODE_TO )) AS DEP_REF,
+     CRS_OUT_DOCUMENTS."BAR_CODE" AS CRS_OUT_DOCUMENTS_BAR_CODE,
+     CRS_OUT_DOCUMENTS."OUT_NUMBER" AS CRS_OUT_DOCUMENTS_OUT_NUMBER,
+     to_char(CRS_OUT_DOCUMENTS."OUT_DOC_DATE_G", 'dd/MM/yyyy hh24:mi:ss') OUT_DOC_DATE_G,
+     CRS_OUT_DOCUMENTS."OUT_DOC_DATE_H",
+     CRS_OUT_DOCUMENTS."NUMBER_OF_ATTACHMENTS",
+     CRS_SETTING_REF."DEFAULT_DATE",
+     CRS_SETTING_REF."ORG_NAME_IN_BAR_CODE" ,
+     CRS_OUT_DOCUMENTS."EXTERNAL_FLAG",
+     ( SELECT "CRS_DEPARTMENT_REF"."PARTITION" FROM "CRS_DEPARTMENT_REF" WHERE CRS_DEPARTMENT_REF.DEPARTMENT_CODE = CRS_OUT_DOCUMENTS.DEPARTMENT_CODE_from) AS PARTITION
+FROM
+     "CRS_OUT_DOCUMENTS" CRS_OUT_DOCUMENTS,
+     "CRS_SETTING_REF" CRS_SETTING_REF
+WHERE
+     CRS_OUT_DOCUMENTS.Out_Document_Number = $P{PbarCode}]]>
+	</queryString>
+	<field name="DEP_REF" class="java.lang.String"/>
+	<field name="CRS_OUT_DOCUMENTS_BAR_CODE" class="java.math.BigDecimal"/>
+	<field name="CRS_OUT_DOCUMENTS_OUT_NUMBER" class="java.lang.String"/>
+	<field name="OUT_DOC_DATE_G" class="java.lang.String"/>
+	<field name="OUT_DOC_DATE_H" class="java.math.BigDecimal"/>
+	<field name="NUMBER_OF_ATTACHMENTS" class="java.math.BigDecimal"/>
+	<field name="DEFAULT_DATE" class="java.lang.String"/>
+	<field name="ORG_NAME_IN_BAR_CODE" class="java.lang.String"/>
+	<field name="EXTERNAL_FLAG" class="java.math.BigDecimal"/>
+	<field name="PARTITION" class="java.lang.String"/>
+	<variable name="docNo" class="java.lang.String">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{EXTERNAL_FLAG}.equals(new BigDecimal("0")) ? $F{CRS_OUT_DOCUMENTS_OUT_NUMBER} :
+($F{PARTITION} == null ? " "+ $F{CRS_OUT_DOCUMENTS_OUT_NUMBER} :
+$F{PARTITION} + " / " + $F{CRS_OUT_DOCUMENTS_OUT_NUMBER})]]></initialValueExpression>
+	</variable>
+	<title>
+		<band height="1" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="109">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="8e7bb935-0320-401f-b9f1-46b1ec12692f" x="67" y="17" width="82" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="SdArial" size="9" isStrikeThrough="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.convertToArabic($V{docNo})]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy/MM/dd" isBlankWhenNull="true">
+				<reportElement uuid="88570f1e-5d28-4eef-be2b-6612847fe93c" x="70" y="32" width="79" height="15">
+					<printWhenExpression><![CDATA[$F{DEFAULT_DATE}.equals("G")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="SdArial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.convertToArabic($F{OUT_DOC_DATE_G})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="038b69fa-7c87-4dae-86c0-5c394b63617b" x="0" y="47" width="110" height="32"/>
+				<textElement textAlignment="Right">
+					<font fontName="SdArial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DEP_REF}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="85313ed4-e320-4a0d-95e6-ac6e9228faec" x="149" y="17" width="28" height="15"/>
+				<textElement>
+					<font fontName="SdArial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[الرقم :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="196675a0-869c-4fb3-8f70-3b1a43949116" x="149" y="32" width="28" height="15"/>
+				<textElement>
+					<font fontName="SdArial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[التاريخ :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4643112b-c25c-4e46-8057-75c240b44f90" x="23" y="32" width="47" height="15"/>
+				<textElement>
+					<font fontName="SdArial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[عدد المرفقات :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="f4f6e4ee-eb16-4f36-9883-a6f30f798939" x="0" y="32" width="23" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="SdArial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{NUMBER_OF_ATTACHMENTS} == null || $F{NUMBER_OF_ATTACHMENTS}.intValue() == 0) ? "بدون" : $P{REPORT_SCRIPTLET}.convertToArabic($F{NUMBER_OF_ATTACHMENTS}.toString())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="43938aec-d2d3-43d1-aa9d-90a500ed14e0" x="110" y="47" width="67" height="32"/>
+				<textElement>
+					<font fontName="SdArial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[الجهة المرسل اليها :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="8ff533cc-c59a-49f1-878e-79d0c24b04a1" x="70" y="32" width="79" height="15">
+					<printWhenExpression><![CDATA[$F{DEFAULT_DATE}.equals("H")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="SdArial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.convertToArabic($P{REPORT_SCRIPTLET}.getAsString( $F{OUT_DOC_DATE_H} ))]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement uuid="c535150a-73da-492d-b019-8b12efc92eed" x="35" y="79" width="142" height="30"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="3of9" drawText="true" checksumRequired="false">
+					<jr:codeExpression><![CDATA["00000" + $F{CRS_OUT_DOCUMENTS_BAR_CODE}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="4af04dff-fef7-44df-b8e0-4f23a9275f61" x="2" y="0" width="175" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SdArial" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ORG_NAME_IN_BAR_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="8e7bb935-0320-401f-b9f1-46b1ec12692f" x="2" y="17" width="65" height="15"/>
+				<textElement textAlignment="Left">
+					<font fontName="SdArial" size="9" isBold="true" isStrikeThrough="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTERNAL_FLAG}.equals(new BigDecimal("0")) ? "(صادر داخلي)" : $F{EXTERNAL_FLAG}.equals(new BigDecimal("1")) ? "(صادر خارجي)" : " "]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+</jasperReport>

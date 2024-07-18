@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity AliasName="CrsLetterTemplates" BindingStyle="JDBC"
+    DBObjectName="CRS_LETTER_TEMPLATES" DBObjectType="table"
+    InheritPersonalization="merge" Name="CrsLetterTemplates"
+    RowClass="crs.model.eo.CrsLetterTemplatesImpl"
+    Version="12.2.1.12.24" xmlns="http://xmlns.oracle.com/bc4j" xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access|DML"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Attribute ColumnName="LETTER_TEMPLATES_PK" ColumnType="NUMBER" Name="LetterTemplatesPk" PrimaryKey="true"
+        SQLType="NUMERIC" TableName="CRS_LETTER_TEMPLATES" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="DEPARTMENTS_FK" ColumnType="NUMBER"
+        Name="DepartmentsFk" SQLType="NUMERIC"
+        TableName="CRS_LETTER_TEMPLATES" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="TEMPLATE_NAME" ColumnType="VARCHAR2"
+        Name="TemplateName" Precision="100" SQLType="VARCHAR"
+        TableName="CRS_LETTER_TEMPLATES" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="100"/>
+        </DesignTime>
+    </Attribute>
+    <Attribute ColumnName="TEMPLATE_HEADER" ColumnType="CLOB"
+        IsQueriable="false" Name="TemplateHeader" SQLType="CLOB"
+        TableName="CRS_LETTER_TEMPLATES" Type="java.lang.String"/>
+    <Attribute ColumnName="TEMPLATE_CONTENT" ColumnType="CLOB"
+        IsQueriable="false" Name="TemplateContent" SQLType="CLOB"
+        TableName="CRS_LETTER_TEMPLATES" Type="java.lang.String"/>
+    <Attribute ColumnName="TEMPLATE_FOOTER" ColumnType="CLOB"
+        IsQueriable="false" Name="TemplateFooter" SQLType="CLOB"
+        TableName="CRS_LETTER_TEMPLATES" Type="java.lang.String"/>
+    <Attribute
+        Name="CreatedBy"
+        ColumnName="CREATED_BY"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        TableName="CRS_LETTER_TEMPLATES"/>
+    <Attribute
+        Name="CreationDate"
+        ColumnName="CREATION_DATE"
+        SQLType="TIMESTAMP"
+        Type="java.sql.Timestamp"
+        ColumnType="TIMESTAMP"
+        TableName="CRS_LETTER_TEMPLATES"/>
+    <Attribute
+        Name="ModifiedBy"
+        ColumnName="MODIFIED_BY"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        TableName="CRS_LETTER_TEMPLATES"/>
+    <Attribute
+        Name="ModifiedDate"
+        ColumnName="MODIFIED_DATE"
+        SQLType="TIMESTAMP"
+        Type="java.sql.Timestamp"
+        ColumnType="TIMESTAMP"
+        TableName="CRS_LETTER_TEMPLATES"/>
+    <Attribute
+        Name="UserDepartmentFk"
+        ColumnName="USER_DEPARTMENT_FK"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        TableName="CRS_LETTER_TEMPLATES"/>
+    <AccessorAttribute
+        Name="HcmDepartments"
+        Association="crs.model.eo.CrsLetterTemplatesFk1Assoc"
+        AssociationEnd="crs.model.eo.CrsLetterTemplatesFk1Assoc.HcmDepartments"
+        AssociationOtherEnd="crs.model.eo.CrsLetterTemplatesFk1Assoc.CrsLetterTemplates"
+        Type="crs.model.eo.HcmDepartmentsImpl"
+        IsUpdateable="true"/>
+    <Key Name="CrsLetterTemplatesPk" PrimaryKey="true">
+        <DesignTime>
+            <Attr Name="_DBObjectName" Value="CRS_LETTER_TEMPLATES_PK"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsLetterTemplates.LetterTemplatesPk"/>
+        </AttrArray>
+    </Key>
+    <Key
+        AltKey="true"
+        Name="DepartmentsFkTemplateNameKey">
+        <DesignTime>
+            <Attr Name="_isUnique" Value="true"/>
+            <Attr Name="_DBObjectName" Value="DepartmentsFkTemplateNameKey"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsLetterTemplates.DepartmentsFk"/>
+            <Item Value="crs.model.eo.CrsLetterTemplates.TemplateName"/>
+        </AttrArray>
+    </Key>
+    <Key Name="CrsLetterTemplatesFk1">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="HCM_DEPARTMENTS_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="CRS_LETTER_TEMPLATES_FK1"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="crs.model.eo.CrsLetterTemplates.DepartmentsFk"/>
+        </AttrArray>
+    </Key>
+    <validation:UniqueKeyValidationBean
+        KeyName="DepartmentsFkTemplateNameKey"
+        Name="DepartmentsFkTemplateNameRule" ResId="#{menu.resourceLabelMap['error.DuplicateCode']}">
+        <validation:OnAttributes>
+            <validation:Item Value="DepartmentsFk"/>
+            <validation:Item Value="TemplateName"/>
+        </validation:OnAttributes>
+    </validation:UniqueKeyValidationBean>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="crs.view.scrlabels"/>
+    </ResourceBundle>
+</Entity>
+<!---->

@@ -1,0 +1,467 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl3" layout="scroll">
+    <af:panelBox styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['docCc.insertdocCc']}" id="pb2" rendered="false">
+      <af:panelGroupLayout id="pgl12" >
+        <div class="card-body">
+          <div class="form-group row">
+            <div class="col-md-3">
+              <label class="col-form-label">
+                <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFk']}" id="ActionFk" showRequired="true"/>
+              </label>
+               
+              <af:inputListOfValues id="actionFkId" popupTitle="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFk']}"
+                                    value="#{bindings.ActionFk.inputValue}" label="#{bindings.ActionFk.hints.label}"
+                                    model="#{bindings.ActionFk.listOfValuesModel}"
+                                    required="true" simple="true"
+                                    styleClass="form-control" autoSubmit="true"
+                                    columns="#{bindings.ActionFk.hints.displayWidth}">
+                <f:validator binding="#{bindings.ActionFk.validator}"/>
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.ActionFk.format}"/>
+              </af:inputListOfValues>
+            </div>
+            <div class="col-md-3">
+              <label class="col-form-label">
+                <af:outputLabel value="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFkDesc']}" id="ActionFkDesc"/>
+              </label>
+               
+              <af:inputText value="#{bindings.DisplayActionFk.inputValue}" simple="true"
+                            required="#{bindings.DisplayActionFk.hints.mandatory}"
+                            label="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFkDesc']}"
+                            columns="#{bindings.DisplayActionFk.hints.displayWidth}"
+                            maximumLength="#{bindings.DisplayActionFk.hints.precision}" id="it3" readOnly="true"
+                            partialTriggers="actionFkId" styleClass="form-control">
+                <f:validator binding="#{bindings.DisplayActionFk.validator}"/>
+              </af:inputText>
+            </div>
+          </div>
+        </div>
+      </af:panelGroupLayout>
+    </af:panelBox>
+    <af:panelBox styleClass="AFStretchWidth" id="pb22">
+      <af:panelTabbed id="PTCrsIncomingDocuments13" styleClass="AFStretchWidth" dimensionsFrom="disclosedChild">
+        <af:showDetailItem id="sdi_CrsIncomingDocuments64" styleClass="AFStretchWidth" immediate="true"
+                           text="#{menu.resourceLabelMap['CrsDeptGroupDepts.Department']}">
+          <af:panelGroupLayout id="pglCrsIncomingBeneficiaries65" layout="vertical" halign="center">
+            <af:panelGroupLayout id="pgl62">
+              <af:panelStretchLayout id="psl63" styleClass="AFStretchWidth" dimensionsFrom="children">
+                <f:facet name="center">
+                  <af:panelCollection id="pc48" styleClass="AFStretchWidth"
+                                      featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem">
+                    <f:facet name="secondaryToolbar">
+                      <af:toolbar id="tb4">
+                        <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="print4"
+                                          styleClass="printButton" immediate="true" disabled="#{!menu.selectAllowed}"
+                                          partialSubmit="true" icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+                          <af:showPrintablePageBehavior/>
+                        </af:commandButton>
+                        <af:spacer width="5" id="s1"/>
+                        <af:commandButton text="#{menu.resourceLabelMap['label.excel']}" id="excel4"
+                                          styleClass="steper-btn" immediate="true" disabled="#{!menu.selectAllowed}"
+                                          partialSubmit="true" icon="#{menu.excelIcon}" visible="#{menu.excelVisible}">
+                          <af:setPropertyListener to="#{sessionScope.tableId}" from="t1" type="action"/>
+                          <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                        </af:commandButton>
+                        <af:commandButton actionListener="#{docCcDept.selectAllInFregment}" id="sa7170" partialSubmit="true"
+                                          icon="/images/SelectAll-list-40.png" text="#{menu.resourceLabelMap['label.selectAll']}"
+                                          styleClass="steper-btn">
+                          <f:attribute name="iteratorName" value="DeparmentsRVOIterator"/>
+                        </af:commandButton>
+                        <af:spacer id="dsaa1" width="5"/>
+                        <af:commandButton actionListener="#{docCcDept.deSelectAllInFregment}" id="dsa7170" partialSubmit="true"
+                                          icon="/images/DSelectlist-40.png" text="#{menu.resourceLabelMap['label.deSelectAll']}"
+                                          styleClass="steper-btn">
+                          <f:attribute name="iteratorName" value="DeparmentsRVOIterator"/>
+                        </af:commandButton>
+                      </af:toolbar>
+                    </f:facet>
+                    <af:table value="#{bindings.DeparmentsRVO.collectionModel}" var="row"
+                              rows="#{bindings.DeparmentsRVO.rangeSize}"
+                              emptyText="#{bindings.DeparmentsRVO.viewable ? menu.emptyText : menu.accessDeniedText}"
+                              rowBandingInterval="1"
+                              styleClass="AFStretchWidth t50"
+                              selectedRowKeys="#{bindings.DeparmentsRVO.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.DeparmentsRVO.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.DeparmentsRVO.rangeSize}"
+                              filterModel="#{bindings.DeparmentsRVOQuery.queryDescriptor}" filterVisible="false"
+                              queryListener="#{bindings.DeparmentsRVOQuery.processQuery}" varStatus="vs" id="t1"
+                              columnSelection="multiple" columnStretching="column:c2" verticalGridVisible="false"
+                              displayRow="selected" editingMode="editAll" autoHeightRows="5"
+                              blockRowNavigationOnError="always" scrollPolicy="page"
+                              partialTriggers="::dsa7170 ::sa7170">
+                              <af:column sortProperty="SelectedFl" filterable="true" sortable="true"
+                                 filterFeatures="caseInsensitive"
+                                 headerText="#{menu.resourceLabelMap['DeparmentsRVO.SelectFl']}" id="c3" align="center">
+                        <af:commandImageLink actionListener="#{docCcDept.untick}" icon="/images/checked-checkbox.png" id="check"
+                                             partialSubmit="true" partialTriggers="check uncheck"
+                                             visible="#{row.bindings.SelectedFl.inputValue == '1'}">
+                          <f:attribute name="iteratorName" value="DeparmentsRVOIterator"/>
+                          <f:attribute name="attributeName" value="SelectedFl"/>
+                        </af:commandImageLink>
+                        <af:commandImageLink actionListener="#{docCcDept.tick}" icon="/images/unchecked-checkbox.png" id="uncheck"
+                                             partialSubmit="true" partialTriggers="check uncheck"
+                                             visible="#{row.bindings.SelectedFl.inputValue == null or row.bindings.SelectedFl.inputValue == '0'}">
+                          <f:attribute name="iteratorName" value="DeparmentsRVOIterator"/>
+                          <f:attribute name="attributeName" value="SelectedFl"/>
+                        </af:commandImageLink>
+                      </af:column>
+                      <af:column sortProperty="DepartmentsPk" headerText="#{menu.resourceLabelMap['SsoDepartments.PK']}"
+                                 id="c1" sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                 align="center" width="300">
+                        <af:inputText value="#{row.bindings.DepartmentsPk.inputValue}"
+                                      label="#{bindings.DeparmentsRVO.hints.DepartmentsPk.label}"
+                                      required="#{bindings.DeparmentsRVO.hints.DepartmentsPk.mandatory}"
+                                      columns="#{bindings.DeparmentsRVO.hints.DepartmentsPk.displayWidth}"
+                                      maximumLength="#{bindings.DeparmentsRVO.hints.DepartmentsPk.precision}" id="it1"
+                                      readOnly="true">
+                          <f:validator binding="#{row.bindings.DepartmentsPk.validator}"/>
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.DeparmentsRVO.hints.DepartmentsPk.format}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column sortProperty="DepartmentNameSearch" filterable="true" sortable="true"
+                                 headerText="#{menu.resourceLabelMap['SsoDepartments.DeptName']}" id="c2"
+                                 filterFeatures="caseInsensitive" align="center">
+                        <af:inputText value="#{row.bindings.DepartmentName.inputValue}"
+                                      label="#{menu.resourceLabelMap['SsoDepartments.DeptName']}"
+                                      required="#{bindings.DeparmentsRVO.hints.DepartmentName.mandatory}"
+                                      columns="#{bindings.DeparmentsRVO.hints.DepartmentName.displayWidth}"
+                                      maximumLength="#{bindings.DeparmentsRVO.hints.DepartmentName.precision}" id="it2"
+                                      readOnly="true">
+                          <f:validator binding="#{row.bindings.DepartmentName.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column sortProperty="ActionFk" filterable="true" sortable="true" 
+                                 filterFeatures="caseInsensitive" align="center"
+                                 headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFk']}" id="c5" width="120">
+                        <af:inputListOfValues id="ilov1"
+                                              popupTitle="#{bindings.DeparmentsRVO.hints.ActionFk.label}"
+                                              value="#{row.bindings.ActionFk.inputValue}"
+                                              model="#{row.bindings.ActionFk.listOfValuesModel}"
+                                              required="#{bindings.DeparmentsRVO.hints.ActionFk.mandatory}"
+                                              columns="#{bindings.DeparmentsRVO.hints.ActionFk.displayWidth}"
+                                              shortDesc="#{bindings.DeparmentsRVO.hints.ActionFk.tooltip}">
+                          <f:validator binding="#{row.bindings.ActionFk.validator}"/>
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.DeparmentsRVO.hints.ActionFk.format}"/>
+                        </af:inputListOfValues>
+                      </af:column>
+                      <af:column sortProperty="ActionFk" filterable="true" sortable="true" 
+                                 filterFeatures="caseInsensitive" align="center" 
+                                 headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFkDesc']}" id="c4"
+                                 width="200">
+                        <af:inputText value="#{row.bindings.DisplayActionFk.inputValue}"
+                                      label="#{bindings.DeparmentsRVO.hints.DisplayActionFk.label}"
+                                      required="#{bindings.DeparmentsRVO.hints.DisplayActionFk.mandatory}"
+                                      columns="#{bindings.DeparmentsRVO.hints.DisplayActionFk.displayWidth}"
+                                      maximumLength="#{bindings.DeparmentsRVO.hints.DisplayActionFk.precision}"
+                                      shortDesc="#{bindings.DeparmentsRVO.hints.DisplayActionFk.tooltip}" id="it4"
+                                      readOnly="true" partialTriggers="ilov1">
+                          <f:validator binding="#{row.bindings.DisplayActionFk.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column headerText="#{menu.resourceLabelMap['CrsGuidance.Guidance']}" id="c7" width="350">
+                        <af:inputText value="#{row.bindings.Guidance.inputValue}"
+                                      label="#{menu.resourceLabelMap['CrsGuidance.Guidance']}"
+                                      required="#{bindings.DeparmentsRVO.hints.Guidance.mandatory}"
+                                      columns="#{bindings.DeparmentsRVO.hints.Guidance.displayWidth}"
+                                      maximumLength="#{bindings.DeparmentsRVO.hints.Guidance.precision}"
+                                      shortDesc="#{bindings.DeparmentsRVO.hints.Guidance.tooltip}" id="it5" rows="2">
+                          <f:validator binding="#{row.bindings.Guidance.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      
+                    </af:table>
+                  </af:panelCollection>
+                </f:facet>
+              </af:panelStretchLayout>
+            </af:panelGroupLayout>
+          </af:panelGroupLayout>
+        </af:showDetailItem>
+       <af:showDetailItem id="sdi_CrsIncomingDocuments648" styleClass="AFStretchWidth" immediate="true"
+                           text="#{menu.resourceLabelMap['CrsDeptGroup.DepartmentGroup']}">
+          <af:panelGroupLayout id="pglCrsIncomingBeneficiaries685" layout="vertical" halign="center">
+            <af:panelGroupLayout id="pgl627">
+              <af:panelStretchLayout id="psl635" styleClass="AFStretchWidth" dimensionsFrom="children">
+                <f:facet name="center">
+                  <af:panelCollection id="pc487" styleClass="AFStretchWidth"
+                                      featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem">
+                    <f:facet name="secondaryToolbar">
+                      <af:toolbar id="tb46">
+                        <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="print6"
+                                          styleClass="printButton" immediate="true" disabled="#{!menu.selectAllowed}"
+                                          partialSubmit="true" icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+                          <af:showPrintablePageBehavior/>
+                        </af:commandButton>
+                        <af:spacer width="5" id="s4"/>
+                        <af:commandButton text="#{menu.resourceLabelMap['label.excel']}" id="excel8"
+                                          styleClass="steper-btn" immediate="true" disabled="#{!menu.selectAllowed}"
+                                          partialSubmit="true" icon="#{menu.excelIcon}" visible="#{menu.excelVisible}">
+                          <af:setPropertyListener to="#{sessionScope.tableId}" from="t3" type="action"/>
+                          <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                        </af:commandButton>
+                        <af:commandButton actionListener="#{docCcDept.selectAllInFregment}" id="sa710" partialSubmit="true"
+                                          icon="/images/SelectAll-list-40.png" text="#{menu.resourceLabelMap['label.selectAll']}"
+                                          styleClass="steper-btn">
+                          <f:attribute name="iteratorName" value="CrsDeptGroupRVOIterator"/>
+                        </af:commandButton>
+                        <af:spacer id="dsa1" width="5"/>
+                        <af:commandButton actionListener="#{docCcDept.deSelectAllInFregment}" id="dsa710" partialSubmit="true"
+                                          icon="/images/DSelectlist-40.png" text="#{menu.resourceLabelMap['label.deSelectAll']}"
+                                          styleClass="steper-btn">
+                          <f:attribute name="iteratorName" value="CrsDeptGroupRVOIterator"/>
+                        </af:commandButton>
+                      </af:toolbar>
+                    </f:facet>
+                    <af:table value="#{bindings.CrsDeptGroupRVO.collectionModel}" var="row"
+                              rows="#{bindings.CrsDeptGroupRVO.rangeSize}"
+                              emptyText="#{bindings.CrsDeptGroupRVO.viewable ? menu.emptyText : menu.accessDeniedText}"
+                              rowBandingInterval="1"
+                              styleClass="AFStretchWidth t50"
+                              selectedRowKeys="#{bindings.CrsDeptGroupRVO.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.CrsDeptGroupRVO.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.CrsDeptGroupRVO.rangeSize}"
+                              filterModel="#{bindings.CrsDeptGroupRVOQuery.queryDescriptor}" filterVisible="false"
+                              queryListener="#{bindings.CrsDeptGroupRVOQuery.processQuery}" varStatus="vs" id="t3"
+                              columnSelection="multiple" columnStretching="column:c13" verticalGridVisible="false"
+                              displayRow="selected" editingMode="editAll" autoHeightRows="5"
+                              blockRowNavigationOnError="always" scrollPolicy="page" partialTriggers="::sa710 ::dsa710">
+                              <af:column sortProperty="SelectedFl" filterable="true" sortable="true"
+                                 filterFeatures="caseInsensitive"
+                                 headerText="#{menu.resourceLabelMap['DeparmentsRVO.SelectFl']}" id="c17" align="center">
+                        <af:commandImageLink actionListener="#{docCcDept.untick}" icon="/images/checked-checkbox.png" id="check3"
+                                             partialSubmit="true" partialTriggers="check3 uncheck3"
+                                             visible="#{row.bindings.SelectedFl.inputValue == '1'}">
+                          <f:attribute name="iteratorName" value="CrsDeptGroupRVOIterator"/>
+                          <f:attribute name="attributeName" value="SelectedFl"/>
+                        </af:commandImageLink>
+                        <af:commandImageLink actionListener="#{docCcDept.tick}" icon="/images/unchecked-checkbox.png" id="uncheck3"
+                                             partialSubmit="true" partialTriggers="check3 uncheck3"
+                                             visible="#{row.bindings.SelectedFl.inputValue == null or row.bindings.SelectedFl.inputValue == '0'}">
+                          <f:attribute name="iteratorName" value="CrsDeptGroupRVOIterator"/>
+                          <f:attribute name="attributeName" value="SelectedFl"/>
+                        </af:commandImageLink>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.CrsDeptGroupRVO.hints.DeptGroupPk.name}" filterable="true"
+                                 sortable="true" headerText="#{bindings.CrsDeptGroupRVO.hints.DeptGroupPk.label}"
+                                 id="c6" width="120" align="center">
+                        <af:inputText value="#{row.bindings.DeptGroupPk.inputValue}"
+                                      label="#{bindings.CrsDeptGroupRVO.hints.DeptGroupPk.label}"
+                                      required="#{bindings.CrsDeptGroupRVO.hints.DeptGroupPk.mandatory}"
+                                      columns="#{bindings.CrsDeptGroupRVO.hints.DeptGroupPk.displayWidth}"
+                                      maximumLength="#{bindings.CrsDeptGroupRVO.hints.DeptGroupPk.precision}"
+                                      shortDesc="#{bindings.CrsDeptGroupRVO.hints.DeptGroupPk.tooltip}" id="it6">
+                          <f:validator binding="#{row.bindings.DeptGroupPk.validator}"/>
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.CrsDeptGroupRVO.hints.DeptGroupPk.format}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.CrsDeptGroupRVO.hints.DisplayDeptGroupPk.name}"
+                                 filterable="true" sortable="true" 
+                                 headerText="#{bindings.CrsDeptGroupRVO.hints.DisplayDeptGroupPk.label}" id="c13"
+                                 width="200" align="center">
+                        <af:inputText value="#{row.bindings.DisplayDeptGroupPk.inputValue}"
+                                      label="#{bindings.CrsDeptGroupRVO.hints.DisplayDeptGroupPk.label}"
+                                      required="#{bindings.CrsDeptGroupRVO.hints.DisplayDeptGroupPk.mandatory}"
+                                      columns="#{bindings.CrsDeptGroupRVO.hints.DisplayDeptGroupPk.displayWidth}"
+                                      maximumLength="#{bindings.CrsDeptGroupRVO.hints.DisplayDeptGroupPk.precision}"
+                                      shortDesc="#{bindings.CrsDeptGroupRVO.hints.DisplayDeptGroupPk.tooltip}"
+                                      id="it11">
+                          <f:validator binding="#{row.bindings.DisplayDeptGroupPk.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.CrsDeptGroupRVO.hints.ActionFk.name}" filterable="true"
+                                 sortable="true" headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFk']}" id="c14"
+                                 width="120" align="center">
+                        <af:inputListOfValues id="ilov3"
+                                              popupTitle="#{bindings.CrsDeptGroupRVO.hints.ActionFk.label}"
+                                              value="#{row.bindings.ActionFk.inputValue}"
+                                              model="#{row.bindings.ActionFk.listOfValuesModel}"
+                                              required="#{bindings.CrsDeptGroupRVO.hints.ActionFk.mandatory}"
+                                              columns="#{bindings.CrsDeptGroupRVO.hints.ActionFk.displayWidth}"
+                                              shortDesc="#{bindings.CrsDeptGroupRVO.hints.ActionFk.tooltip}">
+                          <f:validator binding="#{row.bindings.ActionFk.validator}"/>
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.CrsDeptGroupRVO.hints.ActionFk.format}"/>
+                        </af:inputListOfValues>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.CrsDeptGroupRVO.hints.DisplayActionFk.name}" filterable="true"
+                                 sortable="true" headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFkDesc']}"
+                                 id="c15" width="200" align="center">
+                        <af:inputText value="#{row.bindings.DisplayActionFk.inputValue}" 
+                                      label="#{bindings.CrsDeptGroupRVO.hints.DisplayActionFk.label}"
+                                      required="#{bindings.CrsDeptGroupRVO.hints.DisplayActionFk.mandatory}"
+                                      columns="#{bindings.CrsDeptGroupRVO.hints.DisplayActionFk.displayWidth}"
+                                      maximumLength="#{bindings.CrsDeptGroupRVO.hints.DisplayActionFk.precision}"
+                                      shortDesc="#{bindings.CrsDeptGroupRVO.hints.DisplayActionFk.tooltip}" id="it12"
+                                      readOnly="true" partialTriggers="ilov3">
+                          <f:validator binding="#{row.bindings.DisplayActionFk.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.CrsDeptGroupRVO.hints.Guidance.name}" filterable="true"
+                                 sortable="true" headerText="#{menu.resourceLabelMap['CrsGuidance.Guidance']}" id="c16"
+                                 align="center" width="350">
+                        <af:inputText value="#{row.bindings.Guidance.inputValue}"
+                                      label="#{menu.resourceLabelMap['CrsGuidance.Guidance']}"
+                                      required="#{bindings.CrsDeptGroupRVO.hints.Guidance.mandatory}"
+                                      columns="#{bindings.CrsDeptGroupRVO.hints.Guidance.displayWidth}"
+                                      maximumLength="#{bindings.CrsDeptGroupRVO.hints.Guidance.precision}"
+                                      shortDesc="#{bindings.CrsDeptGroupRVO.hints.Guidance.tooltip}" id="it13" rows="2">
+                          <f:validator binding="#{row.bindings.Guidance.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      
+                    </af:table>
+                  </af:panelCollection>
+                </f:facet>
+              </af:panelStretchLayout>
+            </af:panelGroupLayout>
+          </af:panelGroupLayout>
+        </af:showDetailItem>
+      <af:showDetailItem id="sdi_CrsIncomingDocuments6498" styleClass="AFStretchWidth" immediate="true"
+                           text="#{menu.resourceLabelMap['CrsIndividual.Individual']}">
+          <af:panelGroupLayout id="pglCrsIncomingBeneficiaries6685" layout="vertical" halign="center">
+            <af:panelGroupLayout id="pgl6277">
+              <af:panelStretchLayout id="psl6835" styleClass="AFStretchWidth" dimensionsFrom="children">
+                <f:facet name="center">
+                  <af:panelCollection id="pc4877" styleClass="AFStretchWidth"
+                                      featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem">
+                    <f:facet name="secondaryToolbar">
+                      <af:toolbar id="tb476">
+                        <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="print9"
+                                          styleClass="printButton" immediate="true" disabled="#{!menu.selectAllowed}"
+                                          partialSubmit="true" icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+                          <af:showPrintablePageBehavior/>
+                        </af:commandButton>
+                        <af:spacer width="5" id="s84"/>
+                        <af:commandButton text="#{menu.resourceLabelMap['label.excel']}" id="excel9"
+                                          styleClass="steper-btn" immediate="true" disabled="#{!menu.selectAllowed}"
+                                          partialSubmit="true" icon="#{menu.excelIcon}" visible="#{menu.excelVisible}">
+                          <af:setPropertyListener to="#{sessionScope.tableId}" from="t1" type="action"/>
+                          <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                        </af:commandButton>
+                        <af:commandButton actionListener="#{docCcDept.selectAllInFregment}" id="sa910" partialSubmit="true"
+                                          icon="/images/SelectAll-list-40.png" text="#{menu.resourceLabelMap['label.selectAll']}"
+                                          styleClass="steper-btn">
+                          <f:attribute name="iteratorName" value="HcmEmpBasicDataVw1Iterator"/>
+                        </af:commandButton>
+                        <af:spacer id="dsa18" width="5"/>
+                        <af:commandButton actionListener="#{docCcDept.deSelectAllInFregment}" id="dsa910" partialSubmit="true"
+                                          icon="/images/DSelectlist-40.png" text="#{menu.resourceLabelMap['label.deSelectAll']}"
+                                          styleClass="steper-btn">
+                          <f:attribute name="iteratorName" value="HcmEmpBasicDataVw1Iterator"/>
+                        </af:commandButton>
+                      </af:toolbar>
+                    </f:facet>
+                   <af:table value="#{bindings.HcmEmpBasicDataVw1.collectionModel}" var="row"
+                              rows="#{bindings.HcmEmpBasicDataVw1.rangeSize}"
+                              emptyText="#{bindings.DeparmentsRVO.viewable ? menu.emptyText : menu.accessDeniedText}"
+                              rowBandingInterval="1"
+                              styleClass="AFStretchWidth t50"
+                              selectedRowKeys="#{bindings.HcmEmpBasicDataVw1.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.HcmEmpBasicDataVw1.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.HcmEmpBasicDataVw1.rangeSize}"
+                              filterModel="#{bindings.HcmEmpBasicDataVw1Query.queryDescriptor}" filterVisible="false"
+                              queryListener="#{bindings.HcmEmpBasicDataVw1Query.processQuery}" varStatus="vs" id="t2"
+                              columnSelection="multiple" columnStretching="column:c9" verticalGridVisible="false"
+                              displayRow="selected" editingMode="editAll" autoHeightRows="5"
+                              blockRowNavigationOnError="always" scrollPolicy="page" partialTriggers="::sa910 ::dsa910">
+                              <af:column sortProperty="SelectedFl" filterable="true" sortable="true"
+                                 filterFeatures="caseInsensitive"
+                                 headerText="#{menu.resourceLabelMap['DeparmentsRVO.SelectFl']}" id="c38" align="center">
+                        <af:commandImageLink actionListener="#{docCcDept.untick}" icon="/images/checked-checkbox.png" id="check1"
+                                             partialSubmit="true" partialTriggers="check1 uncheck1"
+                                             visible="#{row.bindings.SelectedFl.inputValue == '1'}">
+                          <f:attribute name="iteratorName" value="HcmEmpBasicDataVw1Iterator"/>
+                          <f:attribute name="attributeName" value="SelectedFl"/>
+                        </af:commandImageLink>
+                        <af:commandImageLink actionListener="#{docCcDept.tick}" icon="/images/unchecked-checkbox.png" id="uncheck1"
+                                             partialSubmit="true" partialTriggers="check1 uncheck1"
+                                             visible="#{row.bindings.SelectedFl.inputValue == null or row.bindings.SelectedFl.inputValue == '0'}">
+                          <f:attribute name="iteratorName" value="HcmEmpBasicDataVw1Iterator"/>
+                          <f:attribute name="attributeName" value="SelectedFl"/>
+                        </af:commandImageLink>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.HcmEmpBasicDataVw1.hints.EmployeesPk.name}" filterable="true"
+                                 sortable="true" headerText="#{bindings.HcmEmpBasicDataVw1.hints.EmployeesPk.label}"
+                                 id="c8" align="center">
+                        <af:inputText value="#{row.bindings.EmployeesPk.inputValue}"
+                                      label="#{bindings.HcmEmpBasicDataVw1.hints.EmployeesPk.label}"
+                                      required="#{bindings.HcmEmpBasicDataVw1.hints.EmployeesPk.mandatory}"
+                                      columns="#{bindings.HcmEmpBasicDataVw1.hints.EmployeesPk.displayWidth}"
+                                      maximumLength="#{bindings.HcmEmpBasicDataVw1.hints.EmployeesPk.precision}"
+                                      shortDesc="#{bindings.HcmEmpBasicDataVw1.hints.EmployeesPk.tooltip}" id="it7">
+                          <f:validator binding="#{row.bindings.EmployeesPk.validator}"/>
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.HcmEmpBasicDataVw1.hints.EmployeesPk.format}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.HcmEmpBasicDataVw1.hints.DisplayEmployeesPk.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.HcmEmpBasicDataVw1.hints.DisplayEmployeesPk.label}" id="c9"
+                                 align="center">
+                        <af:inputText value="#{row.bindings.DisplayEmployeesPk.inputValue}"
+                                      label="#{bindings.HcmEmpBasicDataVw1.hints.DisplayEmployeesPk.label}"
+                                      required="#{bindings.HcmEmpBasicDataVw1.hints.DisplayEmployeesPk.mandatory}"
+                                      columns="#{bindings.HcmEmpBasicDataVw1.hints.DisplayEmployeesPk.displayWidth}"
+                                      maximumLength="#{bindings.HcmEmpBasicDataVw1.hints.DisplayEmployeesPk.precision}"
+                                      shortDesc="#{bindings.HcmEmpBasicDataVw1.hints.DisplayEmployeesPk.tooltip}"
+                                      id="it8">
+                          <f:validator binding="#{row.bindings.DisplayEmployeesPk.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.HcmEmpBasicDataVw1.hints.ActionFk.name}" filterable="true"
+                                 sortable="true" headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFk']}"
+                                 id="c10" width="120" align="center">
+                        <af:inputListOfValues id="ilov2"
+                                              popupTitle="#{bindings.HcmEmpBasicDataVw1.hints.ActionFk.label}"
+                                              value="#{row.bindings.ActionFk.inputValue}"
+                                              model="#{row.bindings.ActionFk.listOfValuesModel}"
+                                              required="#{bindings.HcmEmpBasicDataVw1.hints.ActionFk.mandatory}"
+                                              columns="#{bindings.HcmEmpBasicDataVw1.hints.ActionFk.displayWidth}"
+                                              shortDesc="#{bindings.HcmEmpBasicDataVw1.hints.ActionFk.tooltip}">
+                          <f:validator binding="#{row.bindings.ActionFk.validator}"/>
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.HcmEmpBasicDataVw1.hints.ActionFk.format}"/>
+                        </af:inputListOfValues>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.HcmEmpBasicDataVw1.hints.DisplayActionFk.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{menu.resourceLabelMap['CrsIncomingDocCc.ActionFkDesc']}" id="c11"
+                                 width="200" align="center">
+                        <af:inputText value="#{row.bindings.DisplayActionFk.inputValue}"
+                                      label="#{bindings.HcmEmpBasicDataVw1.hints.DisplayActionFk.label}"
+                                      required="#{bindings.HcmEmpBasicDataVw1.hints.DisplayActionFk.mandatory}"
+                                      columns="#{bindings.HcmEmpBasicDataVw1.hints.DisplayActionFk.displayWidth}"
+                                      maximumLength="#{bindings.HcmEmpBasicDataVw1.hints.DisplayActionFk.precision}"
+                                      shortDesc="#{bindings.HcmEmpBasicDataVw1.hints.DisplayActionFk.tooltip}" id="it9"
+                                       partialTriggers="ilov2" readOnly="true">
+                          <f:validator binding="#{row.bindings.DisplayActionFk.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.HcmEmpBasicDataVw1.hints.Guidance.name}" filterable="true"
+                                 sortable="true" headerText="#{menu.resourceLabelMap['CrsGuidance.Guidance']}"
+                                 id="c12" width="350" align="center">
+                        <af:inputText value="#{row.bindings.Guidance.inputValue}"
+                                      label="#{menu.resourceLabelMap['CrsGuidance.Guidance']}"
+                                      required="#{bindings.HcmEmpBasicDataVw1.hints.Guidance.mandatory}"
+                                      columns="#{bindings.HcmEmpBasicDataVw1.hints.Guidance.displayWidth}"
+                                      maximumLength="#{bindings.HcmEmpBasicDataVw1.hints.Guidance.precision}"
+                                      shortDesc="#{bindings.HcmEmpBasicDataVw1.hints.Guidance.tooltip}" id="it10"
+                                      rows="2">
+                          <f:validator binding="#{row.bindings.Guidance.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      
+                    </af:table>
+                  </af:panelCollection>
+                </f:facet>
+              </af:panelStretchLayout>
+            </af:panelGroupLayout>
+          </af:panelGroupLayout>
+        </af:showDetailItem>
+      </af:panelTabbed>
+    </af:panelBox>
+  </af:panelGroupLayout>
+</jsp:root>

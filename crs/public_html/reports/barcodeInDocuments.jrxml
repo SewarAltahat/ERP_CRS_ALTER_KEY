@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="barcodeInDocuments" pageWidth="600" pageHeight="250" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="560" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" scriptletClass="gen.common.JasperScriptlet" uuid="72482c10-2f07-4a7e-81f6-20a437dc2a90">
+	<property name="ireport.zoom" value="0.9330147604194666"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.xls.sheet.direction" value="LTR"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<template><![CDATA[$P{SUBREPORT_DIR} + "reportStyle.jrtx"]]></template>
+	<style name="rowStyle" mode="Opaque" forecolor="#000000" backcolor="#F9F9F9">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT} %  2 == 0]]></conditionExpression>
+			<style backcolor="#FFFFFF"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT} %  2 != 0]]></conditionExpression>
+			<style mode="Opaque" forecolor="#000000" backcolor="#F9F9F9"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[".\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_lang" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_barcode" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_in_number_label" class="java.lang.String"/>
+	<parameter name="p_in_doc_date_g_label" class="java.lang.String"/>
+	<parameter name="p_attachment_no_label" class="java.lang.String"/>
+	<parameter name="p_dept_ref_label" class="java.lang.String"/>
+	<parameter name="p_incoming_label" class="java.lang.String"/>
+	<parameter name="p_in_type_label" class="java.lang.String"/>
+	<parameter name="p_no_data_label" class="java.lang.String"/>
+	<parameter name="p_date_format" class="java.lang.String"/>
+	<parameter name="p_in_doc_date_h_label" class="java.lang.String"/>
+	<parameter name="p_incoming_documents_pk" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+GET_DEPARTMENT_NAME(FROM_DEPARTMENT_FK, $P{p_lang}) AS DEP_REF,
+CRS_IN_DOCUMENTS.BARCODE AS CRS_IN_DOCUMENTS_BAR_CODE,
+CRS_IN_DOCUMENTS.INCOMING_DOCUMENTS_NO AS CRS_IN_DOCUMENTS_OUT_NUMBER,
+CRS_IN_DOCUMENTS.IN_DOC_DATE_G,
+CRS_IN_DOCUMENTS.IN_DOC_DATE_H,
+CRS_IN_DOCUMENTS.ATTACHMENTS_NO,
+GET_DEPARTMENT_NAME(TO_DEPARTMENT_FK  , $P{p_lang}) AS PARTITION
+
+FROM
+CRS_INCOMING_DOCUMENTS CRS_IN_DOCUMENTS
+
+
+where  CRS_IN_DOCUMENTS.Incoming_Documents_Pk= $P{p_incoming_documents_pk}]]>
+	</queryString>
+	<field name="DEP_REF" class="java.lang.String"/>
+	<field name="CRS_IN_DOCUMENTS_BAR_CODE" class="java.math.BigDecimal"/>
+	<field name="CRS_IN_DOCUMENTS_OUT_NUMBER" class="java.math.BigDecimal"/>
+	<field name="IN_DOC_DATE_G" class="java.sql.Timestamp"/>
+	<field name="IN_DOC_DATE_H" class="java.math.BigDecimal"/>
+	<field name="ATTACHMENTS_NO" class="java.math.BigDecimal"/>
+	<field name="PARTITION" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="154" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement style="labelStyle" mode="Opaque" x="413" y="0" width="147" height="20" uuid="5297c77e-d75f-4490-b31c-b2346709bed0"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#6666FF"/>
+					<topPen lineWidth="0.0" lineColor="#6666FF"/>
+					<leftPen lineWidth="0.0" lineColor="#6666FF"/>
+					<bottomPen lineWidth="0.0" lineColor="#6666FF"/>
+					<rightPen lineWidth="0.0" lineColor="#6666FF"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_in_number_label}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement style="labelStyle" mode="Opaque" x="139" y="65" width="128" height="20" uuid="4b81acc4-8eb1-48da-994a-c5b6bc4c3b54"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#6666FF"/>
+					<topPen lineWidth="0.0" lineColor="#6666FF"/>
+					<leftPen lineWidth="0.0" lineColor="#6666FF"/>
+					<bottomPen lineWidth="0.0" lineColor="#6666FF"/>
+					<rightPen lineWidth="0.0" lineColor="#6666FF"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_attachment_no_label}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement style="labelStyle" mode="Opaque" x="413" y="62" width="147" height="20" uuid="19660a97-9d1f-44e0-bf18-b977ae8db304"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#6666FF"/>
+					<topPen lineWidth="0.0" lineColor="#6666FF"/>
+					<leftPen lineWidth="0.0" lineColor="#6666FF"/>
+					<bottomPen lineWidth="0.0" lineColor="#6666FF"/>
+					<rightPen lineWidth="0.0" lineColor="#6666FF"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_dept_ref_label}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement style="labelStyle" mode="Opaque" x="413" y="31" width="147" height="20" uuid="9eaa60d7-4e3a-4043-9783-d8d6bb912034"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#6666FF"/>
+					<topPen lineWidth="0.0" lineColor="#6666FF"/>
+					<leftPen lineWidth="0.0" lineColor="#6666FF"/>
+					<bottomPen lineWidth="0.0" lineColor="#6666FF"/>
+					<rightPen lineWidth="0.0" lineColor="#6666FF"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_in_doc_date_g_label}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement style="labelStyle" mode="Opaque" x="139" y="3" width="128" height="20" uuid="81f5d11e-f4df-4379-a903-acd566252fda"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#6666FF"/>
+					<topPen lineWidth="0.0" lineColor="#6666FF"/>
+					<leftPen lineWidth="0.0" lineColor="#6666FF"/>
+					<bottomPen lineWidth="0.0" lineColor="#6666FF"/>
+					<rightPen lineWidth="0.0" lineColor="#6666FF"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_in_type_label}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="false">
+				<reportElement style="reportContentsStyle" mode="Transparent" x="286" y="0" width="127" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="a6781ba4-b50d-4590-8f54-033c0973f03e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CRS_IN_DOCUMENTS_OUT_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="false">
+				<reportElement style="reportContentsStyle" mode="Transparent" x="-3" y="65" width="131" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="995f5bab-946a-4ea2-832c-4ceba6aba155"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ATTACHMENTS_NO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement style="reportContentsStyle" mode="Opaque" x="286" y="62" width="127" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="f68ce8a2-2c12-4eb0-b3b5-870fc96b593b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DEP_REF}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement style="reportContentsStyle" mode="Opaque" x="1" y="3" width="127" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="77e2b696-7412-4844-81e3-e72a277e8b23"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_incoming_label}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement mode="Opaque" x="165" y="98" width="248" height="56" uuid="be88113e-0e83-4288-9f30-1d4d161f49c8"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="3of9" drawText="true" checksumRequired="false">
+					<jr:codeExpression><![CDATA["00000" + $F{CRS_IN_DOCUMENTS_BAR_CODE}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="286" y="31" width="127" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="79a87c07-6746-47ff-9074-28feb0cb5150"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.formatDate($F{IN_DOC_DATE_G},$P{p_date_format})]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="1" y="34" width="127" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="65467e13-ef2d-4b4f-85bd-08dc3b69a813"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.convertHijriBigDecimalToString($F{IN_DOC_DATE_H})]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement style="labelStyle" mode="Opaque" x="139" y="34" width="128" height="20" uuid="8019a5f9-c00f-4357-8221-2135abcddd9c"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#6666FF"/>
+					<topPen lineWidth="0.0" lineColor="#6666FF"/>
+					<leftPen lineWidth="0.0" lineColor="#6666FF"/>
+					<bottomPen lineWidth="0.0" lineColor="#6666FF"/>
+					<rightPen lineWidth="0.0" lineColor="#6666FF"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_in_doc_date_h_label}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<noData>
+		<band height="36">
+			<textField>
+				<reportElement style="reportHeaderStyle" mode="Opaque" x="1" y="0" width="559" height="36" uuid="4e2f690f-5601-4e1a-bd1c-2ac91726c70b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="20" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_no_data_label}]]></textFieldExpression>
+			</textField>
+		</band>
+	</noData>
+</jasperReport>
